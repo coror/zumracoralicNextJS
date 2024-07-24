@@ -13,7 +13,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
 
-export default function LatestEvents() {
+export default function LatestEvents({ sectionTitle, button }) {
   const [events, setEvents] = useState([]);
 
   const locale = useLocale();
@@ -57,7 +57,7 @@ export default function LatestEvents() {
             : ''
         }`}
       >
-        Zadnji dogodki
+        {sectionTitle}
       </div>
       {events.length > 0 ? (
         <Swiper
@@ -109,7 +109,7 @@ export default function LatestEvents() {
         <Link href='/contact'>
           <button className='bg-gray-500  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#9c9c9c] flex items-center'>
             <IoBookmarkOutline className='inline mx-1' />
-            POGLEJ VSE
+            {button}
           </button>
         </Link>
       </div>

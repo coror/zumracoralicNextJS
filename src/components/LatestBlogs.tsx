@@ -11,7 +11,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
 
-export default function LatestBlogs() {
+export default function LatestBlogs({
+  section,
+  sectionTitle,
+  sectionTitle2,
+  button,
+}) {
   const [blogs, setBlogs] = useState([]);
 
   const [animate, setAnimate] = useState(false);
@@ -52,7 +57,7 @@ export default function LatestBlogs() {
         <div className='m-8 flex flex-col xl:flex-row xl:justify-between'>
           <div>
             <div>
-              <div className='tracking-wider mb-6 md:text-xl'>- ČLANKI</div>
+              <div className='tracking-wider mb-6 md:text-xl'>{section}</div>
               <div
                 className={`text-3xl md:text-[56px] mb-6  tracking-wide leading-[1] ${
                   animate
@@ -60,7 +65,7 @@ export default function LatestBlogs() {
                     : ''
                 }`}
               >
-                Zadnji blogi
+                {sectionTitle}
               </div>
             </div>
             <div
@@ -70,8 +75,7 @@ export default function LatestBlogs() {
                   : ''
               }`}
             >
-              Ta blog je prostor, kjer delim svoje izkušnje, razmišljanja ter
-              strokovno znanje.
+              {sectionTitle2}
             </div>
           </div>
 
@@ -84,7 +88,7 @@ export default function LatestBlogs() {
           >
             <Link href='/contact'>
               <button className='bg-[#d2ab74] px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b] flex items-center'>
-                - PREBERI OSTALE
+                {button}
               </button>
             </Link>
           </div>

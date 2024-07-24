@@ -5,5 +5,63 @@
     "events": "DOGAĐAJI",
     "about": "O MENI",
     "services": "USLUGE"
+  },
+  "Footer": {
+    "connect": "PUT DO USPJEHA POČINJE OVDJE – POVEŽI SE SA MNOM"
+  },
+  "Header": {
+    "title": "NLP COACH I MEDIJATOR",
+    "content": "Saznajte kako vam NLP coching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.",
+    "button": "Stupite u kontakt"
+  },
+  "AboutSection": {
+    "section": "- O MENI",
+    "title": "Tu sam da ljudima pomognem otkriti njihov pravi potencijal i živjeti ispunjen život...",
+    "content": "Moje ime je Zumra. U svojim zrelim godinama otkrila sam smisao i ljepotu života. Odlučila sam da svoj život posvetim istraživanju sebe, produbljivanju kvalitetnih međuljudskih odnosa u porodici i mijenjanju obrazaca i uvjerenja koja mi ne koriste. Istovremeno želim svojim znanjem i iskustvom pomoći drugima kroz predavanja, radionice, osobni koučing i savjetovanja u otkrivanju njihovog vlastitog smisla života. Godine 2015. napustila sam sigurnu službu i krenula na samostalni put."
+  },
+  "QuoteSection": {
+    "quote": "“Nije važno odakle dolaziš ili gdje se trenutno nalaziš, već kuda si usmjeren i gdje želiš stići!”"
+  },
+  "OfferSection": {
+    "sectionTitle": "Šta nudim",
+    "card1Title": "1:1 Coaching",
+    "card1Content": "Ja sam stručnjakinja za NLP coaching na području međuljudskih odnosa i rješavanja izazova. Uvjeren(a) sam da mogu doprinijeti ostvarivanju vaših postavljenih ciljeva, kao što su poboljšanje odnosa u porodici i na radnom mjestu, podizanje samopouzdanja, veća samouvjerenost te otkrivanje vaših potencijala i strasti.",
+    "back1Title": "Moja stručnost i vaša prilika",
+    "back1Content": "S više od 50 klijenata dijelila sam svoje znanje i iskustvo na području NLP koučinga, pomažući ljudima prepoznati i razriješiti ograničavajuće obrasce te graditi čvrste temelje za pozitivne promjene. S naglaskom na međuljudskim odnosima, pružala sam podršku u poboljšanju komunikacije, rješavanju sukoba te otkrivanju unutarnjih izvora snage i pronalaženju smisla života.",
+    "card2Title": "Medijacija",
+    "card2Content": "U sukobu ste, ali ne želite složene i skupe sudske postupke? MEDIJACIJA je pravo rješenje! Zašto? Pročitajte u nastavku teksta.",
+    "back2Title": "Šta je medijacija?",
+    "back2Content": "Medijacija je proces rješavanja konflikata u kojem neutralna treća osoba, medijator, pomaže uključenima da postignu sporazum. Medijator koristi različite tehnike komunikacije i vođenja razgovora kako bi potaknuo saradnju, razumijevanje i pronalaženje zajedničkih rješenja među stranama u sukobu.",
+    "card3Title": "Predavanja i Radionice",
+    "card3Content": "Program, koji mogu prilagoditi prema potrebama vaše organizacije, uključuje predavanja i radionice fokusirane na izgradnju kvalitetnih međuljudskih odnosa, rješavanje sukoba i povećanje zadovoljstva zaposlenih. Ako vas zanima kako mogu poboljšati radno okruženje i podržati vaše zaposlene, radujem se prilici za osobni susret i predstavljanje mog programa.",
+    "back3Title": "Otključajte svoj potencijal: Dinamična predavanja i radionice",
+    "back3Content": "Kao NLP kouč i medijator nudim dinamična predavanja i praktične radionice, osmišljene za osnaživanje pojedinaca i timova. Moje sesije su fokusirane na poboljšanje komunikacijskih veština, poticanje ličnog razvoja i efikasno rješavanje konflikata. Pridružite se i otključajte svoj potencijal te postignite transformativne rezultate."
+  },
+  "Testimonials": {
+    "sectionTitle": "Mišljenja i komentari",
+    "testimonial1": "“Sa gospođom Zumrom Ćoralić prvi put smo se sreli u martu 2023. godine, kada smo tražili odgovarajućeg predavača za sprovođenje radionica o izazovima međuljudskih odnosa i uspješnom rješavanju konflikata. Strast prema radu, posvećenost profesiji, zračenje pozitivne energije i stručnost uvjerili su nas da je gospođa Zumra pravi predavač za grupu znatiželjnih pojedinaca. Komunikacijske vještine za upravljanje pozitivnim odnosima i konstruktivno rješavanje konfliktnim situacijama su oblast koju svaka organizacija treba njegovati. Stoga je važno kako ih znamo upravljati. Gospođa Zumra Ćoralić je učesnicima pokazala da se voljom, srcem i pozitivnim odnosom mogu otvoriti vrata na pravom putu i riješiti mnoge, pa čak i najteže prepreke. Hvala Zumra!”",
+    "person1Title": "Direktorka sektora za ljudske resurse i opće poslove, ETA d.o.o. Cerkno",
+    "testimonial2": "“Ona je zaista sjajan primjer kako se može postići ako se to zaista želi. Tako jednostavna i srčana osoba. Gdje će biti za 10 godina? Uvjeren(a) sam da će biti tačno tamo gdje si zamislila, jer tačno zna kamo ide. I kada dođe posljednji dan, biće presrećna što je provela život vjerujući da je živjela bogat i ispunjen život. Također zato što je imala hrabrosti da izađe iz zone komfora, radi na sebi, obrazovati se i primijeni to znanje u praksi.”",
+    "person2Title": "Poduzetnica, motivatorka, spisateljica i savjetnica.",
+    "testimonial3": "BIH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum vehicula congue. Nulla facilisi. Sed felis purus, volutpat scelerisque leo eu, dignissim volutpat elit. Donec sit amet velit a arcu consectetur euismod. Morbi vel quam mollis, fermentum lectus eu, laoreet metus. Etiam quis tortor et odio congue tristique. Sed cursus erat non lacus dapibus, at commodo ipsum laoreet. Nulla posuere libero ac ante vestibulum, a bibendum odio tempor. Curabitur dui ligula, bibendum sit amet posuere at, imperdiet id purus.”",
+    "person3Title": "BIH Iz delavnice 1",
+    "testimonial4": "BIH Sed id interdum leo. Cras ullamcorper nisl sed leo ornare, sagittis consectetur leo volutpat. Cras congue mattis pellentesque. In feugiat, mauris sit amet consectetur pellentesque, augue leo congue ante, eget volutpat tellus ipsum in nibh. Aenean vel ex vitae massa facilisis consectetur id a magna. Etiam ac odio ex. Sed quis turpis convallis, malesuada diam quis, posuere ligula.”",
+    "person4Title": "BIH Iz delavnice 2"
+  },
+  "LatestEvents": {
+    "sectionTitle": "Najnoviji događaji",
+    "button": "Pogledaj sve"
+  },
+  "ActionSection": {
+    "quote": "PUT DO HARMONIJE U ODNOSIMA - STUPITE U KONTAKT"
+  },
+  "LatestBlogs": {
+    "section": "- Članci",
+    "sectionTitle": "Najnoviji blogovi",
+    "sectionTitle2": "Ovaj blog je prostor gdje dijelim svoja iskustva, razmišljanja i stručno znanje.",
+    "button": "- Proćitaj ostale"
+  },
+  "Index": {
+    "readMore": "Proćitaj više"
   }
 }

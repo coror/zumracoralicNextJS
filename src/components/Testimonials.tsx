@@ -11,7 +11,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Testimonial from './Testimonial';
 
-export default function Testimonials() {
+export default function Testimonials({
+  sectionTitle,
+  testimonial1,
+  person1Title,
+  testimonial2,
+  person2Title,
+  testimonial3,
+  person3Title,
+  testimonial4,
+  person4Title,
+}) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -27,8 +37,15 @@ export default function Testimonials() {
 
   return (
     <div className='bg-[#EAF2EC] py-10 md:py-24 relative '>
-      <div className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${animate ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]' : ''}`} ref={ref}>
-        Mnenja in odzivi
+      <div
+        className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
+          animate
+            ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
+            : ''
+        }`}
+        ref={ref}
+      >
+        {sectionTitle}
       </div>
       <Swiper
         modules={[Navigation, Pagination]}
@@ -47,7 +64,11 @@ export default function Testimonials() {
             slidesPerView: 3,
           },
         }}
-        className={`flex items-center justify-between max-w-[1600px] ${animate ? 'animate-fade-up animate-duration-[2500ms] animate-delay-[1000ms]' : ''}`}
+        className={`flex items-center justify-between max-w-[1600px] ${
+          animate
+            ? 'animate-fade-up animate-duration-[2500ms] animate-delay-[1000ms]'
+            : ''
+        }`}
         style={{
           '--swiper-navigation-color': '#000000',
           '--swiper-pagination-color': '#000000',
@@ -55,21 +76,9 @@ export default function Testimonials() {
       >
         <SwiperSlide>
           <Testimonial
-            content='“Z ga. Zumro Ćoralić smo se prvič srečali v mesecu marcu 2023,
-                ko smo iskali ustreznega predavatelja za izpeljavo delavnic o
-                izzivih medsebojnih odnosov in uspešnega reševanja konfliktov.
-                Strast do dela, predanost poklicu, izžarevanje pozitivne
-                energije in strokovnost so nas prepričale, da je ga. Zumra prava
-                predavateljica za skupino vedoželjnih posameznikov.
-                Komunikacijske veščine za obvladovanje pozitivnih odnosov in
-                konstruktivnega reševanja konfliktnih situacij je področje, ki
-                ga mora negovati vsaka organizacija. Zato je pomembno, kako jih
-                znamo obvladovati. Ga. Zumra Ćoralić je udeležencem pokazala, da
-                se z voljo, srčnostjo in pozitivnim odnosom lahko odprejo vrata
-                na pravo pot in odpravi marsikatera, še tako nerešljiva, ovira.
-                Hvala Zumra!”'
+            content={testimonial1}
             name='Tina Menard'
-            title='Direktorica enote za kadre in splošne zadeve, ETA d.o.o. Cerkno'
+            title={person1Title}
           />
         </SwiperSlide>
 
@@ -77,15 +86,7 @@ export default function Testimonials() {
           <div className='flex flex-col items-center'>
             <div className='relative flex flex-col items-center justify-center md:justify-start min-h-96 md:max-w-60 lg:max-w-96 bg-white rounded-2xl mx-5 my-3 py-10 px-5 shadow-2xl'>
               <div className='relative z-10 text-center md:text-lg'>
-                “Ona je resnično en tak noro dober primer, kjer je pokazala in
-                dokazala sebi in drugim, da se resnično da, če se hoče. In tako
-                preprosta in srčno simpatična oseba je. Kje bo čez 10 let?
-                Prepričana sem, da natanko tam, kot si bo zamislila, da bo, saj
-                natančno ve kam gre. In, ko bo prišel zadnji dan, bo presrečna,
-                ker ga bo preživela v veri, da je živela bogato in izpolnjeno
-                življenje. Tudi zato, ker si je upala stopiti iz cone udobja,
-                delati na sebi, se izobraževala in to znanje spravila iz teorije
-                v prakso.”
+                {testimonial2}
                 <div className='mt-2 hover:text-blue-900'>
                   <a
                     href='https://petrazagar.com/od-cistilke-podjetnice-2-del'
@@ -101,30 +102,24 @@ export default function Testimonials() {
             </div>
             <div className='flex flex-col items-center justify-center text-center mx-10 my-16'>
               <div className='mb-4'>Petra Žagar</div>
-              <div className='text-sm text-gray-500'>
-                Direktorica enote za kadre in splošne zadeve, ETA d.o.o. Cerkno
-              </div>
+              <div className='text-sm text-gray-500'>{person2Title}</div>
             </div>
           </div>
         </SwiperSlide>
 
         <SwiperSlide>
           <Testimonial
-            content=' “aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaa a a aaa aaaaaaaa a a a aaa a a
-                aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa”'
-            name='Petra Žagar'
-            title='Direktorica enote za kadre in splošne zadeve, ETA d.o.o. Cerkno'
+            content={testimonial3}
+            name='Anonimno1'
+            title={person3Title}
           />
         </SwiperSlide>
 
         <SwiperSlide>
           <Testimonial
-            content='“sdfsdfsdfsdfsdfsdf sdfsdčlk asdćčlsakd ćasčld kasćd
-                saldksaćčdlk ćqwop kd ćlfćčkd lsćač lf kćčadslfkćč dsafloć
-                aowekćfl kdćsčfl čćdask ćčsldfkaćčsdlfkć čsaldfć časdlofkć
-                asdčlfć sdl”'
-            name='Petra Žagar'
-            title='Direktorica enote za kadre in splošne zadeve, ETA d.o.o. Cerkno'
+            content={testimonial4}
+            name='Anonimno2'
+            title={person4Title}
           />
         </SwiperSlide>
 

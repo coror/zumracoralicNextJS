@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 import Image from 'next/image';
 
-export default function Footer() {
+export default function Footer({ connect }) {
   return (
     <div className='relative w-full h-96 md:min-h-72 md:py-64 text-white'>
       <div
@@ -25,7 +25,7 @@ export default function Footer() {
             className='cover xl:w-44 xl:h-44 xl:mt-18'
           />
           <div className='text-white m-10 text-2xl md:text-[56px] tracking-wide leading-tight my-10'>
-            POT DO USPEHA SE ZAČNE TUKAJ – POVEŽI SE Z MENOJ
+            {connect}
           </div>
           <div className='flex flex-row items-center space-x-4 text-white'>
             <a

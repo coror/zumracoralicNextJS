@@ -3,7 +3,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-export default function Quote() {
+export default function Quote({quote}) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -29,8 +29,7 @@ export default function Quote() {
       >
         <div className='absolute inset-0 bg-[#222428] opacity-65'></div>
         <div ref={ref} className={`relative flex items-center justify-center h-full text-white p-10 text-3xl text-center  md:text-[56px]  tracking-wide leading-[1] ${animate ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1000ms]' : ''}`}>
-          “Ni pomembno, od kod prihajaš ali kje se trenutno nahajaš, temveč kam
-          si usmerjen in kam želiš priti!”
+          {quote}
         </div>
       </div>
     </div>

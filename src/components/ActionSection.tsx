@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { IoMdMailOpen } from 'react-icons/io';
 import { FaPencil } from 'react-icons/fa6';
 
-export default function ActionSection() {
+export default function ActionSection({ quote, button }) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -41,7 +41,7 @@ export default function ActionSection() {
                 : ''
             }`}
           >
-            POT DO HARMONIJE V ODNOSIH – STOPITE V STIK
+            {quote}
           </div>
 
           <div
@@ -54,7 +54,7 @@ export default function ActionSection() {
             <Link href='/contact'>
               <button className='bg-[#d2ab74] px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b] flex items-center'>
                 <FaPencil className='inline mx-1' />
-                Stopi v stik
+                {button}
               </button>
             </Link>
           </div>

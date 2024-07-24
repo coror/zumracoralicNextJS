@@ -4,7 +4,21 @@ import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import OfferCard from './OfferCard';
 
-export default function Offer() {
+export default function Offer({
+  sectionTitle,
+  card1Title,
+  card1Content,
+  card2Title,
+  card2Content,
+  card3Title,
+  card3Content,
+  back1Title,
+  back1Content,
+  back2Title,
+  back2Content,
+  back3Title,
+  back3Content,
+}) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -28,7 +42,7 @@ export default function Offer() {
               : ''
           }`}
         >
-          Kaj ponujam
+          {sectionTitle}
         </div>
         <div className='flex flex-col md:flex-row'>
           <div
@@ -39,12 +53,10 @@ export default function Offer() {
             }`}
           >
             <OfferCard
-              title='1:1 Coaching'
-              content='Sem strokovnjakinja za NLP Coaching na področju medosebnih odnosov
-              in reševanja izzivov. Prepričana sem, da lahko prispevam k
-              uresničevanju vaših zastavljenih ciljev, kot so izboljšanje
-              odnosov v družini in na delovnem mestu, dvig samopodobe, večja
-              samozavest ter odkrivanje vaših potencialov in strasti.'
+              title={card1Title}
+              content={card1Content}
+              backTitle={back1Title}
+              backContent={back1Content}
               bgColor='bg-[#F6EDDA]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721392346/zumracoralic/background_ff90gd.jpg'
             />
@@ -57,10 +69,10 @@ export default function Offer() {
             }`}
           >
             <OfferCard
-              title='Mediacija'
-              content=' Ste v konfliktu, vendar ne želite zapletenih in dragih sodnih
-              postopkov? MEDIACIJA je prava rešitev! Zakaj? Preberite v
-              nadaljevanju besedila.'
+              title={card2Title}
+              content={card2Content}
+              backTitle={back2Title}
+              backContent={back2Content}
               bgColor='bg-[#D4D8E7]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721487542/zumracoralic/background1_xqcq2z.jpg'
             />
@@ -73,13 +85,10 @@ export default function Offer() {
             }`}
           >
             <OfferCard
-              title='Predavanja in Delavince'
-              content='Program, ki ga lahko prilagodim glede na potrebe vaše organizacije,
-              vključuje predavanja in delavnice, osredotočene na gradnjo
-              kakovostnih medosebnih odnosov, reševanje konfliktov ter povečanje
-              zadovoljstva zaposlenih. Če vas zanima, kako lahko izboljšam
-              delovno okolje in podprem vaše zaposlene, se veselim priložnosti
-              za osebno srečanje in predstavitev mojega programa.'
+              title={card3Title}
+              content={card3Content}
+              backTitle={back3Title}
+              backContent={back3Content}
               bgColor='bg-[#D8ECD3]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721209043/blog3_vkvdz0.png'
             />

@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 
-export default function OfferCard({ title, content, bgColor, bgColor2 }) {
+export default function OfferCard({
+  title,
+  content,
+  backTitle,
+  backContent,
+  bgColor,
+  bgColor2,
+}) {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -32,14 +39,12 @@ export default function OfferCard({ title, content, bgColor, bgColor2 }) {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           transform: hovered ? 'translateY(0)' : 'translateY(100%)',
-          borderRadius: '1rem'
+          borderRadius: '1rem',
         }} // Apply the background image dynamically
       >
-        <div className='text-2xl mb-2 text-center'>New Title</div>
+        <div className='text-2xl mb-2 text-center'>{backTitle}</div>
         <div className='text-2xl font-bold mb-2 text-center'>-</div>
-        <div className='text-center md:text-lg'>
-          New content replacing the old content upon hover.
-        </div>
+        <div className='text-center md:text-lg'>{backContent}</div>
       </div>
     </div>
   );

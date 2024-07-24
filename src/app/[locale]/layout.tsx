@@ -28,6 +28,7 @@ export default function RootLayout({
   params: { locale },
 }: Readonly<RootLayoutProps>) {
   const t = useTranslations('Navigation');
+  const f = useTranslations('Footer');
   return (
     <html lang={locale}>
       <body className={inter.className}>
@@ -39,7 +40,7 @@ export default function RootLayout({
           about={t('about')}
         />
         <div>{children}</div>
-        <Footer />
+        <Footer connect={f('connect')} />
       </body>
     </html>
   );
