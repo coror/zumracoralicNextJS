@@ -1,0 +1,9 @@
+{
+  "Navigation": {
+    "home": "POČETNA",
+    "blogPosts": "BLOG",
+    "events": "DOGAĐAJI",
+    "about": "O MENI",
+    "services": "USLUGE"
+  }
+}

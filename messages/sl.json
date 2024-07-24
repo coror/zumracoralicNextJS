@@ -1,0 +1,9 @@
+{
+  "Navigation": {
+    "home": "DOMOV",
+    "blogPosts": "BLOG",
+    "events": "DOGODKI",
+    "about": "O MENI",
+    "services": "STORITVE"
+  }
+}
