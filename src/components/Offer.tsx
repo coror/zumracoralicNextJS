@@ -57,7 +57,7 @@ export default function Offer({
               content={card1Content}
               backTitle={back1Title}
               backContent={back1Content}
-              bgColor='bg-[#F6EDDA]'
+              bgColor='bg-[#FEFBE6]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721392346/zumracoralic/background_ff90gd.jpg'
             />
           </div>
@@ -73,7 +73,7 @@ export default function Offer({
               content={card2Content}
               backTitle={back2Title}
               backContent={back2Content}
-              bgColor='bg-[#D4D8E7]'
+              bgColor='bg-[#ffe6bc]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721487542/zumracoralic/background1_xqcq2z.jpg'
             />
           </div>
@@ -89,7 +89,7 @@ export default function Offer({
               content={card3Content}
               backTitle={back3Title}
               backContent={back3Content}
-              bgColor='bg-[#D8ECD3]'
+              bgColor='bg-[#ffbba0]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721209043/blog3_vkvdz0.png'
             />
           </div>

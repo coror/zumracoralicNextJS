@@ -1,6 +1,5 @@
 import { format, parseISO } from 'date-fns';
 import { sl, bs } from 'date-fns/locale';
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 const locales = { sl: sl, bs };
 
@@ -10,9 +9,6 @@ export const dateReducer = (dateStr, locale = 'sl') => {
   return format(dateObj, 'PPP', { locale: formatLocale });
 };
 
-export const richTextReducer = (rawRichText) => {
-  return documentToHtmlString(rawRichText);
-};
 
 export const imageReducer = (imageField) => {
   if (!imageField || !imageField.url) {
@@ -33,7 +29,8 @@ export const eventReducer = (rawEvent, locale = 'sl') => {
   event.id = rawEvent.sys.id;
   event.locale = rawEvent.sys.locale || locale;
   event.datePosted = dateReducer(rawEvent.sys.createdAt, event.locale);
-  event.content = richTextReducer(rawEvent.fields.content);
+  event.datum = dateReducer(rawEvent.fields.datum, event.locale);
+  event.content = rawEvent.fields.content;
   event.featuredImage = imageReducer(rawEvent.fields.featuredImage[0]);
   return event;
 };
@@ -44,8 +41,8 @@ export const blogPostReducer = (rawBlogPost, locale = 'sl') => {
   blogPost.id = rawBlogPost.sys.id;
   blogPost.locale = rawBlogPost.sys.locale || locale;
   blogPost.datePosted = dateReducer(rawBlogPost.sys.createdAt, blogPost.locale);
-  blogPost.image = imageReducer(rawBlogPost.fields.cloudinaryImage[0]);
-  blogPost.content = richTextReducer(rawBlogPost.fields.content);
+  blogPost.images = imageReducer(rawBlogPost.fields.cloudinaryImage);
+  blogPost.content = rawBlogPost.fields.content
     blogPost.featuredImage = imageReducer(rawBlogPost.fields.featuredImage[0]);
   return blogPost;
 };

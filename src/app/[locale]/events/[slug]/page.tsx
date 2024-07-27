@@ -1,16 +1,16 @@
 import React from 'react';
-import BlogPostComponent from '@/components/BlogPostComponent';
+import EventComponent from '@/components/EventComponent';
 import { useTranslations } from 'next-intl';
 
 export default function page({ params: { locale, slug } }) {
   const t = useTranslations('Navigation');
   return (
     <div>
-      <BlogPostComponent
+      <EventComponent
         currentLocale={locale}
         slug={slug}
         home={t('home')}
-        blogs={t('blogPosts')}
+        eventsTitle={t('events')}
         previousPostText={t('previousPostText')}
         nextPostText={t('nextPostText')}
       />

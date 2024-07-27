@@ -53,7 +53,7 @@ export default function LatestEvents({ sectionTitle, button }) {
   }, [locale]);
 
   return (
-    <div className='bg-[#F6EDDA] py-10 md:py-24 relative' ref={ref}>
+    <div className='bg-white py-10 md:py-24 relative' ref={ref}>
       <div
         className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
           animate
@@ -111,7 +111,7 @@ export default function LatestEvents({ sectionTitle, button }) {
         }`}
       >
         <Link href='/contact'>
-          <button className='bg-gray-500  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#9c9c9c] flex items-center'>
+          <button className='bg-[#FFE6BC]  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in flex items-center'>
             <IoBookmarkOutline className='inline mx-1' />
             {button}
           </button>

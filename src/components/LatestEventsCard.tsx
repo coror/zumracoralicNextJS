@@ -1,3 +1,4 @@
+import { useLocale } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -8,9 +9,10 @@ export default function LatestEventsCard({
   featuredImage,
   slug,
 }) {
+  const locale = useLocale();
   return (
     <div className='flex flex-col items-center justify-center mx-auto min-h-96 rounded-xl px-16 my-3 py-10'>
-      <Link href={`/events/${slug}`} className='hover:text-[#d2ab74]'>
+      <Link href={`/${locale}/events/${slug}`} className='hover:text-[#d2ab74]'>
         <div className='relative group '>
           {/* Add a container for the image */}
           <Image

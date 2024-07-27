@@ -3,9 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { truncateText } from '@/datalyer/contentful/utils';
 import { useLocale } from 'next-intl';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 function BlogPostCard({ blogPost, readMore }) {
-  const truncatedContent = truncateText(blogPost.content, 150);
+  const truncatedContent = truncateText(
+    documentToHtmlString(blogPost.content),
+    150
+  );
   const locale = useLocale();
 
   const blogPostsLink = `/${locale}/blogs/${blogPost.slug}`;
@@ -34,11 +38,11 @@ function BlogPostCard({ blogPost, readMore }) {
         <p className='text-xs md:text-sm text-gray-500 mb-2'>
           {blogPost.datePosted}
         </p>
-        <p className='text-sm md:text-base text-gray-700 mb-4'>
+        <p className='text-sm md:text-base text-gray-700 mb-4 line-clamp-3'>
           {truncatedContent}
         </p>
         <Link href={blogPostsLink}>
-        <p className=' text-white  bg-[#d2ab74] py-2 px-4 inline-block mt-2 transition-all duration-300 md:hover:text-[#d2ab74] md:hover:bg-transparent border-2 border-[#d2ab74] '>
+          <p className=' text-white  bg-[#d2ab74] py-2 px-4 inline-block mt-2 transition-all duration-300 md:hover:text-[#d2ab74] md:hover:bg-transparent border-2 border-[#d2ab74] '>
             {readMore}...
           </p>
         </Link>

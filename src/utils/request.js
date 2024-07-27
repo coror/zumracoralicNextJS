@@ -38,7 +38,7 @@ async function fetchBlogPost(slug, locale) {
     }
 
     const data = await res.json();
-    console.log(data)
+    console.log(data);
     return data.blogPost;
   } catch (error) {
     console.log(error);
@@ -69,4 +69,27 @@ async function fetchEvents(locale = 'sl') {
   }
 }
 
-export { fetchBlogPosts, fetchBlogPost, fetchEvents };
+// Fetch single blogPost
+async function fetchEvent(slug, locale) {
+  try {
+    // Handle the case where the domain is not available yet
+    if (!apiDomain) {
+      return null;
+    }
+
+    const res = await fetch(`${apiDomain}/events/${slug}?locale=${locale}`);
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data.event;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export { fetchBlogPosts, fetchBlogPost, fetchEvents, fetchEvent };

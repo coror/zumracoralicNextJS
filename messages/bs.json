@@ -1,11 +1,13 @@
 {
   "Navigation": {
-    "home": "POČETNA",
-    "blogPosts": "BLOG",
-    "events": "DOGAĐAJI",
-    "about": "O MENI",
-    "services": "USLUGE",
-    "contact": "KONTAKT"
+    "home": "Početna",
+    "blogPosts": "Blog",
+    "events": "Događaji",
+    "about": "O meni",
+    "services": "Usluge",
+    "contact": "Kontakt",
+    "previousPostText": "Prošla objava",
+    "nextPostText": "Sledeđa objava"
   },
   "Footer": {
     "connect": "PUT DO USPJEHA POČINJE OVDJE – POVEŽI SE SA MNOM"
@@ -43,7 +45,7 @@
     "testimonial1": "“Sa gospođom Zumrom Ćoralić prvi put smo se sreli u martu 2023. godine, kada smo tražili odgovarajućeg predavača za sprovođenje radionica o izazovima međuljudskih odnosa i uspješnom rješavanju konflikata. Strast prema radu, posvećenost profesiji, zračenje pozitivne energije i stručnost uvjerili su nas da je gospođa Zumra pravi predavač za grupu znatiželjnih pojedinaca. Komunikacijske vještine za upravljanje pozitivnim odnosima i konstruktivno rješavanje konfliktnim situacijama su oblast koju svaka organizacija treba njegovati. Stoga je važno kako ih znamo upravljati. Gospođa Zumra Ćoralić je učesnicima pokazala da se voljom, srcem i pozitivnim odnosom mogu otvoriti vrata na pravom putu i riješiti mnoge, pa čak i najteže prepreke. Hvala Zumra!”",
     "person1Title": "Direktorka sektora za ljudske resurse i opće poslove, ETA d.o.o. Cerkno",
     "testimonial2": "“Ona je zaista sjajan primjer kako se može postići ako se to zaista želi. Tako jednostavna i srčana osoba. Gdje će biti za 10 godina? Uvjeren(a) sam da će biti tačno tamo gdje si zamislila, jer tačno zna kamo ide. I kada dođe posljednji dan, biće presrećna što je provela život vjerujući da je živjela bogat i ispunjen život. Također zato što je imala hrabrosti da izađe iz zone komfora, radi na sebi, obrazovati se i primijeni to znanje u praksi.”",
-    "person2Title": "Poduzetnica, motivatorka, spisateljica i savjetnica.",
+    "person2Title": "Autorica pet knjiga uspješnica.",
     "testimonial3": "BIH Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur interdum vehicula congue. Nulla facilisi. Sed felis purus, volutpat scelerisque leo eu, dignissim volutpat elit. Donec sit amet velit a arcu consectetur euismod. Morbi vel quam mollis, fermentum lectus eu, laoreet metus. Etiam quis tortor et odio congue tristique. Sed cursus erat non lacus dapibus, at commodo ipsum laoreet. Nulla posuere libero ac ante vestibulum, a bibendum odio tempor. Curabitur dui ligula, bibendum sit amet posuere at, imperdiet id purus.”",
     "person3Title": "BIH Iz delavnice 1",
     "testimonial4": "BIH Sed id interdum leo. Cras ullamcorper nisl sed leo ornare, sagittis consectetur leo volutpat. Cras congue mattis pellentesque. In feugiat, mauris sit amet consectetur pellentesque, augue leo congue ante, eget volutpat tellus ipsum in nibh. Aenean vel ex vitae massa facilisis consectetur id a magna. Etiam ac odio ex. Sed quis turpis convallis, malesuada diam quis, posuere ligula.”",

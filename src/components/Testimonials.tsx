@@ -36,7 +36,7 @@ export default function Testimonials({
   }, [inView]);
 
   return (
-    <div className='bg-[#EAF2EC] py-10 md:py-24 relative '>
+    <div className='eksperiment py-10 md:py-24 relative '>
       <div
         className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
           animate
@@ -101,7 +101,7 @@ export default function Testimonials({
               <div className='absolute bottom-[-20px] right-8 w-0 h-0 border-t-[20px] border-t-white border-r-[20px] border-r-transparent z-20'></div>
             </div>
             <div className='flex flex-col items-center justify-center text-center mx-10 my-16'>
-              <div className='mb-4'>Petra Žagar</div>
+              <div className='mb-4'>Petra Škarja</div>
               <div className='text-sm text-gray-500'>{person2Title}</div>
             </div>
           </div>

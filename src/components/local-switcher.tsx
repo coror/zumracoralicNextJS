@@ -32,7 +32,7 @@ export default function LocalSwitcher() {
   return (
     <Menu as='div' className='relative inline-block text-left'>
       <div>
-        <MenuButton className='inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-white hover:bg-[#d2ab74] focus:outline-none focus:ring-2 focus:ring-offset-0 md:focus:ring-offset-1 focus:ring-[#d2ab74]' >
+        <MenuButton className='inline-flex justify-center w-full rounded-md shadow-sm px-4 py-2 bg-transparent text-sm font-medium text-[#c7c7c7] hover:border-[#ffe6bc] hover:border-2 focus:outline-none focus:ring-2 focus:ring-offset-0 md:focus:ring-offset-1 focus:ring-[#ffe6bc]' >
           {selectedLocale === 'sl' ? (
             <SI className='w-4 h-4 md:w-6 md:h-6 mr-2' title='Slovenian' />
           ) : (
@@ -52,14 +52,14 @@ export default function LocalSwitcher() {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-95'
       >
-        <MenuItems  className='origin-top-right absolute bg-black border-2 mt-2 w-16 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:ring-offset-0 md:focus:ring-offset-1 focus:ring-[#d2ab74]'>
-          <div className='py-1'>
+        <MenuItems  className='origin-top-right absolute bg-black border-2 mt-2 w-14 rounded-md ring-1 ring-black ring-opacity-5 focus:ring-offset-0 md:focus:ring-offset-1 focus:ring-[#d2ab74]'>
+          <div className=''>
             <MenuItem>
               {({ active }) => (
                 <button
                   onClick={() => onSelectChange('sl')}
                   className={`${
-                    active ? 'bg-[#d2ab74]' : ''
+                    active ? 'bg-[#ffe6bc]' : ''
                   } flex items-center text-white justify-center py-2 text-sm w-full text-center`}
                 >
                   <SI className='w-5 h-5' title='Slovenian' />
@@ -71,7 +71,7 @@ export default function LocalSwitcher() {
                 <button
                   onClick={() => onSelectChange('bs')}
                   className={`${
-                    active ? 'bg-[#d2ab74]' : ''
+                    active ? 'bg-[#ffe6bc]' : ''
                   } flex items-center text-white justify-center py-2 text-sm w-full text-center`}
                 >
                   <BA className='w-5 h-5' title='Bosnian' />

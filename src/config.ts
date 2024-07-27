@@ -9,10 +9,18 @@ export const pathnames: Pathnames<typeof locales> = {
     sl: '/blog',
     bs: '/blog',
   },
+  '/blogs/[slug]': {
+    sl: '/blog/[slug]',
+    bs: '/blog/[slug]',
+  },
   '/events': {
     sl: '/dogodki',
     bs: '/dogadaji'
-  }
+  },
+  '/events/[slug]': {
+    sl: '/dogodki/[slug]',
+    bs: '/dogadaji/[slug]',
+  },
 };
 
 export const localePrefix: LocalePrefix<typeof locales> = 'always';
