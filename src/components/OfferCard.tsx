@@ -33,7 +33,7 @@ export default function OfferCard({
 
       {/* New content */}
       <div
-        className='new-content text-white'
+        className='new-content text-white relative' // Added 'relative' here
         style={{
           backgroundImage: `url(${bgColor2})`,
           backgroundSize: 'cover',
@@ -42,9 +42,16 @@ export default function OfferCard({
           borderRadius: '1rem',
         }} // Apply the background image dynamically
       >
-        <div className='text-2xl mb-2 text-center'>{backTitle}</div>
-        <div className='text-2xl font-bold mb-2 text-center'>-</div>
-        <div className='text-center md:text-lg'>{backContent}</div>
+        <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
+        <div className='relative z-10 text-2xl mb-2 text-center'>
+          {backTitle}
+        </div>
+        <div className='relative z-10 text-2xl font-bold mb-2 text-center'>
+          -
+        </div>
+        <div className='relative z-10 text-center md:text-lg'>
+          {backContent}
+        </div>
       </div>
     </div>
   );

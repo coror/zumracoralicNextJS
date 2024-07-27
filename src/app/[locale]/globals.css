@@ -40,7 +40,6 @@ html {
 
 /* Add these styles to your global CSS file or in a <style> tag */
 
-
 @keyframes slideInFromLeft {
   from {
     transform: translateX(-100%); /* Start from the left edge of the viewport */
@@ -83,7 +82,7 @@ html {
   border-radius: 1rem;
   margin: 0.75rem;
   padding: 2.5rem 1.25rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   transition: background-color 0.5s;
 }
@@ -115,8 +114,6 @@ html {
 
 /* Hover states for lg and larger screens */
 @media (min-width: 1024px) {
- 
-
   .offer-card:hover .primary-content {
     transform: translateY(-100%);
   }
@@ -130,5 +127,45 @@ html {
 @media (max-width: 1023px) {
   .offer-card .new-content {
     display: none;
+  }
+}
+
+/* styles.css */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff !important; /* Change the color of the navigation arrows to white */
+}
+
+@media (max-width: 1023px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+   display: none !important;
+  }
+}
+
+/* Optionally, add hover effects */
+@media (min-width: 1023px) {
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #6b6969 !important; /* Slightly lighter color on hover */
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: white !important; /* Change the color of pagination dots */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f0f0f0; /* Change the color of the active pagination dot */
+}
+
+.prose h1 {
+  margin-bottom: 1em;
+  color: #d2ab74
+}
+
+@media (min-width: 1023px) {
+  .prose p {
+    font-size: 18px;
   }
 }

@@ -38,6 +38,7 @@ export default function RootLayout({
           events={t('events')}
           services={t('services')}
           about={t('about')}
+          contact={t('contact')}
         />
         <div>{children}</div>
         <Footer connect={f('connect')} />

@@ -4,7 +4,8 @@
     "blogPosts": "BLOG",
     "events": "DOGAĐAJI",
     "about": "O MENI",
-    "services": "USLUGE"
+    "services": "USLUGE",
+    "contact": "KONTAKT"
   },
   "Footer": {
     "connect": "PUT DO USPJEHA POČINJE OVDJE – POVEŽI SE SA MNOM"
@@ -63,5 +64,8 @@
   },
   "Index": {
     "readMore": "Proćitaj više"
+  },
+  "Events": {
+    "events": "Događaji"
   }
 }

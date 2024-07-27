@@ -5,6 +5,7 @@ import LatestBlogsCard from './LatestBlogsCard';
 import { useLocale } from 'next-intl';
 import { fetchBlogPosts } from '../utils/request';
 import { IoBookmarkOutline } from 'react-icons/io5';
+import Spinner from './Spinner';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,6 +19,7 @@ export default function LatestBlogs({
   button,
 }) {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
@@ -37,6 +39,7 @@ export default function LatestBlogs({
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const fetchedBlogs = await fetchBlogPosts(locale);
         console.log(fetchedBlogs);
         // Sort blogs by 'datum' in descending order and limit to the most recent 8
@@ -46,6 +49,8 @@ export default function LatestBlogs({
         setBlogs(sortedBlogs);
       } catch (error) {
         console.error('Error fetching data in LatestBlogsComponent', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -86,14 +91,16 @@ export default function LatestBlogs({
                 : ''
             }`}
           >
-            <Link href='/contact'>
+            <Link href={`${locale}/blog`}>
               <button className='bg-[#d2ab74] px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b] flex items-center'>
                 {button}
               </button>
             </Link>
           </div>
         </div>
-        {blogs.length > 0 ? (
+        {loading ? (
+          <Spinner loading={loading} />
+        ) : (
           <div
             className={`grid grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-4 ${
               animate
@@ -111,8 +118,6 @@ export default function LatestBlogs({
               />
             ))}
           </div>
-        ) : (
-          <div>Loading...</div>
         )}
       </div>
     </div>

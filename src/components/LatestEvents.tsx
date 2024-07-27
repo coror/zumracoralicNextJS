@@ -7,6 +7,7 @@ import { fetchEvents } from '../utils/request';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoBookmarkOutline } from 'react-icons/io5';
+import Spinner from './Spinner';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -15,7 +16,7 @@ import Link from 'next/link';
 
 export default function LatestEvents({ sectionTitle, button }) {
   const [events, setEvents] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   const locale = useLocale();
 
   const [animate, setAnimate] = useState(false);
@@ -34,6 +35,7 @@ export default function LatestEvents({ sectionTitle, button }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const fetchedEvents = await fetchEvents(locale);
         console.log(fetchedEvents);
         // Sort events by 'datum' in descending order and limit to the most recent 8
@@ -43,6 +45,8 @@ export default function LatestEvents({ sectionTitle, button }) {
         setEvents(sortedEvents);
       } catch (error) {
         console.error('Error fetching data in LatestEventsComponent', error);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -59,7 +63,9 @@ export default function LatestEvents({ sectionTitle, button }) {
       >
         {sectionTitle}
       </div>
-      {events.length > 0 ? (
+      {loading ? (
+        <Spinner loading={loading} />
+      ) : (
         <Swiper
           modules={[Navigation, Pagination]}
           slidesPerView={1}
@@ -95,8 +101,6 @@ export default function LatestEvents({ sectionTitle, button }) {
             </SwiperSlide>
           ))}
         </Swiper>
-      ) : (
-        <div className='text-center mx-auto'>Loading...</div>
       )}
 
       <div

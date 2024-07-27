@@ -38,6 +38,7 @@ async function fetchBlogPost(slug, locale) {
     }
 
     const data = await res.json();
+    console.log(data)
     return data.blogPost;
   } catch (error) {
     console.log(error);

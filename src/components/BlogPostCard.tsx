@@ -4,46 +4,43 @@ import Link from 'next/link';
 import { truncateText } from '@/datalyer/contentful/utils';
 import { useLocale } from 'next-intl';
 
-function BlogPostCard({ blogPost, readMore, isFeatured }) {
-  const truncatedContent = truncateText(blogPost.content, 170);
+function BlogPostCard({ blogPost, readMore }) {
+  const truncatedContent = truncateText(blogPost.content, 150);
   const locale = useLocale();
 
-  const blogPostsLink = `/${locale}/blog/${blogPost.slug}`;
+  const blogPostsLink = `/${locale}/blogs/${blogPost.slug}`;
 
   return (
-    <div className='flex flex-col my-2 items-center justify-center'>
+    <div className='max-w-sm rounded overflow-hidden shadow-lg'>
       {/* Image Container */}
-      <div
-        className={`w-full h-64 ${isFeatured ? 'md:h-[600px]' : ' md:h-72'}`}
-      >
-        <Image
-          src={blogPost.featuredImage.url}
-          alt={blogPost.seoTitle}
-          className='w-full h-full object-cover'
-          sizes='100vw'
-          width={0}
-          height={0}
-        />
+      <div className='relative w-full h-64 md:h-64 group'>
+        <Link href={blogPostsLink}>
+          <Image
+            src={blogPost.featuredImage.url}
+            alt={blogPost.seoTitle}
+            className='w-full h-full object-cover rounded-t transition ease-in-out group-hover:brightness-90 cursor-pointer'
+            sizes='100vw'
+            width={0}
+            height={0}
+          />
+        </Link>
       </div>
 
       {/* Text Content */}
-      <div className='mt-4 flex flex-col items-left md:space-y-2'>
-        <h3
-          className={`text-xl md:text-4xl my-2  ${
-            isFeatured ? 'text-lg' : ''
-          }`}
-        >
+      <div className='p-4'>
+        <h3 className='text-xl md:text-2xl font-bold my-2 text-gray-800 line-clamp-2 min-h-[3em]'>
           {blogPost.headline}
         </h3>
-        <p className=' text-xs md:text-lg text-[#00000059]'>
+        <p className='text-xs md:text-sm text-gray-500 mb-2'>
           {blogPost.datePosted}
         </p>
-        <p className=' text-sm md:text-xl  text-[#000000]/70'>{truncatedContent}</p>
-        <Link
-          href={blogPostsLink}
-          className=' text-sm text-blue-600 underline mt-2'
-        >
-          {readMore}
+        <p className='text-sm md:text-base text-gray-700 mb-4'>
+          {truncatedContent}
+        </p>
+        <Link href={blogPostsLink}>
+        <p className=' text-white  bg-[#d2ab74] py-2 px-4 inline-block mt-2 transition-all duration-300 md:hover:text-[#d2ab74] md:hover:bg-transparent border-2 border-[#d2ab74] '>
+            {readMore}...
+          </p>
         </Link>
       </div>
     </div>

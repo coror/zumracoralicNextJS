@@ -5,10 +5,14 @@ export const locales = ['sl', 'bs'] as const;
 
 export const pathnames: Pathnames<typeof locales> = {
   '/': '/',
-  '/blog': {
+  '/blogs': {
     sl: '/blog',
     bs: '/blog',
   },
+  '/events': {
+    sl: '/dogodki',
+    bs: '/dogadaji'
+  }
 };
 
 export const localePrefix: LocalePrefix<typeof locales> = 'always';

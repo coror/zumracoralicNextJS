@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "@contentful/rich-text-html-renderer": "^16.6.6",
+    "@contentful/rich-text-react-renderer": "^15.22.8",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
     "@next/font": "^14.2.5",
+    "@tailwindcss/typography": "^0.5.13",
     "contentful": "^10.12.10",
     "country-flag-icons": "^1.5.13",
     "date-and-time": "^3.4.1",
@@ -24,6 +26,7 @@
     "react-dom": "^18",
     "react-icons": "^5.2.1",
     "react-intersection-observer": "^9.13.0",
+    "react-spinners": "^0.14.1",
     "swiper": "^11.1.5"
   },
   "devDependencies": {
