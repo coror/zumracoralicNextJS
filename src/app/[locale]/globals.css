@@ -24,18 +24,25 @@ html {
   z-index: -1;
 }
 
-.link-hover:hover::before {
-  top: 0; /* Move the background to fill the link from bottom to top */
+.link-hover:hover::before,
+.group:hover .link-hover::before {
+  top: 0;
   transform: scaleY(1);
 }
 
-.link-hover:hover {
-  color: black; /* Optional: change text color on hover */
+.link-hover:hover,
+.group:hover .link-hover {
+  color: black;
 }
 
 .link-hover.active::before {
   top: 0;
   transform: scaleY(1);
+}
+
+/* Special rule for active link */
+.link-hover.active {
+  color: white !important; /* Ensure the color is white */
 }
 
 /* Add these styles to your global CSS file or in a <style> tag */
@@ -133,14 +140,14 @@ html {
 /* styles.css */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #ffffff !important; /* Change the color of the navigation arrows to white */
+  color: #b0b0b0 !important; /* Change the color of the navigation arrows to white */
 }
 
 @media (max-width: 1023px) {
-  .swiper-button-next,
+  /* .swiper-button-next,
   .swiper-button-prev {
     display: none !important;
-  }
+  } */
 }
 
 /* Optionally, add hover effects */
@@ -152,7 +159,11 @@ html {
 }
 
 .swiper-pagination-bullet {
-  background-color: white !important; /* Change the color of pagination dots */
+  background-color: rgb(
+    103,
+    103,
+    103
+  ) !important; /* Change the color of pagination dots */
 }
 
 .swiper-pagination-bullet-active {
@@ -162,7 +173,6 @@ html {
 .prose h1 {
   margin-bottom: 1em;
   color: #d2ab74;
-  
 }
 
 @media (min-width: 1023px) {

@@ -7,6 +7,106 @@ import Testimonials from '@/components/Testimonials';
 import LatestEvents from '@/components/LatestEvents';
 import LatestBlogs from '@/components/LatestBlogs';
 import { useTranslations } from 'next-intl';
+import UpcomingEvents from '@/components/UpcomingEvents';
+import { OpenGraphMetadata, TwitterMetadata, Metadata } from '@/types/metadata';
+
+// Define metadataByLocale with proper typing
+const metadataByLocale: Record<string, Metadata> = {
+  sl: {
+    title: 'Zumra Coralic',
+    description:
+      'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
+    url: 'https://www.zumracoralic.com',
+    openGraph: {
+      title: 'Zumra Coralic',
+      description:
+        'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
+      url: 'https://www.zumracoralic.com',
+      images: [
+        {
+          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
+          width: 800,
+          height: 600,
+          alt: 'Zumra Coralic',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Zumra Coralic',
+      description:
+        'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
+      image:
+        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
+    },
+    canonical: 'https://www.zumracoralic.com',
+  },
+  bs: {
+    title: 'Zumra Ćoralić',
+    description:
+      'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
+    url: 'https://www.zumracoralic.com/bs',
+    openGraph: {
+      title: 'Zumra Ćoralić',
+      description:
+        'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
+      url: 'https://www.zumracoralic.com/bs',
+      images: [
+        {
+          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
+          width: 800,
+          height: 600,
+          alt: 'Zumra Ćoralić',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: 'Zumra Ćoralić',
+      description:
+        'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
+      image:
+        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
+    },
+    canonical: 'https://www.zumracoralic.com/bs',
+  },
+};
+
+// Define the generateMetadata function
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<{
+  title: string;
+  description: string;
+  openGraph: OpenGraphMetadata;
+  twitter: TwitterMetadata;
+  canonical: string;
+}> {
+  const { locale } = params;
+
+  const currentLocaleMetadata =
+    metadataByLocale[locale] || metadataByLocale['sl']; // Default to Slovenian if locale is not found
+
+  return {
+    title: currentLocaleMetadata.title,
+    description: currentLocaleMetadata.description,
+    openGraph: {
+      title: currentLocaleMetadata.openGraph.title,
+      description: currentLocaleMetadata.openGraph.description,
+      url: currentLocaleMetadata.openGraph.url,
+      images: currentLocaleMetadata.openGraph.images,
+    },
+    twitter: {
+      card: currentLocaleMetadata.twitter.card,
+      title: currentLocaleMetadata.twitter.title,
+      description: currentLocaleMetadata.twitter.description,
+      image: currentLocaleMetadata.twitter.image,
+    },
+    canonical: currentLocaleMetadata.canonical,
+  };
+}
 
 export default function Home() {
   const t = useTranslations('Header');
@@ -17,6 +117,8 @@ export default function Home() {
   const e = useTranslations('LatestEvents');
   const a = useTranslations('ActionSection');
   const b = useTranslations('LatestBlogs');
+  const p = useTranslations('UpcomingEvents');
+  const i = useTranslations('Index');
   return (
     <div>
       <Header title={t('title')} content={t('content')} button={t('button')} />
@@ -40,6 +142,10 @@ export default function Home() {
         card3Content={o('card3Content')}
         back3Title={o('back3Title')}
         back3Content={o('back3Content')}
+      />
+      <UpcomingEvents
+        sectionTitle={p('sectionTitle')}
+        readMore={i('readMore')}
       />
       <Testimonials
         sectionTitle={s('sectionTitle')}

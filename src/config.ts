@@ -15,11 +15,39 @@ export const pathnames: Pathnames<typeof locales> = {
   },
   '/events': {
     sl: '/dogodki',
-    bs: '/dogadaji'
+    bs: '/dogadaji',
   },
   '/events/[slug]': {
     sl: '/dogodki/[slug]',
     bs: '/dogadaji/[slug]',
+  },
+  '/about-me': {
+    sl: '/o-meni',
+    bs: '/o-meni',
+  },
+  '/services': {
+    sl: '/storitve',
+    bs: '/usluge',
+  },
+  '/services/coaching': {
+    sl: '/storitve/coaching',
+    bs: '/usluge/coaching',
+  },
+  '/services/mediation': {
+    sl: '/storitve/mediacija',
+    bs: '/usluge/medijacija',
+  },
+  '/services/workshop': {
+    sl: '/storitve/delavnice-predavanja',
+    bs: '/usluge/radionice-predavanja',
+  },
+  '/services/workshop/[slug]': {
+    sl: '/storitve/delavnice-predavanja/[slug]',
+    bs: '/usluge/radionice-predavanja/[slug]',
+  },
+  '/contact': {
+    sl: '/kontakt',
+    bs: '/kontakt',
   },
 };
 

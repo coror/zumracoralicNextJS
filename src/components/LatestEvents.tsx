@@ -13,9 +13,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
+import { Event } from '@/types/event';
 
-export default function LatestEvents({ sectionTitle, button }) {
-  const [events, setEvents] = useState([]);
+export default function LatestEvents({
+  sectionTitle,
+  button,
+}: {
+  sectionTitle: string;
+  button: string;
+}) {
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
   const locale = useLocale();
 
@@ -39,8 +46,16 @@ export default function LatestEvents({ sectionTitle, button }) {
         const fetchedEvents = await fetchEvents(locale);
         console.log(fetchedEvents);
         // Sort events by 'datum' in descending order and limit to the most recent 8
-        const sortedEvents = fetchedEvents
-          .sort((a, b) => new Date(b.datum) - new Date(a.datum))
+        const now = new Date();
+        const filteredEvents = fetchedEvents.filter(
+          (event: Event) => new Date(event.datum) <= now
+        );
+
+        const sortedEvents = filteredEvents
+          .sort(
+            (a: Event, b: Event) =>
+              new Date(b.datum).getTime() - new Date(a.datum).getTime()
+          )
           .slice(0, 8);
         setEvents(sortedEvents);
       } catch (error) {
@@ -57,7 +72,7 @@ export default function LatestEvents({ sectionTitle, button }) {
       <div
         className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
           animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1000ms]'
+            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
             : ''
         }`}
       >
@@ -82,13 +97,9 @@ export default function LatestEvents({ sectionTitle, button }) {
           }}
           className={`max-w-[1600px]  ${
             animate
-              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1200ms]'
+              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[600ms]'
               : ''
           }`}
-          style={{
-            '--swiper-navigation-color': '#000000',
-            '--swiper-pagination-color': '#000000',
-          }}
         >
           {events.map((event) => (
             <SwiperSlide key={event.id}>
@@ -106,7 +117,7 @@ export default function LatestEvents({ sectionTitle, button }) {
       <div
         className={`relative flex flex-col items-center justify-center h-full text-center ${
           animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1500ms]'
+            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[750ms]'
             : ''
         }`}
       >

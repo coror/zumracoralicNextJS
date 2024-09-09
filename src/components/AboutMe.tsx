@@ -4,7 +4,15 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 
-export default function AboutMe({ section, title, content }) {
+export default function AboutMe({
+  section,
+  title,
+  content,
+}: {
+  section: string;
+  title: string;
+  content: string;
+}) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -26,7 +34,7 @@ export default function AboutMe({ section, title, content }) {
             <div
               className={`tracking-wider mb-6 md:text-xl ${
                 animate
-                  ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
+                  ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[250ms]'
                   : ''
               }`}
             >
@@ -35,7 +43,7 @@ export default function AboutMe({ section, title, content }) {
             <div
               className={`text-2xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] ${
                 animate
-                  ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1200ms]'
+                  ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[600ms]'
                   : ''
               } `}
             >
@@ -45,7 +53,7 @@ export default function AboutMe({ section, title, content }) {
           <div
             className={`text-sm md:text-lg md:ml-20 tracking-wider lg:leading-8 ${
               animate
-                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1400ms]'
+                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[700ms]'
                 : ''
             }`}
           >
@@ -54,7 +62,7 @@ export default function AboutMe({ section, title, content }) {
           <div
             className={`text-right mt-4 md:text-xl font-bold ${
               animate
-                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1600ms]'
+                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[800ms]'
                 : ''
             }`}
           >
@@ -64,17 +72,17 @@ export default function AboutMe({ section, title, content }) {
         <div
           className={`w-[18rem] md:min-w-[20rem] h-auto m-10 rounded-2xl ${
             animate
-              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1600ms]'
+              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[800ms]'
               : ''
           }`}
         >
           <Image
-            src='https://res.cloudinary.com/dbssbnuph/image/upload/v1721210416/zumracoralic/test2_yg0v2v'
-            alt='naslovna'
+            src='https://res.cloudinary.com/dbssbnuph/image/upload/v1725621373/zumracoralic/51_goublj.jpg'
+            alt='zumra'
             width={0}
             height={0}
             sizes='100vw'
-            className='w-full h-auto  rounded-2xl shadow-[25px_-25px_0px_0px_rgba(0,0,0,0.06)]'
+            className='w-full h-auto  rounded-2xl shadow-[25px_-25px_0px_0px_rgba(0,0,0,0.06)] brightness-110'
           />
         </div>
       </div>

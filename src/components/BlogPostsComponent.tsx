@@ -4,20 +4,24 @@ import { fetchBlogPosts } from '@/utils/request';
 import { useLocale } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 import BlogPostCard from './BlogPostCard';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination as SwiperPagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Spinner from './Spinner';
+import { Pagination } from '@mui/material';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { BlogPost } from '@/types/blogPost';
 
-export default function BlogPostsComponent({ readMore }) {
-  const [blogs, setBlogs] = useState([]);
+export default function BlogPostsComponent({ readMore }: { readMore: string }) {
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const locale = useLocale();
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +29,8 @@ export default function BlogPostsComponent({ readMore }) {
         setLoading(true);
         const fetchedBlogs = await fetchBlogPosts(locale);
         const sortedBlogs = fetchedBlogs.sort(
-          (a, b) => new Date(b.datePosted) - new Date(a.datePosted)
+          (a: BlogPost, b: BlogPost) =>
+            new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime()
         );
         setBlogs(sortedBlogs);
       } catch (error) {
@@ -37,6 +42,18 @@ export default function BlogPostsComponent({ readMore }) {
     fetchData();
   }, [locale]);
 
+  const handlePageChange = (
+    event: React.ChangeEvent<unknown>,
+    value: number
+  ) => {
+    setCurrentPage(value);
+  };
+
+  // Pagination logic: slice the blogs array to show only the posts for the current page
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = blogs.slice(indexOfFirstPost, indexOfLastPost);
+
   return (
     <div className='bg-white relative pb-10'>
       <div>
@@ -46,7 +63,7 @@ export default function BlogPostsComponent({ readMore }) {
           </div>
         ) : (
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Navigation, SwiperPagination]}
             slidesPerView={1}
             loop={true}
             navigation
@@ -55,7 +72,7 @@ export default function BlogPostsComponent({ readMore }) {
           >
             {blogs.map((blog) => (
               <SwiperSlide key={blog.id} className=''>
-                <div className='relative w-full h-96 md:h-[44rem] flex items-center justify-center'>
+                <div className='relative w-full h-96 md:h-[44rem] flex items-center justify-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
                   <Image
                     src={blog.featuredImage.url}
                     alt={blog.seoTitle}
@@ -90,20 +107,34 @@ export default function BlogPostsComponent({ readMore }) {
           </Swiper>
         )}
       </div>
-      <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center'>
+      <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
         Blog
       </div>
-      {loading ? (
-        <Spinner loading={loading} />
-      ) : (
-        <div className='grid grid-cols-1 gap-2 xl:gap-16 px-6 xl:grid-cols-3 lg:w-[80rem] lg:mx-auto'>
-          {blogs.map((blog, index) => (
-            <div key={blog.id}>
-              <BlogPostCard blogPost={blog} readMore={readMore} />
+      <div>
+        {loading ? (
+          <Spinner loading={loading} />
+        ) : (
+          <>
+            <div className='grid grid-cols-1 gap-2 xl:gap-16 px-6 xl:grid-cols-3 lg:w-[80rem] lg:mx-auto   animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+              {currentPosts.map((blog, index) => (
+                <div key={blog.id}>
+                  <BlogPostCard blogPost={blog} readMore={readMore} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      )}
+            <div className='flex justify-center mt-8'>
+              <Pagination
+                count={Math.ceil(blogs.length / postsPerPage)}
+                page={currentPage}
+                onChange={handlePageChange}
+                shape='rounded'
+                variant='outlined'
+                color='primary'
+              />
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }

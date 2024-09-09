@@ -4,8 +4,9 @@ import Link from 'next/link';
 import { truncateText } from '@/datalyer/contentful/utils';
 import { useLocale } from 'next-intl';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { Event } from '@/types/event';
 
-function EventCard({ event, readMore }) {
+function EventCard({ event, readMore }: { event: Event; readMore: string }) {
   const truncatedContent = truncateText(
     documentToHtmlString(event.content),
     200
@@ -36,14 +37,12 @@ function EventCard({ event, readMore }) {
       <div className='p-4 relative flex flex-col space-y-10'>
         <div>
           <Link href={eventsLink}>
-          <h3 className='text-xl md:text-2xl xl:text-4xl my-2 text-gray-800 line-clamp-2 lg:line-clamp-none min-h-[3em] lg:min-h-[2em] lg:transition lg:duration-300 lg:hover:text-[#000000]'>
+            <h3 className='text-xl md:text-2xl xl:text-4xl my-2 text-gray-800 line-clamp-2 lg:line-clamp-none min-h-[3em] lg:min-h-[2em] lg:transition lg:duration-300 lg:hover:text-[#000000]'>
               {event.headline}
             </h3>
           </Link>
 
-          <p className='text-xs md:text-sm text-gray-700 mb-2'>
-            {event.datePosted}
-          </p>
+          <p className='text-xs md:text-sm text-gray-700 mb-2'>{event.datum}</p>
         </div>
 
         <p className='text-sm md:text-base text-gray-700 mb-4'>

@@ -6,7 +6,7 @@ const override = {
   margin: '100px auto',
 };
 
-const Spinner = ({ loading }) => {
+const Spinner = ({ loading }: { loading: boolean }) => {
   return (
     <ClipLoader
       color='#d2ab74'

@@ -9,16 +9,22 @@ import { useLocale } from 'next-intl';
 import { HiArrowLongRight, HiArrowLongLeft } from 'react-icons/hi2';
 import Image from 'next/image';
 import Spinner from './Spinner';
+import { Event } from '@/types/event';
 
 const EventPageComponent = ({
   home,
   eventsTitle,
   previousPostText,
   nextPostText,
+}: {
+  home: string;
+  eventsTitle: string;
+  previousPostText: string;
+  nextPostText: string;
 }) => {
   const { slug } = useParams();
-  const [event, setEvent] = useState(null);
-  const [events, setEvents] = useState([]);
+  const [event, setEvent] = useState<Event | null>(null);
+  const [events, setEvents] = useState<Event[]>([]);
   const [loading, setLoading] = useState(true);
 
   const locale = useLocale();
@@ -50,13 +56,13 @@ const EventPageComponent = ({
 
   if (!event && !loading) {
     notFound(); // Handle not found scenario
+    return null;
   }
 
   const currentIndex = events.findIndex((post) => post.slug === slug);
   const previousIndex =
     currentIndex === 0 ? events.length - 1 : currentIndex - 1;
-  const nextIndex =
-    currentIndex === events.length - 1 ? 0 : currentIndex + 1;
+  const nextIndex = currentIndex === events.length - 1 ? 0 : currentIndex + 1;
 
   const previousPost = events[previousIndex];
   const nextPost = events[nextIndex];
@@ -68,7 +74,7 @@ const EventPageComponent = ({
           <Spinner loading={loading} />
         </div>
       )}
-      {!loading && (
+      {!loading && event && (
         <div>
           <div>
             <EventDetails

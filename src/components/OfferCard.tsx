@@ -7,6 +7,13 @@ export default function OfferCard({
   backContent,
   bgColor,
   bgColor2,
+}: {
+  title: string;
+  content: string;
+  backTitle: string;
+  backContent: string;
+  bgColor: string;
+  bgColor2: string;
 }) {
   const [hovered, setHovered] = useState(false);
 

@@ -3,7 +3,7 @@ import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 import Image from 'next/image';
 
-export default function Footer({ connect }) {
+export default function Footer({ connect }: { connect: string }) {
   return (
     <div className='relative w-full h-96 md:min-h-72 md:py-64 text-white'>
       <div

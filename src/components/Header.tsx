@@ -3,28 +3,36 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Header({title, content, button}) {
+export default function Header({
+  title,
+  content,
+  button,
+}: {
+  title: string;
+  content: string;
+  button: string;
+}) {
   return (
-    <div className='w-auto relative overflow-hidden h-[26rem] md:h-[40rem] xl:h-[50rem] max-w-screen flex items-start justify-center '>
-      <div className='absolute top-[28%] px-8 mx-auto text-center space-y-16 md:space-y-20 xl:space-y-52 z-10 lg:mx-[170px]'>
-        <div className='lg:space-y-20'>
-          <h1 className='text-xl md:text-7xl tracking-wider md:leading-snug text-white uppercase animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'>
+    <div className='w-auto relative overflow-hidden h-[30rem] md:h-[40rem] xl:h-screen max-w-screen flex items-start justify-center '>
+      <div className='absolute top-[34%] xl:top-[28%] xl:right-[45%] px-8 mx-auto text-center space-y-16 xl:space-y-30 z-10 lg:mx-[170px]'>
+        <div className='lg:space-y-16'>
+          <h1 className='text-2xl md:text-4xl lg:text-5xl xl:text-6xl tracking-wider md:leading-snug text-white uppercase animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'>
             {title}
           </h1>
-          <p className='lg:block  text-sm md:text-4xl mt-5 text-white animate-fade-up animate-duration-[2000ms] animate-delay-[1500ms]'>
+          <p className='hidden md:block  text-base md:text-2xl  xl:text-4xl mt-5 text-white animate-fade-up animate-duration-[2000ms] animate-delay-[1500ms]'>
             {content}
           </p>
         </div>
 
         <div className='animate-fade-up animate-duration-[2000ms] animate-delay-[2000ms] '>
           <Link href='/contact'>
-            <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5  text-sm  md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
+            <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5  text-base  md:text-xl xl:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
               {button}
             </button>
           </Link>
         </div>
       </div>
-      <div className=' -z-10 fixed top-0 left-0 w-full h-[26rem] md:h-[70rem] overflow-hidden'>
+      <div className=' -z-10 fixed top-0 left-0 w-full h-[30rem] md:h-screen overflow-hidden'>
         <Image
           src='https://res.cloudinary.com/dbssbnuph/image/upload/v1721210416/zumracoralic/4_g7cxm4'
           alt='naslovna'

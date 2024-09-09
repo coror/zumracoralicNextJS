@@ -1,16 +1,24 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display, Lora } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { locales } from '@/config';
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
-import { bg } from 'date-fns/locale';
 
 const inter = Playfair_Display({ subsets: ['latin'] });
 
-export async function generateMetadata() {}
+// Define the metadata for the application
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.zumracoralic.com'),
+  title: {
+    template: 'Zumra Coralic',
+    default: 'Zumra Coralic',
+  },
+  alternates: {
+    canonical: './', // Use './' to enable automatic canonical URL generation
+  },
+};
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -37,6 +45,10 @@ export default function RootLayout({
           blogPosts={t('blogPosts')}
           events={t('events')}
           services={t('services')}
+          allServices={t('allServices')}
+          NLPCoaching={t('NLPCoaching')}
+          mediation={t('mediation')}
+          workshop={t('workshop')}
           about={t('about')}
           contact={t('contact')}
         />

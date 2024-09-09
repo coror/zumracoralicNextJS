@@ -18,7 +18,7 @@ export const getBlogPosts = async (locale = 'sl') => {
     );
 
     console.log(blogPosts);
-
+    
     return blogPosts;
   } catch (error) {
     console.log(`Error fetching blog posts for `, error);

@@ -4,8 +4,15 @@ import Link from 'next/link';
 import { truncateText } from '@/datalyer/contentful/utils';
 import { useLocale } from 'next-intl';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+import { BlogPost } from '@/types/blogPost';
 
-function BlogPostCard({ blogPost, readMore }) {
+function BlogPostCard({
+  blogPost,
+  readMore,
+}: {
+  readMore: string;
+  blogPost: BlogPost;
+}) {
   const truncatedContent = truncateText(
     documentToHtmlString(blogPost.content),
     150

@@ -9,7 +9,6 @@ export const dateReducer = (dateStr, locale = 'sl') => {
   return format(dateObj, 'PPP', { locale: formatLocale });
 };
 
-
 export const imageReducer = (imageField) => {
   if (!imageField || !imageField.url) {
     return null;
@@ -21,6 +20,16 @@ export const imageReducer = (imageField) => {
     width: imageField.width,
     contentType: imageField.contentType,
   };
+};
+
+export const serviceReducer = (rawService, locale = 'sl') => {
+  let service = { ...rawService.fields };
+
+  service.id = rawService.sys.id;
+  service.locale = rawService.sys.locale || locale;
+  service.content = rawService.fields.content;
+
+  return service;
 };
 
 export const eventReducer = (rawEvent, locale = 'sl') => {
@@ -42,8 +51,8 @@ export const blogPostReducer = (rawBlogPost, locale = 'sl') => {
   blogPost.locale = rawBlogPost.sys.locale || locale;
   blogPost.datePosted = dateReducer(rawBlogPost.sys.createdAt, blogPost.locale);
   blogPost.images = imageReducer(rawBlogPost.fields.cloudinaryImage);
-  blogPost.content = rawBlogPost.fields.content
-    blogPost.featuredImage = imageReducer(rawBlogPost.fields.featuredImage[0]);
+  blogPost.content = rawBlogPost.fields.content;
+  blogPost.featuredImage = imageReducer(rawBlogPost.fields.featuredImage[0]);
   return blogPost;
 };
 

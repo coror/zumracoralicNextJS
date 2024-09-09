@@ -8,6 +8,11 @@ export default function LatestEventsCard({
   date,
   featuredImage,
   slug,
+}: {
+  headline: string;
+  date: string;
+  featuredImage: string;
+  slug: string;
 }) {
   const locale = useLocale();
   return (

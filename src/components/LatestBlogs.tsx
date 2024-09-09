@@ -4,21 +4,26 @@ import React, { useEffect, useState } from 'react';
 import LatestBlogsCard from './LatestBlogsCard';
 import { useLocale } from 'next-intl';
 import { fetchBlogPosts } from '../utils/request';
-import { IoBookmarkOutline } from 'react-icons/io5';
 import Spinner from './Spinner';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
+import { BlogPost } from '@/types/blogPost';
 
 export default function LatestBlogs({
   section,
   sectionTitle,
   sectionTitle2,
   button,
+}: {
+  section: string;
+  sectionTitle: string;
+  sectionTitle2: string;
+  button: string;
 }) {
-  const [blogs, setBlogs] = useState([]);
+  const [blogs, setBlogs] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   const [animate, setAnimate] = useState(false);
@@ -44,7 +49,11 @@ export default function LatestBlogs({
         console.log(fetchedBlogs);
         // Sort blogs by 'datum' in descending order and limit to the most recent 8
         const sortedBlogs = fetchedBlogs
-          .sort((a, b) => new Date(b.datePosted) - new Date(a.datePosted))
+          .sort(
+            (a: BlogPost, b: BlogPost) =>
+              new Date(b.datePosted).getTime() -
+              new Date(a.datePosted).getTime()
+          )
           .slice(0, 4);
         setBlogs(sortedBlogs);
       } catch (error) {
@@ -66,7 +75,7 @@ export default function LatestBlogs({
               <div
                 className={`text-3xl md:text-[56px] mb-6  tracking-wide leading-[1] ${
                   animate
-                    ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1000ms]'
+                    ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
                     : ''
                 }`}
               >
@@ -76,7 +85,7 @@ export default function LatestBlogs({
             <div
               className={`text-sm md:text-lg  tracking-wider lg:leading-8 text-[#00000059] mb-6 ${
                 animate
-                  ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1200ms]'
+                  ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[600ms]'
                   : ''
               }`}
             >
@@ -87,7 +96,7 @@ export default function LatestBlogs({
           <div
             className={`relative flex flex-col items-start justify-center h-full text-center  ${
               animate
-                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1200ms]'
+                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[600ms]'
                 : ''
             }`}
           >
@@ -104,7 +113,7 @@ export default function LatestBlogs({
           <div
             className={`grid grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-4 ${
               animate
-                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1600ms]'
+                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[800ms]'
                 : ''
             }`}
           >

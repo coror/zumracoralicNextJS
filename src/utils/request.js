@@ -1,5 +1,48 @@
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
+// fetch al services
+async function fetchServices(locale = 'sl') {
+  try {
+    if (!apiDomain) {
+      return [];
+    }
+
+    const res = await fetch(`${apiDomain}/services?locale=${locale}`);
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data.services;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+}
+
+// fetch single service
+async function fetchService(slug, locale) {
+  try {
+    if (!apiDomain) {
+      return null;
+    }
+
+    const res = await fetch(`${apiDomain}/services/${slug}?locale=${locale}`);
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+
+    const data = await res.json();
+    return data.service;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 // fetch all blogposts
 async function fetchBlogPosts(locale = 'sl') {
   try {
@@ -69,7 +112,7 @@ async function fetchEvents(locale = 'sl') {
   }
 }
 
-// Fetch single blogPost
+// Fetch single event
 async function fetchEvent(slug, locale) {
   try {
     // Handle the case where the domain is not available yet
@@ -92,4 +135,11 @@ async function fetchEvent(slug, locale) {
   }
 }
 
-export { fetchBlogPosts, fetchBlogPost, fetchEvents, fetchEvent };
+export {
+  fetchBlogPosts,
+  fetchBlogPost,
+  fetchEvents,
+  fetchEvent,
+  fetchServices,
+  fetchService,
+};

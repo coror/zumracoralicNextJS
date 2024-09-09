@@ -18,6 +18,20 @@ export default function Offer({
   back2Content,
   back3Title,
   back3Content,
+}: {
+  sectionTitle: string;
+  card1Title: string;
+  card1Content: string;
+  card2Title: string;
+  card2Content: string;
+  card3Title: string;
+  card3Content: string;
+  back1Title: string;
+  back1Content: string;
+  back2Title: string;
+  back2Content: string;
+  back3Title: string;
+  back3Content: string;
 }) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
@@ -38,7 +52,7 @@ export default function Offer({
         <div
           className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
             animate
-              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
+              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[250ms]'
               : ''
           }`}
         >
@@ -48,7 +62,7 @@ export default function Offer({
           <div
             className={`${
               animate
-                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1000ms]'
+                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
                 : ''
             }`}
           >
@@ -58,13 +72,13 @@ export default function Offer({
               backTitle={back1Title}
               backContent={back1Content}
               bgColor='bg-[#FEFBE6]'
-              bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721392346/zumracoralic/background_ff90gd.jpg'
+              bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1725620619/zumracoralic/IMG-d367d2aa0ebebb4e4cdbbe1872925ec5-V_bkht4p.jpg'
             />
           </div>
           <div
             className={`${
               animate
-                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1200ms]'
+                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[600ms]'
                 : ''
             }`}
           >
@@ -74,13 +88,13 @@ export default function Offer({
               backTitle={back2Title}
               backContent={back2Content}
               bgColor='bg-[#ffe6bc]'
-              bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721487542/zumracoralic/background1_xqcq2z.jpg'
+              bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1725620536/zumracoralic/1000003854_cprq8x.jpg'
             />
           </div>
           <div
             className={`${
               animate
-                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[1400ms]'
+                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[700ms]'
                 : ''
             }`}
           >

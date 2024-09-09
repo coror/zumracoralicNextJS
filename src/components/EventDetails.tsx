@@ -4,13 +4,26 @@ import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '../datalyer/contentful/richTextUtils';
 import { useState } from 'react';
+import { Event } from '@/types/event';
 
-const EventDetails = ({ event, locale, eventsTitle, home }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+const EventDetails = ({
+  event,
+  locale,
+  eventsTitle,
+  home,
+}: {
+  event: Event;
+  locale: string;
+  eventsTitle: string;
+  home: string;
+}) => {
+  const [selectedImage, setSelectedImage] = useState<
+    Event['cloudinaryImage'][number] | null
+  >(null);
 
   const options = getRichTextOptions();
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (image: Event['cloudinaryImage'][number]) => {
     setSelectedImage(image);
   };
 
@@ -34,7 +47,10 @@ const EventDetails = ({ event, locale, eventsTitle, home }) => {
       </div>
 
       <nav className='my-4' aria-label='Breadcrumb'>
-        <ol role='list' className='flex items-center px-6 justify-center '>
+        <ol
+          role='list'
+          className='flex items-center px-6 justify-center  text-xs md:text-base'
+        >
           <li>
             <Link
               href='/'
@@ -53,7 +69,9 @@ const EventDetails = ({ event, locale, eventsTitle, home }) => {
             </Link>
           </li>
           <li className='text-gray-400 mx-1'>&gt;</li>
-          <li className='text-gray-600  mx-1   line-clamp-1'>{event.seoTitle}</li>
+          <li className='text-gray-600  mx-1   line-clamp-1'>
+            {event.seoTitle}
+          </li>
         </ol>
       </nav>
       <div className='relative  p-4 mt-24  mx-5 lg:max-w-[60rem] lg:mx-auto'>
@@ -62,33 +80,35 @@ const EventDetails = ({ event, locale, eventsTitle, home }) => {
         </h1>
         <div className='text-sm lg:text-xl text-[#777777] mb-12'>
           <IoIosCalendar className='inline' />
-          {event.datePosted}
+          {event.datum}
         </div>
         <div className='prose leading-8 my-20  lg:min-w-[60rem]'>
           {documentToReactComponents(event.content, options)}
         </div>
       </div>
 
-      <div className='gallery-container '>
-        <div className='gallery-grid'>
-          {event.cloudinaryImage.map((image, index) => (
-            <div
-              key={index}
-              className='gallery-item group'
-              onClick={() => handleImageClick(image)}
-            >
-              <Image
-                src={image.secure_url}
-                alt={image.alt || ''}
-                width={0}
-                height={0}
-                sizes='100vw'
-                className='gallery-image transition ease-in-out group-hover:brightness-75'
-              />
-            </div>
-          ))}
+      {event.cloudinaryImage.length > 0 && (
+        <div className='gallery-container '>
+          <div className='gallery-grid'>
+            {event.cloudinaryImage.map((image, index) => (
+              <div
+                key={index}
+                className='gallery-item group'
+                onClick={() => handleImageClick(image)}
+              >
+                <Image
+                  src={image.secure_url}
+                  alt={image.alt || ''}
+                  width={0}
+                  height={0}
+                  sizes='100vw'
+                  className='gallery-image transition ease-in-out group-hover:brightness-75'
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {selectedImage && (
         <div className='lightbox' onClick={handleClose}>

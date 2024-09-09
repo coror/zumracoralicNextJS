@@ -1,6 +1,14 @@
 import React from 'react';
 
-export default function Testimonial({ content, name, title }) {
+export default function Testimonial({
+  content,
+  name,
+  title,
+}: {
+  content: string;
+  name: string;
+  title: string;
+}) {
   return (
     <div className='flex flex-col items-center'>
       <div className='relative flex flex-col items-center justify-center md:justify-start min-h-96 md:max-w-60 lg:max-w-96 bg-white rounded-2xl mx-5 my-3 py-10 px-5 shadow-2xl'>

@@ -2,10 +2,15 @@
 import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
-import { IoMdMailOpen } from 'react-icons/io';
 import { FaPencil } from 'react-icons/fa6';
 
-export default function ActionSection({ quote, button }) {
+export default function ActionSection({
+  quote,
+  button,
+}: {
+  quote: string;
+  button: string;
+}) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -22,7 +27,7 @@ export default function ActionSection({ quote, button }) {
   return (
     <div className='relative h-96 md:min-h-72 py-10 md:py-80 '>
       <div
-        className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbssbnuph/image/upload/v1721487542/zumracoralic/background1_xqcq2z')]"
+        className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbssbnuph/image/upload/v1725620619/zumracoralic/IMG-d367d2aa0ebebb4e4cdbbe1872925ec5-V_bkht4p.jpg')]"
         style={{
           backgroundPosition: 'center',
           backgroundSize: 'cover',
@@ -37,7 +42,7 @@ export default function ActionSection({ quote, button }) {
           <div
             className={`text-white text-2xl md:text-[56px] mt-20 tracking-wide leading-[1] mb-20 ${
               animate
-                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1000ms]'
+                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
                 : ''
             }`}
           >
@@ -47,7 +52,7 @@ export default function ActionSection({ quote, button }) {
           <div
             className={`${
               animate
-                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1500ms]'
+                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[750ms]'
                 : ''
             }`}
           >

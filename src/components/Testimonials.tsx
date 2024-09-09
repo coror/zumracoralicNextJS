@@ -21,6 +21,16 @@ export default function Testimonials({
   person3Title,
   testimonial4,
   person4Title,
+}: {
+  sectionTitle: string;
+  testimonial1: string;
+  person1Title: string;
+  testimonial2: string;
+  person2Title: string;
+  testimonial3: string;
+  person3Title: string;
+  testimonial4: string;
+  person4Title: string;
 }) {
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
@@ -69,10 +79,6 @@ export default function Testimonials({
             ? 'animate-fade-up animate-duration-[2500ms] animate-delay-[1000ms]'
             : ''
         }`}
-        style={{
-          '--swiper-navigation-color': '#000000',
-          '--swiper-pagination-color': '#000000',
-        }}
       >
         <SwiperSlide>
           <Testimonial

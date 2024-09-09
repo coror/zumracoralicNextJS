@@ -9,16 +9,23 @@ import { useLocale } from 'next-intl';
 import { HiArrowLongRight, HiArrowLongLeft } from 'react-icons/hi2';
 import Image from 'next/image';
 import Spinner from './Spinner';
+import { BlogPost } from '@/types/blogPost';
+import Placeholder from './Placeholder';
 
 const BlogPostPageComponent = ({
   home,
   blogs,
   previousPostText,
   nextPostText,
+}: {
+  home: string;
+  blogs: string;
+  previousPostText: string;
+  nextPostText: string;
 }) => {
   const { slug } = useParams();
-  const [blogPost, setBlogPost] = useState(null);
-  const [blogPosts, setBlogPosts] = useState([]);
+  const [blogPost, setBlogPost] = useState<BlogPost | null>(null);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   const locale = useLocale();
@@ -68,7 +75,7 @@ const BlogPostPageComponent = ({
           <Spinner loading={loading} />
         </div>
       )}
-      {!loading && (
+      {!loading && blogPost && (
         <div>
           <div>
             <BlogPostDetails
@@ -91,7 +98,10 @@ const BlogPostPageComponent = ({
                       height={0}
                       sizes='100vw'
                       className='w-full h-full object-cover rounded-full'
+                      placeholder='blur'
+                      blurDataURL={previousPost.featuredImage.url}
                     />
+                    <Placeholder width={128} height={128} />
                   </div>
                   <div className='ml-6'>
                     <h1 className='uppercase font-bold tracking-widest text-[#aaaaaa] '>

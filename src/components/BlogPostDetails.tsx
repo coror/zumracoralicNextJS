@@ -4,13 +4,26 @@ import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '../datalyer/contentful/richTextUtils';
 import { useState } from 'react';
+import { BlogPost } from '@/types/blogPost';
 
-const BlogPostDetails = ({ blogPost, locale, blogs, home }) => {
-  const [selectedImage, setSelectedImage] = useState(null);
+const BlogPostDetails = ({
+  blogPost,
+  locale,
+  blogs,
+  home,
+}: {
+  blogPost: BlogPost;
+  locale: string;
+  blogs: string;
+  home: string;
+}) => {
+  const [selectedImage, setSelectedImage] = useState<
+    BlogPost['cloudinaryImage'][0] | null
+  >(null);
 
   const options = getRichTextOptions();
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (image: BlogPost['cloudinaryImage'][0]) => {
     setSelectedImage(image);
   };
 
@@ -43,7 +56,10 @@ const BlogPostDetails = ({ blogPost, locale, blogs, home }) => {
       </div>
 
       <nav className='my-4' aria-label='Breadcrumb'>
-        <ol role='list' className='flex items-center px-6 justify-center'>
+        <ol
+          role='list'
+          className='flex items-center px-6 justify-center text-xs md:text-base'
+        >
           <li>
             <Link
               href='/'
@@ -72,26 +88,28 @@ const BlogPostDetails = ({ blogPost, locale, blogs, home }) => {
         {documentToReactComponents(blogPost.content, options)}
       </div>
 
-      <div className='gallery-container '>
-        <div className='gallery-grid'>
-          {blogPost.cloudinaryImage.map((image, index) => (
-            <div
-              key={index}
-              className='gallery-item group'
-              onClick={() => handleImageClick(image)}
-            >
-              <Image
-                src={image.secure_url}
-                alt={image.alt || ''}
-                width={0}
-                height={0}
-                sizes='100vw'
-                className='gallery-image transition ease-in-out group-hover:brightness-75'
-              />
-            </div>
-          ))}
+      {blogPost.cloudinaryImage.length > 0 && (
+        <div className='gallery-container '>
+          <div className='gallery-grid'>
+            {blogPost.cloudinaryImage.map((image, index) => (
+              <div
+                key={index}
+                className='gallery-item group'
+                onClick={() => handleImageClick(image)}
+              >
+                <Image
+                  src={image.secure_url}
+                  alt={image.alt || ''}
+                  width={0}
+                  height={0}
+                  sizes='100vw'
+                  className='gallery-image transition ease-in-out group-hover:brightness-75'
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {selectedImage && (
         <div className='lightbox' onClick={handleClose}>

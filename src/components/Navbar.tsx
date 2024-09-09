@@ -6,25 +6,52 @@ import LocalSwitcher from './local-switcher';
 import { useLocale } from 'next-intl';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 
-const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
+const Navbar = ({
+  home,
+  blogPosts,
+  events,
+  services,
+  about,
+  contact,
+  allServices,
+  NLPCoaching,
+  mediation,
+  workshop,
+}: {
+  home: string;
+  blogPosts: string;
+  events: string;
+  services: string;
+  about: string;
+  contact: string;
+  allServices: string;
+  NLPCoaching: string;
+  mediation: string;
+  workshop: string;
+}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesExpanded, setIsServicesExpanded] = useState(false);
+
   const locale = useLocale();
   const pathname = usePathname();
-  const mobileMenuRef = useRef(null);
-  const buttonRef = useRef(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const homePageLink = `/${locale}`;
   const blogPostsLink = `/${locale}/blog`;
   const eventsLink1 = `/${locale}/dogodki`;
   const eventsLink2 = `/${locale}/dogadaji`;
+  const aboutMeLink = `/${locale}/o-meni`;
+  const servicesLink1 = `/${locale}/storitve`;
+  const servicesLink2 = `/${locale}/usluge`;
 
-  const handleClickOutside = (event) => {
+  const handleClickOutside = (event: MouseEvent) => {
     // Ensure clicks outside the menu close the menu
     if (
       mobileMenuRef.current &&
-      !mobileMenuRef.current.contains(event.target) &&
+      !mobileMenuRef.current.contains(event.target as Node) &&
       buttonRef.current &&
-      !buttonRef.current.contains(event.target)
+      !buttonRef.current.contains(event.target as Node)
     ) {
       setIsMobileMenuOpen(false);
     }
@@ -48,23 +75,33 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
           ? 'bg-black fixed text-white'
           : 'bg-transparent absolute'
       } ${
-        pathname === homePageLink || pathname.startsWith(blogPostsLink)
-          ? ' text-white border-[#ffffff40]'
-          : 'text-black border-[#0000002a]'
+        pathname === homePageLink ||
+        pathname.startsWith(blogPostsLink) ||
+        pathname === `/${locale}/kontakt`
+          ? 'text-white border-[#ffffff40] border-b-[1px] '
+          : pathname.startsWith(servicesLink1) ||
+            pathname.startsWith(servicesLink2)
+          ? 'text-black border-0' // No border for servicesLink1 or servicesLink2
+          : 'text-black border-[#0000002a] border-b-[1px] '
       }
-        border-b-[1px] z-50 w-full h-20 lg:h-32 `}
+      z-50 w-full h-20 lg:h-32`}
     >
       <div className='mx-auto max-w-7xl px-2 h-full'>
         <div className='relative flex h-full items-center justify-between'>
           <div className='flex flex-1 items-center justify-between space-x-12  h-full'>
             <div className='flex space-x-12 md:space-x-10 h-full'>
-              <div className='absolute inset-y-0 left-0 flex items-center lg:hidden'>
+              <div className='absolute inset-y-0 left-0 flex items-center xl:hidden'>
                 <button
                   type='button'
                   id='mobile-dropdown-button'
-                  className={`relative inline-flex items-center justify-center rounded-md p-2  hover:bg-[#0000007c] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${
+                  className={`relative inline-flex items-center justify-center rounded-md p-1  hover:bg-[#0000007c] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${
+                    isMobileMenuOpen ? 'text-white' : ''
+                  } ${
                     pathname.startsWith(eventsLink1) ||
-                    pathname.startsWith(eventsLink2)
+                    pathname.startsWith(eventsLink2) ||
+                    pathname === aboutMeLink ||
+                    pathname.startsWith(servicesLink1) ||
+                    pathname.startsWith(servicesLink2)
                       ? 'text-black '
                       : 'text-white '
                   }`}
@@ -93,7 +130,7 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
                 </button>
               </div>
               <Link className='flex flex-shrink-0 items-center' href='/'>
-                <span className=' text-xl lg:text-4xl font-bold'>
+                <span className='text-xl lg:text-4xl font-bold '>
                   ZUMRA ĆORALIĆ
                 </span>
               </Link>
@@ -105,7 +142,11 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
                 >
                   <FaFacebookF
                     className={` text-lg  ${
-                      pathname === eventsLink1 || pathname === eventsLink2
+                      pathname.startsWith(eventsLink1) ||
+                      pathname.startsWith(eventsLink2) ||
+                      pathname === aboutMeLink ||
+                      pathname.startsWith(servicesLink1) ||
+                      pathname.startsWith(servicesLink2)
                         ? 'text-[#000000b6] hover:text-black '
                         : 'text-[#ffffffd0] hover:text-white'
                     }`}
@@ -118,7 +159,11 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
                 >
                   <FaInstagram
                     className={` text-lg  ${
-                      pathname === eventsLink1 || pathname === eventsLink2
+                      pathname.startsWith(eventsLink1) ||
+                      pathname.startsWith(eventsLink2) ||
+                      pathname === aboutMeLink ||
+                      pathname.startsWith(servicesLink1) ||
+                      pathname.startsWith(servicesLink2)
                         ? 'text-[#000000b6] hover:text-black '
                         : 'text-[#ffffffd0] hover:text-white'
                     }`}
@@ -129,7 +174,7 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
 
             <div
               className={
-                'hidden lg:ml-6 lg:block text-sm xl:text-base h-full uppercase'
+                'hidden lg:ml-6 xl:block text-sm xl:text-base h-full uppercase'
               }
             >
               <div className='flex h-full'>
@@ -154,7 +199,7 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
                   {blogPosts}
                 </Link>
                 <Link
-                  href={`/${locale}/dogodki`}
+                  href={`/${locale}/events`}
                   className={`${
                     pathname === eventsLink1 || pathname === eventsLink2
                       ? 'bg-black text-white hover:text-white'
@@ -164,31 +209,106 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
                   {events}
                 </Link>
                 <Link
-                  href={`${blogPostsLink}/about`}
+                  href={`${aboutMeLink}`}
                   className={`${
-                    pathname === `/${locale}/about`
+                    pathname === aboutMeLink
                       ? 'bg-black text-white hover:text-white'
                       : ''
                   } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
                   {about}
                 </Link>
+
+                {/* Services */}
+                <div className='relative group'>
+                  <Link
+                    href={`/${locale}/services`}
+                    className={`${
+                      pathname === servicesLink1 || pathname === servicesLink2
+                        ? 'bg-black text-white active'
+                        : ''
+                    } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
+                  >
+                    {services}
+                  </Link>
+                  <div
+                    className={`absolute left-0 top-full w-56 shadow-2xl text-black invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out ${
+                      pathname === homePageLink ||
+                      pathname.startsWith(blogPostsLink)
+                        ? 'bg-black '
+                        : 'bg-white '
+                    }`}
+                  >
+                    <Link
+                      href={`${servicesLink1}`}
+                      className={`block px-4 py-4 hover:text-[#d2ab74]  border-b-[1px]  ${
+                        pathname === servicesLink1 || pathname === servicesLink2
+                          ? 'text-[#d2ab74]'
+                          : 'text-black'
+                      } ${
+                        pathname === homePageLink ||
+                        pathname.startsWith(blogPostsLink)
+                          ? 'text-white border-[#ffffff80]'
+                          : 'border-[#00000036]'
+                      }`}
+                    >
+                      {allServices}
+                    </Link>
+                    <Link
+                      href={`${servicesLink1}/coaching`}
+                      className={`block px-4 py-4 hover:text-[#d2ab74]  ${
+                        pathname === servicesLink1 + '/coaching' ||
+                        pathname === servicesLink2 + '/coaching'
+                          ? 'text-[#d2ab74]'
+                          : 'text-black'
+                      } ${
+                        pathname === homePageLink ||
+                        pathname.startsWith(blogPostsLink)
+                          ? 'text-white'
+                          : ''
+                      }`}
+                    >
+                      {NLPCoaching}
+                    </Link>
+                    <Link
+                      href={`/${locale}/services/mediation`}
+                      className={`block px-4 py-4 hover:text-[#d2ab74]  ${
+                        pathname === servicesLink1 + '/mediacija' ||
+                        pathname === servicesLink2 + '/medijacija'
+                          ? 'text-[#d2ab74]'
+                          : 'text-black'
+                      } ${
+                        pathname === homePageLink ||
+                        pathname.startsWith(blogPostsLink)
+                          ? 'text-white'
+                          : ''
+                      }`}
+                    >
+                      {mediation}
+                    </Link>
+                    <Link
+                      href={`/${locale}/services/workshop`}
+                      className={`block px-4 py-4 hover:text-[#d2ab74] ${
+                        pathname === servicesLink1 + '/delavnice-predavanja' ||
+                        pathname === servicesLink2 + '/radionice-predavanja'
+                          ? 'text-[#d2ab74]'
+                          : 'text-black'
+                      } ${
+                        pathname === homePageLink ||
+                        pathname.startsWith(blogPostsLink)
+                          ? 'text-white'
+                          : ''
+                      }`}
+                    >
+                      {workshop}
+                    </Link>
+                  </div>
+                </div>
+
                 <Link
-                  href={`${blogPostsLink}/services`}
+                  href={`/${locale}/contact`}
                   className={`${
-                    pathname === `/${locale}/services`
-                      ? 'bg-black text-white hover:text-white'
-                      : ''
-                  } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
-                >
-                  {services}
-                </Link>
-                <Link
-                  href={`${blogPostsLink}/services`}
-                  className={`${
-                    pathname === `/${locale}/services`
-                      ? 'bg-black text-white hover:text-white'
-                      : ''
+                    pathname === `/${locale}/contact` ? 'bg-[#d2ab74]' : ''
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
                   {contact}
@@ -241,27 +361,80 @@ const Navbar = ({ home, blogPosts, events, services, about, contact }) => {
               {events}
             </Link>
             <Link
-              href={`${blogPostsLink}/about`}
+              href={`${aboutMeLink}`}
               className={`${
-                pathname === `/${locale}/about` ? 'bg-[#d2ab74]' : ''
+                pathname === aboutMeLink ? 'bg-[#d2ab74]' : ''
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {about}
             </Link>
-            <Link
-              href={`${blogPostsLink}/services`}
+            <button
               className={`${
-                pathname === `/${locale}/services` ? 'bg-[#d2ab74]' : ''
-              } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
-              onClick={() => setIsMobileMenuOpen(false)}
+                pathname.startsWith(servicesLink1) ||
+                pathname.startsWith(servicesLink2)
+                  ? 'bg-[#d2ab74]'
+                  : ''
+              } text-white lg:hover:bg-[#d2ab74] rounded-md px-3 py-2 uppercase text-left`}
+              onClick={() => setIsServicesExpanded(!isServicesExpanded)}
             >
               {services}
-            </Link>
+            </button>
+            {isServicesExpanded && (
+              <div className='space-y-1 pl-4 flex flex-col justify-start items-start'>
+                <Link
+                  href={`${servicesLink1}`}
+                  className={`${
+                    pathname === servicesLink1 || pathname === servicesLink2
+                      ? 'text-[#d2ab74]'
+                      : 'text-white'
+                  }  hover:bg-[#d2ab74]  px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {allServices}
+                </Link>
+                <Link
+                  href={`${servicesLink1}/coaching`}
+                  className={`${
+                    pathname === servicesLink1 + '/coaching' ||
+                    pathname === servicesLink2 + '/coaching'
+                      ? 'text-[#d2ab74]'
+                      : 'text-white'
+                  }  hover:bg-[#d2ab74]  px-3 py-2  `}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {NLPCoaching}
+                </Link>
+                <Link
+                  href={`/${locale}/services/mediation`}
+                  className={`${
+                    pathname === servicesLink1 + '/mediacija' ||
+                    pathname === servicesLink2 + '/medijacija'
+                      ? 'text-[#d2ab74]'
+                      : 'text-white'
+                  }  hover:bg-[#d2ab74]  px-3 py-2 `}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {mediation}
+                </Link>
+                <Link
+                  href={`/${locale}/services/workshop`}
+                  className={`${
+                    pathname === servicesLink1 + '/delavnice-predavanja' ||
+                    pathname === servicesLink2 + '/radionice-predavanja'
+                      ? 'text-[#d2ab74]'
+                      : 'text-white'
+                  }  hover:bg-[#d2ab74]  px-3 py-2 `}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {workshop}
+                </Link>
+              </div>
+            )}
             <Link
-              href={`${blogPostsLink}/services`}
+              href={`/${locale}/contact`}
               className={`${
-                pathname === `/${locale}/services` ? 'bg-[#d2ab74]' : ''
+                pathname === `/${locale}/contact` ? 'bg-[#d2ab74]' : ''
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
