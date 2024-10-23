@@ -39,6 +39,7 @@ export default function RootLayout({
   params: { locale },
 }: Readonly<RootLayoutProps>) {
   const t = useTranslations('Navigation');
+  const f = useTranslations('Footer');
 
   return (
     <html lang={locale}>
@@ -56,7 +57,7 @@ export default function RootLayout({
           contact={t('contact')}
         />
         <div>{children}</div>
-        <Footer locale={locale} />
+        <Footer connect={t('connect')} />
         <Credit />
       </body>
     </html>

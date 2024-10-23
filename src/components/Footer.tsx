@@ -4,8 +4,8 @@ import { MdOutlineEmail } from 'react-icons/md';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
-export default function Footer({ locale }: { locale: string }) {
-  const t = useTranslations('Footer');
+export default function Footer({ connect }: { connect: string }) {
+  
   return (
     <div className='relative w-full  text-white'>
       <div className='eksperiment2 py-10'>
@@ -19,7 +19,7 @@ export default function Footer({ locale }: { locale: string }) {
             className='cover xl:w-44 xl:h-44 xl:mt-18'
           />
           <div className='text-white m-10 text-2xl md:text-[56px] tracking-wide leading-tight my-10'>
-            {t('connect')}
+            {connect}
           </div>
           <div className='flex flex-row items-center space-x-4 text-white'>
             <a
