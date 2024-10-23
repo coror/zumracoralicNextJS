@@ -4,15 +4,17 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import LocalSwitcher from './local-switcher';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
-const Navbar = ({ locale }: { locale: string }) => {
+const Navbar = ({ home }: { home: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesExpanded, setIsServicesExpanded] = useState(false);
 
   const pathname = usePathname();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const locale = useLocale();
 
   const t = useTranslations('Navigation');
 
@@ -167,7 +169,7 @@ const Navbar = ({ locale }: { locale: string }) => {
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {t('home')}
+                  {home}
                 </Link>
                 <Link
                   href={blogPostsLink}

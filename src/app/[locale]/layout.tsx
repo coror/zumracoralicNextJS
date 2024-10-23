@@ -6,9 +6,8 @@ import Navbar from '@/components/Navbar';
 import { locales } from '@/config';
 import { NextIntlClientProvider, useTranslations } from 'next-intl';
 import Credit from '@/components/Credit';
-import { readFileSync } from 'fs';
-import path from 'path';
 
+export const dynamic = 'force-dynamic';
 
 const inter = Playfair_Display({ subsets: ['latin'] });
 
@@ -22,20 +21,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: './',
   },
-};
-
-// Load messages dynamically based on locale
-const loadMessages = (locale: string) => {
-  const filePath = path.join(process.cwd(), 'messages', `${locale}.json`);
-
-  try {
-    const messages = JSON.parse(readFileSync(filePath, 'utf-8'));
-    console.log(`Loaded messages for locale: ${locale}`, messages);
-    return messages;
-  } catch (error) {
-    console.error(`Error loading messages for locale: ${locale}`, error);
-    return {}; // Return empty object on error
-  }
 };
 
 interface RootLayoutProps {
@@ -53,17 +38,15 @@ export default function RootLayout({
   children,
   params: { locale },
 }: Readonly<RootLayoutProps>) {
-  const messages = loadMessages(locale);
+  const t = useTranslations('Navigation');
 
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar locale={locale} />
-          <div>{children}</div>
-          <Footer locale={locale} />
-          <Credit />
-        </NextIntlClientProvider>
+        <Navbar home={t('home')} />
+        <div>{children}</div>
+        <Footer locale={locale} />
+        <Credit />
       </body>
     </html>
   );
