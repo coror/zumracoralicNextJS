@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  padding-right: 0px !important;
+  overflow: visible !important;
+}
+
+.link-hover {
+  position: relative;
+  overflow: hidden; /* Ensures the pseudo-element doesn't overflow the link */
+}
+
+.link-hover::before {
+  content: '';
+  position: absolute;
+  top: 100%; /* Start from below the link */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffe6bc;
+  transition: transform 0.3s ease, top 0.3s ease; /* Smooth transition */
+  z-index: -1;
+}
+
+.link-hover:hover::before,
+.group:hover .link-hover::before {
+  top: 0;
+  transform: scaleY(1);
+}
+
+.link-hover:hover,
+.group:hover .link-hover {
+  color: black;
+}
+
+.link-hover.active::before {
+  top: 0;
+  transform: scaleY(1);
+}
+
+/* Special rule for active link */
+.link-hover.active {
+  color: white !important; /* Ensure the color is white */
+}
+
+/* Add these styles to your global CSS file or in a <style> tag */
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%); /* Start from the left edge of the viewport */
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0); /* End at its final position */
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutToLeft {
+  from {
+    transform: translateX(0); /* Start from its final position */
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%); /* Move to the left edge of the viewport */
+    opacity: 0;
+  }
+}
+
+.mobile-menu-enter {
+  animation: slideInFromLeft 0.3s ease-out forwards; /* Change to slideInFromLeft if needed */
+}
+
+.mobile-menu-exit {
+  animation: slideOutToLeft 0.3s ease-in forwards; /* Change to slideOutToLeft if needed */
+}
+
+/* Base styles for the OfferCard */
+.offer-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  min-height: 32rem;
+  max-width: 20rem; /* Adjust as needed */
+  border-radius: 1rem;
+  margin: 0.75rem;
+  padding: 2rem 1.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: background-color 0.5s;
+}
+
+/* Background overlay */
+.offer-card .bg-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: transparent;
+  transition: background-color 0.5s;
+}
+
+/* Primary content */
+.offer-card .primary-content {
+  position: relative;
+  z-index: 10;
+  transition: transform 0.75s;
+}
+
+/* New content */
+.offer-card .new-content {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  transform: translateY(100%);
+  transition: transform 0.75s;
+  padding: 2rem 1.25rem;
+}
+
+/* Hover states for lg and larger screens */
+@media (min-width: 1024px) {
+  .offer-card:hover .primary-content {
+    transform: translateY(-100%);
+  }
+
+  .offer-card:hover .new-content {
+    transform: translateY(0);
+  }
+}
+
+/* Ensure new content is hidden on smaller screens */
+@media (max-width: 1023px) {
+  .offer-card .new-content {
+    display: none;
+  }
+}
+
+/* styles.css */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #b0b0b0 !important; /* Change the color of the navigation arrows to white */
+}
+
+@media (max-width: 1023px) {
+  /* .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
+  } */
+}
+
+/* Optionally, add hover effects */
+@media (min-width: 1023px) {
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #6b6969 !important; /* Slightly lighter color on hover */
+  }
+}
+
+.swiper-pagination-bullet {
+  background-color: rgb(
+    103,
+    103,
+    103
+  ) !important; /* Change the color of pagination dots */
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #f0f0f0; /* Change the color of the active pagination dot */
+}
+
+.prose h1 {
+  margin-bottom: 1em;
+  color: #d2ab74;
+}
+
+@media (min-width: 1023px) {
+  .prose p {
+    font-size: 18px;
+  }
+}
+
+.eksperiment {
+  background-image: linear-gradient(
+    0deg,
+    hsl(0deg 0% 100%) 0%,
+    hsl(38deg 100% 98%) 8%,
+    hsl(38deg 100% 96%) 15%,
+    hsl(38deg 100% 94%) 23%,
+    hsl(38deg 100% 92%) 31%,
+    hsl(38deg 100% 90%) 38%,
+    hsl(38deg 100% 88%) 46%,
+    hsl(38deg 100% 88%) 54%,
+    hsl(38deg 100% 90%) 62%,
+    hsl(38deg 100% 92%) 69%,
+    hsl(38deg 100% 94%) 77%,
+    hsl(38deg 100% 96%) 85%,
+    hsl(38deg 100% 98%) 92%,
+    hsl(0deg 0% 100%) 100%
+  );
+}
+
+.eksperiment2 {
+  background-image: linear-gradient(
+    0deg,
+    rgba(223, 101, 14, 1) 0%,
+    rgba(223, 101, 14, 1) 48%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+.eksperiment3 {
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(223, 101, 14, 1) 48%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+
+/* Custom CSS styles */
+.gallery-container {
+  margin: 2rem auto;
+  padding: 0 1rem;
+  max-width: 60rem;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.gallery-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 640px) {
+  .gallery-item {
+    height: 150px; /* Set a height for mobile screens */
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .gallery-item {
+    height: 200px; /* Set a height for tablets */
+  }
+}
+
+@media (min-width: 769px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    justify-content: center;
+  }
+
+  .gallery-item {
+    height: 300px; /* Set a height for desktops */
+    width: 300px;
+  }
+}
+
+.lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.lightbox-content {
+  position: relative;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.lightbox-image {
+  max-width: 90vw;
+  max-height: 90vh;
+  object-fit: contain;
+}

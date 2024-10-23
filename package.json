@@ -1,0 +1,47 @@
+{
+  "name": "zumracoralic",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@contentful/rich-text-html-renderer": "^16.6.6",
+    "@contentful/rich-text-react-renderer": "^15.22.8",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
+    "@headlessui/react": "^2.1.2",
+    "@heroicons/react": "^2.1.5",
+    "@mui/material": "^5.16.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "contentful": "^10.15.0",
+    "contentful-management": "^11.33.0",
+    "country-flag-icons": "^1.5.13",
+    "date-and-time": "^3.4.1",
+    "date-fns": "^3.6.0",
+    "next": "14.2.5",
+    "next-cloudinary": "^6.6.2",
+    "next-intl": "^3.17.1",
+    "nodemailer": "^6.9.14",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.13.0",
+    "react-spinners": "^0.14.1",
+    "swiper": "^11.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "tailwindcss-animated": "^1.1.2",
+    "typescript": "^5"
+  }
+}

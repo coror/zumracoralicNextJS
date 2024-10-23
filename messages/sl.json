@@ -1,0 +1,190 @@
+{
+  "Navigation": {
+    "home": "Domov",
+    "blogPosts": "Blog",
+    "events": "Dogodki",
+    "about": "O meni",
+    "services": "Storitve",
+    "allServices": "Vse storitve",
+    "NLPCoaching": "NLP Coaching",
+    "mediation": "Mediacija",
+    "workshop": "Za podjetja in organizacije",
+    "contact": "Kontakt",
+    "previousPostText": "Prejšnja objava",
+    "nextPostText": "Naslednja objava"
+  },
+  "Footer": {
+    "connect": "POT DO USPEHA SE ZAČNE TUKAJ – POVEŽI SE Z MENOJ"
+  },
+  "Header": {
+    "title": "NLP COACH, MEDIATORKA IN PREDAVATELJICA",
+    "content": "Strokovnjakinja za medosebne odnose in reševanje konfliktov",
+    "button": "Stopi v stik"
+  },
+  "AboutSection": {
+    "section": "- O MENI",
+    "title": "Spoznajte svojo notranjo moč in najdite smisel na tej čudoviti poti",
+    "content": "DRAGE OBISKOVALKE, DRAGI OBISKOVALCI! V času, ko se soočamo z nenehnimi izzivi, stresom in hitrim tempom življenja, je skrb za naše zdravje in odnose ključnega pomena. Na tej poti niste sami – tukaj sem, da vam pomagam najti ravnovesje, izboljšati vaše počutje in učinkovito reševati vsakodnevne izzive. SPOŠTOVANI PODJETNIKI IN ORGANIZACIJE! V današnjem času vsako uspešno poslovanje temelji na dobrobiti zaposlenih in zdravih medosebnih odnosih. Kako izboljšati delovno okolje, zmanjšati stres in omogočiti vašim zaposlenim doseči večjo produktivnost? Hvala, ker ste obiskali našo spletno stran in prepoznali pomembnost celovitega pristopa k zdravju v poslovnem svetu. SPOŠTOVANE IZOBRAŽEVALNE USTANOVE! Kot organizatorji izobraževanj in predavanj imate pomembno vlogo pri zagotavljanju kakovostne in spodbudne izobraževalne izkušnje. Moja predavanja se osredotočajo na reševanje konfliktov, izboljšanje medosebnih odnosov in globlje razumevanje sebe – zakaj delujemo, kot delujemo, in kako lahko z zavestnimi spremembami dosežemo bolj harmonične odnose in osebno rast."
+  },
+  "QuoteSection": {
+    "quote": "“Ni pomembno, od kod prihajaš ali kje se trenutno nahajaš, temveč kam si usmerjen in kam želiš priti!”"
+  },
+  "OfferSection": {
+    "sectionTitle": "Kaj ponujam",
+    "card1Title": "Osebni in poslovni coaching",
+    "card1Content": "Kot strokovnjakinja za NLP coaching na področju medosebnih odnosov, vam lahko pomagam doseči vaše zastavljene cilje. Ne glede na to, ali želite izboljšati odnose v družini, na delovnem mestu, dvigniti svojo samopodobo, povečati samozavest, ali odkriti svoje potenciale, sem tukaj, da vas podpiram in usmerjam na tej poti.",
+    "back1Title": "Vaša priložnost za rast",
+    "back1Content": "Več kot 50 zadovoljnim strankam sem pomagala prepoznati in razrešiti omejujoče vzorce ter graditi trdne temelje za pozitivne spremembe. S poudarkom na izboljšanju medosebnih odnosov vam nudim strokovno podporo, ki vam bo pomagala izboljšati komunikacijo in doseči trajne rezultate.",
+    "card2Title": "Družinska mediacija in mediacija v gospodarskih in potrošniških sporih",
+    "card2Content": "Ste v konfliktu, vendar ne želite zapletenih in dragih sodnih postopkov? MEDIACIJA je prava rešitev! ",
+    "back2Title": "Kaj je mediacija?",
+    "back2Content": "Mediacija je proces reševanja konfliktov, v katerem nevtralna tretja oseba, mediator, pomaga vpletencem doseči sporazum. Mediator uporablja različne tehnike komunikacije in vodenja pogovora, da spodbudi sodelovanje, razumevanje in iskanje skupnih rešitev med strankami v konfliktu.",
+    "card3Title": "Predavanja in delavnice",
+    "card3Content": "Programi so zasnovani z namenom, da pomagajo razumeti, zakaj delujemo tako, kot delujemo, ter graditi kakovostne medosebne odnose in učinkovito reševati konflikte. Cilj je povečati zadovoljstvo udeležencev in izboljšati delovno okolje, s čimer podprem vašo ekipo in podjetje.",
+    "back3Title": "Dinamična predavanja in delavnice",
+    "back3Content": "Kot NLP coach in mediator nudim dinamična predavanja in praktične delavnice, ki opolnomočijo posameznike in ekipe. Osredotočam se na izboljšanje komunikacijskih veščin, osebno rast in reševanje konfliktov. Program prilagodim vašim potrebam in ga izvedem v vašem okolju, podjetju ali organizaciji.",
+    "readMore": "Preberi več"
+  },
+  "OfferCard": {
+    "card1Title": "Osebni in poslovni NLP coaching",
+    "card1Content": "Kot NLP coach vam pomagam izboljšati odnose, dvigniti samozavest in odkriti potenciale – tako osebno kot poslovno.",
+    "card2Title": "Mediacija",
+    "card2Content": "Ste v konfliktu, vendar ne želite zapletenih in dragih sodnih postopkov? MEDIACIJA je prava rešitev!",
+    "card3Title": "Predavanja in delavnice",
+    "card3Content": "Predavanja in delavnice se osredotočajo na medosebne odnose in učinkovito reševanje konfliktov, primerne tako za posameznike kot za organizacije in podjetja."
+  },
+  "UpcomingEvents": {
+    "sectionTitle": "Prihajajoči dogodki"
+  },
+  "Testimonials": {
+    "sectionTitle": "Mnenja in odzivi",
+    "testimonial1": "“Z ga. Zumro Ćoralić smo se prvič srečali v mesecu marcu 2023, ko smo iskali ustreznega predavatelja za izpeljavo delavnic o izzivih medsebojnih odnosov in uspešnega reševanja konfliktov. Strast do dela, predanost poklicu, izžarevanje pozitivne energije in strokovnost so nas prepričale, da je ga. Zumra prava predavateljica za skupino vedoželjnih posameznikov. Komunikacijske veščine za obvladovanje pozitivnih odnosov in konstruktivnega reševanja konfliktnih situacij je področje, ki ga mora negovati vsaka organizacija. Zato je pomembno, kako jih znamo obvladovati. Ga. Zumra Ćoralić je udeležencem pokazala, da se z voljo, srčnostjo in pozitivnim odnosom lahko odprejo vrata na pravo pot in odpravi marsikatera, še tako nerešljiva, ovira. Hvala Zumra!”",
+    "person1Title": "Tina Menard, direktorica kadrovske službe podjetja ETA Cerkno",
+    "testimonial2": "“Ona je resnično en tak noro dober primer, kjer je pokazala in dokazala sebi in drugim, da se resnično da, če se hoče. In tako preprosta in srčno simpatična oseba je. Kje bo čez 10 let? Prepričana sem, da natanko tam, kot si bo zamislila, da bo, saj natančno ve kam gre. In, ko bo prišel zadnji dan, bo presrečna, ker ga bo preživela v veri, da je živela bogato in izpolnjeno življenje. Tudi zato, ker si je upala stopiti iz cone udobja, delati na sebi, se izobraževala in to znanje spravila iz teorije v prakso.”",
+    "person2Title": "Podjetnica",
+    "testimonial3": "“Spet ti pisem zato, da ti rečem hvala. Razmišljam, kako dobro in res kul me pripravljaš na realno življenje. Poiskala sem te zato, ker sem prišla do točke, ko sem si mislila, da bom sama vse zmogla in sem bila še tako močna, da sem se obrnila nate, ker mi tvoja energija ustreza. Da pa imaš toliko znanja, si nisem mislila. Res ga imaš. Zadnjic sem se pogovarjala s starejšo, izkušenejšo od mene, a se že več kot 2 leti spravlja k sebi pa brez familije, jaz pa sem v pol leta s tvojo pomočjo toliko nardila, da smo zdaj že cela moja družina srečna, ne samo jaz. Res hvala ti, da si na moji poti. Pomagala si meni, posledično moji družini in seveda, še vedno nam pomagaš, saj si te enostavno vsi želimo na naši življenjski poti.”",
+    "person3Title": "",
+    "testimonial4": "“V sredo, 17. oktobra 2018, nas je obiskala Zumra Ćoralić, ki nam je dokazala, da nikoli ni prepozno zaživeti svoje sanje ter da leta niso omejitev za doseganje ciljev. Kjer je volja, je tudi pot. Marsikateremu od udeležencev je bila motivacija in inspiracija, da je spet začel verjeti, da lahko spremeni svoje življenje.  Z vajo, ki smo jo naredili, smo spoznali, da to, kar se nam dogaja danes, izvira že iz našega otroštva ter da je naše zakoreninjene vzorce in navade s tem, ko jih ozavestimo, mogoče tudi spremenit. Kajti spremenimo lahko le sami sebe. S tem, ko spremenimo sebe, spreminjamo tudi druge in svet okoli nas. Marsikateremu udeležencu je veliko pomenil tudi njen objem, s katerim človeku pokažeš, da ga sprejemaš in imaš rad takšnega kot je. Najlepša hvala za obisk.”",
+    "person4Title": "ICRA d.o.o.",
+    "testimonial5": "“Pred tremi meseci sem se obrnila na  tebe, ker nisem videla izhoda iz svoje panike, strahu in neznosnega življenja. Tablete so mi bile v pomoč, požirala sem jih brez omejitve. Bila sem na dnu in tunela vse globlje in globlje.  Danes jemljem eno tableto, vendar le zvečer. V treh mesecih si mi pokazala svetlobo, občutke, solze in veselim se jih, ker jih prej tudi nisem imela. Hodiš z mano, sem kot majhen otrok, ki je šele začel hoditi in, ki pade ter spet vstane Še ko to pišem, pišem v solzah. Ne vem, kje bi bila zdaj, če ne bi bila z menoj. In si še vedno. In vsaka beseda je majhna za reči HVALA tebi in bogu, da se danes počutim veliko bolje in z nasmehom hodim in čutim, kakšno je življenje. Lahko bi napisala veliko  besedila v znak zahvale, pa bi bilo tudi malo.”",
+    "person5Title": "",
+    "testimonial6": "“Spoštovana Zumra, še enkrat hvala za današnji pro bono coaching v okviru mednarodnega dneva coachinga. Že dlje časa sem pri sebi opažala določen avtomatski nezaželen vzorec delovanja in nekako sama nisem mogla odkriti vzroka, vzvoda, da bi ozavestila, kaj me žene k temu neučinkovitemu avtomatizmu. Pred in na začetku coachinga sem gospe Zumri opisala konkretne primere. Skozi vprašanja me je coachinja vodila k samorefleksiji in spominjanju občutenj v zgodnjem otroštvu. S poglabljanjem mojega doživljanja staršev in ostalih družinskih članov sva izluščili vzrok, ki se pokazal tako, da so se mi ulile solze in da je prišlo do uvida. Zelo sem hvaležna Zumri, da si je vzela čas in me tako ljubeče in z zaupanjem vodila in se veselila z menoj, ko se je zgodil premik. Poleg tega me je še vzpodbujala in navdihovala, kako izvesti učinkovit poslovni razgovor, ki ga imam v bližnji prihodnosti. Iskreno priporočam gospo Zumro Ćoralić, ki ima obilo znanja in te hkrati s svojo srčnostjo in empatijo pripelje do želene spremembe na bolje. Hvala.”",
+    "person6Title": ""
+  },
+  "LatestEvents": {
+    "sectionTitle": "Zadnji dogodki",
+    "button": "Poglej vse"
+  },
+  "ActionSection": {
+    "quote": "POT DO HARMONIJE V ODNOSIH - STOPITE V STIK"
+  },
+  "LatestBlogs": {
+    "section": "- Članki",
+    "sectionTitle": "Zadnji blogi",
+    "sectionTitle2": "Ta blog je prostor, kjer delim svoje izkušnje, razmišljanja ter strokovno znanje.",
+    "button": "- Preberi ostale"
+  },
+  "Index": {
+    "readMore": "Preberi več",
+    "allServices": "Vse storitve",
+    "coaching": "Coaching",
+    "mediation": "Mediacija",
+    "workshop": "Za podjetja in organizacije",
+    "price": "Cena"
+  },
+  "Events": {
+    "events": "Dogodki"
+  },
+  "AboutMePage": {
+    "section": "O meni",
+    "sectionTitle1": "Kdo sem",
+    "sectionContent1": "Svojo samostojno prakso vodim od leta 2015, kjer pomagam posameznikom in družinam prepoznati ter preoblikovati svoje vzorce in vzpostaviti boljše odnose. Prav tako sem začela s predavanji po vsej Sloveniji. Leta 2023 sem stopila v stik z različnimi podjetji, kot na primer ETA Cerkno in Kolektor in postala zunanja sodelovka Ljudske univerze v Novi Gorici. Pri svojem delu poudarjam pomen samospoznavanja in razumevanja lastnega delovanja, saj verjamem, da je to ključno za razumevanje drugih ter za vzpostavljanje dobrih in spoštljivih medosebnih odnosov.",
+    "sectionContent2": "Vodi me moto, da ni pomembno od kod prihajaš, ali kje se trenutno nahajaš, temveč kam greš, kam si namenjen. Nikoli ni prepozno za spremembo, za vzpostavitev novih, bolj trdnih temeljev odnosov, bodisi družinskih ali poslovnih. Moje življenjsko poslanstvo, ki sem ga odkrila pred leti, je pomagati drugim odkriti njihov namen, njihov smisel na tem čudovitem planetu – Zemlji. Da živijo življenje, ki je napolnjeno z radostjo in se znali soočati z izzivi na njihovi poti. Verjamem, da kjer je volja, je tudi pot!",
+    "quote1": "“Ni pomebno od kod prihajaš in kje se trenutno nahajaš, temveč, kam greš.”",
+    "sectionTitle2": "Družina, odnosi, rast",
+    "sectionContent3": "Družina je moje sidro. Kot mati, žena, tašča in babica črpam navdih iz naših odnosov. Verjamem, da je ključno, da smo povezani, ne pa navezani.",
+    "sectionContent4": "V prostem času uživam v naravi, branju in nenehnem učenju. Prepričana sem, da se nikoli ne nehamo razvijati, zato se redno izobražujem.",
+    "sectionContent5": "Moja pot ni bila lahka, a sem vztrajala, ker sem verjela, da imam namen, ki presega moje vzorce in prepričanja, ter prepričanja okolice. Rojena sem 1967 v Bosni in Hercegovini v veliki družini z 10. otrok. Od leta 1987 živim in ustvarjam v Sloveniji.",
+    "sectionContent6": "Moja naloga je pomagati drugim ozavestiti njihove vzorce in najti tisto iskrico v njih, ki jim bo pokazala pot do bolj izpolnjenega življenja.",
+    "quote2": "“Vsi imajo določeno poklicanost ali poslanstvo v življenju. Vsak mora opraviti določeno nalogo, ki zahteva izpolnitev.”  – Viktor Frankl",
+    "sectionTitle3": "Moje prepričanje: Vsak posameznik lahko najde moč za spremembo",
+    "sectionContent7": "Moje znanje temelji na lastnih izkušnjah, študiju več sto knjig, med katerimi bi izpostavila slednje avtorje: Gabor Matte, Bessel A. van der Kolk, Ken Wilber, Joe Dispenza, Martin Kojc, Herman Hesse, Wayne Dyer, Joseph Murphy, Neville Goddard in Richard C. Schwartz. Poleg tega se tudi izobražujem in udeležujem različnih delavnic ter seminarjev vrhunskih predavateljev, kot so: Tony Robbins, T. Ecker MMI, Lisa Nichols, Marisa Pear, Aleksander Šinigoj, Ana Bučević, Tanja Pia Metelko in drugi.",
+    "sectionContent8": "Moj cilj je pomoč drugim pri ozaveščanju in odkrivanju njihovega smisla življenja. Kaj jih motivira, kaj je tisto, kar jih navdihuje? Verjamem, da ima vsak posameznik svoj namen in da lahko najde moč za spremembo. Moje prepričanje temelji na lastnih izkušnjah, študiju več sto knjig, letih izobraževanja in udeležbi na različnih delavnicah ter seminarjih vrhunskih predavateljev, kot so: Tony Robbins, T. Ecker MMI, Lisa Nichols, Marisa Pear, Aleksander Šinigoj, Ana Bučević, Tanja Pia Metelko in drugi, ter izobraževanja preko YouTub-a, interneta, E- seminarji; Brus Liptnon, Joe Dispenza, Gregg Braden, Ester in Jery Hicks, Eckhart Tolle, Neville Goddard, Simen Sinek in drugi.",
+    "sectionContent9": "Z vztrajnostjo in voljo sem pridobila  mednarodno priznane nazive, med katerimi so NLP Coach za medosebne odnose, trener mediatorjev, družinska mediatorka, mediatorka v gospodarskih in potrošniških sporih, NLP mojster praktik in osebna fitnes trenerka.",
+    "sectionContent10": "Nespodbitno dejstvo je, da nas skozi življenje vodijo naši podzavestni vzorci, ki smo jih pridobili v našem zgodnjem razvoju in skozi življenje. Vseskozi ozaveščam svoje vzorce, prepričanja in navade. Vprašanja s katerimi sem začela svojo preobrazbo so bila:” Zakaj delujem tako, kot delujem? Zakaj sem takšna, kot sem?” in podobna. Zato sem se udeležila tudi programa RAR- Vpliv ranega razvoja na naše življenje, ki ga vodi IPD center Tomislava Kuljiša, ki je znan po njegovi izjavi: “Ni pomembno ali je mama dobra mama, pomembno je, da je mama dobro!”",
+    "sectionContent11": "Predstavljajte si, da se podajate v temno klet, polno nepotrebnih stvari in nereda. Nato si predstavljajte, da imate lučko, ki razsvetli prostor in vam omogoči, da pregledate, raziskujete ter pospravljate balast, ki vas omejuje. Ravno tako poteka proces osebne transformacije. Če se želite osvoboditi, vas vabim, da se dogovorimo za 30 minutni BREZPLAČNI pogovor, kjer boste lahko bolje spoznali, kako vam lahko pomagam na poti k osebni svobodi."
+  },
+  "NLPCoachingPage": {
+    "section": "NLP Coaching",
+    "quote1": "\"Najuspešnejši ljudje, športniki, podjetniki in menedžerji imajo svojega coacha. Zakaj ga ne bi imeli tudi vi?\"",
+    "sectionContent1": "NLP (Nevrolingvistično programiranje) Coaching je učinkovito orodje, ki vam pomaga odkleniti vaš potencial in doseči cilje, ki ste si jih vedno želeli. Skozi proces NLP Coachinga se naučite prepoznati in premagati omejujoča prepričanja, izboljšati komunikacijske veščine ter okrepiti svojo samozavest. To vam omogoča, da se osredotočite na to, kar je resnično pomembno, in sprejmete boljše odločitve v osebnem in poslovnem življenju.",
+    "sectionTitle1": "Kako vam lahko NLP Coach pomaga na osebnem in poslovnem področju?",
+    "sectionContentP1": "Na osebnem področju vam NLP Coaching pomaga:",
+    "sectionContentL1": "Prepoznati in preseči notranje blokade: Premagajte strahove in dvome, ki vas omejujejo.",
+    "sectionContentL2": "Izboljšati odnose: Razvijte boljše komunikacijske veščine in zgradite trdnejše, bolj harmonične odnose.",
+    "sectionContentL3": "Okrepiti samozavest: Pridobite več zaupanja vase in v svoje sposobnosti.",
+    "sectionContentL4": "Uresničiti osebne cilje: Dosezite cilje, ki ste jih dolgo odlagali, in zaživite polnejše življenje.",
+    "sectionContentP2": "Na poslovnem področju vam NLP Coaching prinaša:",
+    "sectionContentL5": "Povečanje učinkovitosti: Naučite se bolje organizirati svoj čas in prioritete, da dosežete vrhunske rezultate.",
+    "sectionContentL6": "Vodenje z vplivom: Razvijte vodstvene veščine, ki navdihujejo in motivirajo vašo ekipo.",
+    "sectionContentL7": "Reševanje konfliktov: Pridobite orodja za učinkovito reševanje sporov in izboljšanje delovne klime.",
+    "sectionContentL8": "Doseganje poslovnih ciljev: Pospešite svoj karierni napredek in uspešno premagajte poslovne izzive.",
+    "sectionContent2": "NLP Coaching ni le pot do spremembe – je pot do trajnega uspeha. Zakaj bi čakali, če lahko že danes naredite prvi korak k boljšemu življenju?",
+    "currency": "45€",
+    "price": "Cena",
+    "perHour": "na uro",
+    "sectionContent6": "Rezervirajte svojo uro zdaj in naredite prvi korak k pozitivnim spremembam v svojem življenju.",
+    "button": "Kontaktirajte me"
+  },
+  "Mediation": {
+    "section": "Mediacija",
+    "quote1": "\"Rešite konflikte na miren in konstruktiven način z mediacijo.\"",
+    "sectionTitle1": "Kaj je mediacija in kako nam lahko pomaga?",
+    "sectionContent1": "Mediacija je proces reševanja sporov, ki omogoča strankam, da na miren in konstruktiven način dosežejo dogovor, ki je sprejemljiv za vse vpletene. Namesto dolgotrajnih in pogosto stresnih sodnih postopkov, mediacija ponuja priložnost za pogovor v varnem okolju, kjer vsaka stran lahko izrazi svoje potrebe in interese.",
+    "sectionTitle2": "Kako poteka mediacija? ",
+    "sectionContent2": "V mediaciji sodeluje nevtralna tretja oseba, mediator, ki vodi postopek in pomaga strankam pri komunikaciji ter iskanju rešitev. Mediator ne sprejema odločitev namesto vas, temveč vam pomaga najti skupno rešitev, ki bo ustrezala vsem vpletenim. Proces je prostovoljen, zaupen in prilagodljiv vašim potrebam.",
+    "sectionContentP1": "Prednosti mediacije:",
+    "sectionContentL1": "Hitrost in stroškovna učinkovitost: Mediacija je običajno hitrejša in cenejša od sodnih postopkov, kar vam prihrani čas in denar.",
+    "sectionContentL2": "Ohranitev odnosov: Mediacija spodbuja sodelovanje in iskanje rešitev, ki ohranjajo ali celo izboljšajo odnose med strankami.",
+    "sectionContentL3": "Zaupnost: Vse, kar se dogaja med mediacijo, ostane zaupno, kar omogoča odprto in iskreno komunikacijo.",
+    "sectionContentL4": "Nadzor nad izidom: V mediaciji imate vi nadzor nad rešitvijo, saj se dogovorite za tisto, kar najbolj ustreza vašim potrebam, namesto da bi odločitev sprejela tretja oseba.",
+    "sectionTitle3": "Kako vam lahko mediacija pomaga? ",
+    "sectionContent3": "Mediacija vam lahko pomaga pri reševanju konfliktov na različnih področjih, kot so družinski spori, poslovni nesporazumi, delovni konflikti, soseske težave in mnogi drugi. S pomočjo mediacije lahko dosežete dogovor, ki bo trajen, pravičen in vzdržen, kar vam omogoča, da se premaknete naprej in ponovno vzpostavite mir in harmonijo v svojem življenju.",
+    "sectionContent4": "Ne dovolite, da konflikti vplivajo na vaše življenje. S pomočjo mediacije lahko hitro in učinkovito rešite spore in se osredotočite na prihodnost. Zaupajte mediaciji in naredite prvi korak k boljšim rešitvam že danes!",
+    "currency1": "50€",
+    "currency2": "150€",
+    "price": "Cena",
+    "perHour": "na uro",
+    "writtenDeal": " spisan mediacijski dogovor",
+    "sectionContent6": "Rezervirajte svojo uro zdaj in začnite svojo pot do miru in harmoničnih odnosov.",
+    "button": "Kontaktirajte me"
+  },
+  "Workshop": {
+    "section": "Delavnice in predavanja",
+    "sectionTitle1": "Spoštovani podjetniki in organizatorji izobraževanj,",
+    "sectionContent1": "Zahvaljujem se vam za obisk moje spletne strani. Vaša prisotnost kaže na to, da se zavedate pomembnosti medosebnih odnosov in dobrega počutja vaših zaposlenih, kar je ključno za uspeh vsakega podjetja. V današnjem času, ko stres in izgorelost vse pogosteje vplivata na delovno učinkovitost, je zagotavljanje podpore zaposlenim pri soočanju z izzivi, tako poslovnimi kot osebnimi, neprecenljivo.",
+    "sectionContent2": "Od spomladi leta 2023 redno sodelujem s podjetjem  ETA Cerkno, kjer izvajam delavnice za vodje in osebne coachinge. Njihovo zadovoljstvo in interes za nadaljevanje sta dokaz, kako pomembno je opremiti zaposlene z znanjem in veščinami za učinkovito soočanje z izzivi.",
+    "sectionTitle2": "Kaj vam lahko ponudim?",
+    "sectionContentP1": "Poleg programa, ki je že oblikovan in si ga lahko podrobneje preberete, lahko vsebino prilagodim vašim specifičnim potrebam. Program predavanja in delavnic je osredotočen na:",
+    "sectionContentL1": "Gradnjo kakovostnih medosebnih odnosov: Kako vzpostaviti in ohraniti močne, spoštljive odnose med zaposlenimi.",
+    "sectionContentL2": "Reševanje konfliktov: Ponudite orodja za konstruktivno reševanje konfliktov, kar povečuje harmonijo v delovnem okolju.",
+    "sectionContentL3": "Povečanje zadovoljstva zaposlenih: Srečni zaposleni so ključ do boljše produktivnosti in nižje fluktuacije kadra.",
+    "sectionContent4": "Če vas zanima, kako lahko skupaj izboljšamo delovno okolje in podprem vaše zaposlene pri soočanju z izzivi, bom vesela priložnosti za osebno srečanje.",
+    "sectionTitle3": "Kaj pravijo o meni?",
+    "sectionContentP2": "Tina Menard, direktorica kadrovske službe podjetja ETA Cerkno",
+    "sectionContent5": "\"Gospo Zumro Ćoralić smo prvič srečali marca 2023, ko smo iskali ustreznega predavatelja za delavnice o izzivih medsebojnih odnosov in uspešnega reševanja konfliktov. Njena strast do dela, predanost poklicu, pozitivna energija in strokovnost so nas prepričali, da je prava predavateljica za skupino vedoželjnih posameznikov. Komunikacijske veščine za obvladovanje pozitivnih odnosov in konstruktivno reševanje konfliktnih situacij so ključne za vsako organizacijo, in gospa Zumra Ćoralić je udeležencem pokazala, da se z voljo, srčnostjo in pozitivnim odnosom lahko odprejo vrata na pravo pot in odpravi marsikatera, še tako nerešljiva, ovira. Hvala, Zumra!\"",
+    "sectionTitle4": "Skupaj lahko naredimo spremembo",
+    "sectionContent6": "Če sem v vas vzbudila radovednost in željo po več informacijah o izboljšanju medosebnih odnosov, coachingu ali možnostih mediacije v vašem podjetju, se veselim srečanja z vami. Skupaj bomo ustvarili program, ki bo prilagojen vašim željam in potrebam.",
+    "sectionContent7": "Toplo vabljeni k sodelovanju!",
+    "sectionContent8": "S spoštovanjem,",
+    "sectionContent9": "Strokovnjakinja za medosebne odnose in reševanje konfliktov",
+    "quote1": "“Če zaposlite ljudi, da bodo opravili le delo, bodo delali le za denar. Če zaposlite ljudi, ki verjamejo v to, kar verjamete vi, vam bodo pomagali s krvjo, znojem in solzami.” – Simon Sinek",
+    "sectionContent10": "Če sem v vas vzbudila vsaj kanček radovednosti in želje po več informacijah o medsebojnih odnosih, coachingu ali o možnosti imeti mediatorja v svojem podjetju, se veselim možnosti srečanja v živo. Tam se vam bom osebno predstavila in skupaj bomo oblikovali program, prilagojen vašim specifičnim željam in potrebam."
+  },
+  "Contact": {
+    "section": "Stopite v stik",
+    "message": "Sporočilo",
+    "errorMessage": "Prosim izpolnite vsa obvezna polja.",
+    "successMessage": "Poslano!"
+  }
+}
