@@ -9,7 +9,6 @@ import Credit from '@/components/Credit';
 import { readFileSync } from 'fs';
 import path from 'path';
 
-export const dynamic = "force-dynamic";
 
 const inter = Playfair_Display({ subsets: ['latin'] });
 
