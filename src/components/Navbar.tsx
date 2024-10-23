@@ -38,7 +38,6 @@ const Navbar = ({
 
   const locale = useLocale();
 
-  const t = useTranslations('Navigation');
 
   const homePageLink = `/${locale}`;
   const blogPostsLink = `/${locale}/blog`;

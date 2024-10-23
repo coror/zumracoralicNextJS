@@ -57,7 +57,7 @@ export default function RootLayout({
           contact={t('contact')}
         />
         <div>{children}</div>
-        <Footer connect={t('connect')} />
+        <Footer connect={f('connect')} />
         <Credit />
       </body>
     </html>
