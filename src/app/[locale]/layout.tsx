@@ -43,7 +43,18 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <body className={inter.className}>
-        <Navbar home={t('home')} />
+        <Navbar
+          home={t('home')}
+          blogPosts={t('blogPosts')}
+          events={t('events')}
+          about={t('about')}
+          services={t('services')}
+          allServices={t('allServices')}
+          NLPCoaching={t('NLPCoaching')}
+          mediation={t('mediation')}
+          workshop= {t('workshop')}
+          contact={t('contact')}
+        />
         <div>{children}</div>
         <Footer locale={locale} />
         <Credit />

@@ -6,7 +6,29 @@ import LocalSwitcher from './local-switcher';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import { useLocale, useTranslations } from 'next-intl';
 
-const Navbar = ({ home }: { home: string }) => {
+const Navbar = ({
+  home,
+  blogPosts,
+  events,
+  about,
+  services,
+  allServices,
+  NLPCoaching,
+  mediation,
+  workshop,
+  contact,
+}: {
+  home: string;
+  blogPosts: string;
+  events: string;
+  about: string;
+  services: string;
+  allServices: string;
+  NLPCoaching: string;
+  mediation: string;
+  workshop: string;
+  contact: string;
+}) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesExpanded, setIsServicesExpanded] = useState(false);
 
@@ -179,7 +201,7 @@ const Navbar = ({ home }: { home: string }) => {
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {t('blogPosts')}
+                  {blogPosts}
                 </Link>
                 <Link
                   href={`/${locale}/events`}
@@ -189,7 +211,7 @@ const Navbar = ({ home }: { home: string }) => {
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {t('events')}
+                  {events}
                 </Link>
                 <Link
                   href={`${aboutMeLink}`}
@@ -199,7 +221,7 @@ const Navbar = ({ home }: { home: string }) => {
                       : ''
                   } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {t('about')}
+                  {about}
                 </Link>
 
                 {/* Services */}
@@ -212,7 +234,7 @@ const Navbar = ({ home }: { home: string }) => {
                         : ''
                     } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
                   >
-                    {t('services')}
+                    {services}
                   </Link>
                   <div
                     className={`absolute left-0 top-full w-56 shadow-2xl text-black invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out ${
@@ -235,7 +257,7 @@ const Navbar = ({ home }: { home: string }) => {
                           : 'border-[#00000036]'
                       }`}
                     >
-                      {t('allServices')}
+                      {allServices}
                     </Link>
                     <Link
                       href={`${servicesLink1}/coaching`}
@@ -251,7 +273,7 @@ const Navbar = ({ home }: { home: string }) => {
                           : ''
                       }`}
                     >
-                      {t('NLPCoaching')}
+                      {NLPCoaching}
                     </Link>
                     <Link
                       href={`/${locale}/services/mediation`}
@@ -267,7 +289,7 @@ const Navbar = ({ home }: { home: string }) => {
                           : ''
                       }`}
                     >
-                      {t('mediation')}
+                      {mediation}
                     </Link>
                     <Link
                       href={`/${locale}/services/workshop`}
@@ -283,7 +305,7 @@ const Navbar = ({ home }: { home: string }) => {
                           : ''
                       }`}
                     >
-                      {t('workshop')}
+                      {workshop}
                     </Link>
                   </div>
                 </div>
@@ -294,7 +316,7 @@ const Navbar = ({ home }: { home: string }) => {
                     pathname === `/${locale}/contact` ? 'bg-[#d2ab74]' : ''
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {t('contact')}
+                  {contact}
                 </Link>
               </div>
             </div>
@@ -321,7 +343,7 @@ const Navbar = ({ home }: { home: string }) => {
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {t('home')}
+              {home}
             </Link>
             <Link
               href={blogPostsLink}
@@ -330,7 +352,7 @@ const Navbar = ({ home }: { home: string }) => {
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {t('blogPosts')}
+              {blogPosts}
             </Link>
             <Link
               href={eventsLink1}
@@ -341,7 +363,7 @@ const Navbar = ({ home }: { home: string }) => {
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {t('events')}
+              {events}
             </Link>
             <Link
               href={`${aboutMeLink}`}
@@ -350,7 +372,7 @@ const Navbar = ({ home }: { home: string }) => {
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {t('about')}
+              {about}
             </Link>
             <button
               className={`${
@@ -361,7 +383,7 @@ const Navbar = ({ home }: { home: string }) => {
               } text-white lg:hover:bg-[#d2ab74] rounded-md px-3 py-2 uppercase text-left`}
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
             >
-              {t('services')}
+              {services}
             </button>
             {isServicesExpanded && (
               <div className='space-y-1 pl-4 flex flex-col justify-start items-start'>
@@ -374,7 +396,7 @@ const Navbar = ({ home }: { home: string }) => {
                   }  hover:bg-[#d2ab74]  px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {t('allServices')}
+                  {allServices}
                 </Link>
                 <Link
                   href={`${servicesLink1}/coaching`}
@@ -386,7 +408,7 @@ const Navbar = ({ home }: { home: string }) => {
                   }  hover:bg-[#d2ab74]  px-3 py-2  `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {t('NLPCoaching')}
+                  {NLPCoaching}
                 </Link>
                 <Link
                   href={`/${locale}/services/mediation`}
@@ -398,7 +420,7 @@ const Navbar = ({ home }: { home: string }) => {
                   }  hover:bg-[#d2ab74]  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {t('mediation')}
+                  {mediation}
                 </Link>
                 <Link
                   href={`/${locale}/services/workshop`}
@@ -410,7 +432,7 @@ const Navbar = ({ home }: { home: string }) => {
                   }  hover:bg-[#d2ab74]  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {t('workshop')}
+                  {workshop}
                 </Link>
               </div>
             )}
@@ -421,7 +443,7 @@ const Navbar = ({ home }: { home: string }) => {
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {t('contact')}
+              {contact}
             </Link>
           </div>
         </div>
