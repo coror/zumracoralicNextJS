@@ -1,5 +1,7 @@
 import { getEventBySlug } from '../../../../datalyer/contentful/event';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/events/:slug
 export const GET = async (request, { params }) => {
   try {

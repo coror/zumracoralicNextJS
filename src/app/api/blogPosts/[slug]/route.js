@@ -1,5 +1,7 @@
 import { getBlogPostBySlug } from '../../../../datalyer/contentful/blogPost';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/blogPosts/:slug
 export const GET = async (request, { params }) => {
   try {

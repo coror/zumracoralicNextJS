@@ -1,5 +1,7 @@
 import { getServiceBySlug } from '../../../../datalyer/contentful/service';
 
+export const dynamic = 'force-dynamic';
+
 // GET /api/services/:slug
 export const GET = async (request, { params }) => {
   try {

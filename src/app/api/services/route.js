@@ -1,5 +1,7 @@
 import { getServices } from '../../../datalyer/contentful/service';
 // GET /api/services
+export const dynamic = 'force-dynamic';
+
 export const GET = async (request) => {
   try {
     const { searchParams } = new URL(request.url);
