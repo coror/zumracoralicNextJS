@@ -28,11 +28,13 @@ export default function LocalSwitcher() {
     const expires = date.toUTCString();
     document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
+    setSelectedLocale(newLocale);
+
     startTransition(() => {
       router.replace(`/${newLocale}`);
     });
 
-    setSelectedLocale(newLocale);
+    
   };
 
   return (

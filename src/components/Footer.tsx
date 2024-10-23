@@ -2,13 +2,13 @@ import React from 'react';
 import { FaInstagram, FaFacebookF } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
-export default function Footer({ connect }: { connect: string }) {
+export default function Footer({ locale }: { locale: string }) {
+  const t = useTranslations('Footer');
   return (
     <div className='relative w-full  text-white'>
-      <div
-        className="eksperiment2 py-10"
-      >
+      <div className='eksperiment2 py-10'>
         <div className='relative flex flex-col items-center justify-center h-full text-center  md:px-40 '>
           <Image
             src='https://res.cloudinary.com/dbssbnuph/image/upload/v1721558472/zumracoralic/mama-logo-4_smdzke.png'
@@ -19,7 +19,7 @@ export default function Footer({ connect }: { connect: string }) {
             className='cover xl:w-44 xl:h-44 xl:mt-18'
           />
           <div className='text-white m-10 text-2xl md:text-[56px] tracking-wide leading-tight my-10'>
-            {connect}
+            {t('connect')}
           </div>
           <div className='flex flex-row items-center space-x-4 text-white'>
             <a

@@ -3,39 +3,18 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import LocalSwitcher from './local-switcher';
-import { useLocale } from 'next-intl';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { useTranslations } from 'next-intl';
 
-const Navbar = ({
-  home,
-  blogPosts,
-  events,
-  services,
-  about,
-  contact,
-  allServices,
-  NLPCoaching,
-  mediation,
-  workshop,
-}: {
-  home: string;
-  blogPosts: string;
-  events: string;
-  services: string;
-  about: string;
-  contact: string;
-  allServices: string;
-  NLPCoaching: string;
-  mediation: string;
-  workshop: string;
-}) => {
+const Navbar = ({ locale }: { locale: string }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesExpanded, setIsServicesExpanded] = useState(false);
 
-  const locale = useLocale();
   const pathname = usePathname();
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const t = useTranslations('Navigation');
 
   const homePageLink = `/${locale}`;
   const blogPostsLink = `/${locale}/blog`;
@@ -44,7 +23,7 @@ const Navbar = ({
   const aboutMeLink = `/${locale}/o-meni`;
   const servicesLink1 = `/${locale}/storitve`;
   const servicesLink2 = `/${locale}/usluge`;
-  const contactLink = `/${locale}/kontakt`
+  const contactLink = `/${locale}/kontakt`;
 
   const handleClickOutside = (event: MouseEvent) => {
     // Ensure clicks outside the menu close the menu
@@ -76,13 +55,11 @@ const Navbar = ({
           ? 'bg-black fixed text-white'
           : 'bg-transparent absolute'
       } ${
-        pathname === homePageLink ||
-        pathname.startsWith(blogPostsLink) 
+        pathname === homePageLink || pathname.startsWith(blogPostsLink)
           ? 'text-white border-[#ffffff40] border-b-[1px] '
           : pathname.startsWith(servicesLink1) ||
             pathname.startsWith(servicesLink2)
-           
-          ? 'text-black border-0' 
+          ? 'text-black border-0'
           : 'text-black border-[#0000002a] border-b-[1px] '
       }
       z-50 w-full h-20 lg:h-32`}
@@ -190,7 +167,7 @@ const Navbar = ({
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {home}
+                  {t('home')}
                 </Link>
                 <Link
                   href={blogPostsLink}
@@ -200,7 +177,7 @@ const Navbar = ({
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {blogPosts}
+                  {t('blogPosts')}
                 </Link>
                 <Link
                   href={`/${locale}/events`}
@@ -210,7 +187,7 @@ const Navbar = ({
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {events}
+                  {t('events')}
                 </Link>
                 <Link
                   href={`${aboutMeLink}`}
@@ -220,7 +197,7 @@ const Navbar = ({
                       : ''
                   } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {about}
+                  {t('about')}
                 </Link>
 
                 {/* Services */}
@@ -233,7 +210,7 @@ const Navbar = ({
                         : ''
                     } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
                   >
-                    {services}
+                    {t('services')}
                   </Link>
                   <div
                     className={`absolute left-0 top-full w-56 shadow-2xl text-black invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out ${
@@ -256,7 +233,7 @@ const Navbar = ({
                           : 'border-[#00000036]'
                       }`}
                     >
-                      {allServices}
+                      {t('allServices')}
                     </Link>
                     <Link
                       href={`${servicesLink1}/coaching`}
@@ -272,7 +249,7 @@ const Navbar = ({
                           : ''
                       }`}
                     >
-                      {NLPCoaching}
+                      {t('NLPCoaching')}
                     </Link>
                     <Link
                       href={`/${locale}/services/mediation`}
@@ -288,7 +265,7 @@ const Navbar = ({
                           : ''
                       }`}
                     >
-                      {mediation}
+                      {t('mediation')}
                     </Link>
                     <Link
                       href={`/${locale}/services/workshop`}
@@ -304,7 +281,7 @@ const Navbar = ({
                           : ''
                       }`}
                     >
-                      {workshop}
+                      {t('workshop')}
                     </Link>
                   </div>
                 </div>
@@ -315,7 +292,7 @@ const Navbar = ({
                     pathname === `/${locale}/contact` ? 'bg-[#d2ab74]' : ''
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
-                  {contact}
+                  {t('contact')}
                 </Link>
               </div>
             </div>
@@ -342,7 +319,7 @@ const Navbar = ({
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {home}
+              {t('home')}
             </Link>
             <Link
               href={blogPostsLink}
@@ -351,7 +328,7 @@ const Navbar = ({
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {blogPosts}
+              {t('blogPosts')}
             </Link>
             <Link
               href={eventsLink1}
@@ -362,7 +339,7 @@ const Navbar = ({
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {events}
+              {t('events')}
             </Link>
             <Link
               href={`${aboutMeLink}`}
@@ -371,7 +348,7 @@ const Navbar = ({
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {about}
+              {t('about')}
             </Link>
             <button
               className={`${
@@ -382,7 +359,7 @@ const Navbar = ({
               } text-white lg:hover:bg-[#d2ab74] rounded-md px-3 py-2 uppercase text-left`}
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
             >
-              {services}
+              {t('services')}
             </button>
             {isServicesExpanded && (
               <div className='space-y-1 pl-4 flex flex-col justify-start items-start'>
@@ -395,7 +372,7 @@ const Navbar = ({
                   }  hover:bg-[#d2ab74]  px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {allServices}
+                  {t('allServices')}
                 </Link>
                 <Link
                   href={`${servicesLink1}/coaching`}
@@ -407,7 +384,7 @@ const Navbar = ({
                   }  hover:bg-[#d2ab74]  px-3 py-2  `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {NLPCoaching}
+                  {t('NLPCoaching')}
                 </Link>
                 <Link
                   href={`/${locale}/services/mediation`}
@@ -419,7 +396,7 @@ const Navbar = ({
                   }  hover:bg-[#d2ab74]  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {mediation}
+                  {t('mediation')}
                 </Link>
                 <Link
                   href={`/${locale}/services/workshop`}
@@ -431,7 +408,7 @@ const Navbar = ({
                   }  hover:bg-[#d2ab74]  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {workshop}
+                  {t('workshop')}
                 </Link>
               </div>
             )}
@@ -442,7 +419,7 @@ const Navbar = ({
               } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              {contact}
+              {t('contact')}
             </Link>
           </div>
         </div>
