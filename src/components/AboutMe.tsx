@@ -47,7 +47,7 @@ export default function AboutMe({
                   : ''
               } `}
             >
-              Osebni in poslovni uspeh – harmonija za boljše življenje
+              {section}
             </div>
           </div>
           <div
@@ -59,15 +59,7 @@ export default function AboutMe({
           >
             {/* <div className='mb-4'>{content}</div> */}
             <div className='mb-4'>
-              V današnjem času, ko se soočamo z nenehnimi izzivi, stresom in
-              hitrim tempom življenja, je skrb za zdravje, dobro počutje in
-              odnose izjemno pomembna – tako na osebni ravni kot tudi v delovnih
-              okoljih in izobraževalnih ustanovah. Ne glede na to, ali iščete
-              načine za izboljšanje osebnega ravnovesja, povečanje
-              produktivnosti zaposlenih ali pa želite izboljšati kakovost
-              medosebnih odnosov in izobraževalnih izkušenj, sem tukaj, da vam
-              pomagam. Hvala, ker ste prepoznali pomembnost celovitega pristopa
-              k zdravju, osebni rasti in harmoniji v vsakdanjem življenju.
+           {content}
             </div>
           </div>
           <div

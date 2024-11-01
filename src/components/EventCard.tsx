@@ -20,7 +20,7 @@ function EventCard({ event, readMore }: { event: Event; readMore: string }) {
       {/* Image Container */}
       <div className='relative w-full h-64 md:w-[40rem]  md:h-96 overflow-hidden p-6'>
         <Link href={eventsLink}>
-          <div className='h-full overflow-hidden relative w-80'>
+          <div className='h-full overflow-hidden relative xl:w-80'>
             <Image
               src={event.featuredImage.url}
               alt={event.seoTitle}

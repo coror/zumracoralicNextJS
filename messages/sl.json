@@ -22,9 +22,8 @@
     "button": "Stopi v stik"
   },
   "AboutSection": {
-    "section": "- O MENI",
-    "title": "Spoznajte svojo notranjo moč in najdite smisel na tej čudoviti poti",
-    "content": "DRAGE OBISKOVALKE, DRAGI OBISKOVALCI! V času, ko se soočamo z nenehnimi izzivi, stresom in hitrim tempom življenja, je skrb za naše zdravje in odnose ključnega pomena. Na tej poti niste sami – tukaj sem, da vam pomagam najti ravnovesje, izboljšati vaše počutje in učinkovito reševati vsakodnevne izzive. SPOŠTOVANI PODJETNIKI IN ORGANIZACIJE! V današnjem času vsako uspešno poslovanje temelji na dobrobiti zaposlenih in zdravih medosebnih odnosih. Kako izboljšati delovno okolje, zmanjšati stres in omogočiti vašim zaposlenim doseči večjo produktivnost? Hvala, ker ste obiskali našo spletno stran in prepoznali pomembnost celovitega pristopa k zdravju v poslovnem svetu. SPOŠTOVANE IZOBRAŽEVALNE USTANOVE! Kot organizatorji izobraževanj in predavanj imate pomembno vlogo pri zagotavljanju kakovostne in spodbudne izobraževalne izkušnje. Moja predavanja se osredotočajo na reševanje konfliktov, izboljšanje medosebnih odnosov in globlje razumevanje sebe – zakaj delujemo, kot delujemo, in kako lahko z zavestnimi spremembami dosežemo bolj harmonične odnose in osebno rast."
+    "section": "Osebni in poslovni uspeh – harmonija za boljše življenje",
+    "content": "V današnjem času, ko se soočamo z nenehnimi izzivi, stresom in hitrim tempom življenja, je skrb za zdravje, dobro počutje in odnose izjemno pomembna – tako na osebni ravni kot tudi v delovnih okoljih in izobraževalnih ustanovah. Ne glede na to, ali iščete načine za izboljšanje osebnega ravnovesja, povečanje produktivnosti zaposlenih ali pa želite izboljšati kakovost medosebnih odnosov in izobraževalnih izkušenj, sem tukaj, da vam pomagam. Hvala, ker ste prepoznali pomembnost celovitega pristopa k zdravju, osebni rasti in harmoniji v vsakdanjem življenju."
   },
   "QuoteSection": {
     "quote": "“Ni pomembno, od kod prihajaš ali kje se trenutno nahajaš, temveč kam si usmerjen in kam želiš priti!”"
@@ -32,18 +31,19 @@
   "OfferSection": {
     "sectionTitle": "Kaj ponujam",
     "card1Title": "Osebni in poslovni coaching",
-    "card1Content": "Kot strokovnjakinja za NLP coaching na področju medosebnih odnosov, vam lahko pomagam doseči vaše zastavljene cilje. Ne glede na to, ali želite izboljšati odnose v družini, na delovnem mestu, dvigniti svojo samopodobo, povečati samozavest, ali odkriti svoje potenciale, sem tukaj, da vas podpiram in usmerjam na tej poti.",
+    "card1Content": "Kot NLP coach za medosebne odnose vam pomagam doseči cilje, tako osebne kot poslovne. Razumevanje sebe in svoje delovanje sta ključna za izboljšanje odnosov, bodisi v družini, na delovnem mestu, ali za dvig samopodobe in samozavesti. Ponujam tudi poslovni coaching za podjetja in organizacije, kjer skupaj raziskujemo, kako izboljšati delovno okolje in odnose. ",
     "back1Title": "Vaša priložnost za rast",
-    "back1Content": "Več kot 50 zadovoljnim strankam sem pomagala prepoznati in razrešiti omejujoče vzorce ter graditi trdne temelje za pozitivne spremembe. S poudarkom na izboljšanju medosebnih odnosov vam nudim strokovno podporo, ki vam bo pomagala izboljšati komunikacijo in doseči trajne rezultate.",
+    "back1Content": "Več kot 50 zadovoljnim strankam sem pomagala prepoznati in razrešiti omejujoče vzorce ter graditi trdne temelje za pozitivne spremembe. S poudarkom na razumevanju sebe, zakaj smo takšni kot smo, vam nudim strokovno podporo, ki vam bo pomagala izboljšati medosebne odnose na osebnem področju, ali v poslovnem okolju.",
     "card2Title": "Družinska mediacija in mediacija v gospodarskih in potrošniških sporih",
     "card2Content": "Ste v konfliktu, vendar ne želite zapletenih in dragih sodnih postopkov? MEDIACIJA je prava rešitev! ",
     "back2Title": "Kaj je mediacija?",
     "back2Content": "Mediacija je proces reševanja konfliktov, v katerem nevtralna tretja oseba, mediator, pomaga vpletencem doseči sporazum. Mediator uporablja različne tehnike komunikacije in vodenja pogovora, da spodbudi sodelovanje, razumevanje in iskanje skupnih rešitev med strankami v konfliktu.",
     "card3Title": "Predavanja in delavnice",
-    "card3Content": "Programi so zasnovani z namenom, da pomagajo razumeti, zakaj delujemo tako, kot delujemo, ter graditi kakovostne medosebne odnose in učinkovito reševati konflikte. Cilj je povečati zadovoljstvo udeležencev in izboljšati delovno okolje, s čimer podprem vašo ekipo in podjetje.",
+    "card3Content": "Kot NLP coach in mediator nudim dinamična predavanja in praktične delavnice, ki opolnomočijo posameznike in ekipe. Osredotočam se na izboljšanje komunikacijskih veščin, osebno rast in reševanje konfliktov. Program prilagodim vašim potrebam in ga izvedem v vašem okolju, podjetju ali organizaciji.",
     "back3Title": "Dinamična predavanja in delavnice",
-    "back3Content": "Kot NLP coach in mediator nudim dinamična predavanja in praktične delavnice, ki opolnomočijo posameznike in ekipe. Osredotočam se na izboljšanje komunikacijskih veščin, osebno rast in reševanje konfliktov. Program prilagodim vašim potrebam in ga izvedem v vašem okolju, podjetju ali organizaciji.",
+    "back3Content": "Programi so zasnovani tako, da posameznikom in skupinam pomagajo bolje razumeti sebe, svoje vedenje ter graditi kakovostne odnose. Poudarek je na učinkovitem reševanju konfliktov in ustvarjanju pozitivnega delovnega okolja.",
     "readMore": "Preberi več"
+   
   },
   "OfferCard": {
     "card1Title": "Osebni in poslovni NLP coaching",
@@ -98,8 +98,8 @@
   "AboutMePage": {
     "section": "O meni",
     "sectionTitle1": "Kdo sem",
-    "sectionContent1": "Svojo samostojno prakso vodim od leta 2015, kjer pomagam posameznikom in družinam prepoznati ter preoblikovati svoje vzorce in vzpostaviti boljše odnose. Prav tako sem začela s predavanji po vsej Sloveniji. Leta 2023 sem stopila v stik z različnimi podjetji, kot na primer ETA Cerkno in Kolektor in postala zunanja sodelovka Ljudske univerze v Novi Gorici. Pri svojem delu poudarjam pomen samospoznavanja in razumevanja lastnega delovanja, saj verjamem, da je to ključno za razumevanje drugih ter za vzpostavljanje dobrih in spoštljivih medosebnih odnosov.",
-    "sectionContent2": "Vodi me moto, da ni pomembno od kod prihajaš, ali kje se trenutno nahajaš, temveč kam greš, kam si namenjen. Nikoli ni prepozno za spremembo, za vzpostavitev novih, bolj trdnih temeljev odnosov, bodisi družinskih ali poslovnih. Moje življenjsko poslanstvo, ki sem ga odkrila pred leti, je pomagati drugim odkriti njihov namen, njihov smisel na tem čudovitem planetu – Zemlji. Da živijo življenje, ki je napolnjeno z radostjo in se znali soočati z izzivi na njihovi poti. Verjamem, da kjer je volja, je tudi pot!",
+    "sectionContent1": "Od leta 2015 vodim samostojno prakso, kjer posameznikom in družinam pomagam prepoznati ter preoblikovati vzorce, ki ovirajo kakovostne odnose. Skozi proces dela jim pomagam zgraditi trdnejše in bolj harmonične medosebne vezi. Leta 2023 sem vzpostavila uspešna partnerstva z različnimi podjetji, kot sta ETA Cerkno in Kolektor, hkrati pa sem zunanja sodelavka Ljudske univerze Nova Gorica. Moje strokovno znanje vključuje reševanje konfliktov, izboljševanje komunikacije in krepitev odnosov – tako v osebnem kot poslovnem okolju.",
+    "sectionContent2": "Pri delu poudarjam pomen samospoznavanja in razumevanje lastnega vedenja, saj je to ključno za uspešne in spoštljive odnose z drugimi. Verjamem, da nikoli ni prepozno za spremembo – bodisi za obnovitev družinskih vezi ali za vzpostavitev boljše delovne kulture v podjetju. Kot mediatorka z bogatimi izkušnjami dosegam izjemne rezultate pri reševanju konfliktov. Nenehno nadgrajujem svoje znanje in veščine, saj me vodi prepričanje, da so kakovostni medosebni odnosi in dobro počutje posameznika ključna za uspeh vsakega okolja.",
     "quote1": "“Ni pomebno od kod prihajaš in kje se trenutno nahajaš, temveč, kam greš.”",
     "sectionTitle2": "Družina, odnosi, rast",
     "sectionContent3": "Družina je moje sidro. Kot mati, žena, tašča in babica črpam navdih iz naših odnosov. Verjamem, da je ključno, da smo povezani, ne pa navezani.",
@@ -162,14 +162,14 @@
   "Workshop": {
     "section": "Delavnice in predavanja",
     "sectionTitle1": "Spoštovani podjetniki in organizatorji izobraževanj,",
-    "sectionContent1": "Zahvaljujem se vam za obisk moje spletne strani. Vaša prisotnost kaže na to, da se zavedate pomembnosti medosebnih odnosov in dobrega počutja vaših zaposlenih, kar je ključno za uspeh vsakega podjetja. V današnjem času, ko stres in izgorelost vse pogosteje vplivata na delovno učinkovitost, je zagotavljanje podpore zaposlenim pri soočanju z izzivi, tako poslovnimi kot osebnimi, neprecenljivo.",
-    "sectionContent2": "Od spomladi leta 2023 redno sodelujem s podjetjem  ETA Cerkno, kjer izvajam delavnice za vodje in osebne coachinge. Njihovo zadovoljstvo in interes za nadaljevanje sta dokaz, kako pomembno je opremiti zaposlene z znanjem in veščinami za učinkovito soočanje z izzivi.",
+    "sectionContent1": "zahvaljujem se vam za obisk moje spletne strani. Vaša prisotnost kaže na zavedanje pomembnosti medosebnih odnosov in dobrega počutja vaših zaposlenih, kar je ključno za uspeh vsakega podjetja. V današnjem času, ko stres in izgorelost vse pogosteje vplivata na delovno učinkovitost, je zagotavljanje podpore zaposlenim pri soočanju z izzivi – tako poslovnimi kot osebnimi – neprecenljivo.",
+    "sectionContent2": "Od spomladi leta 2023 redno sodelujem s podjetjem ETA Cerkno, kjer izvajam delavnice za vodje in tudi osebne coachinge. Njihovo zadovoljstvo in interes za nadaljevanje sta jasen dokaz, kako pomembno je opremiti zaposlene z znanjem in veščinami za učinkovito soočanje z izzivi.",
     "sectionTitle2": "Kaj vam lahko ponudim?",
-    "sectionContentP1": "Poleg programa, ki je že oblikovan in si ga lahko podrobneje preberete, lahko vsebino prilagodim vašim specifičnim potrebam. Program predavanja in delavnic je osredotočen na:",
+    "sectionContentP1": "Poleg programa, ki je že oblikovan in si ga lahko podrobneje preberete, lahko vsebino prilagodim vašim specifičnim potrebam. Program predavanj in delavnic je osredotočen na:",
     "sectionContentL1": "Gradnjo kakovostnih medosebnih odnosov: Kako vzpostaviti in ohraniti močne, spoštljive odnose med zaposlenimi.",
     "sectionContentL2": "Reševanje konfliktov: Ponudite orodja za konstruktivno reševanje konfliktov, kar povečuje harmonijo v delovnem okolju.",
     "sectionContentL3": "Povečanje zadovoljstva zaposlenih: Srečni zaposleni so ključ do boljše produktivnosti in nižje fluktuacije kadra.",
-    "sectionContent4": "Če vas zanima, kako lahko skupaj izboljšamo delovno okolje in podprem vaše zaposlene pri soočanju z izzivi, bom vesela priložnosti za osebno srečanje.",
+    "sectionContent4": "Če želite izboljšati dobro počutje vaših zaposlenih ali organizirati izobraževalne dogodke, ki bodo prispevali k njihovemu razvoju, vas lepo vabim k sodelovanju. Skupaj lahko gradimo pozitivno in spodbudno delovno okolje, oziroma, ponudimo širši populaciji izjemna predavanja in delavnice, katera bodo prispevala k uspešnemu reševanju konfliktov, boljšem razumevanju njih samih, njihovega delovanja, ter gradili dobre medosebne odnose.",
     "sectionTitle3": "Kaj pravijo o meni?",
     "sectionContentP2": "Tina Menard, direktorica kadrovske službe podjetja ETA Cerkno",
     "sectionContent5": "\"Gospo Zumro Ćoralić smo prvič srečali marca 2023, ko smo iskali ustreznega predavatelja za delavnice o izzivih medsebojnih odnosov in uspešnega reševanja konfliktov. Njena strast do dela, predanost poklicu, pozitivna energija in strokovnost so nas prepričali, da je prava predavateljica za skupino vedoželjnih posameznikov. Komunikacijske veščine za obvladovanje pozitivnih odnosov in konstruktivno reševanje konfliktnih situacij so ključne za vsako organizacijo, in gospa Zumra Ćoralić je udeležencem pokazala, da se z voljo, srčnostjo in pozitivnim odnosom lahko odprejo vrata na pravo pot in odpravi marsikatera, še tako nerešljiva, ovira. Hvala, Zumra!\"",

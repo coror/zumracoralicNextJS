@@ -185,7 +185,7 @@ export default function Page() {
           </div>
           <div className='mt-10 md:text-lg'>{x('sectionContent6')}</div>
           <div className='my-10 '>
-            <Link href='/contact'>
+            <Link href={`/${locale}/contact`}>
               <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5  text-sm  md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
                 {x('button')}
               </button>

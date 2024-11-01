@@ -1,5 +1,5 @@
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
-
+ 
 // fetch al services
 async function fetchServices(locale = 'sl') {
   try {
