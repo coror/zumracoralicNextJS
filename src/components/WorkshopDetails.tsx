@@ -20,6 +20,8 @@ export default function WorkshopDetails() {
 
   const options = getRichTextOptions();
 
+  console.log(service?.headlineImage);
+
   useEffect(() => {
     const fetchEventData = async () => {
       if (!slug || !locale) {
@@ -54,7 +56,7 @@ export default function WorkshopDetails() {
         <>
           <div className='relative w-full md:h-96 xl:h-[44rem] overflow-hidden '>
             <Image
-              src='https://res.cloudinary.com/dbssbnuph/image/upload/v1729454762/1686722673676-2-1536x1536_1_nqszxh.jpg'
+              src={service.headlineImage[0].original_secure_url}
               alt='naslovna'
               sizes='100vw'
               width={0}

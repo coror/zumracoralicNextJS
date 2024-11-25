@@ -9,4 +9,5 @@ export interface Service {
   price: number;
   type: string;
   description: any;
+  headlineImage: any;
 }
