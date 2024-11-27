@@ -15,6 +15,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { BlogPost } from '@/types/blogPost';
+import { Locale, parse } from 'date-fns';
+import { bs, sl } from 'date-fns/locale';
 
 export default function BlogPostsComponent({ readMore }: { readMore: string }) {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -28,9 +30,22 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
       try {
         setLoading(true);
         const fetchedBlogs = await fetchBlogPosts(locale);
+
+        const localeMap: { [key: string]: Locale } = {
+          sl: sl,
+          bs: bs,
+        };
+
+        const currentLocale = localeMap[locale] || sl;
+
         const sortedBlogs = fetchedBlogs.sort(
           (a: BlogPost, b: BlogPost) =>
-            new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime()
+            parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
+              locale: currentLocale,
+            }).getTime() -
+            parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
+              locale: currentLocale,
+            }).getTime()
         );
         setBlogs(sortedBlogs);
       } catch (error) {

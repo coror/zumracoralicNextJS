@@ -187,6 +187,11 @@
     "section": "Stopite v stik",
     "message": "Sporočilo",
     "errorMessage": "Prosim izpolnite vsa obvezna polja.",
-    "successMessage": "Poslano!"
+    "successMessage": "Poslano!",
+    "email": "ustvari.svojo.pot@gmail.com",
+    "facebook": "Kjer je volja, je tudi pot",
+    "facebookLink": "https://www.facebook.com/ustvari.svojo.pot",
+    "instagram": "@kjer_je_volja_je_tudi_pot",
+    "instagramLink": "https://www.instagram.com/kjer_je_volja_je_tudi_pot/"
   }
 }

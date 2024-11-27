@@ -80,7 +80,7 @@ const EventDetails = ({
         </h1>
         <div className='text-sm lg:text-xl text-[#777777] mb-12'>
           <IoIosCalendar className='inline' />
-          {event.datum}
+          {' '}{event.datum}
         </div>
         <div className='prose leading-8 my-20  lg:min-w-[60rem]'>
           {documentToReactComponents(event.content, options)}

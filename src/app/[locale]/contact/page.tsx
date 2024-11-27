@@ -112,19 +112,6 @@ export default function Page() {
         {t('section')}
       </h1>
       <div className=' flex flex-col lg:flex-row items-start justify-evenly py-20 '>
-        {/* <div className=' w-full'>
-          <Image
-            src='https://res.cloudinary.com/dbssbnuph/image/upload/v1725121187/zumracoralic/926_pey8uv.jpg'
-            alt='hand'
-            width={0}
-            height={0}
-            sizes='100vw'
-            className='fixed inset-0 w-full h-full object-cover '
-            priority
-          />
-          <div className='fixed inset-0 bg-gradient-to-b from-black via-black/80 to-transparent opacity-60'></div>
-        </div> */}
-
         <div className='relative px-10 text-center items-left w-full text-black flex flex-col lg:flex-col-reverse  animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
           <div>
             <div className='mt-12 mb-12 lg:mb-0 space-y-4 text-xs sm:text-base'>
@@ -132,33 +119,32 @@ export default function Page() {
                 href='mailto:ustvari.svojo.pot@gmail.com'
                 className=' flex items-center m-2 hover:text-identifier md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
               >
-                <MdEmail className='text-identifier mx-3' />{' '}
-                ustvari.svojo.pot@gmail.com
+                <MdEmail className='text-identifier mx-3' /> {t('email')}
               </a>
               <a
-                href='tel: 041 429 437'
+                href='tel: 00386 41 429 437'
                 className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
               >
                 <FaPhoneAlt className='text-identifier mx-3' />
-                041 429 437
+                (+386) 41 429 437
               </a>
               <a
-                href='https://www.facebook.com/ustvari.svojo.pot'
+                href={t('facebookLink')}
                 target='_blank'
                 rel='noreferrer'
                 className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
               >
                 <FaFacebookF className='text-identifier mx-3' />
-                Kjer je volja, je tudi pot
+                {t('facebook')}
               </a>
               <a
-                href='https://www.instagram.com/kjer_je_volja_je_tudi_pot/'
+                href={t('instagramLink')}
                 target='_blank'
                 rel='noreferrer'
                 className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
               >
                 <FaInstagram className='text-identifier mx-3' />
-                @kjer_je_volja_je_tudi_pot
+                {t('instagram')}
               </a>
             </div>
           </div>

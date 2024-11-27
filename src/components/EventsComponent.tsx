@@ -4,6 +4,8 @@ import { useLocale } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 import Spinner from './Spinner';
 import { Pagination } from '@mui/material';
+import { Locale, parse } from 'date-fns';
+import { bs, sl } from 'date-fns/locale'; // Add locales you need
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -29,13 +31,30 @@ export default function EventsComponent({
       try {
         setLoading(true);
         const fetchedEvents = await fetchEvents(locale);
-        const sortedEvents = fetchedEvents.sort(
-          (a: Event, b: Event) =>
-            new Date(b.datum).getTime() - new Date(a.datum).getTime()
-        );
+
+        const localeMap: { [key: string]: Locale } = {
+          sl: sl,
+          bs: bs,
+        };
+
+        // Get the appropriate locale
+        const currentLocale = localeMap[locale] || sl;
+
+        const sortedEvents = fetchedEvents.sort((a: Event, b: Event) => {
+          
+          const dateA = parse(a.datum, 'd. MMMM yyyy', new Date(), {
+            locale: currentLocale,
+          });
+
+          const dateB = parse(b.datum, 'd. MMMM yyyy', new Date(), {
+            locale: currentLocale,
+          });
+          return dateB.getTime() - dateA.getTime();
+        });
+
         setEvents(sortedEvents);
       } catch (error) {
-        console.log(error);
+        console.error('Error fetching or sorting events:', error);
       } finally {
         setLoading(false);
       }
@@ -63,7 +82,7 @@ export default function EventsComponent({
         <Spinner loading={loading} />
       ) : (
         <>
-          <div className='flex flex-col space-y-10 lg:w-[80rem] lg:mx-auto    animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+          <div className='flex flex-col space-y-10 max-w-[1800px] animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms] mx-auto'>
             {currentEvents.map((event) => (
               <div key={event.id}>
                 <EventCard event={event} readMore={readMore} />

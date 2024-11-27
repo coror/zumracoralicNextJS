@@ -50,7 +50,7 @@ const BlogPostDetails = ({
           </h1>
           <div className='text-sm lg:text-xl text-[#dddddd] mb-12'>
             <IoIosCalendar className='inline' />
-            {blogPost.datePosted}
+            {' '}{blogPost.datePosted}
           </div>
         </div>
       </div>

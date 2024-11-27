@@ -17,9 +17,9 @@ export default function FormSection({
   successMessage,
 }: FormSectionProps) {
   const initialFields = {
-    name: 'sdfsf',
-    email: 'test@email.com',
-    message: 'sad',
+    name: '',
+    email: '',
+    message: '',
   };
 
   const [fields, setFields] = useState(initialFields);

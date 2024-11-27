@@ -11,6 +11,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
 import { BlogPost } from '@/types/blogPost';
+import { Locale, parse } from 'date-fns';
+import { bs, sl } from 'date-fns/locale'; // Add locales you need
 
 export default function LatestBlogs({
   section,
@@ -46,13 +48,24 @@ export default function LatestBlogs({
       try {
         setLoading(true);
         const fetchedBlogs = await fetchBlogPosts(locale);
-        console.log(fetchedBlogs);
+
+        const localeMap: { [key: string]: Locale } = {
+          sl: sl,
+          bs: bs,
+        };
+
+        const currentLocale = localeMap[locale] || sl;
+
         // Sort blogs by 'datum' in descending order and limit to the most recent 8
         const sortedBlogs = fetchedBlogs
           .sort(
             (a: BlogPost, b: BlogPost) =>
-              new Date(b.datePosted).getTime() -
-              new Date(a.datePosted).getTime()
+              parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
+                locale: currentLocale,
+              }).getTime() -
+              parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
+                locale: currentLocale,
+              }).getTime()
           )
           .slice(0, 4);
         setBlogs(sortedBlogs);

@@ -186,6 +186,11 @@
     "section": "Stupite u kontakt",
     "message": "Poruka",
     "errorMessage": "Molim vas popunite sva obavezna polja.",
-    "successMessage": "Poslano!"
+    "successMessage": "Poslano!",
+    "email": "ustvari.svojo.pot@gmail.com",
+    "facebook": "Gdje je volja, tu je i put",
+    "facebookLink": "https://www.facebook.com/profile.php?id=100046480306918",
+    "instagram": "@kjer_je_volja_je_tudi_pot",
+    "instagramLink": "https://www.instagram.com/kjer_je_volja_je_tudi_pot/"
   }
 }

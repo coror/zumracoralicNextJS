@@ -8,6 +8,8 @@ import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoBookmarkOutline } from 'react-icons/io5';
 import Spinner from './Spinner';
+import { Locale, parse } from 'date-fns';
+import { bs, sl } from 'date-fns/locale'; // Add locales you need
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -44,19 +46,36 @@ export default function LatestEvents({
       try {
         setLoading(true);
         const fetchedEvents = await fetchEvents(locale);
-        console.log(fetchedEvents);
-        // Sort events by 'datum' in descending order and limit to the most recent 8
-        const now = new Date();
-        const filteredEvents = fetchedEvents.filter(
-          (event: Event) => new Date(event.datum) <= now
-        );
 
+        const localeMap: { [key: string]: Locale } = {
+          sl: sl,
+          bs: bs,
+        };
+
+        const currentLocale = localeMap[locale] || sl;
+        const now = new Date();
+
+        // Filter out events that haven't occurred yet
+        const filteredEvents = fetchedEvents.filter((event: Event) => {
+          const eventDate = parse(event.datum, 'd. MMMM yyyy', new Date(), {
+            locale: currentLocale,
+          });
+          return eventDate <= now;
+        });
+
+        // Sort filtered events by date in descending order and limit to the most recent 8
         const sortedEvents = filteredEvents
           .sort(
             (a: Event, b: Event) =>
-              new Date(b.datum).getTime() - new Date(a.datum).getTime()
+              parse(b.datum, 'd. MMMM yyyy', new Date(), {
+                locale: currentLocale,
+              }).getTime() -
+              parse(a.datum, 'd. MMMM yyyy', new Date(), {
+                locale: currentLocale,
+              }).getTime()
           )
           .slice(0, 8);
+
         setEvents(sortedEvents);
       } catch (error) {
         console.error('Error fetching data in LatestEventsComponent', error);
@@ -123,11 +142,10 @@ export default function LatestEvents({
       >
         <Link href={`${locale}/events`}>
           <button className='bg-[#FFE6BC]  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in flex items-center'>
-            
             {button}
           </button>
         </Link>
       </div>
-    </div> 
+    </div>
   );
 }

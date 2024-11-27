@@ -6,7 +6,13 @@ const locales = { sl: sl, bs };
 export const dateReducer = (dateStr, locale = 'sl') => {
   const dateObj = parseISO(dateStr);
   const formatLocale = locales[locale];
-  return format(dateObj, 'PPP', { locale: formatLocale });
+  let formattedDate = format(dateObj, 'PPP', { locale: formatLocale });
+
+  // Remove trailing '.' for bosian locale if it exists
+  if (locale === 'bs' && formattedDate.endsWith('.')) {
+    formattedDate = formattedDate.slice(0, -1);
+  }
+  return formattedDate;
 };
 
 export const imageReducer = (imageField) => {

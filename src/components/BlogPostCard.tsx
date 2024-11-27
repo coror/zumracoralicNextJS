@@ -5,6 +5,8 @@ import { truncateText } from '@/datalyer/contentful/utils';
 import { useLocale } from 'next-intl';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BlogPost } from '@/types/blogPost';
+import { Locale } from 'date-fns';
+import { bs, sl } from 'date-fns/locale';
 
 function BlogPostCard({
   blogPost,
@@ -18,6 +20,20 @@ function BlogPostCard({
     150
   );
   const locale = useLocale();
+
+  // const localeMap: { [key: string]: Locale } = {
+  //   sl,
+  //   bs,
+  // };
+
+  // const currentLocale = localeMap[locale] || sl;
+
+  // if (blogPost.datePosted.endsWith('.')) {
+  //   return {
+  //     ...blogPost,
+  //     datePosted: blogPost.datePosted.slice(0, -1),
+  //   };
+  // }
 
   const blogPostsLink = `/${locale}/blogs/${blogPost.slug}`;
 
