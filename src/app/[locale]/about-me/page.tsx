@@ -115,7 +115,6 @@ export default function Page() {
       </div>
       <div className='text-lg leading-8 max-w-[80rem] md:mx-auto space-y-8  animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
         <div className='space-y-5'>
-
           <div className='md:flex md:flex-row md:justify-between'>
             <div className='md:w-96 lg:w-[42rem] space-y-3'>
               <h1 className='text-2xl md:text-3xl'>{t('sectionTitle1')}</h1>
@@ -132,10 +131,7 @@ export default function Page() {
                 className='w-full h-full md:w-[26rem] lg:h-auto max-h-[36rem] max-w-[26rem]'
               />
               <div className='text-sm italic md:w-[26rem]'>
-                <strong>Zumra Ćoralić</strong>, organizatorka socialne mreže,
-                NLP Coach za medosebne odnose, trenerka, družinska mediatorka
-                ter mediatorka v gospodarskih in potrošniških sporih in
-                certificirana NLP Mojstrica praktik.
+                <strong>Zumra Ćoralić</strong>, {t('description')}
               </div>
             </div>
           </div>
@@ -149,7 +145,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className='md:flex md:flex-row md:justify-between space-x-10'>
+        <div className='md:flex md:flex-row md:justify-between md:space-x-10'>
           <div className=' animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
             <Image
               src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG-6a7cdd4a36fd6a9a30bf4db5df337a1f-V_t7u3g9.jpg'
@@ -161,7 +157,7 @@ export default function Page() {
             />
           </div>
 
-          <div className='md:w-96 lg:w-full  space-y-5'>
+          <div className='md:w-96 lg:w-full space-y-5'>
             <h1 className='text-2xl  md:text-3xl'>{t('sectionTitle2')}</h1>
             <div>{t('sectionContent3')}</div>
             <div>{t('sectionContent4')}</div>
