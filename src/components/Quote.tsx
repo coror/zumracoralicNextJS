@@ -24,7 +24,7 @@ export default function Quote({ quote }: { quote: string }) {
         style={{
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          backgroundAttachment: 'fixed',
+          backgroundAttachment: 'scroll',
         }}
       >
         <div className='absolute inset-0 bg-[#222428] opacity-65'></div>
