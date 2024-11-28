@@ -7,6 +7,7 @@ interface FormSectionProps {
   message: string;
   errorMessage: string;
   successMessage: string;
+  send:  string;
 }
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -15,6 +16,7 @@ export default function FormSection({
   message,
   errorMessage,
   successMessage,
+  send
 }: FormSectionProps) {
   const initialFields = {
     name: '',
@@ -184,7 +186,7 @@ export default function FormSection({
             className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-3 text-sm md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'
             disabled={loading}
           >
-            {loading ? <ClipLoader size={24} color='#ffffff' /> : 'Pošlji'}
+            {loading ? <ClipLoader size={24} color='#ffffff' /> : `${send}`}
           </button>
           {!formValid && (
             <p className='text-red-500 mt-3 text-center'>{errorMessage}</p>

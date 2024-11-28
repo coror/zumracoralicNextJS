@@ -21,9 +21,6 @@ export default function Header({
           <h1 className='text-2xl md:text-4xl lg:text-5xl xl:text-5xl 3xl:text-7xl tracking-wider md:leading-snug text-white uppercase animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'>
             {title}
           </h1>
-          {/* <p className='hidden md:block  text-base md:text-2xl  xl:text-4xl mt-5 text-white animate-fade-up animate-duration-[2000ms] animate-delay-[1500ms]'>
-            {content}
-          </p> */}
         </div>
 
         <div className='animate-fade-up animate-duration-[2000ms] animate-delay-[2000ms] '>

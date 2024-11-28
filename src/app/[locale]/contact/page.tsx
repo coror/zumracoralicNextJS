@@ -154,6 +154,7 @@ export default function Page() {
             message={t('message')}
             errorMessage={t('errorMessage')}
             successMessage={t('successMessage')}
+            send={t('send')}
           />
         </div>
         <div className=' mt-14 lg:mt-0  animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms] px-10 '>

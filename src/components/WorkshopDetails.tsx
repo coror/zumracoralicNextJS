@@ -11,7 +11,19 @@ import { getRichTextOptions } from '@/datalyer/contentful/richTextUtils';
 import Image from 'next/image';
 import { Service } from '@/types/service';
 
-export default function WorkshopDetails() {
+export default function WorkshopDetails({
+  allServices,
+  workshop,
+  connect,
+  currency,
+  cost,
+}: {
+  allServices: string;
+  workshop: string;
+  connect: string;
+  currency: string;
+  cost: string;
+}) {
   const { slug } = useParams();
   const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
@@ -75,7 +87,7 @@ export default function WorkshopDetails() {
                   href={`/${locale}/services/`}
                   className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center'
                 >
-                  Vse storitve
+                  {allServices}
                 </Link>
               </li>
               <li className='text-gray-400 mx-1'>&gt;</li>
@@ -84,7 +96,7 @@ export default function WorkshopDetails() {
                   href={`/${locale}/services/workshop`}
                   className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center '
                 >
-                  Za podjetja in organizacije
+                  {workshop}
                 </Link>
               </li>
               <li className='text-gray-400 mx-1'>&gt;</li>
@@ -108,13 +120,13 @@ export default function WorkshopDetails() {
             </div>
 
             <div className='mt-10 md:text-lg text-center'>
-              <strong>Cena:</strong> {service.price} €
+              <strong>{cost}:</strong> {service.price} {currency}
             </div>
 
             <div className='my-10 text-center'>
-              <Link href='/contact'>
+              <Link href={`/${locale}/contact`}>
                 <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5 text-sm md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
-                  Stopi v stik
+                  {connect}
                 </button>
               </Link>
             </div>

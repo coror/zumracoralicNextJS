@@ -11,7 +11,8 @@
     "workshop": "Za kompanije i organizacije",
     "contact": "Kontakt",
     "previousPostText": "Prošla objava",
-    "nextPostText": "Sledeđa objava"
+    "nextPostText": "Sledeđa objava",
+    "connect": "Stupi u kontakt"
   },
   "Footer": {
     "connect": "PUT DO USPJEHA POČINJE OVDJE – POVEŽI SE SA MNOM"
@@ -19,7 +20,7 @@
   "Header": {
     "title": "NLP COACH, MEDIJATOR I PREDAVAČ",
     "content": "Stručnjakinja za međuljudske odnose i rješavanje konflikata",
-    "button": "Stupite u kontakt"
+    "button": "Stupi u kontakt"
   },
   "AboutSection": {
     "section": "Lični i poslovni uspjeh – harmonija za bolji život",
@@ -45,7 +46,7 @@
     "readMore": "Pročitaj više"
   },
   "OfferCard": {
-    "card1Title": "Lični i poslovni NLP koučing",
+    "card1Title": "Lični i poslovni NLP coaching",
     "card1Content": "Kao NLP coach, pomažem vam da poboljšate odnose, povećate samopouzdanje i otkrijete svoje potencijale – kako na ličnom, tako i na poslovnom planu.",
     "card2Title": "Medijacija",
     "card2Content": "U konfliktu ste, ali ne želite složene i skupe sudske postupke? MEDIJACIJA je pravo rješenje!",
@@ -60,11 +61,11 @@
     "testimonial1": "“Sa gospođom Zumrom Ćoralić prvi put smo se sreli u martu 2023. godine, kada smo tražili odgovarajućeg predavača za sprovođenje radionica o izazovima međuljudskih odnosa i uspješnom rješavanju konflikata. Strast prema radu, posvećenost profesiji, zračenje pozitivne energije i stručnost uvjerili su nas da je gospođa Zumra pravi predavač za grupu znatiželjnih pojedinaca. Komunikacijske vještine za upravljanje pozitivnim odnosima i konstruktivno rješavanje konfliktnim situacijama su oblast koju svaka organizacija treba njegovati. Stoga je važno kako ih znamo upravljati. Gospođa Zumra Ćoralić je učesnicima pokazala da se voljom, srcem i pozitivnim odnosom mogu otvoriti vrata na pravom putu i riješiti mnoge, pa čak i najteže prepreke. Hvala Zumra!”",
     "person1Title": "Direktorka sektora za ljudske resurse i opće poslove, ETA d.o.o. Cerkno",
     "testimonial2": "“Ona je zaista sjajan primjer kako se može postići ako se to zaista želi. Tako jednostavna i srčana osoba. Gdje će biti za 10 godina? Uvjeren(a) sam da će biti tačno tamo gdje si zamislila, jer tačno zna kamo ide. I kada dođe posljednji dan, biće presrećna što je provela život vjerujući da je živjela bogat i ispunjen život. Također zato što je imala hrabrosti da izađe iz zone komfora, radi na sebi, obrazovati se i primijeni to znanje u praksi.”",
-    "person2Title": "Autorica pet knjiga uspješnica.",
+    "person2Title": "Poduzetnica",
     "testimonial3": "“Opet ti pišem da ti kažem hvala. Razmišljam o tome koliko me dobro i na stvaran način pripremaš za život. Potražila sam te jer sam došla do tačke kada sam mislila da sve mogu sama i da sam dovoljno jaka, ali ipak sam se obratila tebi jer mi tvoja energija odgovara. Nisam ni slutila koliko znanja imaš. Stvarno ga imaš. Nedavno sam razgovarala sa starijom, iskusnijom osobom od mene, koja već više od dvije godine pokušava da se sastavi, a nema porodicu. A ja sam za samo pola godine, uz tvoju pomoć, toliko napredovala da je sada cijela moja porodica srećna, ne samo ja. Počela sam s ozbiljnim knjigama da bih uopće shvatila šta je ego, a šta duša. Zatim smo nastavili sa temama o tome kako živjeti sreću i uživati u ovom trenutku, a sada opet čitam odličnu knjigu, naravno po tvojoj preporuci, o finansijama. Stvarno ti hvala što si na mom putu. Pomogla si meni, a time i mojoj porodici, i naravno, još uvijek nam pomažeš jer te svi želimo na našem životnom putu.”",
-    "person3Title": "BIH Iz delavnice 1",
+    "person3Title": "Poduzetnica",
     "testimonial4": "“U srijedu, 17. oktobra 2018., posjetila nas je Zumra Ćoralić, koja nam je dokazala da nikad nije kasno da se žive svoje snove i da godine nisu prepreka za postizanje ciljeva. Gdje postoji volja, tu je i put. Mnogima od učesnika bila je motivacija i inspiracija da ponovo povjeruju kako mogu promijeniti svoj život. Kroz vježbu koju smo radili, spoznali smo da ono što nam se dešava danas ima korijene još u našem djetinjstvu te da se naši ukorijenjeni obrasci i navike mogu mijenjati, ali tek kada ih osvijestimo. Jer, promijeniti možemo samo sebe. Kada promijenimo sebe, mijenjamo i druge i svijet oko nas. Mnogim učesnicima puno je značio i njen zagrljaj, kojim pokazuješ čovjeku da ga prihvataš i voliš takvog kakav jeste. Najljepše hvala na posjeti.”",
-    "person4Title": "BIH Iz delavnice 2",
+    "person4Title": "ICRA d.o.o. Idrija",
     "testimonial5": "“Prije tri mjeseca sam ti se obratila jer nisam vidjela izlaz iz svoje panike, straha i nepodnošljivog života. Tablete su mi bile od pomoći, gutala sam ih bez ograničenja. Bila sam na dnu i tunel je postajao sve dublji i dublji. Danas uzimam samo jednu tabletu, i to samo navečer. U tri mjeseca si mi pokazala svjetlost, osjećaje, suze, i radujem im se, jer ih prije nisam ni imala. Hodaš uz mene, kao da sam malo dijete koje tek uči hodati, koje pada i opet ustaje. Čak i dok ovo pišem, pišem kroz suze. Ne znam gdje bih sada bila da nisi bila sa mnom. I još uvijek si tu. I svaka riječ je mala da kažem HVALA tebi i Bogu što se danas osjećam puno bolje i s osmijehom hodam, osjećam šta je život. Mogla bih napisati mnogo riječi u znak zahvalnosti, ali bi i to bilo malo. PS: Nastavi rasti, jer vraćaš život, sreću, osmijeh... sve, skoro sve! Bog će te nagraditi i već te nagrađuje jer ti je dao nešto što mnogi nemaju. <3”",
     "person5Title": "",
     "testimonial6": "“Spoštovana Zumra, še enkrat hvala za današnji pro bono coaching v okviru mednarodnega dneva coachinga. Že dlje časa sem pri sebi opažala določen avtomatski nezaželen vzorec delovanja in nekako sama nisem mogla odkriti vzroka, vzvoda, da bi ozavestila, kaj me žene k temu neučinkovitemu avtomatizmu. Pred in na začetku coachinga sem gospe Zumri opisala konkretne primere. Skozi vprašanja me je coachinja vodila k samorefleksiji in spominjanju občutenj v zgodnjem otroštvu. S poglabljanjem mojega doživljanja staršev in ostalih družinskih članov sva izluščili vzrok, ki se pokazal tako, da so se mi ulile solze in da je prišlo do uvida. Zelo sem hvaležna Zumri, da si je vzela čas in me tako ljubeče in z zaupanjem vodila in se veselila z menoj, ko se je zgodil premik. Poleg tega me je še vzpodbujala in navdihovala, kako izvesti učinkovit poslovni razgovor, ki ga imam v bližnji prihodnosti. Iskreno priporočam gospo Zumro Ćoralić, ki ima obilo znanja in te hkrati s svojo srčnostjo in empatijo pripelje do želene spremembe na bolje. Hvala.”",
@@ -83,7 +84,7 @@
     "section": "- Članci",
     "sectionTitle": "Najnoviji blogovi",
     "sectionTitle2": "Ovaj blog je prostor gdje dijelim svoja iskustva, razmišljanja i stručno znanje.",
-    "button": "- Proćitaj ostale"
+    "button": "- Pročitaj ostale"
   },
   "Index": {
     "readMore": "Pročitaj više",
@@ -99,7 +100,7 @@
   "AboutMePage": {
     "section": "O meni",
     "sectionTitle1": "Ko sam ja",
-    "sectionContent1": "Od 2015. godine vodim vlastitu praksu, gdje pojedincima i porodicama pomažem prepoznati i preoblikovati obrasce koji ometaju kvalitetne odnose. Kroz proces pomažem im izgraditi čvršće i harmoničnije međuljudske veze. Tokom 2023. godine uspostavila sam uspješna partnerstva s različitim kompanijama, kao što su ETA Cerkno i Kolektor, a istovremeno sam i vanjski saradnik na Ljudskoj univerzi u Novoj Gorici. Moje profesionalno znanje obuhvata rješavanje konflikata, poboljšanje komunikacije i jačanje odnosa – kako u ličnom, tako i u poslovnom okruženju.",
+    "sectionContent1": "Od 2015. godine vodim vlastitu praksu, gdje pojedincima i porodicama pomažem prepoznati i preoblikovati obrasce koji ometaju kvalitetne odnose. Kroz proces pomažem im izgraditi čvršće i harmoničnije međuljudske veze. O početka 2023. godine redovno i  uspješno sudjelujem sa većom kompanijom  ETA Cerkno, a imala sam predavanje i u kompaniji Kolektor, a istovremeno sam i vanjski saradnik na Ljudskoj univerzi u Novoj Gorici. Moje profesionalno znanje obuhvata rješavanje konflikata, poboljšanje komunikacije i jačanje odnosa – kako u ličnom, tako i u poslovnom okruženju.",
     "sectionContent2": "U radu naglašavam važnost samospoznaje i razumijevanja vlastitog ponašanja, jer je to ključno za uspješne i poštovane odnose s drugima. Vjerujem da nikada nije kasno za promjenu – bilo da je riječ o obnovi porodičnih veza ili uspostavljanju bolje radne kulture u kompaniji. Kao medijator s bogatim iskustvom, postižem izuzetne rezultate u rješavanju konflikata. Stalno unapređujem svoje znanje i vještine, jer me vodi uvjerenje da su kvalitetni međuljudski odnosi i dobrobit pojedinca ključni za uspjeh svakog okruženja.",
     "quote1": "“Nije važno odakle dolaziš i gdje se trenutno nalaziš, već kamo ideš.”",
     "sectionTitle2": "Porodica, odnosi, rast",
@@ -118,19 +119,19 @@
   "NLPCoachingPage": {
     "section": "NLP Coaching",
     "quote1": "\"Najuspješniji ljudi, sportisti, poduzetnici i menadžeri imaju svog kouča. Zašto ga ne biste imali i vi?\"",
-    "sectionContent1": "NLP (Neuro-lingvističko programiranje) Koučing je efikasan alat koji vam pomaže da otključate svoj potencijal i ostvarite ciljeve koje ste oduvijek željeli. Kroz proces NLP Koučinga učite kako prepoznati i prevazići ograničavajuća uvjerenja, poboljšati komunikacijske vještine i ojačati svoje samopouzdanje. Ovo vam omogućava da se fokusirate na ono što je zaista važno i donosite bolje odluke u privatnom i poslovnom životu.",
+    "sectionContent1": "NLP (Neuro-lingvističko programiranje) Coaching je efikasan alat koji vam pomaže da otključate svoj potencijal i ostvarite ciljeve koje ste oduvijek željeli. Kroz proces NLP Coachinga učite kako prepoznati i prevazići ograničavajuća uvjerenja, poboljšati komunikacijske vještine i ojačati svoje samopouzdanje. Ovo vam omogućava da se fokusirate na ono što je zaista važno i donosite bolje odluke u privatnom i poslovnom životu.",
     "sectionTitle1": "Kako vam NLP Kouč može pomoći na ličnom i poslovnom planu?",
-    "sectionContentP1": "Na ličnom planu, NLP Koučing vam pomaže:",
+    "sectionContentP1": "Na ličnom planu, NLP Coaching vam pomaže:",
     "sectionContentL1": "Prepoznati i prevazići unutrašnje blokade: Prevaziđite strahove i sumnje koji vas ograničavaju.",
     "sectionContentL2": "Poboljšati odnose: Razvijte bolje komunikacijske vještine i izgradite snažnije, harmoničnije odnose.",
     "sectionContentL3": "Ojačati samopouzdanje: Steknite više povjerenja u sebe i svoje sposobnosti.",
     "sectionContentL4": "Ostvariti lične ciljeve: Postignite ciljeve koje ste dugo odlagali i živite ispunjeniji život.",
-    "sectionContentP2": "Na poslovnom planu, NLP Koučing vam donosi:",
+    "sectionContentP2": "Na poslovnom planu, NLP Coaching vam donosi:",
     "sectionContentL5": "Povećanje efikasnosti: Naučite kako bolje organizovati svoje vrijeme i prioritete kako biste postigli vrhunske rezultate.",
     "sectionContentL6": "Vođenje s uticajem: Razvijte liderske vještine koje inspirišu i motiviraju vaš tim.",
     "sectionContentL7": "Rješavanje konflikata: Steknite alate za efikasno rješavanje konflikata i poboljšanje radne atmosfere.",
     "sectionContentL8": "Postizanje poslovnih ciljeva: Ubrzajte svoj karijerni napredak i uspješno prevaziđite poslovne izazove.",
-    "sectionContent2": "NLP Koučing nije samo put do promjene – to je put do trajnog uspjeha. Zašto čekati, ako već danas možete napraviti prvi korak ka boljem životu?",
+    "sectionContent2": "NLP Coaching nije samo put do promjene – to je put do trajnog uspjeha. Zašto čekati, ako već danas možete napraviti prvi korak ka boljem životu?",
     "currency": "50KM",
     "price": "Cijena",
     "perHour": "po satu",
@@ -180,12 +181,15 @@
     "sectionContent8": "S poštovanjem,",
     "sectionContent9": "Stručnjak za međuljudske odnose i rješavanje konflikata",
     "quote1": "“Ako zaposlite ljude samo da rade posao, radit će samo za novac. Ako zaposlite ljude koji vjeruju u ono u šta vi vjerujete, pomoći će vam svojom krvlju, znojem i suzama.” – Simon Sinek",
-    "sectionContent10": "Ako sam u vama probudila barem trunku radoznalosti i želje za više informacija o međuljudskim odnosima, koučingu ili o mogućnosti da imate medijatora u svojoj firmi, radujem se prilici za susret uživo. Tamo ću vam se osobno predstaviti i zajedno ćemo kreirati program prilagođen vašim specifičnim željama i potrebama."
+    "sectionContent10": "Ako sam u vama probudila barem trunku radoznalosti i želje za više informacija o međuljudskim odnosima, coachingu ili o mogućnosti da imate medijatora u svojoj firmi, radujem se prilici za susret uživo. Tamo ću vam se osobno predstaviti i zajedno ćemo kreirati program prilagođen vašim specifičnim željama i potrebama.",
+    "currency": "KM",
+    "cost": "Cjena"
   },
   "Contact": {
     "section": "Stupite u kontakt",
     "message": "Poruka",
     "errorMessage": "Molim vas popunite sva obavezna polja.",
+    "send": "Pošalji",
     "successMessage": "Poslano!",
     "email": "ustvari.svojo.pot@gmail.com",
     "facebook": "Gdje je volja, tu je i put",

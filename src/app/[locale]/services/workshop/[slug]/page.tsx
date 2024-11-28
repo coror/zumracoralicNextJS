@@ -2,6 +2,7 @@ import WorkshopDetails from '@/components/WorkshopDetails';
 import { fetchService } from '@/utils/request';
 import React from 'react';
 import { Metadata } from '@/types/metadata';
+import { useTranslations } from 'next-intl';
 
 export async function generateMetadata({
   params,
@@ -98,5 +99,15 @@ export async function generateMetadata({
 }
 
 export default function Page() {
-  return <WorkshopDetails />;
+  const t = useTranslations('Navigation');
+  const d = useTranslations('Workshop')
+  return (
+    <WorkshopDetails
+      allServices={t('allServices')}
+      workshop={t('workshop')}
+      connect={t('connect')}
+      currency={d('currency')}
+      cost={d('cost')}
+    />
+  );
 }
