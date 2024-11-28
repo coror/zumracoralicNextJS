@@ -13,7 +13,7 @@ export default function Header({
   content: string;
   button: string;
 }) {
-  const locale = useLocale();
+  const locale = useLocale()
   return (
     <div className='w-auto relative overflow-hidden h-[30rem] md:h-[40rem] xl:h-screen max-w-screen flex items-start justify-center '>
       <div className='absolute top-[34%] 3xl:top-[40%]  xl:right-[50%] px-8 mx-auto text-center space-y-16 xl:space-y-30 z-10 lg:mx-[170px]'>
@@ -31,19 +31,16 @@ export default function Header({
           </Link>
         </div>
       </div>
-
-      <div className=' relative top-0 left-0 w-full h-[30rem] md:h-screen overflow-hidden'>
-        <div
-          className='absolute top-0 left-0 w-full h-screen -z-10'
-          style={{
-            backgroundImage: `url('https://res.cloudinary.com/dbssbnuph/image/upload/v1725899504/17.11.2023_Kolektor_n_inpsuu.jpg')`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundAttachment: 'fixed',
-          }}
-        >
-          <div className='fixed inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
-        </div>
+      <div className=' -z-10 fixed top-0 left-0 w-full h-[30rem] md:h-screen overflow-hidden'>
+        <Image
+          src='https://res.cloudinary.com/dbssbnuph/image/upload/v1725899504/17.11.2023_Kolektor_n_inpsuu.jpg'
+          alt='naslovna'
+          sizes='100vw'
+          width={0}
+          height={0}
+          className='object-cover w-full h-full'
+        />
+        <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
       </div>
     </div>
   );
