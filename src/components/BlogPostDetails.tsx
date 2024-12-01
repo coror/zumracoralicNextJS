@@ -33,7 +33,7 @@ const BlogPostDetails = ({
 
   return (
     <div className='relative'>
-      <div className='relative w-full h-96 lg:h-[36rem] 3xl:h-[60rem] flex items-center justify-center'>
+      <div className='relative w-full h-96 md:h-[27rem] 3xl:h-[50rem] flex items-center justify-center'>
         <Image
           src={blogPost.featuredImage.url}
           alt={blogPost.featuredImage.alt}

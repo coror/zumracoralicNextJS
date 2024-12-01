@@ -51,7 +51,7 @@ export default function ServicesComponent({
             <div className=' text-xl md:text-2xl font-bold lg:min-w-[16rem] text-center'>
               {service.headline}
             </div>
-            <div className='text-center mt-5 italic md:text-lg'>
+            <div className='text-center mt-5 italic md:text-lg border-b-2 border-[#df650e] max-w-40 mx-auto'>
               {service.type}
             </div>
           </div>

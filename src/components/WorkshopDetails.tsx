@@ -66,7 +66,7 @@ export default function WorkshopDetails({
       )}
       {!loading && service && (
         <>
-          <div className='relative w-full md:h-96 xl:h-[44rem] overflow-hidden '>
+          <div className='relative w-full md:h-[27rem] 3xl:h-[50rem] overflow-hidden '>
             <Image
               src={service.headlineImage[0].original_secure_url}
               alt='naslovna'
@@ -74,6 +74,7 @@ export default function WorkshopDetails({
               width={0}
               height={0}
               className='object-cover w-full h-full'
+              priority
             />
             <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
           </div>

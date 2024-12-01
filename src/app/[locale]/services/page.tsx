@@ -102,7 +102,7 @@ export default function Page() {
 
   return (
     <div className='bg-white pb-16 md:pb-40 pt-20 lg:pt-[8rem] overflow-hidden '>
-      <div className='relative w-full  md:h-[40rem] overflow-hidden '>
+      <div className='relative w-full md:h-[27rem] 3xl:h-[50rem] overflow-hidden '>
         <Image
           src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726085545/zumracoralic/394_p2ucyw.jpg'
           alt='naslovna'

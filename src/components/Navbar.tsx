@@ -48,6 +48,7 @@ const Navbar = ({
   const servicesLink2 = `/${locale}/usluge`;
   const contactLink = `/${locale}/kontakt`;
 
+
   const handleClickOutside = (event: MouseEvent) => {
     // Ensure clicks outside the menu close the menu
     if (
@@ -338,8 +339,8 @@ const Navbar = ({
             <Link
               href={homePageLink}
               className={`${
-                pathname === homePageLink ? 'bg-[#d2ab74]' : ''
-              } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
+                pathname === homePageLink ? 'bg-[#ffe6bc] text-black' : 'text-white'
+              }  xl:hover:bg-[#ffe6bc]  xl:hover:text-black rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {home}
@@ -347,8 +348,8 @@ const Navbar = ({
             <Link
               href={blogPostsLink}
               className={`${
-                pathname.startsWith(blogPostsLink) ? 'bg-[#d2ab74]' : ''
-              } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
+                pathname.startsWith(blogPostsLink) ? 'bg-[#ffe6bc] text-black' : 'text-white'
+              }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {blogPosts}
@@ -357,9 +358,8 @@ const Navbar = ({
               href={eventsLink1}
               className={`${
                 pathname === eventsLink1 || pathname === eventsLink2
-                  ? 'bg-[#d2ab74]'
-                  : ''
-              } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
+                  ? 'bg-[#ffe6bc] text-black' : 'text-white'
+              } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {events}
@@ -367,8 +367,8 @@ const Navbar = ({
             <Link
               href={`${aboutMeLink}`}
               className={`${
-                pathname === aboutMeLink ? 'bg-[#d2ab74]' : ''
-              } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
+                pathname === aboutMeLink ? 'bg-[#ffe6bc] text-black' : 'text-white'
+              } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {about}
@@ -377,9 +377,8 @@ const Navbar = ({
               className={`${
                 pathname.startsWith(servicesLink1) ||
                 pathname.startsWith(servicesLink2)
-                  ? 'bg-[#d2ab74]'
-                  : ''
-              } text-white lg:hover:bg-[#d2ab74] rounded-md px-3 py-2 uppercase text-left`}
+                  ?  'bg-[#ffe6bc] text-black' : 'text-white'
+              }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2 uppercase text-left`}
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
             >
               {services}
@@ -390,9 +389,9 @@ const Navbar = ({
                   href={`${servicesLink1}`}
                   className={`${
                     pathname === servicesLink1 || pathname === servicesLink2
-                      ? 'text-[#d2ab74]'
+                      ? 'text-[#ffe6bc]'
                       : 'text-white'
-                  }  hover:bg-[#d2ab74]  px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
+                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black   px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {allServices}
@@ -404,7 +403,7 @@ const Navbar = ({
                     pathname === servicesLink2 + '/coaching'
                       ? 'text-[#d2ab74]'
                       : 'text-white'
-                  }  hover:bg-[#d2ab74]  px-3 py-2  `}
+                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black px-3 py-2  `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {NLPCoaching}
@@ -414,9 +413,9 @@ const Navbar = ({
                   className={`${
                     pathname === servicesLink1 + '/mediacija' ||
                     pathname === servicesLink2 + '/medijacija'
-                      ? 'text-[#d2ab74]'
+                      ? 'text-[#ffe6bc]'
                       : 'text-white'
-                  }  hover:bg-[#d2ab74]  px-3 py-2 `}
+                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {mediation}
@@ -426,9 +425,9 @@ const Navbar = ({
                   className={`${
                     pathname === servicesLink1 + '/delavnice-predavanja' ||
                     pathname === servicesLink2 + '/radionice-predavanja'
-                      ? 'text-[#d2ab74]'
+                      ? 'text-[#ffe6bc]'
                       : 'text-white'
-                  }  hover:bg-[#d2ab74]  px-3 py-2 `}
+                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {workshop}
@@ -438,8 +437,8 @@ const Navbar = ({
             <Link
               href={`/${locale}/contact`}
               className={`${
-                pathname === `/${locale}/contact` ? 'bg-[#d2ab74]' : ''
-              } text-white hover:bg-[#d2ab74] rounded-md px-3 py-2`}
+                pathname === `/${locale}/kontakt` ? 'bg-[#ffe6bc] text-black' : 'text-white'
+              } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {contact}

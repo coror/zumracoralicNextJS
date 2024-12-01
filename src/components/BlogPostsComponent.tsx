@@ -87,7 +87,7 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
           >
             {blogs.map((blog) => (
               <SwiperSlide key={blog.id} className=''>
-                <div className='relative w-full h-96 md:h-[34rem] flex items-center justify-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
+                <div className='relative w-full h-96 md:h-[27rem] 3xl:h-[50rem] flex items-center justify-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
                   <Image
                     src={blog.featuredImage.url}
                     alt={blog.seoTitle}

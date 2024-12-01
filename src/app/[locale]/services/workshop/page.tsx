@@ -116,7 +116,7 @@ export default function Page() {
 
   return (
     <div className='bg-white pb-16 md:pb-40 pt-20 lg:pt-[8rem] overflow-hidden'>
-      <div className='relative w-full  md:h-[30rem] overflow-hidden '>
+      <div className='relative w-full  md:h-[27rem] 3xl:h-[50rem] overflow-hidden '>
         <Image
           src='https://res.cloudinary.com/dbssbnuph/image/upload/v1724839774/zumracoralic/close-up-man-women-chairs_vkdzin.jpg'
           alt='naslovna'
