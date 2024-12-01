@@ -130,7 +130,7 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
           <Spinner loading={loading} />
         ) : (
           <>
-            <div className='grid grid-cols-1 gap-2 xl:gap-16 px-6 xl:grid-cols-3 lg:w-[80rem] lg:mx-auto  animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+            <div className='space-y-7 md:space-y-1 grid grid-cols-1 md:grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-3 xl:w-[80rem] mx-auto  animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
               {currentPosts.map((blog, index) => (
                 <div key={blog.id}>
                   <BlogPostCard blogPost={blog} readMore={readMore} />

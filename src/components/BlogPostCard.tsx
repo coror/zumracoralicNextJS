@@ -38,7 +38,7 @@ function BlogPostCard({
   const blogPostsLink = `/${locale}/blogs/${blogPost.slug}`;
 
   return (
-    <div className='max-w-sm rounded overflow-hidden shadow-lg'>
+    <div className='xl:max-w-[35rem] rounded overflow-hidden shadow-lg'>
       {/* Image Container */}
       <div className='relative w-full h-64 md:h-64 group'>
         <Link href={blogPostsLink}>
