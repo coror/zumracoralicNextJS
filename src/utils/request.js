@@ -36,7 +36,7 @@ async function fetchService(slug, locale) {
     }
 
     const data = await res.json();
-    // return data.service;
+    return data.service;
   } catch (error) {
     console.log(error);
     return null;

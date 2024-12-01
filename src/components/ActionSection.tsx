@@ -13,7 +13,8 @@ export default function ActionSection({
   button: string;
 }) {
   const [animate, setAnimate] = useState(false);
-  
+  const [isMobile, setIsMobile] = useState(false); // State to track if it's mobile
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -27,7 +28,10 @@ export default function ActionSection({
   }, [inView]);
 
   const locale = useLocale();
-  const isMobile = window.innerWidth <= 768;
+   // Check if the viewport width is mobile size
+   useEffect(() => {
+    setIsMobile(window.innerWidth <= 768);
+  }, []);
   return (
     <div className='relative h-96 md:min-h-72 py-10 md:py-80 '>
       <div
