@@ -10,6 +10,8 @@ import { HiArrowLongRight, HiArrowLongLeft } from 'react-icons/hi2';
 import Image from 'next/image';
 import Spinner from './Spinner';
 import { Event } from '@/types/event';
+import { Locale, parse } from 'date-fns';
+import { sl, bs } from 'date-fns/locale';
 
 const EventPageComponent = ({
   home,
@@ -42,8 +44,25 @@ const EventPageComponent = ({
         const fetchedEvent = await fetchEvent(slug, locale);
         const fetchedEvents = await fetchEvents(locale);
 
+        const localeMap: { [key: string]: Locale } = {
+          sl: sl,
+          bs: bs,
+        };
+
+        const currentLocale = localeMap[locale] || sl;
+
+        const sortedEvents = fetchedEvents.sort(
+          (a: Event, b: Event) =>
+            parse(b.datum, 'd. MMMM yyyy', new Date(), {
+              locale: currentLocale,
+            }).getTime() -
+            parse(a.datum, 'd. MMMM yyyy', new Date(), {
+              locale: currentLocale,
+            }).getTime()
+        );
+
         setEvent(fetchedEvent);
-        setEvents(fetchedEvents);
+        setEvents(sortedEvents);
       } catch (error) {
         console.error('Error fetching event:', error);
       } finally {

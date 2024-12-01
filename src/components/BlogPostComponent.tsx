@@ -10,6 +10,8 @@ import { HiArrowLongRight, HiArrowLongLeft } from 'react-icons/hi2';
 import Image from 'next/image';
 import Spinner from './Spinner';
 import { BlogPost } from '@/types/blogPost';
+import { Locale, parse } from 'date-fns';
+import { bs, sl } from 'date-fns/locale';
 
 const BlogPostPageComponent = ({
   home,
@@ -42,8 +44,25 @@ const BlogPostPageComponent = ({
         const fetchedBlogPost = await fetchBlogPost(slug, locale);
         const fetchedBlogPosts = await fetchBlogPosts(locale);
 
+        const localeMap: { [key: string]: Locale } = {
+          sl,
+          bs,
+        };
+
+        const currentLocale = localeMap[locale] || sl;
+
+        const sortedBlogs = fetchedBlogPosts.sort(
+          (a: BlogPost, b: BlogPost) =>
+            parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
+              locale: currentLocale,
+            }).getTime() -
+            parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
+              locale: currentLocale,
+            }).getTime()
+        );
+
         setBlogPost(fetchedBlogPost);
-        setBlogPosts(fetchedBlogPosts);
+        setBlogPosts(sortedBlogs);
       } catch (error) {
         console.error('Error fetching blogPost:', error);
       } finally {

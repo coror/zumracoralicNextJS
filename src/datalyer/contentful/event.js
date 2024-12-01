@@ -3,21 +3,21 @@ import { eventReducer } from './utils';
 
 export const getEvents = async (locale = 'sl') => {
   try {
-    console.log(`Fetching events for language `);
+    // console.log(`Fetching events for language `);
     const res = await client.getEntries({
       content_type: 'event',
       locale,
     });
 
-    console.log('Fetched events response:');
-    console.log(res.items);
+    // console.log('Fetched events response:');
+    // console.log(res.items);
 
     const rawEvents = res.items;
     const events = rawEvents.map((rawEvent) =>
       eventReducer(rawEvent)
     );
 
-    console.log(events);
+    // console.log(events);
 
     return events;
   } catch (error) {

@@ -9,7 +9,7 @@ export const GET = async (request) => {
 
     // Fetch services based on the lang param
     const services = await getServices(locale);
-    console.log(services);
+    // console.log(services);
     return new Response(JSON.stringify({ services }), { status: 200 });
   } catch (error) {
     console.log(error);

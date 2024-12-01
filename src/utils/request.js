@@ -14,7 +14,7 @@ async function fetchServices(locale = 'sl') {
     }
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data.services;
   } catch (error) {
     console.log(error);
@@ -36,7 +36,7 @@ async function fetchService(slug, locale) {
     }
 
     const data = await res.json();
-    return data.service;
+    // return data.service;
   } catch (error) {
     console.log(error);
     return null;
@@ -81,7 +81,7 @@ async function fetchBlogPost(slug, locale) {
     }
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data.blogPost;
   } catch (error) {
     console.log(error);
@@ -127,7 +127,7 @@ async function fetchEvent(slug, locale) {
     }
 
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     return data.event;
   } catch (error) {
     console.log(error);

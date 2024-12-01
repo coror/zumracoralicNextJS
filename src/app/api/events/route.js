@@ -8,12 +8,12 @@ export const GET = async (request) => {
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale') || 'sl';
 
-    console.log(`Received language parameter: ${locale}`);
+    // console.log(`Received language parameter: ${locale}`);
 
     // Fetch blog posts based on the language parameter
     const events = await getEvents(locale);
 
-    console.log(`Fetched ${events.length} events posts for `);
+    // console.log(`Fetched ${events.length} events posts for `);
 
     return new Response(JSON.stringify({ events }), { status: 200 });
   } catch (error) {

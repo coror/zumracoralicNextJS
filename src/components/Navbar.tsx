@@ -68,7 +68,7 @@ const Navbar = ({
   }, []);
 
   useEffect(() => {
-    console.log('isMobileMenuOpen changed:', isMobileMenuOpen);
+    // console.log('isMobileMenuOpen changed:', isMobileMenuOpen);
   }, [isMobileMenuOpen]);
 
   return (

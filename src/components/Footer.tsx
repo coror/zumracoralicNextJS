@@ -28,7 +28,7 @@ export default function Footer({ connect }: { connect: string }) {
                rel='noreferrer'
               className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
             >
-              <FaFacebookF className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff0a] text-[#ffffffd0] text-lg hover:text-white' />
+              <FaFacebookF className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
             </a>
             <a
              href='https://www.instagram.com/kjer_je_volja_je_tudi_pot/'
@@ -36,13 +36,13 @@ export default function Footer({ connect }: { connect: string }) {
              rel='noreferrer'
               className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
             >
-              <FaInstagram className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff0a] text-[#ffffffd0] text-lg hover:text-white' />
+              <FaInstagram className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
             </a>
             <a
               href='mailto:ustvari.svojo.pot@gmail.com'
               className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
             >
-              <MdOutlineEmail className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff0a] text-[#ffffffd0] text-lg hover:text-white' />
+              <MdOutlineEmail className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
             </a>
           </div>
         </div>
