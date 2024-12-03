@@ -8,16 +8,31 @@ export const GET = async (request) => {
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale') || 'sl';
 
-    // console.log(`Received language parameter: ${locale}`);
-
     // Fetch blog posts based on the language parameter
     const blogPosts = await getBlogPosts(locale);
 
-    // console.log(`Fetched ${blogPosts.length} blog posts for `);
+    // Add CORS headers
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*', // Allow all origins; replace '*' with specific domains in production
+      'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    });
 
-    return new Response(JSON.stringify({ blogPosts }), { status: 200 });
+    return new Response(JSON.stringify({ blogPosts }), {
+      status: 200,
+      headers,
+    });
   } catch (error) {
-    console.log(error);
-    return new Response('Something Went Wrong', { status: 500 });
+    console.error(error);
+
+    const headers = new Headers({
+      'Content-Type': 'text/plain',
+      'Access-Control-Allow-Origin': '*', // Add CORS headers even in the error response
+    });
+
+    return new Response('Something Went Wrong', {
+      status: 500,
+      headers,
+    });
   }
 };
