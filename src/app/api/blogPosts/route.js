@@ -14,7 +14,8 @@ export const GET = async (request) => {
     // Add CORS headers
     const headers = new Headers({
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*', // Allow all origins; replace '*' with specific domains in production
+      'Access-Control-Allow-Origin': 'https://www.zumracoralic.com',
+// Allow requests from any origin
       'Access-Control-Allow-Methods': 'GET, OPTIONS',
     });
 
@@ -27,7 +28,7 @@ export const GET = async (request) => {
 
     const headers = new Headers({
       'Content-Type': 'text/plain',
-      'Access-Control-Allow-Origin': '*', // Add CORS headers even in the error response
+      'Access-Control-Allow-Origin': '*', // Ensure error responses also include CORS headers
     });
 
     return new Response('Something Went Wrong', {
@@ -35,4 +36,18 @@ export const GET = async (request) => {
       headers,
     });
   }
+};
+
+// Handle preflight OPTIONS requests
+export const OPTIONS = async () => {
+  const headers = new Headers({
+    'Access-Control-Allow-Origin': 'https://www.zumracoralic.com',
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  });
+
+  return new Response(null, {
+    status: 204,
+    headers,
+  });
 };
