@@ -8,45 +8,17 @@ export const GET = async (request) => {
     const { searchParams } = new URL(request.url);
     const locale = searchParams.get('locale') || 'sl';
 
+    // console.log(Received language parameter: ${locale});
+
     // Fetch blog posts based on the language parameter
     const blogPosts = await getBlogPosts(locale);
 
-    // Add CORS headers
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*', // Allow requests from any origin
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    });
+    // console.log(Fetched ${blogPosts.length} blog posts for );
 
-    return new Response(JSON.stringify({ blogPosts }), {
-      status: 200,
-      headers,
-    });
+    return new Response(JSON.stringify({ blogPosts }), { status: 200 });
   } catch (error) {
-    console.error(error);
-
-    const headers = new Headers({
-      'Content-Type': 'text/plain',
-      'Access-Control-Allow-Origin': '*', // Ensure error responses also include CORS headers
-    });
-
-    return new Response('Something Went Wrong', {
-      status: 500,
-      headers,
-    });
+    console.log(error);
+    return new Response('Something Went Wrong', { status: 500 });
   }
 };
 
-// Handle preflight OPTIONS requests
-export const OPTIONS = async () => {
-  const headers = new Headers({
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  });
-
-  return new Response(null, {
-    status: 204,
-    headers,
-  });
-};
