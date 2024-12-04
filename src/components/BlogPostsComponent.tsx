@@ -62,6 +62,10 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
     value: number
   ) => {
     setCurrentPage(value);
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth', // Optional for a smooth scroll effect
+    });
   };
 
   // Pagination logic: slice the blogs array to show only the posts for the current page

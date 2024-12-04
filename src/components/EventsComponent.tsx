@@ -67,6 +67,11 @@ export default function EventsComponent({
     value: number
   ) => {
     setCurrentPage(value);
+     setCurrentPage(value);
+    window.scrollTo({
+      top: 0,
+      // behavior: 'smooth', // Optional for a smooth scroll effect
+    });
   };
 
   const indexOfLastPost = currentPage * postsPerPage;
