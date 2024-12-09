@@ -6,7 +6,6 @@ import { useLocale } from 'next-intl';
 import { fetchEvents } from '../utils/request';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { IoBookmarkOutline } from 'react-icons/io5';
 import Spinner from './Spinner';
 import { Locale, parse } from 'date-fns';
 import { bs, sl } from 'date-fns/locale'; // Add locales you need
@@ -87,64 +86,71 @@ export default function LatestEvents({
   }, [locale]);
 
   return (
-    <div className='bg-white py-10 md:py-24 relative' ref={ref}>
+    <div className='bg-white py-10 md:py-24 relative'>
       <div
-        className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
-          animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
-            : ''
+        className={`mx-auto max-w-[1600px] transition-opacity duration-2000 transform ${
+          animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
         }`}
+        ref={ref}
       >
-        {sectionTitle}
-      </div>
-      {loading ? (
-        <Spinner loading={loading} />
-      ) : (
-        <Swiper
-          modules={[Navigation, Pagination]}
-          slidesPerView={1}
-          loop={true}
-          navigation
-          pagination={{ clickable: true }}
-          breakpoints={{
-            768: {
-              slidesPerView: 2,
-            },
-            1280: {
-              slidesPerView: 3,
-            },
-          }}
-          className={`max-w-[1600px]  ${
+        <div
+          className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
             animate
-              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[600ms]'
+              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
               : ''
           }`}
         >
-          {events.map((event) => (
-            <SwiperSlide key={event.id}>
-              <LatestEventsCard
-                headline={event.headline}
-                date={event.datum}
-                featuredImage={event.featuredImage.url}
-                slug={event.slug}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+          {sectionTitle}
+        </div>
+        {loading ? (
+          <Spinner loading={loading} />
+        ) : (
+          <Swiper
+            modules={[Navigation, Pagination]}
+            slidesPerView={1}
+            loop={true}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              768: {
+                slidesPerView: 2,
+              },
+              1280: {
+                slidesPerView: 3,
+              },
+            }}
+            className={`max-w-[1600px]  ${
+              animate
+                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[600ms]'
+                : ''
+            }`}
+          >
+            {events.map((event) => (
+              <SwiperSlide key={event.id}>
+                <LatestEventsCard
+                  headline={event.headline}
+                  date={event.datum}
+                  featuredImage={event.featuredImage.url}
+                  slug={event.slug}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        )}
 
-      <div
-        className={`relative flex flex-col items-center justify-center h-full text-center ${
-          animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[750ms]'
-            : ''
-        }`}
-      >
-        <Link href={`${locale}/events`}>
-          <button className='bg-[#FFE6BC]  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in flex items-center'>
-            {button}
-          </button>
-        </Link>
+        <div
+          className={`relative flex flex-col items-center justify-center h-full text-center ${
+            animate
+              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[750ms]'
+              : ''
+          }`}
+        >
+          <Link href={`${locale}/events`}>
+            <button className='bg-[#FFE6BC]  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in flex items-center'>
+              {button}
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
