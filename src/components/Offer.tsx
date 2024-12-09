@@ -53,7 +53,12 @@ export default function Offer({
 
   return (
     <div className=' bg-white  py-10  flex flex-center justify-center'>
-      <div className='max-w-[1200px]  flex flex-col items-center' ref={ref}>
+      <div
+        className={`max-w-[1200px] flex flex-col items-center transition-opacity duration-2000 transform ${
+          animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        }`}
+        ref={ref}
+      >
         <div
           className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
             animate
