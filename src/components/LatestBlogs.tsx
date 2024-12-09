@@ -79,8 +79,11 @@ export default function LatestBlogs({
   }, [locale]);
 
   return (
-    <div className='bg-white py-10 md:py-24 relative flex flex-col ' ref={ref}>
-      <div className='max-w-[1400px] mx-auto'>
+    <div className='bg-white py-10 md:py-24 relative flex flex-col'>
+      <div className={`mx-auto max-w-[1400px] transition-opacity duration-2000 transform ${
+          animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+        }`}
+        ref={ref}>
         <div className='m-8 flex flex-col xl:flex-row xl:justify-between'>
           <div>
             <div>
