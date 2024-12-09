@@ -54,108 +54,113 @@ export default function Testimonials({
   }, [inView]);
 
   return (
-    <div className='eksperiment3 py-10 md:py-24 relative '>
-      <div
-        className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
-          animate
-            ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
-            : ''
+    <div className='eksperiment3 py-10 md:py-24 '>
+      <div className={`mx-auto max-w-[1600px] transition-opacity duration-2000 transform ${
+          animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
         }`}
-        ref={ref}
-      >
-        {sectionTitle}
-      </div>
-      <Swiper
-        modules={[Navigation, Pagination]}
-        slidesPerView={1}
-        loop={true}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        pagination={{ clickable: true }}
-        breakpoints={{
-          768: {
-            slidesPerView: 2,
-          },
-          1280: {
-            slidesPerView: 3,
-          },
-        }}
-        className={`flex items-center justify-between max-w-[1600px] ${
-          animate
-            ? 'animate-fade-up animate-duration-[2500ms] animate-delay-[1000ms]'
-            : ''
-        }`}
-      >
-        <SwiperSlide>
-          <Testimonial
-            content={testimonial1}
-            name='Tina Menard'
-            title={person1Title}
-          />
-        </SwiperSlide>
+        ref={ref}>
+        <div
+          className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
+            animate
+              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
+              : ''
+          }`}
+          
+        >
+          {sectionTitle}
+        </div>
+        <Swiper
+          modules={[Navigation, Pagination]}
+          slidesPerView={1}
+          loop={true}
+          navigation={{
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          }}
+          pagination={{ clickable: true }}
+          breakpoints={{
+            768: {
+              slidesPerView: 2,
+            },
+            1280: {
+              slidesPerView: 3,
+            },
+          }}
+          className={`flex items-center justify-between max-w-[1600px] ${
+            animate
+              ? 'animate-fade-up animate-duration-[2500ms] animate-delay-[1000ms]'
+              : ''
+          }`}
+        >
+          <SwiperSlide>
+            <Testimonial
+              content={testimonial1}
+              name='Tina Menard'
+              title={person1Title}
+            />
+          </SwiperSlide>
 
-        <SwiperSlide>
-          <div className='flex flex-col items-center'>
-            <div className='relative flex flex-col items-center justify-center md:justify-start min-h-96 md:max-w-60 lg:max-w-96 bg-white rounded-2xl mx-5 my-3 py-10 px-5 shadow-2xl'>
-              <div className='relative z-10 text-center md:text-lg'>
-                {testimonial2}
-                <div className='mt-2 hover:text-blue-900'>
-                  <a
-                    href='https://petrazagar.com/od-cistilke-podjetnice-2-del'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <IoMdLink className='inline mx-2' />
-                    Od čistilke do podjetnice
-                  </a>
+          <SwiperSlide>
+            <div className='flex flex-col items-center'>
+              <div className='relative flex flex-col items-center justify-center md:justify-start min-h-96 md:max-w-60 lg:max-w-96 bg-white rounded-2xl mx-5 my-3 py-10 px-5 shadow-2xl'>
+                <div className='relative z-10 text-center md:text-lg'>
+                  {testimonial2}
+                  <div className='mt-2 hover:text-blue-900'>
+                    <a
+                      href='https://petrazagar.com/od-cistilke-podjetnice-2-del'
+                      target='_blank'
+                      rel='noreferrer'
+                    >
+                      <IoMdLink className='inline mx-2' />
+                      Od čistilke do podjetnice
+                    </a>
+                  </div>
                 </div>
+                <div className='absolute bottom-[-20px] right-8 w-0 h-0 border-t-[20px] border-t-white border-r-[20px] border-r-transparent z-20'></div>
               </div>
-              <div className='absolute bottom-[-20px] right-8 w-0 h-0 border-t-[20px] border-t-white border-r-[20px] border-r-transparent z-20'></div>
+              <div className='flex flex-col items-center justify-center text-center mx-10 my-16'>
+                <div className='mb-4'>Petra Žagar</div>
+                <div className='text-sm text-gray-500'>{person2Title}</div>
+              </div>
             </div>
-            <div className='flex flex-col items-center justify-center text-center mx-10 my-16'>
-              <div className='mb-4'>Petra Žagar</div>
-              <div className='text-sm text-gray-500'>{person2Title}</div>
-            </div>
-          </div>
-        </SwiperSlide>
+          </SwiperSlide>
 
-        <SwiperSlide>
-          <Testimonial
-            content={testimonial3}
-            name='K.M.'
-            title={person3Title}
-          />
-        </SwiperSlide>
+          <SwiperSlide>
+            <Testimonial
+              content={testimonial3}
+              name='K.M.'
+              title={person3Title}
+            />
+          </SwiperSlide>
 
-        <SwiperSlide>
-          <Testimonial
-            content={testimonial4}
-            name='Andreja Kovšca Gruden'
-            title={person4Title}
-          />
-        </SwiperSlide>
+          <SwiperSlide>
+            <Testimonial
+              content={testimonial4}
+              name='Andreja Kovšca Gruden'
+              title={person4Title}
+            />
+          </SwiperSlide>
 
-        <SwiperSlide>
-          <Testimonial
-            content={testimonial5}
-            name='Šemsa B.'
-            title={person5Title}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Testimonial
-            content={testimonial6}
-            name='Darja'
-            title={person6Title}
-          />
-        </SwiperSlide>
+          <SwiperSlide>
+            <Testimonial
+              content={testimonial5}
+              name='Šemsa B.'
+              title={person5Title}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Testimonial
+              content={testimonial6}
+              name='Darja'
+              title={person6Title}
+            />
+          </SwiperSlide>
 
-        <div className='swiper-pagination'></div>
-        <div className='swiper-button-next'></div>
-        <div className='swiper-button-prev'></div>
-      </Swiper>
+          <div className='swiper-pagination'></div>
+          <div className='swiper-button-next'></div>
+          <div className='swiper-button-prev'></div>
+        </Swiper>
+      </div>
     </div>
   );
 }
