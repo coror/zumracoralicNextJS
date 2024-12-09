@@ -34,14 +34,20 @@ export default function Quote({ quote }: { quote: string }) {
       >
         <div className='absolute inset-0 bg-[#222428] opacity-65'></div>
         <div
-          ref={ref}
-          className={`relative flex items-center justify-center h-full text-white p-10 text-3xl text-center md:text-[56px] tracking-wide leading-[1] ${
-            animate
-              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
-              : ''
+          className={`relative flex items-center justify-center h-full transition-opacity duration-2000 transform ${
+            animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
           }`}
+          ref={ref}
         >
-          {quote}
+          <div
+            className={` text-white p-10 text-3xl text-center md:text-[56px] tracking-wide leading-[1] ${
+              animate
+                ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
+                : ''
+            }`}
+          >
+            {quote}
+          </div>
         </div>
       </div>
     </div>
