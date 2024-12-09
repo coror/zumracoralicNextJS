@@ -15,6 +15,9 @@ export default function Testimonials({
   sectionTitle,
   testimonial1,
   person1Title,
+  testimonial1_5,
+  person1_5Title,
+  person1_5Name,
   testimonial2,
   person2Title,
   testimonial3,
@@ -29,6 +32,9 @@ export default function Testimonials({
   sectionTitle: string;
   testimonial1: string;
   person1Title: string;
+  testimonial1_5: string;
+  person1_5Title: string;
+  person1_5Name: string;
   testimonial2: string;
   person2Title: string;
   testimonial3: string;
@@ -55,17 +61,18 @@ export default function Testimonials({
 
   return (
     <div className='eksperiment3 py-10 md:py-24 '>
-      <div className={`mx-auto max-w-[1600px] transition-opacity duration-2000 transform ${
+      <div
+        className={`mx-auto max-w-[1600px] transition-opacity duration-2000 transform ${
           animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
         }`}
-        ref={ref}>
+        ref={ref}
+      >
         <div
           className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
             animate
               ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
               : ''
           }`}
-          
         >
           {sectionTitle}
         </div>
@@ -97,6 +104,13 @@ export default function Testimonials({
               content={testimonial1}
               name='Tina Menard'
               title={person1Title}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Testimonial
+              content={testimonial1_5}
+              name={person1_5Name}
+              title={person1_5Title}
             />
           </SwiperSlide>
 

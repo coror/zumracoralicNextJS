@@ -154,6 +154,9 @@ export default function Home() {
         sectionTitle={s('sectionTitle')}
         testimonial1={s('testimonial1')}
         person1Title={s('person1Title')}
+        testimonial1_5={s('testimonial1_5')}
+        person1_5Title={s('person1_5Title')}
+        person1_5Name={s('person1_5Name')}
         testimonial2={s('testimonial2')}
         person2Title={s('person2Title')}
         testimonial3={s('testimonial3')}
