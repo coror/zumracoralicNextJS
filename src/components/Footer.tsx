@@ -1,11 +1,10 @@
 import React from 'react';
-import { FaInstagram, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaLinkedin } from 'react-icons/fa';
 import { MdOutlineEmail } from 'react-icons/md';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 
 export default function Footer({ connect }: { connect: string }) {
-  
   return (
     <div className='relative w-full  text-white'>
       <div className='eksperiment2 py-10'>
@@ -23,17 +22,17 @@ export default function Footer({ connect }: { connect: string }) {
           </div>
           <div className='flex flex-row items-center space-x-4 text-white'>
             <a
-               href='https://www.facebook.com/ustvari.svojo.pot'
-               target='_blank'
-               rel='noreferrer'
+              href='https://www.facebook.com/ustvari.svojo.pot'
+              target='_blank'
+              rel='noreferrer'
               className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
             >
               <FaFacebookF className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
             </a>
             <a
-             href='https://www.instagram.com/kjer_je_volja_je_tudi_pot/'
-             target='_blank'
-             rel='noreferrer'
+              href='https://www.instagram.com/kjer_je_volja_je_tudi_pot/'
+              target='_blank'
+              rel='noreferrer'
               className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
             >
               <FaInstagram className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
@@ -43,6 +42,12 @@ export default function Footer({ connect }: { connect: string }) {
               className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
             >
               <MdOutlineEmail className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
+            </a>
+            <a
+              href='https://si.linkedin.com/in/zumra-%C4%87orali%C4%87-bb084497'
+              className='hover:scale-105  md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#ffffff0a] rounded-full'
+            >
+              <FaLinkedin className='w-8 h-8 p-2 lg:w-16 lg:h-16 lg:p-5 rounded-full bg-[#ffffff16] text-[#ffffffd0] text-lg hover:text-white' />
             </a>
           </div>
         </div>
