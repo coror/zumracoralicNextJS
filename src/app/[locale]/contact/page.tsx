@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { MdEmail } from 'react-icons/md';
-import { FaFacebookF, FaInstagram, FaPhoneAlt } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 import FormSection from '@/components/FormSection';
 import { Metadata } from '@/types/metadata';
@@ -114,7 +114,7 @@ export default function Page() {
       <div className=' flex flex-col lg:flex-row items-start justify-evenly py-20 '>
         <div className='relative px-10 text-center items-left w-full text-black flex flex-col lg:flex-col-reverse  animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
           <div>
-            <div className='mt-12 mb-12 lg:mb-0 space-y-4 text-xs sm:text-base'>
+            <div className='mt-0 lg:mt-12 mb-12 lg:mb-0 space-y-4 text-xs sm:text-base'>
               <a
                 href='mailto:ustvari.svojo.pot@gmail.com'
                 className=' flex items-center m-2 hover:text-identifier md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
@@ -145,6 +145,15 @@ export default function Page() {
               >
                 <FaInstagram className='text-identifier mx-3' />
                 {t('instagram')}
+              </a>
+              <a
+                href='https://si.linkedin.com/in/zumra-%C4%87orali%C4%87-bb084497'
+                target='_blank'
+                rel='noreferrer'
+                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
+              >
+                <FaLinkedin className='text-identifier mx-3' />
+                Zumra Ćoralić
               </a>
             </div>
           </div>
