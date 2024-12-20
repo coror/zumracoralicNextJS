@@ -23,10 +23,10 @@ export async function generateMetadata({
         url: `https://www.zumracoralic.com/sl/blog/${slug}`,
         images: [
           {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/blogHeader_oraf6m.png',
+            url: blog.featuredImage.url,
             width: 800,
             height: 600,
-            alt: 'Zumra Coralic Blog',
+            alt: blog.featuredImage.alt,
           },
         ],
       },
@@ -34,8 +34,7 @@ export async function generateMetadata({
         card: 'summary_large_image',
         title: `Zumra Coralic - Blog | ${blog.seoTitle}`,
         description: blog.seoDescription,
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/blogHeader_oraf6m.png',
+        image: blog.featuredImage.url,
       },
       canonical: `https://www.zumracoralic.com/sl/blog/${slug}`,
     },
@@ -49,10 +48,10 @@ export async function generateMetadata({
         url: `https://www.zumracoralic.com/bs/blog/${slug}`,
         images: [
           {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/blogHeader_oraf6m.png',
+            url: blog.featuredImage.url,
             width: 800,
             height: 600,
-            alt: 'Zumra Ćoralić Blog',
+            alt: blog.featuredImage.alt,
           },
         ],
       },
@@ -60,8 +59,7 @@ export async function generateMetadata({
         card: 'summary_large_image',
         title: `Zumra Ćoralić - Blog | ${blog.seoTitle}`,
         description: blog.seoDescription,
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/blogHeader_oraf6m.png',
+        image: blog.featuredImage.url,
       },
       canonical: `https://www.zumracoralic.com/bs/blog/${slug}`,
     },
