@@ -23,10 +23,10 @@ export async function generateMetadata({
         url: `https://www.zumracoralic.com/sl/dogodki/${slug}`,
         images: [
           {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/eventsHeader_oraf6m.png',
+            url: event.featuredImage.url,
             width: 800,
             height: 600,
-            alt: 'Zumra Coralic Events',
+            alt: event.featuredImage.alt,
           },
         ],
       },
@@ -34,8 +34,7 @@ export async function generateMetadata({
         card: 'summary_large_image',
         title: `Zumra Coralic - Dogodki | ${event.seoTitle}`,
         description: `${event.seoDescription}`,
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/eventsHeader_oraf6m.png',
+        image: event.featuredImage.url,
       },
       canonical: `https://www.zumracoralic.com/sl/dogodki/${slug}`,
     },
@@ -49,10 +48,10 @@ export async function generateMetadata({
         url: `https://www.zumracoralic.com/bs/dogadjaji/${slug}`,
         images: [
           {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/eventsHeader_oraf6m.png',
+            url: event.featuredImage.url,
             width: 800,
             height: 600,
-            alt: 'Zumra Ćoralić Events',
+            alt: event.featuredImage.alt,
           },
         ],
       },
@@ -60,8 +59,7 @@ export async function generateMetadata({
         card: 'summary_large_image',
         title: `Zumra Ćoralić - Događaji | ${event.seoTitle}`,
         description: `${event.seoDescription}`,
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/eventsHeader_oraf6m.png',
+        image: event.featuredImage.url,
       },
       canonical: `https://www.zumracoralic.com/bs/dogadjaji/${slug}`,
     },
