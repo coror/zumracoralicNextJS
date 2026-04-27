@@ -119,9 +119,9 @@ const EventPageComponent = ({
                     />
                   </div>
                   <div className='ml-6'>
-                    <h1 className='uppercase font-bold tracking-widest text-[#aaaaaa] '>
+                    <span className='uppercase font-bold tracking-widest text-[#aaaaaa] block'>
                       {previousPostText}
-                    </h1>
+                    </span>
                     <div className='font-bold text-lg  lg:max-w-64 '>
                       <HiArrowLongLeft className='inline mr-1' />
                       {previousPost.seoTitle}
@@ -144,9 +144,9 @@ const EventPageComponent = ({
                     />
                   </div>
                   <div className='mr-6'>
-                    <h1 className='uppercase font-bold tracking-widest text-[#aaaaaa]'>
+                    <span className='uppercase font-bold tracking-widest text-[#aaaaaa] block'>
                       {nextPostText}
-                    </h1>
+                    </span>
                     <div className='font-bold text-lg lg:max-w-64  '>
                       {nextPost.seoTitle}
                       <HiArrowLongRight className='inline ml-1' />

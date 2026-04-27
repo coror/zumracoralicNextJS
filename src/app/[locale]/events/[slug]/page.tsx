@@ -2,90 +2,34 @@ import React from 'react';
 import EventComponent from '@/components/EventComponent';
 import { useTranslations } from 'next-intl';
 import { fetchEvent } from '@/utils/request';
-import { Metadata } from '@/types/metadata';
+import { PageMetadata } from '@/types/metadata';
+import { buildPageMetadata } from '@/utils/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string; slug: string };
-}): Promise<Metadata> {
+}): Promise<PageMetadata> {
   const { locale, slug } = params;
   const event = await fetchEvent(slug, locale);
 
-  const metadataByLocale: Record<string, Metadata> = {
-    sl: {
-      title: `Zumra Coralic - Dogodki | ${event.seoTitle}`,
-      description: `${event.seoDescription}`,
-      url: `https://www.zumracoralic.com/sl/dogodki/${slug}`,
-      openGraph: {
-        title: `Zumra Coralic - Dogodki | ${event.seoTitle}`,
-        description: `${event.seoDescription}`,
-        url: `https://www.zumracoralic.com/sl/dogodki/${slug}`,
-        images: [
-          {
-            url: event.featuredImage.url,
-            width: 800,
-            height: 600,
-            alt: event.featuredImage.alt,
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: `Zumra Coralic - Dogodki | ${event.seoTitle}`,
-        description: `${event.seoDescription}`,
-        image: event.featuredImage.url,
-      },
-      canonical: `https://www.zumracoralic.com/sl/dogodki/${slug}`,
+  return buildPageMetadata({
+    pathnameKey: '/events/[slug]',
+    locale,
+    params: { slug },
+    titles: {
+      sl: `Zumra Coralic - Dogodki | ${event.seoTitle}`,
+      bs: `Zumra Ćoralić - Događaji | ${event.seoTitle}`,
     },
-    bs: {
-      title: `Zumra Ćoralić - Događaji | ${event.seoTitle}`,
-      description: `${event.seoDescription}`,
-      url: `https://www.zumracoralic.com/bs/dogadjaji/${slug}`,
-      openGraph: {
-        title: `Zumra Ćoralić - Događaji | ${event.seoTitle}`,
-        description: `${event.seoDescription}`,
-        url: `https://www.zumracoralic.com/bs/dogadjaji/${slug}`,
-        images: [
-          {
-            url: event.featuredImage.url,
-            width: 800,
-            height: 600,
-            alt: event.featuredImage.alt,
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: `Zumra Ćoralić - Događaji | ${event.seoTitle}`,
-        description: `${event.seoDescription}`,
-        image: event.featuredImage.url,
-      },
-      canonical: `https://www.zumracoralic.com/bs/dogadjaji/${slug}`,
+    descriptions: {
+      sl: event.seoDescription,
+      bs: event.seoDescription,
     },
-  };
-
-  const currentLocaleMetadata =
-    metadataByLocale[locale] || metadataByLocale['sl'];
-
-  return {
-    title: currentLocaleMetadata.title,
-    description: currentLocaleMetadata.description,
-    url: currentLocaleMetadata.url, // Ensure the URL is included at the top level
-    openGraph: {
-      title: currentLocaleMetadata.openGraph.title,
-      description: currentLocaleMetadata.openGraph.description,
-      url: currentLocaleMetadata.openGraph.url,
-      images: currentLocaleMetadata.openGraph.images,
+    image: {
+      url: event.featuredImage.url,
+      alt: event.featuredImage.alt,
     },
-    twitter: {
-      card: currentLocaleMetadata.twitter.card,
-      title: currentLocaleMetadata.twitter.title,
-      description: currentLocaleMetadata.twitter.description,
-      image: currentLocaleMetadata.twitter.image,
-    },
-    canonical: currentLocaleMetadata.canonical,
-  };
+  });
 }
 
 export default function Page() {

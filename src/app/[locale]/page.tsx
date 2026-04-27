@@ -6,107 +6,39 @@ import Offer from '@/components/Offer';
 import Testimonials from '@/components/Testimonials';
 import LatestEvents from '@/components/LatestEvents';
 import LatestBlogs from '@/components/LatestBlogs';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import UpcomingEvents from '@/components/UpcomingEvents';
-import { OpenGraphMetadata, TwitterMetadata, Metadata } from '@/types/metadata';
+import { PageMetadata } from '@/types/metadata';
+import { buildPageMetadata, pickByLocale } from '@/utils/seo';
+import JsonLd from '@/components/JsonLd';
 import UnderHeader from '@/components/UnderHeader';
 
-// Define metadataByLocale with proper typing
-const metadataByLocale: Record<string, Metadata> = {
-  sl: {
-    title: 'Zumra Coralic',
-    description:
-      'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
-    url: 'https://www.zumracoralic.com',
-    openGraph: {
-      title: 'Zumra Coralic',
-      description:
-        'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
-      url: 'https://www.zumracoralic.com',
-      images: [
-        {
-          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
-          width: 800,
-          height: 600,
-          alt: 'Zumra Coralic',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Zumra Coralic',
-      description:
-        'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
-      image:
-        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
-    },
-    canonical: 'https://www.zumracoralic.com',
-  },
-  bs: {
-    title: 'Zumra Ćoralić',
-    description:
-      'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
-    url: 'https://www.zumracoralic.com/bs',
-    openGraph: {
-      title: 'Zumra Ćoralić',
-      description:
-        'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
-      url: 'https://www.zumracoralic.com/bs',
-      images: [
-        {
-          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
-          width: 800,
-          height: 600,
-          alt: 'Zumra Ćoralić',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'Zumra Ćoralić',
-      description:
-        'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
-      image:
-        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
-    },
-    canonical: 'https://www.zumracoralic.com/bs',
-  },
+const titles = {
+  sl: 'Zumra Coralic',
+  bs: 'Zumra Ćoralić',
 };
 
-// Define the generateMetadata function
+const descriptions = {
+  sl: 'Dobrodošli na moji strani. Spoznajte, kako vam lahko NLP coaching in mediacija pomagata izboljšati počutje in odnose.',
+  bs: 'Dobrodošli na mojoj stranici. Saznajte kako vam NLP coaching i medijacija mogu pomoći da poboljšate svoje blagostanje i odnose.',
+};
+
+const heroImage = {
+  url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
+};
+
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
-}): Promise<{
-  title: string;
-  description: string;
-  openGraph: OpenGraphMetadata;
-  twitter: TwitterMetadata;
-  canonical: string;
-}> {
-  const { locale } = params;
-
-  const currentLocaleMetadata =
-    metadataByLocale[locale] || metadataByLocale['sl']; // Default to Slovenian if locale is not found
-
-  return {
-    title: currentLocaleMetadata.title,
-    description: currentLocaleMetadata.description,
-    openGraph: {
-      title: currentLocaleMetadata.openGraph.title,
-      description: currentLocaleMetadata.openGraph.description,
-      url: currentLocaleMetadata.openGraph.url,
-      images: currentLocaleMetadata.openGraph.images,
-    },
-    twitter: {
-      card: currentLocaleMetadata.twitter.card,
-      title: currentLocaleMetadata.twitter.title,
-      description: currentLocaleMetadata.twitter.description,
-      image: currentLocaleMetadata.twitter.image,
-    },
-    canonical: currentLocaleMetadata.canonical,
-  };
+}): Promise<PageMetadata> {
+  return buildPageMetadata({
+    pathnameKey: '/',
+    locale: params.locale,
+    titles,
+    descriptions,
+    image: heroImage,
+  });
 }
 
 export default function Home() {
@@ -120,8 +52,27 @@ export default function Home() {
   const b = useTranslations('LatestBlogs');
   const p = useTranslations('UpcomingEvents');
   const i = useTranslations('Index');
+  const locale = useLocale();
+  const homeUrl = `https://www.zumracoralic.com/${locale}`;
   return (
     <div>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: pickByLocale(titles, locale),
+          jobTitle: 'NLP Coach & Mediator',
+          url: homeUrl,
+          telephone: '+386 41 429 437',
+          email: 'ustvari.svojo.pot@gmail.com',
+          description: pickByLocale(descriptions, locale),
+          image:
+            'https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG_0704_qh6mdm.jpg',
+          sameAs: [
+            'https://si.linkedin.com/in/zumra-%C4%87orali%C4%87-bb084497',
+          ],
+        }}
+      />
       <Header title={t('title')} content={t('content')} button={t('button')} />
       {/* <UnderHeader content={t('content')} /> */}
       <AboutMe

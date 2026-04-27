@@ -1,47 +1,67 @@
 import type { MetadataRoute } from 'next';
+import {
+  fetchBlogPosts,
+  fetchEvents,
+  fetchServices,
+} from '@/utils/request';
+import { getAlternates } from '@/utils/seo';
+import { defaultLocale } from '@/config';
+import type { pathnames } from '@/config';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.zumracoralic.com';
+type PathnameKey = keyof typeof pathnames;
 
-  const routes = [
-    { path: '/', sl: '/', bs: '/' },
-    { path: '/blogs', sl: '/blog', bs: '/blog' },
-    { path: '/blogs/[slug]', sl: '/blog/[slug]', bs: '/blog/[slug]' },
-    { path: '/events', sl: '/dogodki', bs: '/dogadaji' },
-    { path: '/events/[slug]', sl: '/dogodki/[slug]', bs: '/dogadaji/[slug]' },
-    { path: '/about-me', sl: '/o-meni', bs: '/o-meni' },
-    { path: '/services', sl: '/storitve', bs: '/usluge' },
-    {
-      path: '/services/coaching',
-      sl: '/storitve/coaching',
-      bs: '/usluge/coaching',
-    },
-    {
-      path: '/services/mediation',
-      sl: '/storitve/mediacija',
-      bs: '/usluge/medijacija',
-    },
-    {
-      path: '/services/workshop',
-      sl: '/storitve/delavnice-predavanja',
-      bs: '/usluge/radionice-predavanja',
-    },
-    {
-      path: '/services/workshop/[slug]',
-      sl: '/storitve/delavnice-predavanja/[slug]',
-      bs: '/usluge/radionice-predavanja/[slug]',
-    },
-    { path: '/contact', sl: '/kontakt', bs: '/kontakt' },
-  ];
-
-  return routes.map((route) => ({
-    url: `${baseUrl}${route.path}`,
+function entryFor(key: PathnameKey, params?: Record<string, string>) {
+  const alts = getAlternates(key, defaultLocale, params);
+  return {
+    url: alts.canonical,
     lastModified: new Date(),
-    alternates: {
-      languages: {
-        sl: `${baseUrl}${route.sl}`,
-        bs: `${baseUrl}${route.bs}`,
-      },
-    },
-  }));
+    alternates: { languages: alts.languages },
+  };
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const staticEntries: MetadataRoute.Sitemap = (
+    [
+      '/',
+      '/blogs',
+      '/events',
+      '/about-me',
+      '/services',
+      '/services/coaching',
+      '/services/mediation',
+      '/services/workshop',
+      '/contact',
+    ] as PathnameKey[]
+  ).map((key) => entryFor(key));
+
+  const [blogPosts, events, services] = await Promise.all([
+    fetchBlogPosts(defaultLocale),
+    fetchEvents(defaultLocale),
+    fetchServices(defaultLocale),
+  ]);
+
+  const blogEntries: MetadataRoute.Sitemap = (blogPosts || [])
+    .filter((p: { slug?: string }) => p?.slug)
+    .map((p: { slug: string }) =>
+      entryFor('/blogs/[slug]', { slug: p.slug }),
+    );
+
+  const eventEntries: MetadataRoute.Sitemap = (events || [])
+    .filter((e: { slug?: string }) => e?.slug)
+    .map((e: { slug: string }) =>
+      entryFor('/events/[slug]', { slug: e.slug }),
+    );
+
+  const workshopEntries: MetadataRoute.Sitemap = (services || [])
+    .filter((s: { slug?: string }) => s?.slug)
+    .map((s: { slug: string }) =>
+      entryFor('/services/workshop/[slug]', { slug: s.slug }),
+    );
+
+  return [
+    ...staticEntries,
+    ...blogEntries,
+    ...eventEntries,
+    ...workshopEntries,
+  ];
 }

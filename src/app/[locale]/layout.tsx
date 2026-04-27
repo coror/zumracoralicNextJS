@@ -11,15 +11,11 @@ export const dynamic = 'force-dynamic';
 
 const inter = Playfair_Display({ subsets: ['latin'] });
 
-// Define the metadata for the application
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.zumracoralic.com'),
   title: {
-    template: 'Zumra Coralic',
+    template: '%s',
     default: 'Zumra Coralic',
-  },
-  alternates: {
-    canonical: './',
   },
 };
 

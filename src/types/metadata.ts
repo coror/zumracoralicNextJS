@@ -20,11 +20,22 @@ export interface TwitterMetadata {
   image: string;
 }
 
+export interface MetadataAlternates {
+  canonical: string;
+  languages: Record<string, string>;
+}
+
 export interface Metadata {
   title: string;
   description: string;
-  url: string;
   openGraph: OpenGraphMetadata;
   twitter: TwitterMetadata;
-  canonical: string;
+}
+
+export interface PageMetadata {
+  title: string;
+  description: string;
+  openGraph: OpenGraphMetadata;
+  twitter: TwitterMetadata;
+  alternates: MetadataAlternates;
 }
