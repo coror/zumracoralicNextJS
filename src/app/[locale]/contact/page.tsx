@@ -3,105 +3,30 @@ import { MdEmail } from 'react-icons/md';
 import { FaFacebookF, FaInstagram, FaLinkedin, FaPhoneAlt } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 import FormSection from '@/components/FormSection';
-import { Metadata } from '@/types/metadata';
+import { PageMetadata } from '@/types/metadata';
+import { buildPageMetadata } from '@/utils/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
-}): Promise<Metadata> {
-  const { locale } = params;
-
-  const metadataByLocale: Record<string, Metadata> = {
-    sl: {
-      title: 'Zumra Coralic - Kontakt',
-      description:
-        'Kontaktirajte nas za več informacij o NLP coachingu, mediaciji ter delavnicah in predavanjih. Tukaj boste našli vse potrebne kontakte za vaša vprašanja in pobude.',
-      url: 'https://www.zumracoralic.com/sl/kontakt',
-      openGraph: {
-        title: 'Zumra Coralic - Kontakt',
-        description:
-          'Kontaktirajte nas za več informacij o NLP coachingu, mediaciji ter delavnicah in predavanjih. Tukaj boste našli vse potrebne kontakte za vaša vprašanja in pobude.',
-        url: 'https://www.zumracoralic.com/sl/kontakt',
-        images: [
-          {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
-            width: 800,
-            height: 600,
-            alt: 'Contact - Zumra Coralic',
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: 'Zumra Coralic - Kontakt',
-        description:
-          'Kontaktirajte nas za več informacij o NLP coachingu, mediaciji ter delavnicah in predavanjih. Tukaj boste našli vse potrebne kontakte za vaša vprašanja in pobude.',
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
-      },
-      canonical: 'https://www.zumracoralic.com/sl/kontakt',
+}): Promise<PageMetadata> {
+  return buildPageMetadata({
+    pathnameKey: '/contact',
+    locale: params.locale,
+    titles: {
+      sl: 'Zumra Coralic - Kontakt',
+      bs: 'Zumra Ćoralić - Kontakt',
     },
-    bs: {
-      title: 'Zumra Ćoralić - Kontakt',
-      description:
-        'Kontaktirajte nas za više informacija o NLP coachingu, medijaciji te radionicama i predavanjima. Ovdje ćete pronaći sve potrebne kontakte za vaša pitanja i prijedloge.',
-      url: 'https://www.zumracoralic.com/bs/kontakt',
-      openGraph: {
-        title: 'Zumra Ćoralić - Kontakt',
-        description:
-          'Kontaktirajte nas za više informacija o NLP coachingu, medijaciji te radionicama i predavanjima. Ovdje ćete pronaći sve potrebne kontakte za vaša pitanja i prijedloge.',
-        url: 'https://www.zumracoralic.com/bs/kontakt',
-        images: [
-          {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
-            width: 800,
-            height: 600,
-            alt: 'Contact - Zumra Ćoralić',
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: 'Zumra Ćoralić - Kontakt',
-        description:
-          'Kontaktirajte nas za više informacija o NLP coachingu, medijaciji te radionicama i predavanjima. Ovdje ćete pronaći sve potrebne kontakte za vaša pitanja i prijedloge.',
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
-      },
-      canonical: 'https://www.zumracoralic.com/bs/kontakt',
+    descriptions: {
+      sl: 'Kontaktirajte nas za več informacij o NLP coachingu, mediaciji ter delavnicah in predavanjih. Tukaj boste našli vse potrebne kontakte za vaša vprašanja in pobude.',
+      bs: 'Kontaktirajte nas za više informacija o NLP coachingu, medijaciji te radionicama i predavanjima. Ovdje ćete pronaći sve potrebne kontakte za vaša pitanja i prijedloge.',
     },
-  };
-
-  const currentLocaleMetadata =
-    metadataByLocale[locale] || metadataByLocale['sl']; // Default to Slovenian if locale is not found
-
-  return {
-    title: currentLocaleMetadata.title,
-    description: currentLocaleMetadata.description,
-    url: currentLocaleMetadata.url,
-    openGraph: {
-      title: currentLocaleMetadata.title,
-      description: currentLocaleMetadata.description,
-      url: currentLocaleMetadata.url,
-      images: [
-        {
-          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
-          width: 800,
-          height: 600,
-          alt: 'Contact - Zumra Coralic',
-        },
-      ],
+    image: {
+      url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
+      alt: 'Contact - Zumra Coralic',
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: currentLocaleMetadata.title,
-      description: currentLocaleMetadata.description,
-      image:
-        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/contactHeader_oraf6m.png',
-    },
-    canonical: currentLocaleMetadata.url,
-  };
+  });
 }
 
 export default function Page() {

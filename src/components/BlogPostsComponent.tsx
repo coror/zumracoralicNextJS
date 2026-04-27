@@ -107,9 +107,9 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
                       href={`/${locale}/blogs/${blog.slug}`}
                       className='text-3xl md:text-5xl lg:text-6xl '
                     >
-                      <h1 className='hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in'>
+                      <h2 className='hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in'>
                         {blog.seoTitle}
-                      </h1>
+                      </h2>
                     </Link>
                     <div>
                       <Link
@@ -126,9 +126,9 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
           </Swiper>
         )}
       </div>
-      <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
+      <h1 className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
         Blog
-      </div>
+      </h1>
       <div>
         {loading ? (
           <Spinner loading={loading} />

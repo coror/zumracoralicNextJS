@@ -2,97 +2,30 @@ import React from 'react';
 import Image from 'next/image';
 import ServicesCard from '@/components/ServicesCard';
 import { useTranslations } from 'next-intl';
-import { Metadata } from '@/types/metadata';
+import { PageMetadata } from '@/types/metadata';
+import { buildPageMetadata } from '@/utils/seo';
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
-}): Promise<Metadata> {
-  const { locale } = params;
-
-  const metadataByLocale: Record<string, Metadata> = {
-    sl: {
-      title: 'Zumra Coralic - Storitve',
-      description:
-        'Odkrijte naše storitve, vključno z NLP coachingom, mediacijo ter delavnicami in predavanji za podjetja in organizacije.',
-      url: 'https://www.zumracoralic.com/storitve',
-      openGraph: {
-        title: 'Zumra Coralic - Storitve',
-        description:
-          'Odkrijte naše storitve, vključno z NLP coachingom, mediacijo ter delavnicami in predavanji za podjetja in organizacije.',
-        url: 'https://www.zumracoralic.com/storitve',
-        images: [
-          {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/servicesHeader_oraf6m.png',
-            width: 800,
-            height: 600,
-            alt: 'Zumra Coralic Services',
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: 'Zumra Coralic - Storitve',
-        description:
-          'Odkrijte naše storitve, vključno z NLP coachingom, mediacijo ter delavnicami in predavanji za podjetja in organizacije.',
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/servicesHeader_oraf6m.png',
-      },
-      canonical: 'https://www.zumracoralic.com/storitve',
+}): Promise<PageMetadata> {
+  return buildPageMetadata({
+    pathnameKey: '/services',
+    locale: params.locale,
+    titles: {
+      sl: 'Zumra Coralic - Storitve',
+      bs: 'Zumra Ćoralić - Usluge',
     },
-    bs: {
-      title: 'Zumra Ćoralić - Usluge',
-      description:
-        'Otkrijte naše usluge, uključujući NLP coaching, medijaciju, te radionice i predavanja za kompanije i organizacije.',
-      url: 'https://www.zumracoralic.com/bs/usluge',
-      openGraph: {
-        title: 'Zumra Ćoralić - Usluge',
-        description:
-          'Otkrijte naše usluge, uključujući NLP coaching, medijaciju, te radionice i predavanja za kompanije i organizacije.',
-        url: 'https://www.zumracoralic.com/bs/usluge',
-        images: [
-          {
-            url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/servicesHeader_oraf6m.png',
-            width: 800,
-            height: 600,
-            alt: 'Zumra Ćoralić Services',
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title: 'Zumra Ćoralić - Usluge',
-        description:
-          'Otkrijte naše usluge, uključujući NLP coaching, medijaciju, te radionice i predavanja za kompanije i organizacije.',
-        image:
-          'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/servicesHeader_oraf6m.png',
-      },
-      canonical: 'https://www.zumracoralic.com/bs/usluge',
+    descriptions: {
+      sl: 'Odkrijte naše storitve, vključno z NLP coachingom, mediacijo ter delavnicami in predavanji za podjetja in organizacije.',
+      bs: 'Otkrijte naše usluge, uključujući NLP coaching, medijaciju, te radionice i predavanja za kompanije i organizacije.',
     },
-  };
-
-  const currentLocaleMetadata =
-    metadataByLocale[locale] || metadataByLocale['sl']; // Default to Slovenian if locale is not found
-
-  return {
-    title: currentLocaleMetadata.title,
-    description: currentLocaleMetadata.description,
-    url: currentLocaleMetadata.url, // Ensure the URL is included at the top level
-    openGraph: {
-      title: currentLocaleMetadata.openGraph.title,
-      description: currentLocaleMetadata.openGraph.description,
-      url: currentLocaleMetadata.openGraph.url,
-      images: currentLocaleMetadata.openGraph.images,
+    image: {
+      url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/servicesHeader_oraf6m.png',
+      alt: 'Zumra Coralic Services',
     },
-    twitter: {
-      card: currentLocaleMetadata.twitter.card,
-      title: currentLocaleMetadata.twitter.title,
-      description: currentLocaleMetadata.twitter.description,
-      image: currentLocaleMetadata.twitter.image,
-    },
-    canonical: currentLocaleMetadata.canonical,
-  };
+  });
 }
 
 export default function Page() {
@@ -113,9 +46,9 @@ export default function Page() {
         />
         <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
 
-        <div className='absolute inset-0 flex flex-col items-center lg:justify-center text-white m-8 pb-10 text-[35px] md:text-[56px] lg:text-5xl 3xl:text-8xl  mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
+        <h1 className='absolute inset-0 flex flex-col items-center lg:justify-center text-white m-8 pb-10 text-[35px] md:text-[56px] lg:text-5xl 3xl:text-8xl  mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
           {n('services')}
-        </div>
+        </h1>
       </div>
 
       <div className='relative flex flex-col lg:flex-row justify-center items-stretch mt-10 px-6 lg:space-x-10'>

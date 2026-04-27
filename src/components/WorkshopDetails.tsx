@@ -10,6 +10,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { getRichTextOptions } from '@/datalyer/contentful/richTextUtils';
 import Image from 'next/image';
 import { Service } from '@/types/service';
+import JsonLd from './JsonLd';
 
 export default function WorkshopDetails({
   allServices,
@@ -66,6 +67,36 @@ export default function WorkshopDetails({
       )}
       {!loading && service && (
         <>
+          <JsonLd
+            data={{
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              name: service.headline,
+              serviceType: service.type,
+              description: service.seoDescription,
+              url: `https://www.zumracoralic.com/${locale}/${
+                locale === 'bs'
+                  ? 'usluge/radionice-predavanja'
+                  : 'storitve/delavnice-predavanja'
+              }/${service.slug}`,
+              areaServed: 'Slovenia',
+              provider: {
+                '@type': 'Person',
+                name: locale === 'bs' ? 'Zumra Ćoralić' : 'Zumra Coralic',
+                url: `https://www.zumracoralic.com/${locale}`,
+              },
+              image: service.headlineImage?.[0]?.original_secure_url,
+              ...(typeof service.price === 'number'
+                ? {
+                    offers: {
+                      '@type': 'Offer',
+                      price: service.price,
+                      priceCurrency: 'EUR',
+                    },
+                  }
+                : {}),
+            }}
+          />
           <div className='relative w-full md:h-[27rem] 3xl:h-[50rem] overflow-hidden '>
             <Image
               src={service.headlineImage[0].original_secure_url}
@@ -108,9 +139,9 @@ export default function WorkshopDetails({
           </nav>
           <div className='relative p-4 mx-5 lg:max-w-[60rem] lg:mx-auto flex flex-col items-center animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
             <div>
-              <div className='mt-5 md:mt-10 text-xl md:text-2xl lg:text-4xl font-bold text-center'>
+              <h1 className='mt-5 md:mt-10 text-xl md:text-2xl lg:text-4xl font-bold text-center'>
                 {service.headline}
-              </div>
+              </h1>
               <div className='mt-8 italic text-center md:text-xl'>
                 {service.type}
               </div>

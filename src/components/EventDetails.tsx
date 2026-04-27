@@ -4,7 +4,22 @@ import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '../datalyer/contentful/richTextUtils';
 import { useState } from 'react';
+import { parse } from 'date-fns';
+import { bs as bsLocale, sl as slLocale } from 'date-fns/locale';
 import { Event } from '@/types/event';
+import JsonLd from './JsonLd';
+
+function toIsoDate(dateStr: string, locale: string): string | undefined {
+  try {
+    const parsed = parse(dateStr, 'd. MMMM yyyy', new Date(), {
+      locale: locale === 'bs' ? bsLocale : slLocale,
+    });
+    if (isNaN(parsed.getTime())) return undefined;
+    return parsed.toISOString().split('T')[0];
+  } catch {
+    return undefined;
+  }
+}
 
 const EventDetails = ({
   event,
@@ -31,8 +46,40 @@ const EventDetails = ({
     setSelectedImage(null);
   };
 
+  const startDate = toIsoDate(event.datum, locale);
+  const eventUrl = `https://www.zumracoralic.com/${locale}/${
+    locale === 'bs' ? 'dogadaji' : 'dogodki'
+  }/${event.slug}`;
+
   return (
     <div className='relative pt-32'>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Event',
+          name: event.seoTitle,
+          ...(startDate ? { startDate } : {}),
+          image: event.featuredImage.url,
+          url: eventUrl,
+          eventStatus: 'https://schema.org/EventScheduled',
+          eventAttendanceMode:
+            'https://schema.org/OfflineEventAttendanceMode',
+          ...(event.location
+            ? {
+                location: {
+                  '@type': 'Place',
+                  name: event.location,
+                  address: event.location,
+                },
+              }
+            : {}),
+          organizer: {
+            '@type': 'Person',
+            name: locale === 'bs' ? 'Zumra Ćoralić' : 'Zumra Coralic',
+            url: `https://www.zumracoralic.com/${locale}`,
+          },
+        }}
+      />
       <div className='relative w-full h-96 md:h-[27rem] 3xl:h-[50rem] flex items-center justify-center'>
         <Image
           src={event.featuredImage.url}

@@ -1,115 +1,59 @@
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
-import { OpenGraphMetadata, TwitterMetadata, Metadata } from '@/types/metadata';
+import { useLocale, useTranslations } from 'next-intl';
+import { PageMetadata } from '@/types/metadata';
+import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
+import JsonLd from '@/components/JsonLd';
 
-const metadataByLocale: Record<string, Metadata> = {
-  sl: {
-    title: 'O meni - Zumra Coralic',
-    description:
-      'Spoznajte več o Zumri Coralic, certificirani NLP coach in mediatorici. Preberite več o njenem ozadju, izkušnjah in pristopu.',
-    url: 'https://www.zumracoralic.com/o-meni',
-    openGraph: {
-      title: 'O meni - Zumra Coralic',
-      description:
-        'Spoznajte več o Zumri Coralic, certificirani NLP coach in mediatorici. Preberite več o njenem ozadju, izkušnjah in pristopu.',
-      url: 'https://www.zumracoralic.com/o-meni',
-      images: [
-        {
-          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/aboutmeHeader_oraf6m.png',
-          width: 800,
-          height: 600,
-          alt: 'Zumra Coralic - O meni',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'O meni - Zumra Coralic',
-      description:
-        'Spoznajte več o Zumri Coralic, certificirani NLP coach in mediatorici. Preberite več o njenem ozadju, izkušnjah in pristopu.',
-      image:
-        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/aboutmeHeader_oraf6m.png',
-    },
-    canonical: 'https://www.zumracoralic.com/o-meni',
-  },
-  bs: {
-    title: 'O meni - Zumra Ćoralić',
-    description:
-      'Saznajte više o Zumri Ćoralić, certificiranoj NLP trenerici i medijatorici. Pročitajte više o njenoj pozadini, iskustvu i pristupu.',
-    url: 'https://www.zumracoralic.com/bs/o-meni',
-    openGraph: {
-      title: 'O meni - Zumra Ćoralić',
-      description:
-        'Saznajte više o Zumri Ćoralić, certificiranoj NLP trenerici i medijatorici. Pročitajte više o njenoj pozadini, iskustvu i pristupu.',
-      url: 'https://www.zumracoralic.com/bs/o-meni',
-      images: [
-        {
-          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/aboutmeHeader_oraf6m.png',
-          width: 800,
-          height: 600,
-          alt: 'Zumra Ćoralić - O meni',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: 'O meni - Zumra Ćoralić',
-      description:
-        'Saznajte više o Zumri Ćoralić, certificiranoj NLP trenerici i medijatorici. Pročitajte više o njenoj pozadini, iskustvu i pristupu.',
-      image:
-        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/aboutmeHeader_oraf6m.png',
-    },
-    canonical: 'https://www.zumracoralic.com/bs/o-meni',
-  },
+const titles = {
+  sl: 'O meni - Zumra Coralic',
+  bs: 'O meni - Zumra Ćoralić',
+};
+
+const descriptions = {
+  sl: 'Spoznajte več o Zumri Coralic, certificirani NLP coach in mediatorici. Preberite več o njenem ozadju, izkušnjah in pristopu.',
+  bs: 'Saznajte više o Zumri Ćoralić, certificiranoj NLP trenerici i medijatorici. Pročitajte više o njenoj pozadini, iskustvu i pristupu.',
+};
+
+const heroImage = {
+  url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/aboutmeHeader_oraf6m.png',
+  alt: 'Zumra Coralic - O meni',
 };
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
-}): Promise<{
-  title: string;
-  description: string;
-  openGraph: OpenGraphMetadata;
-  twitter: TwitterMetadata;
-  canonical: string;
-}> {
-  const { locale } = params;
-
-  const currentLocaleMetadata =
-    metadataByLocale[locale] || metadataByLocale['sl']; // Default to Slovenian if locale is not found
-
-  return {
-    title: currentLocaleMetadata.title,
-    description: currentLocaleMetadata.description,
-    openGraph: {
-      title: currentLocaleMetadata.title,
-      description: currentLocaleMetadata.description,
-      url: currentLocaleMetadata.url,
-      images: [
-        {
-          url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
-          width: 800,
-          height: 600,
-          alt: 'Zumra Coralic',
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: currentLocaleMetadata.title,
-      description: currentLocaleMetadata.description,
-      image:
-        'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/storitveHeader_oraf6m.png',
-    },
-    canonical: currentLocaleMetadata.url,
-  };
+}): Promise<PageMetadata> {
+  return buildPageMetadata({
+    pathnameKey: '/about-me',
+    locale: params.locale,
+    titles,
+    descriptions,
+    image: heroImage,
+  });
 }
 
 export default function Page() {
   const t = useTranslations('AboutMePage');
+  const locale = useLocale();
+  const aboutUrl = getAlternates('/about-me', locale).canonical;
   return (
     <div className='bg-white pb-16 md:pb-40 pt-36 px-6'>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: locale === 'bs' ? 'Zumra Ćoralić' : 'Zumra Coralic',
+          jobTitle: 'NLP Coach & Mediator',
+          url: aboutUrl,
+          description: pickByLocale(descriptions, locale),
+          image:
+            'https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG_0704_qh6mdm.jpg',
+          sameAs: [
+            'https://si.linkedin.com/in/zumra-%C4%87orali%C4%87-bb084497',
+          ],
+        }}
+      />
       <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
         {t('section')}
       </div>

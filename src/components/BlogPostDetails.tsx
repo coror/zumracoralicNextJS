@@ -4,7 +4,22 @@ import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '../datalyer/contentful/richTextUtils';
 import { useState } from 'react';
+import { parse } from 'date-fns';
+import { bs as bsLocale, sl as slLocale } from 'date-fns/locale';
 import { BlogPost } from '@/types/blogPost';
+import JsonLd from './JsonLd';
+
+function toIsoDate(dateStr: string, locale: string): string | undefined {
+  try {
+    const parsed = parse(dateStr, 'd. MMMM yyyy', new Date(), {
+      locale: locale === 'bs' ? bsLocale : slLocale,
+    });
+    if (isNaN(parsed.getTime())) return undefined;
+    return parsed.toISOString().split('T')[0];
+  } catch {
+    return undefined;
+  }
+}
 
 const BlogPostDetails = ({
   blogPost,
@@ -31,8 +46,35 @@ const BlogPostDetails = ({
     setSelectedImage(null);
   };
 
+  const datePublished = toIsoDate(blogPost.datePosted, locale);
+  const blogUrl = `https://www.zumracoralic.com/${locale}/blog/${blogPost.slug}`;
+
   return (
     <div className='relative'>
+      <JsonLd
+        data={{
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: blogPost.seoTitle,
+          image: blogPost.featuredImage.url,
+          ...(datePublished ? { datePublished } : {}),
+          author: {
+            '@type': 'Person',
+            name: locale === 'bs' ? 'Zumra Ćoralić' : 'Zumra Coralic',
+            url: `https://www.zumracoralic.com/${locale}`,
+          },
+          publisher: {
+            '@type': 'Person',
+            name: locale === 'bs' ? 'Zumra Ćoralić' : 'Zumra Coralic',
+            url: `https://www.zumracoralic.com/${locale}`,
+          },
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': blogUrl,
+          },
+          url: blogUrl,
+        }}
+      />
       <div className='relative w-full h-96 md:h-[27rem] 3xl:h-[50rem] flex items-center justify-center'>
         <Image
           src={blogPost.featuredImage.url}
