@@ -3,7 +3,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
 import OfferCard from './OfferCard';
-import { useLocale } from 'next-intl';
 
 export default function Offer({
   sectionTitle,
@@ -41,8 +40,6 @@ export default function Offer({
     triggerOnce: true,
     threshold: 0.1,
   });
-
-  const locale = useLocale();
 
   // When the component comes into view, set animate to true
   useEffect(() => {
@@ -84,7 +81,7 @@ export default function Offer({
               bgColor='bg-[#ffe6bc]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1721209043/blog3_vkvdz0.png'
               readMore={readMore}
-              link={`${locale}/services/coaching`}
+              link='/services/coaching'
             />
           </div>
           <div
@@ -102,7 +99,7 @@ export default function Offer({
               bgColor='bg-[#f99d5b]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1725907784/194_2_bykph6.jpg'
               readMore={readMore}
-              link={`${locale}/services/mediation`}
+              link='/services/mediation'
             />
           </div>
           <div
@@ -120,7 +117,7 @@ export default function Offer({
               bgColor='bg-[#df650e]'
               bgColor2='https://res.cloudinary.com/dbssbnuph/image/upload/v1725906339/26.5.2017_Nova_Gorica2_o_bb8lvo.jpg'
               readMore={readMore}
-              link={`${locale}/services/workshop`}
+              link='/services/workshop'
             />
           </div>
         </div>

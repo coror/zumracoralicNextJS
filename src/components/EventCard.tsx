@@ -1,19 +1,19 @@
-'use client';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { truncateText } from '@/datalayer/contentful/utils';
-import { useLocale } from 'next-intl';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { Event } from '@/types/event';
 
 function EventCard({ event, readMore }: { event: Event; readMore: string }) {
   const truncatedContent = truncateText(
     documentToHtmlString(event.content),
-    200
+    200,
   );
-  const locale = useLocale();
 
-  const eventsLink = `/${locale}/events/${event.slug}`;
+  const eventsLink = {
+    pathname: '/events/[slug]' as const,
+    params: { slug: event.slug },
+  };
 
   return (
     <div className='flex flex-col md:flex-row w-full overflow-hidden shadow-lg group border-[1px] bg-white'>

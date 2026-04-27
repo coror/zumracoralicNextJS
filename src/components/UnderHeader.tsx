@@ -1,8 +1,6 @@
 'use client';
-import Link from 'next/link';
 import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
-import { FaPencil } from 'react-icons/fa6';
 
 export default function UnderHeader({ content }: { content: string }) {
   const [animate, setAnimate] = useState(false);

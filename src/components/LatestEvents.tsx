@@ -10,7 +10,7 @@ import { bs, sl } from 'date-fns/locale';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { Event } from '@/types/event';
 import { sortByDate } from '@/utils/sortByDate';
 
@@ -105,7 +105,7 @@ export default function LatestEvents({
               : ''
           }`}
         >
-          <Link href={`${locale}/events`}>
+          <Link href='/events'>
             <button className='bg-[#FFE6BC]  px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in flex items-center'>
               {button}
             </button>

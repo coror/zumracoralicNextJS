@@ -1,10 +1,8 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { Link, usePathname } from '@/navigation';
 import LocalSwitcher from './local-switcher';
 import { FaFacebookF, FaInstagram } from 'react-icons/fa';
-import { useLocale, useTranslations } from 'next-intl';
 
 const Navbar = ({
   home,
@@ -36,21 +34,18 @@ const Navbar = ({
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  const locale = useLocale();
-
-
-  const homePageLink = `/${locale}`;
-  const blogPostsLink = `/${locale}/blog`;
-  const eventsLink1 = `/${locale}/dogodki`;
-  const eventsLink2 = `/${locale}/dogadaji`;
-  const aboutMeLink = `/${locale}/o-meni`;
-  const servicesLink1 = `/${locale}/storitve`;
-  const servicesLink2 = `/${locale}/usluge`;
-  const contactLink = `/${locale}/kontakt`;
-
+  const isHome = pathname === '/';
+  const isBlogs = pathname.startsWith('/blogs');
+  const isEvents = pathname.startsWith('/events');
+  const isAbout = pathname === '/about-me';
+  const isServicesRoute = pathname.startsWith('/services');
+  const isContact = pathname === '/contact';
+  const isCoaching = pathname === '/services/coaching';
+  const isMediation = pathname === '/services/mediation';
+  const isWorkshop = pathname.startsWith('/services/workshop');
+  const isServicesIndex = pathname === '/services';
 
   const handleClickOutside = (event: MouseEvent) => {
-    // Ensure clicks outside the menu close the menu
     if (
       mobileMenuRef.current &&
       !mobileMenuRef.current.contains(event.target as Node) &&
@@ -68,10 +63,6 @@ const Navbar = ({
     };
   }, []);
 
-  useEffect(() => {
-    // console.log('isMobileMenuOpen changed:', isMobileMenuOpen);
-  }, [isMobileMenuOpen]);
-
   return (
     <nav
       className={`${
@@ -79,10 +70,9 @@ const Navbar = ({
           ? 'bg-black fixed text-white'
           : 'bg-transparent absolute'
       } ${
-        pathname === homePageLink || pathname.startsWith(blogPostsLink)
+        isHome || isBlogs
           ? 'text-white border-[#ffffff40] border-b-[1px] '
-          : pathname.startsWith(servicesLink1) ||
-            pathname.startsWith(servicesLink2)
+          : isServicesRoute
           ? 'text-black border-0'
           : 'text-black border-[#0000002a] border-b-[1px] '
       }
@@ -99,12 +89,10 @@ const Navbar = ({
                   className={`relative inline-flex items-center justify-center rounded-md p-1  hover:bg-[#0000007c] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${
                     isMobileMenuOpen ? 'text-white' : ''
                   } ${
-                    pathname.startsWith(eventsLink1) ||
-                    pathname.startsWith(eventsLink2) ||
-                    pathname === aboutMeLink ||
-                    pathname.startsWith(servicesLink1) ||
-                    pathname.startsWith(servicesLink2) ||
-                    pathname.startsWith(contactLink)
+                    isEvents ||
+                    isAbout ||
+                    isServicesRoute ||
+                    isContact
                       ? 'text-black '
                       : 'text-white '
                   }`}
@@ -145,12 +133,10 @@ const Navbar = ({
                 >
                   <FaFacebookF
                     className={` text-lg  ${
-                      pathname.startsWith(eventsLink1) ||
-                      pathname.startsWith(eventsLink2) ||
-                      pathname === aboutMeLink ||
-                      pathname.startsWith(servicesLink1) ||
-                      pathname.startsWith(servicesLink2) ||
-                      pathname.startsWith(contactLink)
+                      isEvents ||
+                      isAbout ||
+                      isServicesRoute ||
+                      isContact
                         ? 'text-[#000000b6] hover:text-black '
                         : 'text-[#ffffffd0] hover:text-white'
                     }`}
@@ -163,12 +149,10 @@ const Navbar = ({
                 >
                   <FaInstagram
                     className={` text-lg  ${
-                      pathname.startsWith(eventsLink1) ||
-                      pathname.startsWith(eventsLink2) ||
-                      pathname === aboutMeLink ||
-                      pathname.startsWith(servicesLink1) ||
-                      pathname.startsWith(servicesLink2) ||
-                      pathname.startsWith(contactLink)
+                      isEvents ||
+                      isAbout ||
+                      isServicesRoute ||
+                      isContact
                         ? 'text-[#000000b6] hover:text-black '
                         : 'text-[#ffffffd0] hover:text-white'
                     }`}
@@ -184,9 +168,9 @@ const Navbar = ({
             >
               <div className='flex h-full'>
                 <Link
-                  href={homePageLink}
+                  href='/'
                   className={`${
-                    pathname === homePageLink
+                    isHome
                       ? 'bg-black text-white hover:text-white'
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
@@ -194,9 +178,9 @@ const Navbar = ({
                   {home}
                 </Link>
                 <Link
-                  href={blogPostsLink}
+                  href='/blogs'
                   className={`${
-                    pathname === blogPostsLink
+                    pathname === '/blogs'
                       ? 'bg-black text-white hover:text-white'
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
@@ -204,9 +188,9 @@ const Navbar = ({
                   {blogPosts}
                 </Link>
                 <Link
-                  href={`/${locale}/events`}
+                  href='/events'
                   className={`${
-                    pathname === eventsLink1 || pathname === eventsLink2
+                    pathname === '/events'
                       ? 'bg-black text-white hover:text-white'
                       : 'bg-transparent'
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
@@ -214,9 +198,9 @@ const Navbar = ({
                   {events}
                 </Link>
                 <Link
-                  href={`${aboutMeLink}`}
+                  href='/about-me'
                   className={`${
-                    pathname === aboutMeLink
+                    isAbout
                       ? 'bg-black text-white hover:text-white'
                       : ''
                   } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
@@ -224,12 +208,11 @@ const Navbar = ({
                   {about}
                 </Link>
 
-                {/* Services */}
                 <div className='relative group'>
                   <Link
-                    href={`/${locale}/services`}
+                    href='/services'
                     className={`${
-                      pathname === servicesLink1 || pathname === servicesLink2
+                      isServicesIndex
                         ? 'bg-black text-white active'
                         : ''
                     } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
@@ -238,21 +221,15 @@ const Navbar = ({
                   </Link>
                   <div
                     className={`absolute left-0 top-full w-56 shadow-2xl text-black invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out ${
-                      pathname === homePageLink ||
-                      pathname.startsWith(blogPostsLink)
-                        ? 'bg-black '
-                        : 'bg-white '
+                      isHome || isBlogs ? 'bg-black ' : 'bg-white '
                     }`}
                   >
                     <Link
-                      href={`${servicesLink1}`}
+                      href='/services'
                       className={`block px-4 py-4 hover:text-[#df650e]  border-b-[1px]  ${
-                        pathname === servicesLink1 || pathname === servicesLink2
-                          ? 'text-[#df650e]'
-                          : 'text-black'
+                        isServicesIndex ? 'text-[#df650e]' : 'text-black'
                       } ${
-                        pathname === homePageLink ||
-                        pathname.startsWith(blogPostsLink)
+                        isHome || isBlogs
                           ? 'text-white border-[#ffffff80]'
                           : 'border-[#00000036]'
                       }`}
@@ -260,50 +237,26 @@ const Navbar = ({
                       {allServices}
                     </Link>
                     <Link
-                      href={`${servicesLink1}/coaching`}
+                      href='/services/coaching'
                       className={`block px-4 py-4 hover:text-[#df650e]  ${
-                        pathname === servicesLink1 + '/coaching' ||
-                        pathname === servicesLink2 + '/coaching'
-                          ? 'text-[#df650e]'
-                          : 'text-black'
-                      } ${
-                        pathname === homePageLink ||
-                        pathname.startsWith(blogPostsLink)
-                          ? 'text-white'
-                          : ''
-                      }`}
+                        isCoaching ? 'text-[#df650e]' : 'text-black'
+                      } ${isHome || isBlogs ? 'text-white' : ''}`}
                     >
                       {NLPCoaching}
                     </Link>
                     <Link
-                      href={`/${locale}/services/mediation`}
+                      href='/services/mediation'
                       className={`block px-4 py-4 hover:text-[#df650e]  ${
-                        pathname === servicesLink1 + '/mediacija' ||
-                        pathname === servicesLink2 + '/medijacija'
-                          ? 'text-[#df650e]'
-                          : 'text-black'
-                      } ${
-                        pathname === homePageLink ||
-                        pathname.startsWith(blogPostsLink)
-                          ? 'text-white'
-                          : ''
-                      }`}
+                        isMediation ? 'text-[#df650e]' : 'text-black'
+                      } ${isHome || isBlogs ? 'text-white' : ''}`}
                     >
                       {mediation}
                     </Link>
                     <Link
-                      href={`/${locale}/services/workshop`}
+                      href='/services/workshop'
                       className={`block px-4 py-4 hover:text-[#df650e] ${
-                        pathname === servicesLink1 + '/delavnice-predavanja' ||
-                        pathname === servicesLink2 + '/radionice-predavanja'
-                          ? 'text-[#df650e]'
-                          : 'text-black'
-                      } ${
-                        pathname === homePageLink ||
-                        pathname.startsWith(blogPostsLink)
-                          ? 'text-white'
-                          : ''
-                      }`}
+                        isWorkshop ? 'text-[#df650e]' : 'text-black'
+                      } ${isHome || isBlogs ? 'text-white' : ''}`}
                     >
                       {workshop}
                     </Link>
@@ -311,9 +264,9 @@ const Navbar = ({
                 </div>
 
                 <Link
-                  href={`/${locale}/contact`}
+                  href='/contact'
                   className={`${
-                    pathname === `/${locale}/contact` ? 'bg-[#d2ab74]' : ''
+                    isContact ? 'bg-[#d2ab74]' : ''
                   } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
                 >
                   {contact}
@@ -337,37 +290,38 @@ const Navbar = ({
         >
           <div className='space-y-1 px-2 pb-3 pt-2 flex flex-col bg-black uppercase'>
             <Link
-              href={homePageLink}
+              href='/'
               className={`${
-                pathname === homePageLink ? 'bg-[#ffe6bc] text-black' : 'text-white'
+                isHome ? 'bg-[#ffe6bc] text-black' : 'text-white'
               }  xl:hover:bg-[#ffe6bc]  xl:hover:text-black rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {home}
             </Link>
             <Link
-              href={blogPostsLink}
+              href='/blogs'
               className={`${
-                pathname.startsWith(blogPostsLink) ? 'bg-[#ffe6bc] text-black' : 'text-white'
+                isBlogs ? 'bg-[#ffe6bc] text-black' : 'text-white'
               }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {blogPosts}
             </Link>
             <Link
-              href={eventsLink1}
+              href='/events'
               className={`${
-                pathname === eventsLink1 || pathname === eventsLink2
-                  ? 'bg-[#ffe6bc] text-black' : 'text-white'
+                pathname === '/events'
+                  ? 'bg-[#ffe6bc] text-black'
+                  : 'text-white'
               } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {events}
             </Link>
             <Link
-              href={`${aboutMeLink}`}
+              href='/about-me'
               className={`${
-                pathname === aboutMeLink ? 'bg-[#ffe6bc] text-black' : 'text-white'
+                isAbout ? 'bg-[#ffe6bc] text-black' : 'text-white'
               } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
@@ -375,9 +329,7 @@ const Navbar = ({
             </Link>
             <button
               className={`${
-                pathname.startsWith(servicesLink1) ||
-                pathname.startsWith(servicesLink2)
-                  ?  'bg-[#ffe6bc] text-black' : 'text-white'
+                isServicesRoute ? 'bg-[#ffe6bc] text-black' : 'text-white'
               }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2 uppercase text-left`}
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
             >
@@ -386,47 +338,36 @@ const Navbar = ({
             {isServicesExpanded && (
               <div className='space-y-1 pl-4 flex flex-col justify-start items-start'>
                 <Link
-                  href={`${servicesLink1}`}
+                  href='/services'
                   className={`${
-                    pathname === servicesLink1 || pathname === servicesLink2
-                      ? 'text-[#ffe6bc]'
-                      : 'text-white'
+                    isServicesIndex ? 'text-[#ffe6bc]' : 'text-white'
                   }  xl:hover:bg-[#ffe6bc] xl:hover:text-black   px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {allServices}
                 </Link>
                 <Link
-                  href={`${servicesLink1}/coaching`}
+                  href='/services/coaching'
                   className={`${
-                    pathname === servicesLink1 + '/coaching' ||
-                    pathname === servicesLink2 + '/coaching'
-                      ? 'text-[#d2ab74]'
-                      : 'text-white'
+                    isCoaching ? 'text-[#d2ab74]' : 'text-white'
                   }  xl:hover:bg-[#ffe6bc] xl:hover:text-black px-3 py-2  `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {NLPCoaching}
                 </Link>
                 <Link
-                  href={`/${locale}/services/mediation`}
+                  href='/services/mediation'
                   className={`${
-                    pathname === servicesLink1 + '/mediacija' ||
-                    pathname === servicesLink2 + '/medijacija'
-                      ? 'text-[#ffe6bc]'
-                      : 'text-white'
+                    isMediation ? 'text-[#ffe6bc]' : 'text-white'
                   }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {mediation}
                 </Link>
                 <Link
-                  href={`/${locale}/services/workshop`}
+                  href='/services/workshop'
                   className={`${
-                    pathname === servicesLink1 + '/delavnice-predavanja' ||
-                    pathname === servicesLink2 + '/radionice-predavanja'
-                      ? 'text-[#ffe6bc]'
-                      : 'text-white'
+                    isWorkshop ? 'text-[#ffe6bc]' : 'text-white'
                   }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  px-3 py-2 `}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -435,9 +376,9 @@ const Navbar = ({
               </div>
             )}
             <Link
-              href={`/${locale}/contact`}
+              href='/contact'
               className={`${
-                pathname === `/${locale}/kontakt` ? 'bg-[#ffe6bc] text-black' : 'text-white'
+                isContact ? 'bg-[#ffe6bc] text-black' : 'text-white'
               } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
               onClick={() => setIsMobileMenuOpen(false)}
             >

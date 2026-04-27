@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '@/datalayer/contentful/richTextUtils';
 import Image from 'next/image';
@@ -77,7 +77,7 @@ export default function WorkshopDetails({
         >
           <li>
             <Link
-              href={`/${locale}/services/`}
+              href='/services'
               className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center'
             >
               {allServices}
@@ -86,7 +86,7 @@ export default function WorkshopDetails({
           <li className='text-gray-400 mx-1'>&gt;</li>
           <li className=''>
             <Link
-              href={`/${locale}/services/workshop`}
+              href='/services/workshop'
               className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center '
             >
               {workshop}
@@ -117,7 +117,7 @@ export default function WorkshopDetails({
         </div>
 
         <div className='my-10 text-center'>
-          <Link href={`/${locale}/contact`}>
+          <Link href='/contact'>
             <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5 text-sm md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
               {connect}
             </button>

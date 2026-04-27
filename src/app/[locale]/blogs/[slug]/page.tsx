@@ -96,8 +96,7 @@ export default async function Page({
       <EntryNav
         entries={sortedBlogs}
         currentSlug={slug}
-        routePrefix='blogs'
-        locale={locale}
+        pathname='/blogs/[slug]'
         previousLabel={t('previousPostText')}
         nextLabel={t('nextPostText')}
       />

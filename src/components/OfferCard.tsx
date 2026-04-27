@@ -1,6 +1,11 @@
-import { useLocale } from 'next-intl';
-import Link from 'next/link';
+'use client';
+import { Link } from '@/navigation';
 import React, { useState } from 'react';
+
+type OfferLink =
+  | '/services/coaching'
+  | '/services/mediation'
+  | '/services/workshop';
 
 export default function OfferCard({
   title,
@@ -19,10 +24,9 @@ export default function OfferCard({
   bgColor: string;
   bgColor2: string;
   readMore: string;
-  link: any;
+  link: OfferLink;
 }) {
   const [hovered, setHovered] = useState(false);
-  const locale = useLocale();
 
   return (
     <div

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import { getServices } from '@/datalayer/contentful/service';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import ServicesComponent from '@/components/ServicesComponent';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
@@ -95,7 +95,7 @@ export default async function Page({
         >
           <li>
             <Link
-              href={`/${locale}/services/`}
+              href='/services'
               className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center'
             >
               {i('allServices')}
@@ -104,7 +104,7 @@ export default async function Page({
           <li className='text-gray-400 mx-1'>&gt;</li>
           <li className=''>
             <Link
-              href={`/${locale}/services/workshop`}
+              href='/services/workshop'
               className='text-gray-600  transition flex items-center flex-row mx-1 text-center '
             >
               {i('workshop')}
