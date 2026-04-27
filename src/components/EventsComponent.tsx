@@ -1,6 +1,6 @@
 'use client';
 import React, { useMemo, useState } from 'react';
-import { Pagination } from '@mui/material';
+import Pagination from './Pagination';
 import { Locale, parse } from 'date-fns';
 import { bs, sl } from 'date-fns/locale';
 
@@ -38,10 +38,7 @@ export default function EventsComponent({
     });
   }, [initialEvents, locale]);
 
-  const handlePageChange = (
-    _event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
+  const handlePageChange = (value: number) => {
     setCurrentPage(value);
     window.scrollTo({ top: 0 });
   };
@@ -67,9 +64,6 @@ export default function EventsComponent({
           count={Math.ceil(events.length / postsPerPage)}
           page={currentPage}
           onChange={handlePageChange}
-          shape='rounded'
-          variant='outlined'
-          color='primary'
         />
       </div>
     </div>

@@ -5,7 +5,7 @@ import { Navigation, Pagination as SwiperPagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Pagination } from '@mui/material';
+import Pagination from './Pagination';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -40,10 +40,7 @@ export default function BlogPostsComponent({
     );
   }, [initialBlogs, locale]);
 
-  const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
-    value: number,
-  ) => {
+  const handlePageChange = (value: number) => {
     setCurrentPage(value);
     window.scrollTo({ top: 0 });
   };
@@ -116,9 +113,6 @@ export default function BlogPostsComponent({
             count={Math.ceil(blogs.length / postsPerPage)}
             page={currentPage}
             onChange={handlePageChange}
-            shape='rounded'
-            variant='outlined'
-            color='primary'
           />
         </div>
       </div>
