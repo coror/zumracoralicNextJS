@@ -1,4 +1,4 @@
-import { getEvents } from '../../../datalyer/contentful/event';
+import { getEvents } from '../../../datalayer/contentful/event';
 // GET /api/events
 export const dynamic = 'force-dynamic';
 
@@ -17,7 +17,7 @@ export const GET = async (request) => {
 
     return new Response(JSON.stringify({ events }), { status: 200 });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return new Response('Something Went Wrong', { status: 500 });
   }
 };

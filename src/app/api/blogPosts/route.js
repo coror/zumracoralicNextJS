@@ -1,4 +1,4 @@
-import { getBlogPosts } from '../../../datalyer/contentful/blogPost';
+import { getBlogPosts } from '../../../datalayer/contentful/blogPost';
 // GET /api/blogPosts
 export const dynamic = 'force-dynamic';
 
@@ -17,7 +17,7 @@ export const GET = async (request) => {
 
     return new Response(JSON.stringify({ blogPosts }), { status: 200 });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return new Response('Something Went Wrong', { status: 500 });
   }
 };

@@ -59,8 +59,6 @@ export default function UpcomingEventCard({
     }
   }
 
-  console.log(`Day: ${day}, Month: ${month} (Locale: ${locale})`);
-
   return (
     <div className='relative mx-10 my-10 border-2 h-[30rem] group md:h-44'>
       <div

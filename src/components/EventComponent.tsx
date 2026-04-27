@@ -32,11 +32,8 @@ const EventPageComponent = ({
   const locale = useLocale();
 
   useEffect(() => {
-    console.log('Current locale:', locale);
-
     const fetchEventData = async () => {
       if (!slug || !locale) {
-        console.log('Slug or currentLocale is undefined:', slug, locale);
         return;
       }
       setLoading(true); // Set loading to true before fetching new data

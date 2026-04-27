@@ -1,4 +1,4 @@
-import { getEventBySlug } from '../../../../datalyer/contentful/event';
+import { getEventBySlug } from '../../../../datalayer/contentful/event';
 
 export const dynamic = 'force-dynamic';
 

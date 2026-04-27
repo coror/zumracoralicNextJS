@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Spinner from './Spinner';
 import { Service } from '@/types/service';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { getRichTextOptions } from '@/datalyer/contentful/richTextUtils';
+import { getRichTextOptions } from '@/datalayer/contentful/richTextUtils';
 
 export default function ServicesComponent({
   readMore,
@@ -27,7 +27,7 @@ export default function ServicesComponent({
         const fetchedServices = await fetchServices(locale);
         setServices(fetchedServices);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }

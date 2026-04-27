@@ -1,4 +1,4 @@
-import { getBlogPostBySlug } from '../../../../datalyer/contentful/blogPost';
+import { getBlogPostBySlug } from '../../../../datalayer/contentful/blogPost';
 
 export const dynamic = 'force-dynamic';
 

@@ -22,6 +22,7 @@ export default function FormSection({
     name: '',
     email: '',
     message: '',
+    website: '',
   };
 
   const [fields, setFields] = useState(initialFields);
@@ -83,26 +84,18 @@ export default function FormSection({
 
       const result = await response.json();
       if (result.success) {
-        setLoading(false);
         setSubmissionSuccess(true);
         setFields(initialFields);
       } else {
-        setLoading(false);
         setFormValid(false);
         console.error('Submission failed:', result.error);
       }
     } catch (error) {
-      setLoading(false);
       setFormValid(false);
       console.error('Error submitting form', error);
-    }
-
+    } finally {
       setLoading(false);
-      setSubmissionSuccess(true);
-      // Simulate a form submission or do actual submission here
-
-      // Reset fields after successful submission
-      setFields(initialFields);
+    }
   };
 
   const validateAllFields = () => {
@@ -179,6 +172,28 @@ export default function FormSection({
             onChange={handleChange}
             onBlur={handleBlur}
           ></textarea>
+        </div>
+        <div
+          aria-hidden='true'
+          style={{
+            position: 'absolute',
+            left: '-10000px',
+            top: 'auto',
+            width: '1px',
+            height: '1px',
+            overflow: 'hidden',
+          }}
+        >
+          <label htmlFor='website'>Website</label>
+          <input
+            type='text'
+            id='website'
+            name='website'
+            tabIndex={-1}
+            autoComplete='off'
+            value={fields.website}
+            onChange={handleChange}
+          />
         </div>
         <div className='text-center'>
           <button
