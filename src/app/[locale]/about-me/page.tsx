@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
@@ -33,7 +34,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Page() {
+export default function Page({
+  params: { locale: paramLocale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(paramLocale);
   const t = useTranslations('AboutMePage');
   const locale = useLocale();
   const aboutUrl = getAlternates('/about-me', locale).canonical;

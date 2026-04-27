@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import Link from 'next/link';
 import ServicesComponent from '@/components/ServicesComponent';
 import { PageMetadata } from '@/types/metadata';
@@ -34,7 +35,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Page() {
+export default function Page({
+  params: { locale: paramLocale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(paramLocale);
   const x = useTranslations('Workshop');
   const i = useTranslations('Index');
   const locale = useLocale();

@@ -5,9 +5,8 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import { locales } from '@/config';
 import { NextIntlClientProvider, useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import Credit from '@/components/Credit';
-
-export const dynamic = 'force-dynamic';
 
 const inter = Playfair_Display({ subsets: ['latin'] });
 
@@ -34,6 +33,7 @@ export default function RootLayout({
   children,
   params: { locale },
 }: Readonly<RootLayoutProps>) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations('Navigation');
   const f = useTranslations('Footer');
 

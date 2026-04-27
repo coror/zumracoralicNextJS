@@ -1,5 +1,6 @@
 import BlogPostsComponent from '@/components/BlogPostsComponent';
 import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
 
@@ -26,7 +27,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Page() {
+export default function Page({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations('Index');
   return <BlogPostsComponent readMore={t('readMore')} />;
 }

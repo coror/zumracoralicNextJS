@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import ServicesCard from '@/components/ServicesCard';
 import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
 
@@ -28,7 +29,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Page() {
+export default function Page({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(locale);
   const x = useTranslations('OfferCard');
   const i = useTranslations('Index');
   const n = useTranslations('Navigation');
