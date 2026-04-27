@@ -70,7 +70,7 @@ interface BuildPageMetadataInput {
   locale: string;
   titles: Record<string, string>;
   descriptions: Record<string, string>;
-  image: { url: string; alt?: string; width?: number; height?: number };
+  image?: { url: string; alt?: string; width?: number; height?: number };
   params?: Record<string, string>;
 }
 
@@ -93,20 +93,24 @@ export function buildPageMetadata({
       title,
       description,
       url: alternates.canonical,
-      images: [
-        {
-          url: image.url,
-          width: image.width ?? 800,
-          height: image.height ?? 600,
-          alt: image.alt ?? title,
-        },
-      ],
+      ...(image
+        ? {
+            images: [
+              {
+                url: image.url,
+                width: image.width ?? 800,
+                height: image.height ?? 600,
+                alt: image.alt ?? title,
+              },
+            ],
+          }
+        : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      image: image.url,
+      ...(image ? { image: image.url } : {}),
     },
     alternates,
   };

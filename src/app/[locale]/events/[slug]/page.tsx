@@ -44,9 +44,6 @@ export async function generateMetadata({
         bs: 'Zumra Ćoralić - Događaji',
       },
       descriptions: { sl: '', bs: '' },
-      image: {
-        url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/eventsHeader_oraf6m.png',
-      },
     });
   }
 
@@ -61,10 +58,6 @@ export async function generateMetadata({
     descriptions: {
       sl: event.seoDescription,
       bs: event.seoDescription,
-    },
-    image: {
-      url: event.featuredImage.url,
-      alt: event.featuredImage.alt,
     },
   });
 }

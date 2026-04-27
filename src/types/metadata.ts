@@ -10,14 +10,14 @@ export interface OpenGraphMetadata {
   title: string;
   description: string;
   url: string;
-  images: OpenGraphImage[];
+  images?: OpenGraphImage[];
 }
 
 export interface TwitterMetadata {
   card: string;
   title: string;
   description: string;
-  image: string;
+  image?: string;
 }
 
 export interface MetadataAlternates {
