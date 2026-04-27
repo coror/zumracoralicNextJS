@@ -1,9 +1,11 @@
 import EventsComponent from '@/components/EventsComponent';
-import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getEvents } from '@/datalayer/contentful/event';
 import React from 'react';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -28,13 +30,23 @@ export async function generateMetadata({
   });
 }
 
-export default function Page({
+export default async function Page({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations('Index');
-  const e = useTranslations('Events');
-  return <EventsComponent readMore={t('readMore')} title={e('events')} />;
+  const [t, e, events] = await Promise.all([
+    getTranslations('Index'),
+    getTranslations('Events'),
+    getEvents(locale),
+  ]);
+  return (
+    <EventsComponent
+      initialEvents={events}
+      locale={locale}
+      readMore={t('readMore')}
+      title={e('events')}
+    />
+  );
 }

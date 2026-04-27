@@ -1,9 +1,7 @@
 import type { MetadataRoute } from 'next';
-import {
-  fetchBlogPosts,
-  fetchEvents,
-  fetchServices,
-} from '@/utils/request';
+import { getBlogPosts } from '@/datalayer/contentful/blogPost';
+import { getEvents } from '@/datalayer/contentful/event';
+import { getServices } from '@/datalayer/contentful/service';
 import { getAlternates } from '@/utils/seo';
 import { defaultLocale } from '@/config';
 import type { pathnames } from '@/config';
@@ -35,9 +33,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ).map((key) => entryFor(key));
 
   const [blogPosts, events, services] = await Promise.all([
-    fetchBlogPosts(defaultLocale),
-    fetchEvents(defaultLocale),
-    fetchServices(defaultLocale),
+    getBlogPosts(defaultLocale),
+    getEvents(defaultLocale),
+    getServices(defaultLocale),
   ]);
 
   const blogEntries: MetadataRoute.Sitemap = (blogPosts || [])

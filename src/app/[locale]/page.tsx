@@ -6,13 +6,15 @@ import Offer from '@/components/Offer';
 import Testimonials from '@/components/Testimonials';
 import LatestEvents from '@/components/LatestEvents';
 import LatestBlogs from '@/components/LatestBlogs';
-import { useTranslations, useLocale } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getBlogPosts } from '@/datalayer/contentful/blogPost';
+import { getEvents } from '@/datalayer/contentful/event';
 import UpcomingEvents from '@/components/UpcomingEvents';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
-import UnderHeader from '@/components/UnderHeader';
+
+export const revalidate = 3600;
 
 const titles = {
   sl: 'Zumra Coralic',
@@ -42,23 +44,26 @@ export async function generateMetadata({
   });
 }
 
-export default function Home({
-  params: { locale: paramLocale },
+export default async function Home({
+  params: { locale },
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(paramLocale);
-  const t = useTranslations('Header');
-  const y = useTranslations('AboutSection');
-  const q = useTranslations('QuoteSection');
-  const o = useTranslations('OfferSection');
-  const s = useTranslations('Testimonials');
-  const e = useTranslations('LatestEvents');
-  const a = useTranslations('ActionSection');
-  const b = useTranslations('LatestBlogs');
-  const p = useTranslations('UpcomingEvents');
-  const i = useTranslations('Index');
-  const locale = useLocale();
+  unstable_setRequestLocale(locale);
+  const [t, y, q, o, s, e, a, b, p, i, blogs, events] = await Promise.all([
+    getTranslations('Header'),
+    getTranslations('AboutSection'),
+    getTranslations('QuoteSection'),
+    getTranslations('OfferSection'),
+    getTranslations('Testimonials'),
+    getTranslations('LatestEvents'),
+    getTranslations('ActionSection'),
+    getTranslations('LatestBlogs'),
+    getTranslations('UpcomingEvents'),
+    getTranslations('Index'),
+    getBlogPosts(locale),
+    getEvents(locale),
+  ]);
   const homeUrl = `https://www.zumracoralic.com/${locale}`;
   return (
     <div>
@@ -104,6 +109,8 @@ export default function Home({
         readMore={o('readMore')}
       />
       <UpcomingEvents
+        initialEvents={events}
+        locale={locale}
         sectionTitle={p('sectionTitle')}
         readMore={i('readMore')}
       />
@@ -125,9 +132,16 @@ export default function Home({
         person6Title={s('person6Title')}
         testimonial6={s('testimonial6')}
       />
-      <LatestEvents sectionTitle={e('sectionTitle')} button={e('button')} />
+      <LatestEvents
+        initialEvents={events}
+        locale={locale}
+        sectionTitle={e('sectionTitle')}
+        button={e('button')}
+      />
       <ActionSection quote={a('quote')} button={t('button')} />
       <LatestBlogs
+        initialBlogs={blogs}
+        locale={locale}
         section={b('section')}
         sectionTitle={b('sectionTitle')}
         sectionTitle2={b('sectionTitle2')}
