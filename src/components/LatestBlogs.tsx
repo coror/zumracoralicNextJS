@@ -8,8 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
 import { BlogPost } from '@/types/blogPost';
-import { Locale, parse } from 'date-fns';
-import { bs, sl } from 'date-fns/locale';
+import { sortByDate } from '@/utils/sortByDate';
 
 export default function LatestBlogs({
   initialBlogs,
@@ -38,21 +37,10 @@ export default function LatestBlogs({
     }
   }, [inView]);
 
-  const blogs = useMemo(() => {
-    const localeMap: { [key: string]: Locale } = { sl, bs };
-    const currentLocale = localeMap[locale] || sl;
-    return [...initialBlogs]
-      .sort(
-        (a, b) =>
-          parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
-            locale: currentLocale,
-          }).getTime() -
-          parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
-            locale: currentLocale,
-          }).getTime(),
-      )
-      .slice(0, 4);
-  }, [initialBlogs, locale]);
+  const blogs = useMemo(
+    () => sortByDate(initialBlogs, locale, 'datePosted').slice(0, 4),
+    [initialBlogs, locale],
+  );
 
   return (
     <div className='bg-white py-10 md:py-24 relative flex flex-col'>

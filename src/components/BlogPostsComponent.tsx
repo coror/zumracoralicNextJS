@@ -11,8 +11,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { BlogPost } from '@/types/blogPost';
-import { Locale, parse } from 'date-fns';
-import { bs, sl } from 'date-fns/locale';
+import { sortByDate } from '@/utils/sortByDate';
 
 export default function BlogPostsComponent({
   initialBlogs,
@@ -26,19 +25,10 @@ export default function BlogPostsComponent({
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
-  const blogs = useMemo(() => {
-    const localeMap: { [key: string]: Locale } = { sl, bs };
-    const currentLocale = localeMap[locale] || sl;
-    return [...initialBlogs].sort(
-      (a, b) =>
-        parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
-          locale: currentLocale,
-        }).getTime() -
-        parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
-          locale: currentLocale,
-        }).getTime(),
-    );
-  }, [initialBlogs, locale]);
+  const blogs = useMemo(
+    () => sortByDate(initialBlogs, locale, 'datePosted'),
+    [initialBlogs, locale],
+  );
 
   const handlePageChange = (value: number) => {
     setCurrentPage(value);

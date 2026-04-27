@@ -1,6 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import EventComponent from '@/components/EventComponent';
+import EventDetails from '@/components/EventDetails';
+import EntryNav from '@/components/EntryNav';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import {
   getEvents,
@@ -9,6 +10,7 @@ import {
 import { locales } from '@/config';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
+import { sortByDate } from '@/utils/sortByDate';
 
 export const revalidate = 3600;
 
@@ -84,16 +86,23 @@ export default async function Page({
     notFound();
   }
 
+  const sortedEvents = sortByDate(events, locale, 'datum');
+
   return (
-    <div>
-      <EventComponent
-        initialEvent={event}
-        initialEvents={events}
+    <div className='relative min-h-screen'>
+      <EventDetails
+        event={event}
         locale={locale}
         home={t('home')}
         eventsTitle={t('events')}
-        previousPostText={t('previousPostText')}
-        nextPostText={t('nextPostText')}
+      />
+      <EntryNav
+        entries={sortedEvents}
+        currentSlug={slug}
+        routePrefix='events'
+        locale={locale}
+        previousLabel={t('previousPostText')}
+        nextLabel={t('nextPostText')}
       />
     </div>
   );
