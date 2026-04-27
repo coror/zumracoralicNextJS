@@ -1,12 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import { useLocale, useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getServices } from '@/datalayer/contentful/service';
 import Link from 'next/link';
 import ServicesComponent from '@/components/ServicesComponent';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
+
+export const revalidate = 3600;
 
 const descriptions = {
   sl: 'Odkrijte naše delavnice in predavanja, zasnovane za podjetja in organizacije. Naša strokovna usposabljanja vam bodo pomagala izboljšati komunikacijo, timsko delo in organizacijsko kulturo.',
@@ -35,15 +37,17 @@ export async function generateMetadata({
   });
 }
 
-export default function Page({
-  params: { locale: paramLocale },
+export default async function Page({
+  params: { locale },
 }: {
   params: { locale: string };
 }) {
-  unstable_setRequestLocale(paramLocale);
-  const x = useTranslations('Workshop');
-  const i = useTranslations('Index');
-  const locale = useLocale();
+  unstable_setRequestLocale(locale);
+  const [x, i, services] = await Promise.all([
+    getTranslations('Workshop'),
+    getTranslations('Index'),
+    getServices(locale),
+  ]);
   const url = getAlternates('/services/workshop', locale).canonical;
 
   return (
@@ -156,7 +160,12 @@ export default function Page({
         {/* <div className='mt-10 md:text-lg italic'>Zumra Ćoralić</div>
         <div className='mt-1 italic'>{x('sectionContent9')}</div> */}
 
-        <ServicesComponent readMore={i('readMore')} price={i('price')} />
+        <ServicesComponent
+          initialServices={services}
+          locale={locale}
+          readMore={i('readMore')}
+          price={i('price')}
+        />
       </div>
     </div>
   );
