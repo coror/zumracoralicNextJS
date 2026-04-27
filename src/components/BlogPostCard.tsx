@@ -1,12 +1,8 @@
-'use client';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { truncateText } from '@/datalayer/contentful/utils';
-import { useLocale } from 'next-intl';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BlogPost } from '@/types/blogPost';
-import { Locale } from 'date-fns';
-import { bs, sl } from 'date-fns/locale';
 
 function BlogPostCard({
   blogPost,
@@ -17,31 +13,18 @@ function BlogPostCard({
 }) {
   const truncatedContent = truncateText(
     documentToHtmlString(blogPost.content),
-    150
+    150,
   );
-  const locale = useLocale();
 
-  // const localeMap: { [key: string]: Locale } = {
-  //   sl,
-  //   bs,
-  // };
-
-  // const currentLocale = localeMap[locale] || sl;
-
-  // if (blogPost.datePosted.endsWith('.')) {
-  //   return {
-  //     ...blogPost,
-  //     datePosted: blogPost.datePosted.slice(0, -1),
-  //   };
-  // }
-
-  const blogPostsLink = `/${locale}/blogs/${blogPost.slug}`;
+  const href = {
+    pathname: '/blogs/[slug]' as const,
+    params: { slug: blogPost.slug },
+  };
 
   return (
     <div className='xl:max-w-[35rem] rounded overflow-hidden shadow-lg'>
-      {/* Image Container */}
       <div className='relative w-full h-64 md:h-64 group'>
-        <Link href={blogPostsLink}>
+        <Link href={href}>
           <Image
             src={blogPost.featuredImage.url}
             alt={blogPost.seoTitle}
@@ -53,7 +36,6 @@ function BlogPostCard({
         </Link>
       </div>
 
-      {/* Text Content */}
       <div className='p-4'>
         <h3 className='text-xl md:text-2xl font-bold my-2 text-gray-800 line-clamp-2 min-h-[3em] '>
           {blogPost.headline}
@@ -64,7 +46,7 @@ function BlogPostCard({
         <p className='text-sm md:text-base text-gray-700 mb-4 line-clamp-3 min-h-[4em]'>
           {truncatedContent}
         </p>
-        <Link href={blogPostsLink}>
+        <Link href={href}>
           <p className=' text-black  bg-[#FFE6BC] py-2 px-4 inline-block mt-2 transition-all duration-300 md:hover:bg-[#f99d5b] md:hover:bg-transparent border-2 border-[#FFE6BC] '>
             {readMore}...
           </p>

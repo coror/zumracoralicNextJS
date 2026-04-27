@@ -1,8 +1,6 @@
-'use client';
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { Link } from '@/navigation';
 
 export default function Header({
   title,
@@ -13,7 +11,6 @@ export default function Header({
   content: string;
   button: string;
 }) {
-  const locale = useLocale()
   return (
     <div className='w-auto relative overflow-hidden h-[30rem] md:h-[40rem] xl:h-screen max-w-screen flex items-start justify-center '>
       <div className='absolute top-[34%] 3xl:top-[40%]  xl:right-[50%] px-8 mx-auto text-center space-y-16 xl:space-y-30 z-10 lg:mx-[170px]'>
@@ -24,7 +21,7 @@ export default function Header({
         </div>
 
         <div className='animate-fade-up animate-duration-[2000ms] animate-delay-[2000ms] '>
-          <Link href={`${locale}/contact`}>
+          <Link href='/contact'>
             <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5  text-base  md:text-xl xl:text-2xl 3xl:text-3xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in '>
               {button}
             </button>

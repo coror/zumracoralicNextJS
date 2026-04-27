@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
@@ -87,7 +87,7 @@ export default function Page({
         >
           <li>
             <Link
-              href={`/${locale}/services/`}
+              href='/services'
               className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center'
             >
               {i('allServices')}
@@ -96,7 +96,7 @@ export default function Page({
           <li className='text-gray-400 mx-1'>&gt;</li>
           <li className=''>
             <Link
-              href={`/${locale}/services/coaching`}
+              href='/services/coaching'
               className='text-gray-600 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center '
             >
               {i('coaching')}
@@ -135,7 +135,7 @@ export default function Page({
           </div>
           <div className='mt-10 md:text-lg'>{x('sectionContent6')}</div>
           <div className='my-10 '>
-            <Link href={`/${locale}/contact`}>
+            <Link href='/contact'>
               <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5  text-sm  md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
                 {x('button')}
               </button>

@@ -4,7 +4,7 @@ import BlogPostCard from './BlogPostCard';
 import { Navigation, Pagination as SwiperPagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import Pagination from './Pagination';
 
 import 'swiper/css';
@@ -66,7 +66,7 @@ export default function BlogPostsComponent({
                 <div className='absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-60'></div>
                 <div className='relative z-10 p-4 mt-24 md:mt-60  text-center text-white space-y-8'>
                   <Link
-                    href={`/${locale}/blogs/${blog.slug}`}
+                    href={{ pathname: '/blogs/[slug]', params: { slug: blog.slug } }}
                     className='text-3xl md:text-5xl lg:text-6xl '
                   >
                     <h2 className='hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in'>
@@ -75,7 +75,7 @@ export default function BlogPostsComponent({
                   </Link>
                   <div>
                     <Link
-                      href={`/${locale}/blogs/${blog.slug}`}
+                      href={{ pathname: '/blogs/[slug]', params: { slug: blog.slug } }}
                       className='mt-4 inline-block bg-transparent text-white px-6 py-2 rounded-lg md:text-lg font-medium border-2 border-white md:hover:bg-white md:hover:text-black'
                     >
                       {readMore}

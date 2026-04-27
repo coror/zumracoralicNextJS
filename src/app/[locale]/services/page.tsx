@@ -70,14 +70,14 @@ export default function Page({
           title={x('card2Title')}
           content={x('card2Content')}
           readMore={i('readMore')}
-          link='services/mediation'
+          link='/services/mediation'
         />
         <ServicesCard
           srcImage='https://res.cloudinary.com/dbssbnuph/image/upload/v1724668808/zumracoralic/student_15941602_umqown.png'
           title={x('card3Title')}
           content={x('card3Content')}
           readMore={i('readMore')}
-          link='services/workshop'
+          link='/services/workshop'
         />
       </div>
     </div>

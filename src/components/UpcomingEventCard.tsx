@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { Event } from '@/types/event';
 
 export default function UpcomingEventCard({
@@ -78,7 +78,13 @@ export default function UpcomingEventCard({
         </div>
 
         <div className='px-6 py-3 lg:w-36 bg-black text-white md:transition-transform md:transform md:hover:translate-y-[-5px] md:ease-in-out md:duration-300 text-center'>
-          <Link href={`/${locale}/events/${event.slug}`} className=''>
+          <Link
+            href={{
+              pathname: '/events/[slug]',
+              params: { slug: event.slug },
+            }}
+            className=''
+          >
             {readMore}
           </Link>
         </div>

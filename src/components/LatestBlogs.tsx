@@ -6,7 +6,7 @@ import LatestBlogsCard from './LatestBlogsCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { BlogPost } from '@/types/blogPost';
 import { sortByDate } from '@/utils/sortByDate';
 
@@ -82,7 +82,7 @@ export default function LatestBlogs({
                 : ''
             }`}
           >
-            <Link href={`${locale}/blog`}>
+            <Link href='/blogs'>
               <button className='bg-[#ffe6bc] px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in  flex items-center'>
                 {button}
               </button>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { Service } from '@/types/service';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '@/datalayer/contentful/richTextUtils';
@@ -37,7 +37,12 @@ export default function ServicesComponent({
           </div>
 
           <div className='my-10'>
-            <Link href={`/${locale}/services/workshop/${service.slug}`}>
+            <Link
+              href={{
+                pathname: '/services/workshop/[slug]',
+                params: { slug: service.slug },
+              }}
+            >
               <button className='bg-[#FFE6BC] px-6 py-3 md:px-7 md:py-3 text-sm md:text-xl   transition duration-500 ease-out hover:ease-in hover:bg-[#b7915bad]'>
                 {readMore}
               </button>

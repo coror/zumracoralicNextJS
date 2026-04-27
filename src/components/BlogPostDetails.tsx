@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { IoIosCalendar } from 'react-icons/io';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { getRichTextOptions } from '../datalayer/contentful/richTextUtils';
 import { useState } from 'react';
@@ -115,7 +115,7 @@ const BlogPostDetails = ({
           <li className='text-gray-400 mx-1'>&gt;</li>
           <li>
             <Link
-              href={`/${locale}/blogs`}
+              href='/blogs'
               className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1'
             >
               {blogs}

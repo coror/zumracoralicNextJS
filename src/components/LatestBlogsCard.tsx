@@ -1,6 +1,5 @@
-import { useLocale } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import React from 'react';
 
 export default function LatestBlogsCard({
@@ -14,12 +13,10 @@ export default function LatestBlogsCard({
   featuredImage: string;
   slug: string;
 }) {
-  const locale = useLocale();
-
   return (
     <div className='flex flex-col items-center justify-center my-2  shadow-2xl rounded-3xl '>
       <Link
-        href={`/${locale}/blog/${slug}`}
+        href={{ pathname: '/blogs/[slug]', params: { slug } }}
         className='hover:text-[#d2ab74] h-full w-full'
       >
         <div className='w-full h-full max-h-24 md:max-h-72 group'>

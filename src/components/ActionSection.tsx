@@ -1,9 +1,8 @@
 'use client';
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { useInView } from 'react-intersection-observer';
 import React, { useEffect, useState } from 'react';
 import { FaPencil } from 'react-icons/fa6';
-import { useLocale } from 'next-intl';
 
 export default function ActionSection({
   quote,
@@ -27,7 +26,6 @@ export default function ActionSection({
     }
   }, [inView]);
 
-  const locale = useLocale();
   // Check if the viewport width is mobile size
   useEffect(() => {
     setIsMobile(window.innerWidth <= 768);
@@ -67,7 +65,7 @@ export default function ActionSection({
                   : ''
               }`}
             >
-              <Link href={`${locale}/contact`}>
+              <Link href='/contact'>
                 <button className='mx-auto  bg-[#ffe6bc] px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in  flex items-center'>
                   {button}
                 </button>
