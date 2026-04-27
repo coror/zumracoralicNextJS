@@ -7,6 +7,7 @@ import Testimonials from '@/components/Testimonials';
 import LatestEvents from '@/components/LatestEvents';
 import LatestBlogs from '@/components/LatestBlogs';
 import { useTranslations, useLocale } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 import UpcomingEvents from '@/components/UpcomingEvents';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, pickByLocale } from '@/utils/seo';
@@ -41,7 +42,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Home() {
+export default function Home({
+  params: { locale: paramLocale },
+}: {
+  params: { locale: string };
+}) {
+  unstable_setRequestLocale(paramLocale);
   const t = useTranslations('Header');
   const y = useTranslations('AboutSection');
   const q = useTranslations('QuoteSection');

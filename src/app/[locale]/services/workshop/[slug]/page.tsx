@@ -4,6 +4,7 @@ import React from 'react';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
 import { useTranslations } from 'next-intl';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 export async function generateMetadata({
   params,
@@ -32,7 +33,12 @@ export async function generateMetadata({
   });
 }
 
-export default function Page() {
+export default function Page({
+  params: { locale },
+}: {
+  params: { locale: string; slug: string };
+}) {
+  unstable_setRequestLocale(locale);
   const t = useTranslations('Navigation');
   const d = useTranslations('Workshop')
   return (

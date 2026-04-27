@@ -27,7 +27,7 @@ export default function ServicesCard({
         <h1 className='text-3xl font-bold '>{title}</h1>
         <div className='px-2 '>{content}</div>
         <div>
-          <Link href={`/${locale}/${link}`}>
+          <Link href={`/${locale}/${link.replace(/^\/+/, '')}`}>
             <p className='text-black py-2 px-4 inline-block mt-2 lg:mt-10 bg-white border-[1px] border-[#df650e]'>
               {readMore}
             </p>
