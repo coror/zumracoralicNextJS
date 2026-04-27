@@ -1,62 +1,40 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import { fetchEvents } from '@/utils/request';
-import { useLocale } from 'next-intl';
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import UpcomingEventCard from './UpcomingEventCard';
-import Spinner from './Spinner';
 import { Event } from '@/types/event';
 
 export default function UpcomingEvents({
+  initialEvents,
+  locale,
   readMore,
   sectionTitle,
 }: {
+  initialEvents: Event[];
+  locale: string;
   readMore: string;
   sectionTitle: string;
 }) {
-  const [events, setEvents] = useState<Event[]>([]);
-  const [loading, setLoading] = useState(true);
-  const locale = useLocale();
-
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // When the component comes into view, set animate to true
   useEffect(() => {
     if (inView) {
       setAnimate(true);
     }
   }, [inView]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const fetchedEvents = await fetchEvents(locale);
-
-        const currentDate = new Date();
-
-        const upcomingEvents = fetchedEvents
-          .filter((event: Event) => new Date(event.datum) >= currentDate)
-          .sort(
-            (a: Event, b: Event) =>
-              new Date(a.datum).getTime() - new Date(b.datum).getTime()
-          );
-
-        setEvents(upcomingEvents);
-      } catch (error) {
-        console.error('Error fetching events:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [locale]);
+  const events = useMemo(() => {
+    const currentDate = new Date();
+    return [...initialEvents]
+      .filter((event) => new Date(event.datum) >= currentDate)
+      .sort(
+        (a, b) => new Date(a.datum).getTime() - new Date(b.datum).getTime(),
+      );
+  }, [initialEvents]);
 
   if (events.length === 0) {
     return <div></div>;
@@ -73,27 +51,23 @@ export default function UpcomingEvents({
       >
         {sectionTitle}
       </div>
-      {loading ? (
-        <Spinner loading={loading} />
-      ) : (
-        <ul
-          className={` max-w-[1400px] mx-auto ${
-            animate
-              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1200ms]'
-              : ''
-          }`}
-        >
-          {events.map((event) => (
-            <li key={event.id}>
-              <UpcomingEventCard
-                event={event}
-                locale={locale}
-                readMore={readMore}
-              />
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul
+        className={` max-w-[1400px] mx-auto ${
+          animate
+            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1200ms]'
+            : ''
+        }`}
+      >
+        {events.map((event) => (
+          <li key={event.id}>
+            <UpcomingEventCard
+              event={event}
+              locale={locale}
+              readMore={readMore}
+            />
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

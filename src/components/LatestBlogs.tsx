@@ -1,10 +1,7 @@
 'use client';
 import { useInView } from 'react-intersection-observer';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import LatestBlogsCard from './LatestBlogsCard';
-import { useLocale } from 'next-intl';
-import { fetchBlogPosts } from '../utils/request';
-import Spinner from './Spinner';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -12,78 +9,59 @@ import 'swiper/css/pagination';
 import Link from 'next/link';
 import { BlogPost } from '@/types/blogPost';
 import { Locale, parse } from 'date-fns';
-import { bs, sl } from 'date-fns/locale'; // Add locales you need
+import { bs, sl } from 'date-fns/locale';
 
 export default function LatestBlogs({
+  initialBlogs,
+  locale,
   section,
   sectionTitle,
   sectionTitle2,
   button,
 }: {
+  initialBlogs: BlogPost[];
+  locale: string;
   section: string;
   sectionTitle: string;
   sectionTitle2: string;
   button: string;
 }) {
-  const [blogs, setBlogs] = useState<BlogPost[]>([]);
-  const [loading, setLoading] = useState(true);
-
   const [animate, setAnimate] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  // When the component comes into view, set animate to true
   useEffect(() => {
     if (inView) {
       setAnimate(true);
     }
   }, [inView]);
 
-  const locale = useLocale();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const fetchedBlogs = await fetchBlogPosts(locale);
-
-        const localeMap: { [key: string]: Locale } = {
-          sl: sl,
-          bs: bs,
-        };
-
-        const currentLocale = localeMap[locale] || sl;
-
-        // Sort blogs by 'datum' in descending order and limit to the most recent 8
-        const sortedBlogs = fetchedBlogs
-          .sort(
-            (a: BlogPost, b: BlogPost) =>
-              parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
-                locale: currentLocale,
-              }).getTime() -
-              parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
-                locale: currentLocale,
-              }).getTime()
-          )
-          .slice(0, 4);
-        setBlogs(sortedBlogs);
-      } catch (error) {
-        console.error('Error fetching data in LatestBlogsComponent', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, [locale]);
+  const blogs = useMemo(() => {
+    const localeMap: { [key: string]: Locale } = { sl, bs };
+    const currentLocale = localeMap[locale] || sl;
+    return [...initialBlogs]
+      .sort(
+        (a, b) =>
+          parse(b.datePosted, 'd. MMMM yyyy', new Date(), {
+            locale: currentLocale,
+          }).getTime() -
+          parse(a.datePosted, 'd. MMMM yyyy', new Date(), {
+            locale: currentLocale,
+          }).getTime(),
+      )
+      .slice(0, 4);
+  }, [initialBlogs, locale]);
 
   return (
     <div className='bg-white py-10 md:py-24 relative flex flex-col'>
-      <div className={`mx-auto max-w-[1400px] transition-opacity duration-2000 transform ${
+      <div
+        className={`mx-auto max-w-[1400px] transition-opacity duration-2000 transform ${
           animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
         }`}
-        ref={ref}>
+        ref={ref}
+      >
         <div className='m-8 flex flex-col xl:flex-row xl:justify-between'>
           <div>
             <div>
@@ -123,27 +101,23 @@ export default function LatestBlogs({
             </Link>
           </div>
         </div>
-        {loading ? (
-          <Spinner loading={loading} />
-        ) : (
-          <div
-            className={`grid grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-4 ${
-              animate
-                ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[800ms]'
-                : ''
-            }`}
-          >
-            {blogs.map((blog) => (
-              <LatestBlogsCard
-                key={blog.id}
-                headline={blog.headline}
-                date={blog.datePosted}
-                featuredImage={blog.featuredImage.url}
-                slug={blog.slug}
-              />
-            ))}
-          </div>
-        )}
+        <div
+          className={`grid grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-4 ${
+            animate
+              ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[800ms]'
+              : ''
+          }`}
+        >
+          {blogs.map((blog) => (
+            <LatestBlogsCard
+              key={blog.id}
+              headline={blog.headline}
+              date={blog.datePosted}
+              featuredImage={blog.featuredImage.url}
+              slug={blog.slug}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

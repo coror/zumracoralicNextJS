@@ -1,8 +1,10 @@
 import BlogPostsComponent from '@/components/BlogPostsComponent';
-import { useTranslations } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+import { getBlogPosts } from '@/datalayer/contentful/blogPost';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
+
+export const revalidate = 3600;
 
 export async function generateMetadata({
   params,
@@ -27,12 +29,19 @@ export async function generateMetadata({
   });
 }
 
-export default function Page({
+export default async function Page({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const t = useTranslations('Index');
-  return <BlogPostsComponent readMore={t('readMore')} />;
+  const t = await getTranslations('Index');
+  const blogs = await getBlogPosts(locale);
+  return (
+    <BlogPostsComponent
+      initialBlogs={blogs}
+      locale={locale}
+      readMore={t('readMore')}
+    />
+  );
 }
