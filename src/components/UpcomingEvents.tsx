@@ -49,7 +49,7 @@ export default function UpcomingEvents({
 
         setEvents(upcomingEvents);
       } catch (error) {
-        console.log('Error fetcht events:', error);
+        console.error('Error fetching events:', error);
       } finally {
         setLoading(false);
       }

@@ -15,7 +15,7 @@ export const getServices = async (locale = 'sl') => {
 
     return services;
   } catch (error) {
-    console.log('Error fetching services', error);
+    console.error('Error fetching services', error);
     return [];
   }
 };
@@ -29,14 +29,14 @@ export const getServiceBySlug = async (slug, locale = 'sl') => {
       locale,
     });
 
-    if (found.items.lenght === 0) {
+    if (found.items.length === 0) {
       return null;
     }
 
     const service = found.items[0];
     return serviceReducer(service);
   } catch (error) {
-    console.log('Error fetching service by sug');
+    console.error('Error fetching service by slug', error);
     return null;
   }
 };

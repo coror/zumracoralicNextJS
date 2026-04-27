@@ -17,7 +17,7 @@ async function fetchServices(locale = 'sl') {
     // console.log(data);
     return data.services;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 }
@@ -38,7 +38,7 @@ async function fetchService(slug, locale) {
     const data = await res.json();
     return data.service;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 }
@@ -61,7 +61,7 @@ async function fetchBlogPosts(locale = 'sl') {
 
     return data.blogPosts;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 }
@@ -84,7 +84,7 @@ async function fetchBlogPost(slug, locale) {
     // console.log(data);
     return data.blogPost;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 }
@@ -107,7 +107,7 @@ async function fetchEvents(locale = 'sl') {
 
     return data.events;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return [];
   }
 }
@@ -130,7 +130,7 @@ async function fetchEvent(slug, locale) {
     // console.log(data);
     return data.event;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return null;
   }
 }

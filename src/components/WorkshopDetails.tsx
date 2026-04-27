@@ -7,7 +7,7 @@ import { notFound, useParams } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import Spinner from './Spinner';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { getRichTextOptions } from '@/datalyer/contentful/richTextUtils';
+import { getRichTextOptions } from '@/datalayer/contentful/richTextUtils';
 import Image from 'next/image';
 import { Service } from '@/types/service';
 import JsonLd from './JsonLd';
@@ -33,12 +33,9 @@ export default function WorkshopDetails({
 
   const options = getRichTextOptions();
 
-  console.log(service?.headlineImage);
-
   useEffect(() => {
     const fetchEventData = async () => {
       if (!slug || !locale) {
-        console.log('Slug or current Locale is undefined', slug, locale);
         return;
       }
       setLoading(true);
@@ -46,7 +43,7 @@ export default function WorkshopDetails({
         const fetchedService = await fetchService(slug, locale);
         setService(fetchedService);
       } catch (error) {
-        console.log('Error fetching service', error);
+        console.error('Error fetching service', error);
       } finally {
         setLoading(false);
       }

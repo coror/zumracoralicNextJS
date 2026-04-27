@@ -49,7 +49,7 @@ export default function BlogPostsComponent({ readMore }: { readMore: string }) {
         );
         setBlogs(sortedBlogs);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }

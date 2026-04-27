@@ -1,4 +1,4 @@
-import { getServices } from '../../../datalyer/contentful/service';
+import { getServices } from '../../../datalayer/contentful/service';
 // GET /api/services
 export const dynamic = 'force-dynamic';
 
@@ -12,7 +12,7 @@ export const GET = async (request) => {
     // console.log(services);
     return new Response(JSON.stringify({ services }), { status: 200 });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return new Response('Something went wrong', { status: 500 });
   }
 };

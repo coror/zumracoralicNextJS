@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { IoIosCalendar } from 'react-icons/io';
 import Link from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { getRichTextOptions } from '../datalyer/contentful/richTextUtils';
+import { getRichTextOptions } from '../datalayer/contentful/richTextUtils';
 import { useState } from 'react';
 import { parse } from 'date-fns';
 import { bs as bsLocale, sl as slLocale } from 'date-fns/locale';

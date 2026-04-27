@@ -1,4 +1,4 @@
-import { getServiceBySlug } from '../../../../datalyer/contentful/service';
+import { getServiceBySlug } from '../../../../datalayer/contentful/service';
 
 export const dynamic = 'force-dynamic';
 

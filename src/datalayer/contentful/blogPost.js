@@ -17,11 +17,9 @@ export const getBlogPosts = async (locale = 'sl') => {
       blogPostReducer(rawBlogPost)
     );
 
-    console.log(blogPosts);
-    
     return blogPosts;
   } catch (error) {
-    console.log(`Error fetching blog posts for `, error);
+    console.error(`Error fetching blog posts for `, error);
     return [];
   }
 };
@@ -42,7 +40,6 @@ export const getBlogPostBySlug = async (slug, locale = 'sl') => {
     // ); // Detailed logging
 
     if (found.items.length === 0) {
-      console.log(`Blog post not found for slug: ${slug}`);
       return null;
     }
 

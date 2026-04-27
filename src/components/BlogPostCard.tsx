@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
-import { truncateText } from '@/datalyer/contentful/utils';
+import { truncateText } from '@/datalayer/contentful/utils';
 import { useLocale } from 'next-intl';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import { BlogPost } from '@/types/blogPost';
