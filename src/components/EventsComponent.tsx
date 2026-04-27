@@ -1,14 +1,13 @@
 'use client';
 import React, { useMemo, useState } from 'react';
 import Pagination from './Pagination';
-import { Locale, parse } from 'date-fns';
-import { bs, sl } from 'date-fns/locale';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import EventCard from './EventCard';
 import { Event } from '@/types/event';
+import { sortByDate } from '@/utils/sortByDate';
 
 export default function EventsComponent({
   initialEvents,
@@ -24,19 +23,10 @@ export default function EventsComponent({
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
 
-  const events = useMemo(() => {
-    const localeMap: { [key: string]: Locale } = { sl, bs };
-    const currentLocale = localeMap[locale] || sl;
-    return [...initialEvents].sort((a, b) => {
-      const dateA = parse(a.datum, 'd. MMMM yyyy', new Date(), {
-        locale: currentLocale,
-      });
-      const dateB = parse(b.datum, 'd. MMMM yyyy', new Date(), {
-        locale: currentLocale,
-      });
-      return dateB.getTime() - dateA.getTime();
-    });
-  }, [initialEvents, locale]);
+  const events = useMemo(
+    () => sortByDate(initialEvents, locale, 'datum'),
+    [initialEvents, locale],
+  );
 
   const handlePageChange = (value: number) => {
     setCurrentPage(value);

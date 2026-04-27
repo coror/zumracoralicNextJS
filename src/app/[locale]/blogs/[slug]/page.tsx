@@ -1,6 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import BlogPostComponent from '@/components/BlogPostComponent';
+import BlogPostDetails from '@/components/BlogPostDetails';
+import EntryNav from '@/components/EntryNav';
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 import {
   getBlogPosts,
@@ -9,6 +10,7 @@ import {
 import { locales } from '@/config';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata } from '@/utils/seo';
+import { sortByDate } from '@/utils/sortByDate';
 
 export const revalidate = 3600;
 
@@ -81,16 +83,23 @@ export default async function Page({
     notFound();
   }
 
+  const sortedBlogs = sortByDate(blogPosts, locale, 'datePosted');
+
   return (
-    <div>
-      <BlogPostComponent
-        initialBlogPost={blogPost}
-        initialBlogPosts={blogPosts}
+    <div className='relative min-h-screen'>
+      <BlogPostDetails
+        blogPost={blogPost}
         locale={locale}
         home={t('home')}
         blogs={t('blogPosts')}
-        previousPostText={t('previousPostText')}
-        nextPostText={t('nextPostText')}
+      />
+      <EntryNav
+        entries={sortedBlogs}
+        currentSlug={slug}
+        routePrefix='blogs'
+        locale={locale}
+        previousLabel={t('previousPostText')}
+        nextLabel={t('nextPostText')}
       />
     </div>
   );

@@ -4,7 +4,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import LatestEventsCard from './LatestEventsCard';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Locale, parse } from 'date-fns';
+import { parse } from 'date-fns';
 import { bs, sl } from 'date-fns/locale';
 
 import 'swiper/css';
@@ -12,6 +12,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Link from 'next/link';
 import { Event } from '@/types/event';
+import { sortByDate } from '@/utils/sortByDate';
 
 export default function LatestEvents({
   initialEvents,
@@ -37,27 +38,15 @@ export default function LatestEvents({
   }, [inView]);
 
   const events = useMemo(() => {
-    const localeMap: { [key: string]: Locale } = { sl, bs };
-    const currentLocale = localeMap[locale] || sl;
+    const currentLocale = locale === 'bs' ? bs : sl;
     const now = new Date();
-
-    return [...initialEvents]
-      .filter((event) => {
-        const eventDate = parse(event.datum, 'd. MMMM yyyy', new Date(), {
-          locale: currentLocale,
-        });
-        return eventDate <= now;
-      })
-      .sort(
-        (a, b) =>
-          parse(b.datum, 'd. MMMM yyyy', new Date(), {
-            locale: currentLocale,
-          }).getTime() -
-          parse(a.datum, 'd. MMMM yyyy', new Date(), {
-            locale: currentLocale,
-          }).getTime(),
-      )
-      .slice(0, 8);
+    const past = initialEvents.filter((event) => {
+      const eventDate = parse(event.datum, 'd. MMMM yyyy', new Date(), {
+        locale: currentLocale,
+      });
+      return eventDate <= now;
+    });
+    return sortByDate(past, locale, 'datum').slice(0, 8);
   }, [initialEvents, locale]);
 
   return (
