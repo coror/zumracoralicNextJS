@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import AboutMe from '@/components/AboutMe';
 import ActionSection from '@/components/ActionSection';
 import Quote from '@/components/Quote';
@@ -13,6 +14,7 @@ import UpcomingEvents from '@/components/UpcomingEvents';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
+import Skeleton from '@/components/Skeleton';
 
 export const revalidate = 3600;
 
@@ -44,13 +46,109 @@ export async function generateMetadata({
   });
 }
 
+async function UpcomingEventsSection({
+  locale,
+  sectionTitle,
+  readMore,
+}: {
+  locale: string;
+  sectionTitle: string;
+  readMore: string;
+}) {
+  const events = await getEvents(locale);
+  return (
+    <UpcomingEvents
+      initialEvents={events}
+      locale={locale}
+      sectionTitle={sectionTitle}
+      readMore={readMore}
+    />
+  );
+}
+
+async function LatestEventsSection({
+  locale,
+  sectionTitle,
+  button,
+}: {
+  locale: string;
+  sectionTitle: string;
+  button: string;
+}) {
+  const events = await getEvents(locale);
+  return (
+    <LatestEvents
+      initialEvents={events}
+      locale={locale}
+      sectionTitle={sectionTitle}
+      button={button}
+    />
+  );
+}
+
+async function LatestBlogsSection({
+  locale,
+  section,
+  sectionTitle,
+  sectionTitle2,
+  button,
+}: {
+  locale: string;
+  section: string;
+  sectionTitle: string;
+  sectionTitle2: string;
+  button: string;
+}) {
+  const blogs = await getBlogPosts(locale);
+  return (
+    <LatestBlogs
+      initialBlogs={blogs}
+      locale={locale}
+      section={section}
+      sectionTitle={sectionTitle}
+      sectionTitle2={sectionTitle2}
+      button={button}
+    />
+  );
+}
+
+function ListSectionSkeleton() {
+  return (
+    <div className='bg-white py-10 md:py-24 max-w-[1400px] mx-auto px-6'>
+      <Skeleton className='h-12 md:h-16 w-1/2 mx-auto mb-12' />
+      <div className='grid grid-cols-2 xl:grid-cols-4 gap-2 xl:gap-16'>
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div key={i} className='space-y-3'>
+            <Skeleton className='h-32 md:h-56 w-full' />
+            <Skeleton className='h-5 w-3/4' />
+            <Skeleton className='h-4 w-1/2' />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function UpcomingEventsSkeleton() {
+  return (
+    <div className='bg-white py-10 max-w-[1400px] mx-auto'>
+      <Skeleton className='h-12 md:h-16 w-1/3 mx-auto mb-12' />
+      <div className='space-y-6'>
+        {Array.from({ length: 2 }).map((_, i) => (
+          <Skeleton key={i} className='h-40 mx-10' />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default async function Home({
   params: { locale },
 }: {
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const [t, y, q, o, s, e, a, b, p, i, blogs, events] = await Promise.all([
+  const [t, y, q, o, s, e, a, b, p, i] = await Promise.all([
     getTranslations('Header'),
     getTranslations('AboutSection'),
     getTranslations('QuoteSection'),
@@ -61,8 +159,6 @@ export default async function Home({
     getTranslations('LatestBlogs'),
     getTranslations('UpcomingEvents'),
     getTranslations('Index'),
-    getBlogPosts(locale),
-    getEvents(locale),
   ]);
   const homeUrl = `https://www.zumracoralic.com/${locale}`;
   return (
@@ -85,7 +181,6 @@ export default async function Home({
         }}
       />
       <Header title={t('title')} content={t('content')} button={t('button')} />
-      {/* <UnderHeader content={t('content')} /> */}
       <AboutMe
         section={y('section')}
         title={t('content')}
@@ -108,12 +203,13 @@ export default async function Home({
         back3Content={o('back3Content')}
         readMore={o('readMore')}
       />
-      <UpcomingEvents
-        initialEvents={events}
-        locale={locale}
-        sectionTitle={p('sectionTitle')}
-        readMore={i('readMore')}
-      />
+      <Suspense fallback={<UpcomingEventsSkeleton />}>
+        <UpcomingEventsSection
+          locale={locale}
+          sectionTitle={p('sectionTitle')}
+          readMore={i('readMore')}
+        />
+      </Suspense>
       <Testimonials
         sectionTitle={s('sectionTitle')}
         testimonial1={s('testimonial1')}
@@ -132,21 +228,23 @@ export default async function Home({
         person6Title={s('person6Title')}
         testimonial6={s('testimonial6')}
       />
-      <LatestEvents
-        initialEvents={events}
-        locale={locale}
-        sectionTitle={e('sectionTitle')}
-        button={e('button')}
-      />
+      <Suspense fallback={<ListSectionSkeleton />}>
+        <LatestEventsSection
+          locale={locale}
+          sectionTitle={e('sectionTitle')}
+          button={e('button')}
+        />
+      </Suspense>
       <ActionSection quote={a('quote')} button={t('button')} />
-      <LatestBlogs
-        initialBlogs={blogs}
-        locale={locale}
-        section={b('section')}
-        sectionTitle={b('sectionTitle')}
-        sectionTitle2={b('sectionTitle2')}
-        button={b('button')}
-      />
+      <Suspense fallback={<ListSectionSkeleton />}>
+        <LatestBlogsSection
+          locale={locale}
+          section={b('section')}
+          sectionTitle={b('sectionTitle')}
+          sectionTitle2={b('sectionTitle2')}
+          button={b('button')}
+        />
+      </Suspense>
     </div>
   );
 }
