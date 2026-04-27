@@ -1,7 +1,10 @@
+import type { Document } from '@contentful/rich-text-types';
+
 export interface Event {
   slug: string;
-  content: any; // Can be refined based on your actual content type
+  content: Document;
   seoTitle: string;
+  seoDescription: string;
   headline: string;
   datum: string;
   datePosted: string;

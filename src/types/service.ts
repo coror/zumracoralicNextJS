@@ -1,6 +1,8 @@
+import type { Document } from '@contentful/rich-text-types';
+
 export interface Service {
   slug: string;
-  content: any; // Can be refined based on your actual content type
+  content: Document;
   seoTitle: string;
   headline: string;
   seoDescription: string;
@@ -8,6 +10,12 @@ export interface Service {
   id: string;
   price: number;
   type: string;
-  description: any;
-  headlineImage: any;
+  description: Document;
+  headlineImage: {
+    original_secure_url: string;
+    secure_url?: string;
+    alt?: string;
+    width?: number;
+    height?: number;
+  }[];
 }
