@@ -41,9 +41,6 @@ export async function generateMetadata({
       params: { slug },
       titles: { sl: 'Blog - Zumra Coralic', bs: 'Blog - Zumra Ćoralić' },
       descriptions: { sl: '', bs: '' },
-      image: {
-        url: 'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/blogHeader_oraf6m.png',
-      },
     });
   }
 
@@ -58,10 +55,6 @@ export async function generateMetadata({
     descriptions: {
       sl: blog.seoDescription,
       bs: blog.seoDescription,
-    },
-    image: {
-      url: blog.featuredImage.url,
-      alt: blog.featuredImage.alt,
     },
   });
 }
