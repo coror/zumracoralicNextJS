@@ -47,8 +47,8 @@ function BlogPostCard({
           {truncatedContent}
         </p>
         <Link href={href}>
-          <p className=' text-black  bg-[#FFE6BC] py-2 px-4 inline-block mt-2 transition-all duration-300 md:hover:bg-[#f99d5b] md:hover:bg-transparent border-2 border-[#FFE6BC] '>
-            {readMore}...
+          <p className='inline-flex items-center gap-2 text-sm font-medium tracking-wide uppercase text-[#222428] mt-4 hover:text-[#df650e] transition-colors'>
+            {readMore} <span aria-hidden='true'>→</span>
           </p>
         </Link>
       </div>

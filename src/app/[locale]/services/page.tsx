@@ -52,7 +52,7 @@ export default function Page({
         />
         <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
 
-        <h1 className='absolute inset-0 flex flex-col items-center lg:justify-center text-white m-8 pb-10 text-[35px] md:text-[56px] lg:text-5xl 3xl:text-8xl  mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
+        <h1 className='absolute inset-0 flex flex-col items-center lg:justify-center text-white m-8 pb-10 text-[35px] md:text-[56px] lg:text-5xl 3xl:text-8xl  mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-700 animate-delay-[500ms]'>
           {n('services')}
         </h1>
       </div>

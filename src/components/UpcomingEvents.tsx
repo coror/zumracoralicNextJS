@@ -1,8 +1,7 @@
-'use client';
-import { useInView } from 'react-intersection-observer';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import UpcomingEventCard from './UpcomingEventCard';
 import { Event } from '@/types/event';
+import Reveal, { RevealStagger } from './Reveal';
 
 export default function UpcomingEvents({
   initialEvents,
@@ -15,18 +14,6 @@ export default function UpcomingEvents({
   readMore: string;
   sectionTitle: string;
 }) {
-  const [animate, setAnimate] = useState(false);
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      setAnimate(true);
-    }
-  }, [inView]);
-
   const events = useMemo(() => {
     const currentDate = new Date();
     return [...initialEvents]
@@ -37,37 +24,32 @@ export default function UpcomingEvents({
   }, [initialEvents]);
 
   if (events.length === 0) {
-    return <div></div>;
+    return null;
   }
 
   return (
-    <div className={`bg-white py-10 relative`} ref={ref}>
-      <div
-        className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leaading-[1] text-center ${
-          animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
-            : ''
-        }`}
-      >
-        {sectionTitle}
-      </div>
-      <ul
-        className={` max-w-[1400px] mx-auto ${
-          animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[1200ms]'
-            : ''
-        }`}
+    <section className='bg-white py-16 md:py-24 4xl:py-32 relative'>
+      <Reveal variant='up' delay={100}>
+        <h2 className='text-3xl md:text-[56px] 4xl:text-[88px] mb-12 md:mb-16 4xl:mb-24 tracking-wide leading-[1] text-center'>
+          {sectionTitle}
+        </h2>
+      </Reveal>
+      <RevealStagger
+        gap={80}
+        startDelay={100}
+       
+        className='max-w-[1400px] mx-auto'
       >
         {events.map((event) => (
-          <li key={event.id}>
+          <div key={event.id}>
             <UpcomingEventCard
               event={event}
               locale={locale}
               readMore={readMore}
             />
-          </li>
+          </div>
         ))}
-      </ul>
-    </div>
+      </RevealStagger>
+    </section>
   );
 }

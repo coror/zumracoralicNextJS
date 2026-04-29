@@ -21,7 +21,7 @@ export default function ServicesComponent({
       {initialServices.map((service) => (
         <div
           key={service.id}
-          className='border-2 border-[#FFE6BC] flex flex-col lg:flex-row items-center text-center  mt-5 mx-2 lg:text-left px-3 py-8 lg:px-5 min-h-64 space-y-5 lg:space-y-0 lg:space-x-20 transition-transform  duration-500 ease-in-out lg:hover:scale-105 lg:hover:bg-white lg:hover:shadow-2xl'
+          className='border border-neutral-200 flex flex-col lg:flex-row items-center text-center mt-5 mx-2 lg:text-left px-3 py-8 lg:px-5 min-h-64 space-y-5 lg:space-y-0 lg:space-x-20 transition-transform duration-500 ease-out lg:hover:scale-[1.02] lg:hover:border-[#222428]'
         >
           <div>
             <div className=' text-xl md:text-2xl font-bold lg:min-w-[16rem] text-center'>
@@ -43,9 +43,7 @@ export default function ServicesComponent({
                 params: { slug: service.slug },
               }}
             >
-              <button className='bg-[#FFE6BC] px-6 py-3 md:px-7 md:py-3 text-sm md:text-xl   transition duration-500 ease-out hover:ease-in hover:bg-[#b7915bad]'>
-                {readMore}
-              </button>
+              <button className='btn-ghost'>{readMore}</button>
             </Link>
           </div>
         </div>

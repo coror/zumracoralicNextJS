@@ -84,7 +84,7 @@ export default async function Page({
         />
         <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
 
-        <h1 className='absolute inset-0 flex flex-col justify-center items-center text-white m-8 pb-10 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
+        <h1 className='absolute inset-0 flex flex-col justify-center items-center text-white m-8 pb-10 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-700 animate-delay-[500ms]'>
           {x('section')}
         </h1>
       </div>
@@ -112,14 +112,14 @@ export default async function Page({
           </li>
         </ol>
       </nav>
-      <div className='relative flex flex-col justify-center items-stretch mt-10 px-6  lg:max-w-[74rem] mx-auto text-left animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
+      <div className='relative flex flex-col justify-center items-stretch mt-10 px-6  lg:max-w-[74rem] mx-auto text-left animate-fade-right animate-duration-500 animate-delay-[1500ms]'>
         <div className='font-bold text-lg md:text-xl italic text-left'>
           {x('sectionTitle1')}
         </div>
         <div className='mt-10 md:text-lg'>{x('sectionContent1')}</div>
         <div className='mt-10 md:text-lg'>{x('sectionContent2')}</div>
 
-        <div className='md:min-w-[26rem] xl:flex xl:justify-center mt-10 md:mb-0 animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+        <div className='md:min-w-[26rem] xl:flex xl:justify-center mt-10 md:mb-0 animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
           <Image
             src='https://res.cloudinary.com/dbssbnuph/image/upload/v1724844782/zumracoralic/eta62_o6fbkf.webp'
             alt='delavnica'

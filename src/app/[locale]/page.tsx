@@ -14,6 +14,7 @@ import UpcomingEvents from '@/components/UpcomingEvents';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
+import MeshGradient from '@/components/MeshGradient';
 import Skeleton from '@/components/Skeleton';
 
 export const revalidate = 3600;
@@ -163,6 +164,7 @@ export default async function Home({
   const homeUrl = `https://www.zumracoralic.com/${locale}`;
   return (
     <div>
+      <MeshGradient variant='cream' fixed />
       <JsonLd
         data={{
           '@context': 'https://schema.org',

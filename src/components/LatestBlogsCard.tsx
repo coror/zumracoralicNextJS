@@ -14,31 +14,35 @@ export default function LatestBlogsCard({
   slug: string;
 }) {
   return (
-    <div className='flex flex-col items-center justify-center my-2  shadow-2xl rounded-3xl '>
-      <Link
-        href={{ pathname: '/blogs/[slug]', params: { slug } }}
-        className='hover:text-[#d2ab74] h-full w-full'
-      >
-        <div className='w-full h-full max-h-24 md:max-h-72 group'>
-          <Image
-            src={featuredImage}
-            alt='naslovna'
-            width={0}
-            height={0}
-            sizes='100vw'
-            className='w-full h-full  max-h-full rounded-3xl object-cover transition ease-in-out group-hover:brightness-75'
+    <Link
+      href={{ pathname: '/blogs/[slug]', params: { slug } }}
+      className='group block'
+    >
+      <article className='flex flex-col'>
+        {/* Text-led editorial: eyebrow + large serif headline + animated underline */}
+        <div className='pb-5 px-1'>
+          <p className='text-[10px] md:text-xs tracking-[0.25em] uppercase text-[#df650e] mb-3'>
+            {date}
+          </p>
+          <h3 className='text-xl md:text-2xl lg:text-[28px] 2xl:text-3xl 3xl:text-4xl leading-[1.45] line-clamp-3 min-h-[4.35em] pb-2 transition-colors group-hover:text-[#df650e]'>
+            {headline}
+          </h3>
+          <span
+            aria-hidden='true'
+            className='block h-px bg-[#df650e] mt-4 w-8 transition-all duration-500 group-hover:w-16'
           />
         </div>
-
-        <div className='h-20 md:h-32 lg:h-32 xl:h-48'>
-          <div className='text-xs md:text-2xl  my-2 text-center '>
-            {headline}
-          </div>
-          <div className='text-center text-xs md:text-lg text-[#00000059]'>
-            {date}
-          </div>
+        {/* Image as supporting element — wider 16:10 to differ from events 4:3 */}
+        <div className='relative w-full aspect-[16/10] overflow-hidden bg-neutral-100 rounded-2xl'>
+          <Image
+            src={featuredImage}
+            alt={headline}
+            fill
+            sizes='(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 25vw'
+            className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
+          />
         </div>
-      </Link>
-    </div>
+      </article>
+    </Link>
   );
 }

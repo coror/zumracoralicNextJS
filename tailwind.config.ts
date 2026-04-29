@@ -9,6 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
         Jost: ['Jost', 'sans-serif'],
       },
       backgroundImage: {
@@ -18,6 +20,7 @@ const config: Config = {
       },
       screens: {
         '3xl': '1800px',
+        '4xl': '2200px',
       },
     },
   },

@@ -198,7 +198,7 @@ export default function FormSection({
         <div className='text-center'>
           <button
             type='submit'
-            className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-3 text-sm md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'
+            className='btn-primary disabled:opacity-60 disabled:cursor-not-allowed'
             disabled={loading}
           >
             {loading ? <ClipLoader size={24} color='#ffffff' /> : `${send}`}
