@@ -24,7 +24,7 @@ function EventCard({ event, readMore }: { event: Event; readMore: string }) {
             <Image
               src={event.featuredImage.url}
               alt={event.seoTitle}
-              className='w-full h-full object-cover transform transition-transform transition-filter duration-500 ease-in-out md:group-hover:scale-105 md:group-hover:brightness-90'
+              className='w-full h-full object-cover transform transition-transform transition-filter duration-500 ease-in-out md:group-md:group-hover:brightness-90'
               sizes='100vw'
               width={0}
               height={0}
@@ -49,8 +49,8 @@ function EventCard({ event, readMore }: { event: Event; readMore: string }) {
           {truncatedContent}
         </p>
         <Link href={eventsLink}>
-          <p className=' text-black  bg-[#FFE6BC] py-2 px-4 inline-block mt-2 transition-all duration-300 md:hover:bg-[#f99d5b] md:hover:bg-transparent border-2 border-[#FFE6BC] lg:absolute lg:right-10'>
-            {readMore}...
+          <p className='inline-flex items-center gap-2 text-sm font-medium tracking-wide uppercase text-[#222428] mt-4 hover:text-[#df650e] transition-colors lg:absolute lg:right-10'>
+            {readMore} <span aria-hidden='true'>→</span>
           </p>
         </Link>
       </div>

@@ -60,10 +60,10 @@ export default function Page({
           ],
         }}
       />
-      <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
+      <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-700 animate-delay-[500ms]'>
         {t('section')}
       </div>
-      <div className='text-lg leading-8 max-w-[80rem] md:mx-auto space-y-8  animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
+      <div className='text-lg leading-8 max-w-[80rem] md:mx-auto space-y-8  animate-fade-right animate-duration-700 animate-delay-[800ms]'>
         <div className='space-y-5'>
           <div className='md:flex md:flex-row md:justify-between'>
             <div className='md:w-96 lg:w-[42rem] space-y-3'>
@@ -71,7 +71,7 @@ export default function Page({
               <div>{t('sectionContent1')}</div>
               <div>{t('sectionContent2')}</div>
             </div>
-            <div className='mt-6 md:mt-0 animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+            <div className='mt-6 md:mt-0 animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
               <Image
                 src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG_0704_qh6mdm.jpg'
                 alt='zumra-profilna'
@@ -96,7 +96,7 @@ export default function Page({
         </div>
 
         <div className='md:flex md:flex-row md:justify-between md:space-x-10'>
-          <div className=' animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+          <div className=' animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
             <Image
               src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG-6a7cdd4a36fd6a9a30bf4db5df337a1f-V_t7u3g9.jpg'
               alt='sinova'
@@ -134,7 +134,7 @@ export default function Page({
 
             <div>{t('sectionContent11')}</div>
           </div>
-          <div className='md:min-w-[26rem] xl:min-w-[30rem] xl:max-w-[44rem]   animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+          <div className='md:min-w-[26rem] xl:min-w-[30rem] xl:max-w-[44rem]   animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
             <Image
               src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/1_wzq7nm.jpg'
               alt='graduation'

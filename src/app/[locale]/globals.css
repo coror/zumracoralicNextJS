@@ -7,6 +7,510 @@ html {
   overflow: visible !important;
 }
 
+body {
+  color: #222428;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Slow Ken Burns on hero image — gentle continuous zoom + drift that loops */
+@keyframes hero-ken-burns {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.15) translate(-1.5%, -1%);
+  }
+}
+.hero-ken-burns {
+  animation: hero-ken-burns 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-ken-burns {
+    animation: none;
+  }
+}
+
+/* ========================================================================
+   Animated mesh-gradient backdrop (premium drifting blobs)
+   ====================================================================== */
+
+.mesh-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  will-change: transform;
+}
+
+/*
+ * Variant: cream — "sunlit room" backdrop.
+ *
+ * Editorial approach: a warm paper base + two huge soft radial "suns" of
+ * warm light drifting on long, offset paths + one ultra-slow rotating conic
+ * gradient for ambient depth. The result reads as *light*, not as shapes —
+ * subtle, expansive, premium. Stays in the warm cream/amber palette.
+ */
+.mesh-gradient--cream {
+  background: #fdf6e8;
+}
+
+/* Override the default circular-blob shape — these are full-area light layers */
+.mesh-gradient--cream .mesh-blob {
+  inset: -25%;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  filter: none;
+}
+
+/* Sun 1 — primary warm glow, slow loose orbit */
+.mesh-gradient--cream .mesh-blob-1 {
+  background: radial-gradient(
+    closest-side at 50% 50%,
+    rgba(255, 207, 145, 0.85),
+    rgba(255, 207, 145, 0) 70%
+  );
+  animation: sun-drift-1 60s ease-in-out infinite;
+}
+
+/* Sun 2 — deeper amber counter-drift */
+.mesh-gradient--cream .mesh-blob-2 {
+  background: radial-gradient(
+    closest-side at 50% 50%,
+    rgba(247, 168, 95, 0.55),
+    rgba(247, 168, 95, 0) 65%
+  );
+  animation: sun-drift-2 75s ease-in-out infinite -20s;
+}
+
+/* Ambient warmth — slow rotating conic, soft-light blend */
+.mesh-gradient--cream .mesh-blob-3 {
+  inset: -10%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    rgba(255, 230, 188, 0) 0deg,
+    rgba(255, 230, 188, 0.45) 60deg,
+    rgba(255, 230, 188, 0) 130deg,
+    rgba(247, 168, 95, 0) 200deg,
+    rgba(247, 168, 95, 0.3) 260deg,
+    rgba(247, 168, 95, 0) 330deg,
+    rgba(255, 230, 188, 0) 360deg
+  );
+  mix-blend-mode: soft-light;
+  animation: sun-rotate 90s linear infinite;
+}
+
+@keyframes sun-drift-1 {
+  0%,
+  100% {
+    transform: translate(-12%, -8%);
+  }
+  25% {
+    transform: translate(15%, -12%);
+  }
+  50% {
+    transform: translate(20%, 18%);
+  }
+  75% {
+    transform: translate(-10%, 22%);
+  }
+}
+
+@keyframes sun-drift-2 {
+  0%,
+  100% {
+    transform: translate(20%, 22%);
+  }
+  33% {
+    transform: translate(-15%, 8%);
+  }
+  66% {
+    transform: translate(-22%, -18%);
+  }
+}
+
+@keyframes sun-rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/*
+ * Variant: sand — warm "shelf" (footer). Slightly deeper than the page
+ * paper so the bottom of the site reads as a grounded closing band, not
+ * a fade-out. Quieter than --cream: only two slow drifting suns, no
+ * rotating conic. Lets dark text and the orange accent line pop.
+ */
+.mesh-gradient--sand {
+  background: #f5cf95;
+}
+.mesh-gradient--sand .mesh-blob {
+  inset: -25%;
+  top: auto;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  filter: none;
+}
+.mesh-gradient--sand .mesh-blob-1 {
+  background: radial-gradient(
+    closest-side at 50% 50%,
+    rgba(255, 220, 165, 0.7),
+    rgba(255, 220, 165, 0) 70%
+  );
+  animation: sun-drift-1 70s ease-in-out infinite;
+}
+.mesh-gradient--sand .mesh-blob-2 {
+  background: radial-gradient(
+    closest-side at 50% 50%,
+    rgba(223, 101, 14, 0.28),
+    rgba(223, 101, 14, 0) 65%
+  );
+  animation: sun-drift-2 85s ease-in-out infinite -25s;
+}
+.mesh-gradient--sand .mesh-blob-3 {
+  display: none;
+}
+
+/* Variant: warm — orange + cream for accent / focal sections */
+.mesh-gradient--warm {
+  background: #fff5e0;
+}
+.mesh-gradient--warm .mesh-blob-1 {
+  top: -25%;
+  left: -10%;
+  width: 44rem;
+  height: 44rem;
+  background: #ffe6bc;
+  opacity: 1;
+  animation: mesh-drift-1 26s ease-in-out infinite;
+}
+.mesh-gradient--warm .mesh-blob-2 {
+  top: 20%;
+  right: -15%;
+  width: 40rem;
+  height: 40rem;
+  background: #df650e;
+  opacity: 0.4;
+  animation: mesh-drift-2 30s ease-in-out infinite reverse;
+}
+.mesh-gradient--warm .mesh-blob-3 {
+  bottom: -25%;
+  left: 25%;
+  width: 42rem;
+  height: 42rem;
+  background: #f99d5b;
+  opacity: 0.5;
+  animation: mesh-drift-3 34s ease-in-out infinite;
+}
+
+/* Variant: dark-cream — brand dark base, cream-glowing for Quote */
+.mesh-gradient--dark,
+.mesh-gradient--dark-cream {
+  background: #222428;
+}
+.mesh-gradient--dark .mesh-blob-1,
+.mesh-gradient--dark-cream .mesh-blob-1 {
+  top: -22%;
+  left: -12%;
+  width: 50rem;
+  height: 50rem;
+  background: #ffe6bc;
+  opacity: 0.55;
+  animation: mesh-drift-1 32s ease-in-out infinite;
+}
+.mesh-gradient--dark .mesh-blob-2,
+.mesh-gradient--dark-cream .mesh-blob-2 {
+  top: 25%;
+  right: -15%;
+  width: 38rem;
+  height: 38rem;
+  background: #f99d5b;
+  opacity: 0.5;
+  animation: mesh-drift-2 38s ease-in-out infinite reverse;
+}
+.mesh-gradient--dark .mesh-blob-3,
+.mesh-gradient--dark-cream .mesh-blob-3 {
+  bottom: -25%;
+  left: 30%;
+  width: 38rem;
+  height: 38rem;
+  background: #df650e;
+  opacity: 0.4;
+  animation: mesh-drift-3 40s ease-in-out infinite;
+}
+
+/* Variant: dark-orange — brand dark base, orange-glowing for CTAs */
+.mesh-gradient--dark-orange {
+  background: #222428;
+}
+.mesh-gradient--dark-orange .mesh-blob-1 {
+  top: -20%;
+  right: -15%;
+  left: auto;
+  width: 52rem;
+  height: 52rem;
+  background: #df650e;
+  opacity: 0.65;
+  animation: mesh-drift-1 24s ease-in-out infinite;
+}
+.mesh-gradient--dark-orange .mesh-blob-2 {
+  top: 35%;
+  left: -10%;
+  width: 40rem;
+  height: 40rem;
+  background: #f99d5b;
+  opacity: 0.55;
+  animation: mesh-drift-2 28s ease-in-out infinite reverse;
+}
+.mesh-gradient--dark-orange .mesh-blob-3 {
+  bottom: -25%;
+  left: 40%;
+  width: 36rem;
+  height: 36rem;
+  background: #ffe6bc;
+  opacity: 0.4;
+  animation: mesh-drift-3 32s ease-in-out infinite;
+}
+
+/* Variant: dark-deep — slow, balanced, richer for the footer finale */
+.mesh-gradient--dark-deep {
+  background: #16181c;
+}
+.mesh-gradient--dark-deep .mesh-blob-1 {
+  bottom: -25%;
+  left: 35%;
+  width: 40rem;
+  height: 40rem;
+  background: #f99d5b;
+  opacity: 0.25;
+  animation: mesh-drift-1 42s ease-in-out infinite;
+}
+.mesh-gradient--dark-deep .mesh-blob-2 {
+  top: -20%;
+  left: -10%;
+  width: 36rem;
+  height: 36rem;
+  background: #ffe6bc;
+  opacity: 0.22;
+  animation: mesh-drift-2 46s ease-in-out infinite reverse;
+}
+.mesh-gradient--dark-deep .mesh-blob-3 {
+  top: -10%;
+  right: -10%;
+  width: 38rem;
+  height: 38rem;
+  background: #df650e;
+  opacity: 0.22;
+  animation: mesh-drift-3 50s ease-in-out infinite;
+}
+
+/*
+ * Drift in viewport units so blobs visibly traverse the screen on any
+ * size monitor. Each blob takes a different path with its own scale
+ * pulses, so they don't move in sync.
+ */
+@keyframes mesh-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(35vw, 12vh) scale(1.15);
+  }
+  50% {
+    transform: translate(50vw, -10vh) scale(0.9);
+  }
+  75% {
+    transform: translate(20vw, 18vh) scale(1.1);
+  }
+}
+
+@keyframes mesh-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-30vw, 25vh) scale(1.2);
+  }
+  66% {
+    transform: translate(-50vw, -8vh) scale(0.85);
+  }
+}
+
+@keyframes mesh-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(-25vw, -20vh) scale(1.1);
+  }
+  50% {
+    transform: translate(15vw, -35vh) scale(0.95);
+  }
+  75% {
+    transform: translate(40vw, -10vh) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mesh-blob {
+    animation: none !important;
+  }
+}
+
+/*
+ * Scroll-linked reveal animations.
+ *
+ * Modern browsers (Chrome 115+, Edge 115+) get the gold standard:
+ *   animation-timeline: view() — animation progress is tied directly to
+ *   the element's scroll position in the viewport. Always perfectly synced
+ *   with what the user sees, regardless of scroll speed.
+ *
+ * Older browsers (Safari, Firefox) fall back to a transition-based reveal
+ *   driven by the IntersectionObserver in the Reveal component (.in-view class).
+ */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-up-lg {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Fallback: transitions driven by .in-view class set by IntersectionObserver */
+.reveal-base {
+  opacity: 0;
+  will-change: opacity, transform;
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-base.reveal-up:not(.in-view) {
+  transform: translateY(40px);
+}
+.reveal-base.reveal-up-lg:not(.in-view) {
+  transform: translateY(60px);
+}
+.reveal-base.reveal-down:not(.in-view) {
+  transform: translateY(-30px);
+}
+.reveal-base.reveal-scale:not(.in-view) {
+  transform: scale(0.96);
+}
+.reveal-base.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* Modern browsers: replace transitions with scroll-linked animations. */
+@supports (animation-timeline: view()) {
+  .reveal-base {
+    opacity: 0;
+    animation-timeline: view();
+    animation-range: entry 5% cover 35%;
+    animation-fill-mode: both;
+    animation-timing-function: linear;
+    animation-duration: auto;
+    transition: none;
+  }
+  .reveal-base.reveal-up {
+    animation-name: reveal-up;
+  }
+  .reveal-base.reveal-up-lg {
+    animation-name: reveal-up-lg;
+  }
+  .reveal-base.reveal-fade {
+    animation-name: reveal-fade;
+  }
+  .reveal-base.reveal-down {
+    animation-name: reveal-down;
+  }
+  .reveal-base.reveal-scale {
+    animation-name: reveal-scale;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-base {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@layer components {
+  /* Primary: solid dark on cream/white surfaces. Premium, restrained. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-xl bg-[#222428] text-white px-8 py-4 4xl:px-14 4xl:py-6 text-sm md:text-base 4xl:text-xl font-medium tracking-wide uppercase transition-colors duration-300 hover:bg-[#df650e];
+  }
+
+  /* Ghost: outlined dark, fills on hover. For secondary CTAs. */
+  .btn-ghost {
+    @apply inline-flex items-center justify-center rounded-xl border border-[#222428] text-[#222428] bg-transparent px-8 py-4 4xl:px-14 4xl:py-6 text-sm md:text-base 4xl:text-xl font-medium tracking-wide uppercase transition-colors duration-300 hover:bg-[#222428] hover:text-white;
+  }
+
+  /* Inverse: white text/border on dark hero backdrops. */
+  .btn-inverse {
+    @apply inline-flex items-center justify-center rounded-xl border border-white text-white bg-transparent px-8 py-4 4xl:px-14 4xl:py-6 text-sm md:text-base 4xl:text-xl font-medium tracking-wide uppercase transition-colors duration-300 hover:bg-white hover:text-[#222428];
+  }
+}
+
 .link-hover {
   position: relative;
   overflow: hidden; /* Ensures the pseudo-element doesn't overflow the link */
@@ -24,14 +528,12 @@ html {
   z-index: -1;
 }
 
-.link-hover:hover::before,
-.group:hover .link-hover::before {
+.link-hover:hover::before {
   top: 0;
   transform: scaleY(1);
 }
 
-.link-hover:hover,
-.group:hover .link-hover {
+.link-hover:hover {
   color: black;
 }
 
@@ -40,9 +542,9 @@ html {
   transform: scaleY(1);
 }
 
-/* Special rule for active link */
+/* Active link reads as dark on the cream fill */
 .link-hover.active {
-  color: white !important; /* Ensure the color is white */
+  color: #222428 !important;
 }
 
 /* Add these styles to your global CSS file or in a <style> tag */
@@ -77,21 +579,52 @@ html {
   animation: slideOutToLeft 0.3s ease-in forwards; /* Change to slideOutToLeft if needed */
 }
 
-/* Base styles for the OfferCard */
+/* Base styles for the OfferCard — fixed equal heights, top-aligned content */
 .offer-card {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
-  min-height: 32rem;
-  max-width: 20rem; /* Adjust as needed */
+  justify-content: flex-start;
+  height: 32rem;
+  width: 100%;
+  max-width: 20rem;
   border-radius: 1rem;
   margin: 0.75rem;
-  padding: 2rem 1.25rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 3rem 1.5rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  transition: background-color 0.5s;
+  transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+@media (min-width: 1024px) {
+  .offer-card {
+    height: 34rem;
+    max-width: 22rem;
+  }
+  .offer-card:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (min-width: 1536px) {
+  .offer-card {
+    height: 38rem;
+    max-width: 24rem;
+    padding: 3rem 2rem;
+  }
+}
+
+@media (min-width: 2200px) {
+  .offer-card {
+    height: 50rem;
+    max-width: 32rem;
+    padding: 5rem 3rem 4rem;
+    margin: 1.25rem;
+  }
+  .offer-card .new-content {
+    padding: 4rem 2.5rem;
+  }
 }
 
 /* Background overlay */
@@ -137,37 +670,72 @@ html {
   }
 }
 
-/* styles.css */
+/* Swiper navigation: minimal chevrons, no circle */
 .swiper-button-next,
 .swiper-button-prev {
-  color: #b0b0b0 !important; /* Change the color of the navigation arrows to white */
+  color: #b0b0b0 !important;
+  --swiper-navigation-size: 24px;
+  transition: color 0.3s ease;
 }
 
-@media (max-width: 1023px) {
-  /* .swiper-button-next,
+@media (min-width: 1024px) {
+  .swiper-button-next,
   .swiper-button-prev {
-    display: none !important;
-  } */
-}
-
-/* Optionally, add hover effects */
-@media (min-width: 1023px) {
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    color: #6b6969 !important; /* Slightly lighter color on hover */
+    --swiper-navigation-size: 36px;
   }
 }
 
+@media (min-width: 1536px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    --swiper-navigation-size: 44px;
+  }
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-weight: 600 !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #222428 !important;
+}
+
+.swiper-button-disabled {
+  opacity: 0.3 !important;
+  cursor: not-allowed;
+}
+
+/* For swipers with .swiper-outside-arrows, push arrows beyond the slide area on lg+ */
+@media (min-width: 1024px) {
+  .swiper-outside-arrows .swiper-button-prev {
+    left: -50px !important;
+  }
+  .swiper-outside-arrows .swiper-button-next {
+    right: -50px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .swiper-outside-arrows .swiper-button-prev {
+    left: -64px !important;
+  }
+  .swiper-outside-arrows .swiper-button-next {
+    right: -64px !important;
+  }
+}
+
+/* Swiper pagination — light-gray dots, brand-dark on active */
 .swiper-pagination-bullet {
-  background-color: rgb(
-    103,
-    103,
-    103
-  ) !important; /* Change the color of pagination dots */
+  background-color: #c8c8c8 !important;
+  opacity: 1 !important;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #f0f0f0; /* Change the color of the active pagination dot */
+  background-color: #222428 !important;
+  transform: scale(1.25);
 }
 
 .prose h1 {

@@ -2,7 +2,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, usePathname } from '@/navigation';
 import LocalSwitcher from './local-switcher';
-import { FaFacebookF, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import Image from 'next/image';
 
 const Navbar = ({
   home,
@@ -45,6 +46,9 @@ const Navbar = ({
   const isWorkshop = pathname.startsWith('/services/workshop');
   const isServicesIndex = pathname === '/services';
 
+  // Navbar overlays a dark hero on home/blogs — render in light text mode there.
+  const onDarkHero = isHome || isBlogs;
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       mobileMenuRef.current &&
@@ -63,332 +67,404 @@ const Navbar = ({
     };
   }, []);
 
+  const desktopLinkClass = (active: boolean) =>
+    `link-hover relative flex items-center justify-center h-full px-2 w-24 2xl:w-28 4xl:w-36 text-xs xl:text-sm 2xl:text-base 4xl:text-lg tracking-widest transition-colors${
+      active ? ' active' : ''
+    }`;
+
   return (
     <nav
       className={`${
         isMobileMenuOpen
-          ? 'bg-black fixed text-white'
-          : 'bg-transparent absolute'
-      } ${
-        isHome || isBlogs
-          ? 'text-white border-[#ffffff40] border-b-[1px] '
-          : isServicesRoute
-          ? 'text-black border-0'
-          : 'text-black border-[#0000002a] border-b-[1px] '
-      }
-      z-50 w-full h-20 lg:h-32`}
+          ? 'bg-[#fdf6e8] fixed text-[#222428] border-[#222428]/10'
+          : `bg-transparent absolute ${
+              onDarkHero
+                ? 'text-white border-white/15'
+                : 'text-[#222428] border-[#222428]/10'
+            }`
+      } border-b z-50 w-full h-16 lg:h-20 4xl:h-32`}
     >
-      <div className='mx-auto max-w-7xl px-2 h-full'>
+      <div className='mx-auto max-w-7xl 2xl:max-w-[1500px] 3xl:max-w-[1700px] 4xl:max-w-[2000px] px-4 lg:px-4 xl:px-6 4xl:px-16 h-full'>
         <div className='relative flex h-full items-center justify-between'>
-          <div className='flex flex-1 items-center justify-between space-x-12  h-full'>
-            <div className='flex space-x-12 md:space-x-10 h-full'>
-              <div className='absolute inset-y-0 left-0 flex items-center xl:hidden'>
-                <button
-                  type='button'
-                  id='mobile-dropdown-button'
-                  className={`relative inline-flex items-center justify-center rounded-md p-1  hover:bg-[#0000007c] hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ${
-                    isMobileMenuOpen ? 'text-white' : ''
-                  } ${
-                    isEvents ||
-                    isAbout ||
-                    isServicesRoute ||
-                    isContact
-                      ? 'text-black '
-                      : 'text-white '
-                  }`}
-                  aria-controls='mobile-menu'
-                  aria-expanded={isMobileMenuOpen}
-                  ref={buttonRef}
-                  onClick={() => {
-                    setIsMobileMenuOpen(!isMobileMenuOpen);
-                  }}
+          <div className='flex flex-1 items-center justify-between h-full'>
+            <div className='flex items-center space-x-3 md:space-x-4 lg:space-x-6 4xl:space-x-12 h-full'>
+              <button
+                type='button'
+                id='mobile-dropdown-button'
+                className='xl:hidden group inline-flex items-center justify-center p-2.5 -ml-2.5 focus:outline-none'
+                aria-controls='mobile-menu'
+                aria-expanded={isMobileMenuOpen}
+                aria-label='Toggle menu'
+                ref={buttonRef}
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <span
+                  className='relative block h-4 w-7'
+                  aria-hidden='true'
                 >
-                  <span className='sr-only'>Open main menu</span>
-                  <svg
-                    className='block h-6 w-6'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    strokeWidth='1.5'
-                    stroke='currentColor'
-                    aria-hidden='true'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'
-                    />
-                  </svg>
-                </button>
-              </div>
-              <Link className='flex flex-shrink-0 items-center' href='/'>
-                <span className='text-xl lg:text-4xl font-bold '>
+                  <span
+                    className={`absolute inset-x-0 h-px bg-current transition-all duration-500 ease-[cubic-bezier(0.65,0.05,0.36,1)] ${
+                      isMobileMenuOpen ? 'top-1/2 rotate-45' : 'top-1'
+                    }`}
+                  />
+                  <span
+                    className={`absolute inset-x-0 h-px bg-current transition-all duration-500 ease-[cubic-bezier(0.65,0.05,0.36,1)] ${
+                      isMobileMenuOpen ? 'top-1/2 -rotate-45' : 'top-3'
+                    }`}
+                  />
+                </span>
+              </button>
+              <Link
+                className='flex flex-shrink-0 items-center font-bold'
+                href='/'
+              >
+                <span className='text-lg lg:text-xl 2xl:text-2xl 3xl:text-3xl 4xl:text-5xl whitespace-nowrap'>
                   ZUMRA ĆORALIĆ
                 </span>
               </Link>
-              <div className='hidden md:flex justify-center items-center space-x-2'>
+              <div className='hidden md:flex items-center space-x-2 lg:space-x-3 4xl:space-x-5'>
                 <a
                   href='https://www.facebook.com/ustvari.svojo.pot'
                   target='_blank'
                   rel='noreferrer'
+                  aria-label='Facebook'
+                  className='inline-flex items-center justify-center px-1.5 lg:px-2 4xl:px-4 py-1.5 4xl:py-2 hover:opacity-100 transition-opacity'
                 >
-                  <FaFacebookF
-                    className={` text-lg  ${
-                      isEvents ||
-                      isAbout ||
-                      isServicesRoute ||
-                      isContact
-                        ? 'text-[#000000b6] hover:text-black '
-                        : 'text-[#ffffffd0] hover:text-white'
-                    }`}
-                  />
+                  <FaFacebookF className='text-sm 2xl:text-base 3xl:text-lg 4xl:text-2xl' />
                 </a>
                 <a
                   href='https://www.instagram.com/kjer_je_volja_je_tudi_pot/'
                   target='_blank'
                   rel='noreferrer'
+                  aria-label='Instagram'
+                  className='inline-flex items-center justify-center px-1.5 lg:px-2 4xl:px-4 py-1.5 4xl:py-2 hover:opacity-100 transition-opacity'
                 >
-                  <FaInstagram
-                    className={` text-lg  ${
-                      isEvents ||
-                      isAbout ||
-                      isServicesRoute ||
-                      isContact
-                        ? 'text-[#000000b6] hover:text-black '
-                        : 'text-[#ffffffd0] hover:text-white'
-                    }`}
-                  />
+                  <FaInstagram className='text-sm 2xl:text-base 3xl:text-lg 4xl:text-2xl' />
                 </a>
               </div>
             </div>
 
-            <div
-              className={
-                'hidden lg:ml-6 xl:block text-sm xl:text-base h-full uppercase'
-              }
-            >
-              <div className='flex h-full'>
-                <Link
-                  href='/'
-                  className={`${
-                    isHome
-                      ? 'bg-black text-white hover:text-white'
-                      : 'bg-transparent'
-                  } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
-                >
+            <div className='hidden xl:block h-full uppercase 4xl:pl-12'>
+              <div className='flex h-full items-stretch'>
+                <Link href='/' className={desktopLinkClass(isHome)}>
                   {home}
                 </Link>
                 <Link
                   href='/blogs'
-                  className={`${
-                    pathname === '/blogs'
-                      ? 'bg-black text-white hover:text-white'
-                      : 'bg-transparent'
-                  } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
+                  className={desktopLinkClass(pathname === '/blogs')}
                 >
                   {blogPosts}
                 </Link>
                 <Link
                   href='/events'
-                  className={`${
-                    pathname === '/events'
-                      ? 'bg-black text-white hover:text-white'
-                      : 'bg-transparent'
-                  } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
+                  className={desktopLinkClass(pathname === '/events')}
                 >
                   {events}
                 </Link>
-                <Link
-                  href='/about-me'
-                  className={`${
-                    isAbout
-                      ? 'bg-black text-white hover:text-white'
-                      : ''
-                  } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
-                >
+                <Link href='/about-me' className={desktopLinkClass(isAbout)}>
                   {about}
                 </Link>
 
-                <div className='relative group'>
+                <div className='relative group h-full flex items-stretch'>
                   <Link
                     href='/services'
-                    className={`${
-                      isServicesIndex
-                        ? 'bg-black text-white active'
-                        : ''
-                    } relative px-3 w-28 flex items-center h-full justify-center link-hover`}
+                    className={desktopLinkClass(isServicesRoute)}
                   >
                     {services}
                   </Link>
                   <div
-                    className={`absolute left-0 top-full w-56 shadow-2xl text-black invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out ${
-                      isHome || isBlogs ? 'bg-black ' : 'bg-white '
-                    }`}
+                    className='absolute left-0 top-full w-56 bg-white shadow-xl text-[#222428] invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out border border-[#222428]/10'
                   >
                     <Link
                       href='/services'
-                      className={`block px-4 py-4 hover:text-[#df650e]  border-b-[1px]  ${
-                        isServicesIndex ? 'text-[#df650e]' : 'text-black'
-                      } ${
-                        isHome || isBlogs
-                          ? 'text-white border-[#ffffff80]'
-                          : 'border-[#00000036]'
+                      className={`block px-5 py-4 text-xs tracking-widest border-b border-[#222428]/10 transition-colors hover:text-[#df650e] ${
+                        isServicesIndex ? 'text-[#df650e]' : ''
                       }`}
                     >
                       {allServices}
                     </Link>
                     <Link
                       href='/services/coaching'
-                      className={`block px-4 py-4 hover:text-[#df650e]  ${
-                        isCoaching ? 'text-[#df650e]' : 'text-black'
-                      } ${isHome || isBlogs ? 'text-white' : ''}`}
+                      className={`block px-5 py-4 text-xs tracking-widest border-b border-[#222428]/10 transition-colors hover:text-[#df650e] ${
+                        isCoaching ? 'text-[#df650e]' : ''
+                      }`}
                     >
                       {NLPCoaching}
                     </Link>
                     <Link
                       href='/services/mediation'
-                      className={`block px-4 py-4 hover:text-[#df650e]  ${
-                        isMediation ? 'text-[#df650e]' : 'text-black'
-                      } ${isHome || isBlogs ? 'text-white' : ''}`}
+                      className={`block px-5 py-4 text-xs tracking-widest border-b border-[#222428]/10 transition-colors hover:text-[#df650e] ${
+                        isMediation ? 'text-[#df650e]' : ''
+                      }`}
                     >
                       {mediation}
                     </Link>
                     <Link
                       href='/services/workshop'
-                      className={`block px-4 py-4 hover:text-[#df650e] ${
-                        isWorkshop ? 'text-[#df650e]' : 'text-black'
-                      } ${isHome || isBlogs ? 'text-white' : ''}`}
+                      className={`block px-5 py-4 text-xs tracking-widest transition-colors hover:text-[#df650e] ${
+                        isWorkshop ? 'text-[#df650e]' : ''
+                      }`}
                     >
                       {workshop}
                     </Link>
                   </div>
                 </div>
 
-                <Link
-                  href='/contact'
-                  className={`${
-                    isContact ? 'bg-[#d2ab74]' : ''
-                  } relative  px-3 w-28 flex items-center h-full justify-center link-hover`}
-                >
+                <Link href='/contact' className={desktopLinkClass(isContact)}>
                   {contact}
                 </Link>
               </div>
             </div>
-            <div className='z-20 -px-10'>
+            <div className='z-20'>
               <LocalSwitcher />
             </div>
           </div>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <div
-          id='mobile-menu'
-          ref={mobileMenuRef}
-          className={`fixed inset-x-0 top-20 bg-black transition-transform duration-300 ease-out z-10 ${
-            isMobileMenuOpen ? 'mobile-menu-enter' : 'mobile-menu-exit'
-          }`}
-        >
-          <div className='space-y-1 px-2 pb-3 pt-2 flex flex-col bg-black uppercase'>
-            <Link
+      <div
+        id='mobile-menu'
+        ref={mobileMenuRef}
+        aria-hidden={!isMobileMenuOpen}
+        style={{
+          background:
+            'linear-gradient(to bottom, #fdf6e8 0%, #f5cf95 55%, #f4a35c 100%)',
+        }}
+        className={`fixed inset-x-0 top-16 lg:top-20 bottom-0 transition-opacity duration-500 ease-out z-10 xl:hidden ${
+          isMobileMenuOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div className='flex h-full flex-col justify-between px-8 pt-6 pb-8 md:pt-12 md:pb-10 overflow-y-auto'>
+          <nav className='flex flex-col'>
+            <MobileLink
+              index={0}
               href='/'
-              className={`${
-                isHome ? 'bg-[#ffe6bc] text-black' : 'text-white'
-              }  xl:hover:bg-[#ffe6bc]  xl:hover:text-black rounded-md px-3 py-2`}
+              active={isHome}
+              isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {home}
-            </Link>
-            <Link
+            </MobileLink>
+            <MobileLink
+              index={1}
               href='/blogs'
-              className={`${
-                isBlogs ? 'bg-[#ffe6bc] text-black' : 'text-white'
-              }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
+              active={isBlogs}
+              isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {blogPosts}
-            </Link>
-            <Link
+            </MobileLink>
+            <MobileLink
+              index={2}
               href='/events'
-              className={`${
-                pathname === '/events'
-                  ? 'bg-[#ffe6bc] text-black'
-                  : 'text-white'
-              } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
+              active={isEvents}
+              isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {events}
-            </Link>
-            <Link
+            </MobileLink>
+            <MobileLink
+              index={3}
               href='/about-me'
-              className={`${
-                isAbout ? 'bg-[#ffe6bc] text-black' : 'text-white'
-              } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
+              active={isAbout}
+              isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {about}
-            </Link>
+            </MobileLink>
             <button
-              className={`${
-                isServicesRoute ? 'bg-[#ffe6bc] text-black' : 'text-white'
-              }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2 uppercase text-left`}
+              className={`block py-2.5 text-2xl md:text-4xl tracking-tight text-left transition-all duration-500 ease-out flex items-baseline gap-3 ${
+                isServicesRoute ? 'text-[#df650e]' : 'text-[#222428]'
+              } ${
+                isMobileMenuOpen
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-4'
+              }`}
+              style={{ transitionDelay: `${4 * 60 + 150}ms` }}
               onClick={() => setIsServicesExpanded(!isServicesExpanded)}
             >
               {services}
+              <span
+                className='text-base inline-block transition-transform duration-300'
+                style={{
+                  transform: isServicesExpanded
+                    ? 'rotate(180deg)'
+                    : 'rotate(0deg)',
+                }}
+              >
+                ↓
+              </span>
             </button>
-            {isServicesExpanded && (
-              <div className='space-y-1 pl-4 flex flex-col justify-start items-start'>
-                <Link
-                  href='/services'
-                  className={`${
-                    isServicesIndex ? 'text-[#ffe6bc]' : 'text-white'
-                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black   px-3 py-2  border-b-[1px] border-[#ffffff5d]`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {allServices}
-                </Link>
-                <Link
-                  href='/services/coaching'
-                  className={`${
-                    isCoaching ? 'text-[#d2ab74]' : 'text-white'
-                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black px-3 py-2  `}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {NLPCoaching}
-                </Link>
-                <Link
-                  href='/services/mediation'
-                  className={`${
-                    isMediation ? 'text-[#ffe6bc]' : 'text-white'
-                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  px-3 py-2 `}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {mediation}
-                </Link>
-                <Link
-                  href='/services/workshop'
-                  className={`${
-                    isWorkshop ? 'text-[#ffe6bc]' : 'text-white'
-                  }  xl:hover:bg-[#ffe6bc] xl:hover:text-black  px-3 py-2 `}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {workshop}
-                </Link>
+            <div
+              className={`grid transition-all duration-500 ease-out ${
+                isServicesExpanded
+                  ? 'grid-rows-[1fr] opacity-100'
+                  : 'grid-rows-[0fr] opacity-0'
+              }`}
+            >
+              <div className='overflow-hidden'>
+                <div className='flex flex-col pl-6 pt-1 pb-2'>
+                  <MobileSubLink
+                    href='/services'
+                    active={isServicesIndex}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {allServices}
+                  </MobileSubLink>
+                  <MobileSubLink
+                    href='/services/coaching'
+                    active={isCoaching}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {NLPCoaching}
+                  </MobileSubLink>
+                  <MobileSubLink
+                    href='/services/mediation'
+                    active={isMediation}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {mediation}
+                  </MobileSubLink>
+                  <MobileSubLink
+                    href='/services/workshop'
+                    active={isWorkshop}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {workshop}
+                  </MobileSubLink>
+                </div>
               </div>
-            )}
-            <Link
+            </div>
+            <MobileLink
+              index={5}
               href='/contact'
-              className={`${
-                isContact ? 'bg-[#ffe6bc] text-black' : 'text-white'
-              } xl:hover:bg-[#ffe6bc] xl:hover:text-black  rounded-md px-3 py-2`}
+              active={isContact}
+              isOpen={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {contact}
-            </Link>
+            </MobileLink>
+          </nav>
+
+          <div
+            className={`flex flex-col items-center gap-3 md:gap-5 pt-4 md:pt-6 transition-all duration-500 ease-out ${
+              isMobileMenuOpen
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-4'
+            }`}
+            style={{ transitionDelay: '550ms' }}
+          >
+            <Image
+              src='https://res.cloudinary.com/dbssbnuph/image/upload/v1721558472/zumracoralic/mama-logo-4_smdzke.png'
+              alt=''
+              aria-hidden='true'
+              width={160}
+              height={160}
+              className='w-24 h-24 md:w-32 md:h-32 mb-1 md:mb-2 opacity-95'
+            />
+            <a
+              href='mailto:ustvari.svojo.pot@gmail.com'
+              className='text-sm tracking-wide italic text-[#222428]/70 hover:text-[#df650e] transition-colors'
+            >
+              ustvari.svojo.pot@gmail.com
+            </a>
+            <div className='flex items-center gap-5 text-[#222428]/70'>
+              <a
+                href='https://www.facebook.com/ustvari.svojo.pot'
+                target='_blank'
+                rel='noreferrer'
+                aria-label='Facebook'
+                className='hover:text-[#df650e] transition-colors'
+              >
+                <FaFacebookF className='text-base' />
+              </a>
+              <a
+                href='https://www.instagram.com/kjer_je_volja_je_tudi_pot/'
+                target='_blank'
+                rel='noreferrer'
+                aria-label='Instagram'
+                className='hover:text-[#df650e] transition-colors'
+              >
+                <FaInstagram className='text-base' />
+              </a>
+              <a
+                href='https://si.linkedin.com/in/zumra-%C4%87orali%C4%87-bb084497'
+                target='_blank'
+                rel='noreferrer'
+                aria-label='LinkedIn'
+                className='hover:text-[#df650e] transition-colors'
+              >
+                <FaLinkedin className='text-base' />
+              </a>
+            </div>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
+
+function MobileLink({
+  index,
+  href,
+  active,
+  isOpen,
+  onClick,
+  children,
+}: {
+  index: number;
+  href: '/' | '/blogs' | '/events' | '/about-me' | '/contact';
+  active: boolean;
+  isOpen: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className={`block py-2.5 text-2xl md:text-4xl tracking-tight transition-all duration-500 ease-out ${
+        active ? 'text-[#df650e]' : 'text-[#222428]'
+      } ${
+        isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+      style={{ transitionDelay: `${index * 60 + 150}ms` }}
+    >
+      {children}
+    </Link>
+  );
+}
+
+function MobileSubLink({
+  href,
+  active,
+  onClick,
+  children,
+}: {
+  href:
+    | '/services'
+    | '/services/coaching'
+    | '/services/mediation'
+    | '/services/workshop';
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className={`py-2 text-lg italic tracking-tight transition-colors ${
+        active
+          ? 'text-[#df650e]'
+          : 'text-[#222428]/75 hover:text-[#df650e]'
+      }`}
+    >
+      {children}
+    </Link>
+  );
+}
 
 export default Navbar;

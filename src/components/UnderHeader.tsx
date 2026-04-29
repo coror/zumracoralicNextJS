@@ -24,7 +24,7 @@ export default function UnderHeader({ content }: { content: string }) {
       <div
         className={`text-black text-2xl md:text-[56px]  tracking-wide leading-[1]  ${
           animate
-            ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
+            ? 'animate-fade-up animate-duration-500 animate-delay-[500ms]'
             : ''
         }`}
       >

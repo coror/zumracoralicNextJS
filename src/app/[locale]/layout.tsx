@@ -8,7 +8,10 @@ import { NextIntlClientProvider, useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 import Credit from '@/components/Credit';
 
-const inter = Playfair_Display({ subsets: ['latin'] });
+const playfair = Playfair_Display({
+  subsets: ['latin', 'latin-ext'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.zumracoralic.com'),
@@ -39,7 +42,9 @@ export default function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className={inter.className}>
+      <body
+        className={`${playfair.className} antialiased flex flex-col min-h-screen`}
+      >
         <Navbar
           home={t('home')}
           blogPosts={t('blogPosts')}
@@ -49,10 +54,10 @@ export default function RootLayout({
           allServices={t('allServices')}
           NLPCoaching={t('NLPCoaching')}
           mediation={t('mediation')}
-          workshop= {t('workshop')}
+          workshop={t('workshop')}
           contact={t('contact')}
         />
-        <div>{children}</div>
+        <div className='flex-1 flex flex-col'>{children}</div>
         <Footer connect={f('connect')} />
         <Credit />
       </body>

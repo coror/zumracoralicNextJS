@@ -52,7 +52,7 @@ export default function BlogPostsComponent({
         >
           {blogs.map((blog, index) => (
             <SwiperSlide key={blog.id} className=''>
-              <div className='relative w-full h-96 md:h-[27rem] 3xl:h-[50rem] flex items-center justify-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
+              <div className='relative w-full h-96 md:h-[27rem] 3xl:h-[50rem] flex items-center justify-center   animate-fade-right animate-duration-700 animate-delay-[800ms]'>
                 <Image
                   src={blog.featuredImage.url}
                   alt={blog.seoTitle}
@@ -69,7 +69,7 @@ export default function BlogPostsComponent({
                     href={{ pathname: '/blogs/[slug]', params: { slug: blog.slug } }}
                     className='text-3xl md:text-5xl lg:text-6xl '
                   >
-                    <h2 className='hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in'>
+                    <h2 className='transition duration-150 ease-out hover:ease-in'>
                       {blog.seoTitle}
                     </h2>
                   </Link>
@@ -87,11 +87,11 @@ export default function BlogPostsComponent({
           ))}
         </Swiper>
       </div>
-      <h1 className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center   animate-fade-right animate-duration-[2000ms] animate-delay-[800ms]'>
+      <h1 className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center   animate-fade-right animate-duration-700 animate-delay-[800ms]'>
         Blog
       </h1>
       <div>
-        <div className='space-y-7 md:space-y-0 grid grid-cols-1 md:grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-3 xl:w-[80rem] mx-auto  animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms]'>
+        <div className='space-y-7 md:space-y-0 grid grid-cols-1 md:grid-cols-2 gap-2 xl:gap-16 px-6 xl:grid-cols-3 xl:w-[80rem] mx-auto  animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
           {currentPosts.map((blog) => (
             <div key={blog.id}>
               <BlogPostCard blogPost={blog} readMore={readMore} />

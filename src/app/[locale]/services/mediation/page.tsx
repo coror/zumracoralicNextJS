@@ -76,7 +76,7 @@ export default function Page({
         />
         <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
 
-        <h1 className='absolute inset-0 flex flex-col justify-center items-center text-white m-8 pb-10 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
+        <h1 className='absolute inset-0 flex flex-col justify-center items-center text-white m-8 pb-10 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-700 animate-delay-[500ms]'>
           {x('section')}
         </h1>
       </div>
@@ -106,7 +106,7 @@ export default function Page({
         </ol>
       </nav>
 
-      <div className='relative flex flex-col justify-center items-stretch mt-10 px-6 lg:max-w-[60rem] mx-auto text-left animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
+      <div className='relative flex flex-col justify-center items-stretch mt-10 px-6 lg:max-w-[60rem] mx-auto text-left animate-fade-right animate-duration-500 animate-delay-[1500ms]'>
         <div className='font-bold text-lg md:text-xl italic text-center'>
           {x('quote1')}
         </div>
@@ -128,7 +128,7 @@ export default function Page({
         <div className='mt-10 md:text-lg'>{x('sectionContent3')}</div>
         <div className='mt-10 md:text-lg'>{x('sectionContent4')}</div>
 
-        <div className='border-2 border-[#FFE6BC] flex flex-col items-center justify-center mt-10 mx-5 text-center'>
+        <div className='border border-neutral-200 bg-[#FFE6BC]/20 flex flex-col items-center justify-center mt-16 mx-5 text-center px-6 py-12'>
           <div className='mt-10 md:text-lg'>
             <strong>{x('price')}:</strong> {x('currency1')} {x('perHour')} +{' '}
             {x('currency2')}
@@ -139,10 +139,8 @@ export default function Page({
           </div>
           <div className='my-10 '>
           <Link href='/contact'>
-              <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5  text-sm  md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
-                {x('button')}
-              </button>
-            </Link>
+            <button className='btn-primary'>{x('button')}</button>
+          </Link>
           </div>
         </div>
       </div>

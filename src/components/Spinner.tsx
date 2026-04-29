@@ -1,20 +1,12 @@
-'use client';
-import { ClipLoader } from 'react-spinners';
-
-const override = {
-  display: 'block',
-  margin: '100px auto',
-};
-
-const Spinner = ({ loading }: { loading: boolean }) => {
+const Spinner = () => {
   return (
-    <ClipLoader
-      color='#df650e'
-      loading={loading}
-      cssOverride={override}
-      size={150}
-      aria-label='Loading Spinner'
-    />
+    <div
+      role='status'
+      aria-label='Loading'
+      className='inline-block w-12 h-12 rounded-full border-[3px] border-[#222428]/10 border-t-[#df650e] animate-spin'
+    >
+      <span className='sr-only'>Loading…</span>
+    </div>
   );
 };
 

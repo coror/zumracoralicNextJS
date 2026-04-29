@@ -2,8 +2,8 @@ import Spinner from '@/components/Spinner';
 
 export default function Loading() {
   return (
-    <div className='min-h-[60vh] flex items-center justify-center pt-32'>
-      <Spinner loading={true} />
+    <div className='flex-1 flex items-center justify-center py-32'>
+      <Spinner />
     </div>
   );
 }

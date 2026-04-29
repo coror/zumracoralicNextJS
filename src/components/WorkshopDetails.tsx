@@ -98,7 +98,7 @@ export default function WorkshopDetails({
           </li>
         </ol>
       </nav>
-      <div className='relative p-4 mx-5 lg:max-w-[60rem] lg:mx-auto flex flex-col items-center animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
+      <div className='relative p-4 mx-5 lg:max-w-[60rem] lg:mx-auto flex flex-col items-center animate-fade-right animate-duration-500 animate-delay-[1500ms]'>
         <div>
           <h1 className='mt-5 md:mt-10 text-xl md:text-2xl lg:text-4xl font-bold text-center'>
             {service.headline}
@@ -118,9 +118,7 @@ export default function WorkshopDetails({
 
         <div className='my-10 text-center'>
           <Link href='/contact'>
-            <button className='bg-[#FFE6BC] px-5 py-4 md:px-6 md:py-5 text-sm md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in hover:bg-[#b7905b]'>
-              {connect}
-            </button>
+            <button className='btn-primary'>{connect}</button>
           </Link>
         </div>
       </div>

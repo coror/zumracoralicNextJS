@@ -1,8 +1,6 @@
-'use client';
 import { Link } from '@/navigation';
-import { useInView } from 'react-intersection-observer';
-import React, { useEffect, useState } from 'react';
-import { FaPencil } from 'react-icons/fa6';
+import React from 'react';
+import Reveal from './Reveal';
 
 export default function ActionSection({
   quote,
@@ -11,68 +9,45 @@ export default function ActionSection({
   quote: string;
   button: string;
 }) {
-  const [animate, setAnimate] = useState(false);
-  const [isMobile, setIsMobile] = useState(false); // State to track if it's mobile
-
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  // When the component comes into view, set animate to true
-  useEffect(() => {
-    if (inView) {
-      setAnimate(true);
-    }
-  }, [inView]);
-
-  // Check if the viewport width is mobile size
-  useEffect(() => {
-    setIsMobile(window.innerWidth <= 768);
-  }, []);
   return (
-    <div className='relative w-full h-96 md:min-h-72 py-10 md:py-80 '>
+    <div className='relative w-full md:min-h-[42rem] py-16 md:py-24 4xl:py-32 overflow-hidden'>
+      {/* Personal photo backdrop with desktop parallax */}
       <div
-        className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbssbnuph/image/upload/v1725620619/zumracoralic/IMG-d367d2aa0ebebb4e4cdbbe1872925ec5-V_bkht4p.jpg')]"
-        style={{
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundAttachment: isMobile ? 'scroll' : 'fixed',
-        }}
-      >
-        <div className='absolute inset-0 bg-[#222428] opacity-75'></div>
-        <div
-          className={` flex flex-col items-center justify-center h-full  transition-opacity duration-2000 transform ${
-            animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-          }`}
-          ref={ref}
-        >
-          <div className='text-center  md:px-40 '>
-            <div
-              className={`text-white text-2xl md:text-[56px] mt-20 tracking-wide leading-[1] mb-20 ${
-                animate
-                  ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[500ms]'
-                  : ''
-              }`}
-            >
-              {quote}
-            </div>
+        aria-hidden='true'
+        className="absolute inset-0 bg-[url('https://res.cloudinary.com/dbssbnuph/image/upload/v1725620619/zumracoralic/IMG-d367d2aa0ebebb4e4cdbbe1872925ec5-V_bkht4p.jpg')] bg-cover bg-center bg-scroll md:bg-fixed"
+      />
+      <div aria-hidden='true' className='absolute inset-0 bg-[#222428]/75' />
 
-            <div
-              className={`${
-                animate
-                  ? 'animate-fade-up animate-duration-[1000ms] animate-delay-[750ms]'
-                  : ''
-              }`}
-            >
-              <Link href='/contact'>
-                <button className='mx-auto  bg-[#ffe6bc] px-5 py-4 md:px-6 md:py-5 text-sm md:mt-20 md:text-xl lg:text-2xl hover:scale-105 md:hover:scale-110 transition duration-150 ease-out hover:ease-in  flex items-center'>
-                  {button}
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className='relative z-10 flex flex-col items-center justify-center h-full px-6'>
+        {/* Decorative top divider */}
+        <Reveal variant='fade'>
+          <span
+            aria-hidden='true'
+            className='block w-16 h-px bg-[#FFE6BC]/60 mb-12 md:mb-16'
+          />
+        </Reveal>
+
+        {/* Headline / quote */}
+        <Reveal variant='up-lg' delay={150}>
+          <p className='text-white text-2xl md:text-5xl lg:text-[56px] 4xl:text-[88px] tracking-tight leading-[1.15] mb-12 md:mb-20 4xl:mb-28 italic max-w-4xl 4xl:max-w-6xl mx-auto text-center'>
+            {quote}
+          </p>
+        </Reveal>
+
+        {/* CTA with animated arrow */}
+        <Reveal variant='up' delay={300}>
+          <Link href='/contact' className='group'>
+            <button className='btn-inverse gap-3'>
+              {button}
+              <span
+                aria-hidden='true'
+                className='inline-block transition-transform duration-300 group-hover:translate-x-1'
+              >
+                →
+              </span>
+            </button>
+          </Link>
+        </Reveal>
       </div>
     </div>
   );

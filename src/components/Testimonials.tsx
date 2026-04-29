@@ -1,7 +1,5 @@
 'use client';
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { IoMdLink } from 'react-icons/io';
@@ -10,6 +8,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import Testimonial from './Testimonial';
+import Reveal from './Reveal';
 
 export default function Testimonials({
   sectionTitle,
@@ -46,59 +45,71 @@ export default function Testimonials({
   testimonial6: string;
   person6Title: string;
 }) {
-  const [animate, setAnimate] = useState(false);
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
-  // When the component comes into view, set animate to true
-  useEffect(() => {
-    if (inView) {
-      setAnimate(true);
-    }
-  }, [inView]);
-
   return (
-    <div className='eksperiment3 py-10 md:py-24 '>
-      <div
-        className={`mx-auto max-w-[1600px] transition-opacity duration-2000 transform ${
-          animate ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
-        }`}
-        ref={ref}
-      >
-        <div
-          className={`m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center ${
-            animate
-              ? 'animate-fade-up animate-duration-[2000ms] animate-delay-[500ms]'
-              : ''
-          }`}
-        >
-          {sectionTitle}
-        </div>
-        <Swiper
-          modules={[Navigation, Pagination]}
-          slidesPerView={1}
-          loop={true}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-          }}
-          pagination={{ clickable: true }}
-          breakpoints={{
-            768: {
-              slidesPerView: 2,
-            },
-            1280: {
-              slidesPerView: 3,
-            },
-          }}
-          className={`flex items-center justify-between max-w-[1600px] ${
-            animate
-              ? 'animate-fade-up animate-duration-[2500ms] animate-delay-[1000ms]'
-              : ''
-          }`}
-        >
+    <section
+      className='py-48 md:py-80 4xl:py-96'
+      style={{
+        background:
+          'linear-gradient(to bottom, rgba(245,207,149,0) 0%, rgba(244,163,92,0.4) 50%, rgba(245,207,149,0) 100%)',
+      }}
+    >
+      <div className='mx-auto max-w-[1600px]'>
+        <Reveal variant='up' delay={100}>
+          <h2 className='text-3xl md:text-[56px] 4xl:text-[88px] mb-12 md:mb-16 4xl:mb-24 tracking-wide leading-[1] text-center'>
+            {sectionTitle}
+          </h2>
+        </Reveal>
+        <Reveal variant='up' delay={300}>
+          <div className='relative max-w-[1100px] lg:max-w-[1100px] xl:max-w-[1300px] 2xl:max-w-[1600px] 3xl:max-w-[1800px] mx-auto lg:px-16 xl:px-20 2xl:px-24'>
+            <button
+              className='testimonials-prev hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 xl:w-12 xl:h-12 items-center justify-center text-[#222428]/50 hover:text-[#222428] transition-colors'
+              aria-label='Previous'
+              type='button'
+            >
+              <svg
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='1.5'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='w-7 h-7 xl:w-9 xl:h-9'
+              >
+                <path d='M15 19l-7-7 7-7' />
+              </svg>
+            </button>
+            <button
+              className='testimonials-next hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 xl:w-12 xl:h-12 items-center justify-center text-[#222428]/50 hover:text-[#222428] transition-colors'
+              aria-label='Next'
+              type='button'
+            >
+              <svg
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeWidth='1.5'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                className='w-7 h-7 xl:w-9 xl:h-9'
+              >
+                <path d='M9 5l7 7-7 7' />
+              </svg>
+            </button>
+          <Swiper
+            modules={[Navigation, Pagination]}
+            slidesPerView={1}
+            loop={true}
+            navigation={{
+              nextEl: '.testimonials-next',
+              prevEl: '.testimonials-prev',
+            }}
+            pagination={{ clickable: true }}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+            }}
+            className='flex items-center justify-between'
+          >
           <SwiperSlide>
             <Testimonial
               content={testimonial1}
@@ -116,8 +127,8 @@ export default function Testimonials({
 
           <SwiperSlide>
             <div className='flex flex-col items-center'>
-              <div className='relative flex flex-col items-center justify-center md:justify-start min-h-96 md:max-w-60 lg:max-w-96 bg-white rounded-2xl mx-5 my-3 py-10 px-5 shadow-2xl'>
-                <div className='relative z-10 text-center md:text-lg'>
+              <div className='relative flex flex-col items-center justify-center md:justify-start min-h-96 4xl:min-h-[32rem] md:max-w-60 lg:max-w-96 4xl:max-w-[32rem] bg-white rounded-2xl mx-5 my-3 py-10 4xl:py-14 px-5 4xl:px-8 shadow-[0_20px_40px_-15px_rgba(34,36,40,0.18)]'>
+                <div className='relative z-10 text-center md:text-lg 4xl:text-2xl 4xl:leading-relaxed'>
                   {testimonial2}
                   <div className='mt-2 hover:text-blue-900'>
                     <a
@@ -132,9 +143,11 @@ export default function Testimonials({
                 </div>
                 <div className='absolute bottom-[-20px] right-8 w-0 h-0 border-t-[20px] border-t-white border-r-[20px] border-r-transparent z-20'></div>
               </div>
-              <div className='flex flex-col items-center justify-center text-center mx-10 my-16'>
-                <div className='mb-4'>Petra Žagar</div>
-                <div className='text-sm text-gray-500'>{person2Title}</div>
+              <div className='flex flex-col items-center justify-center text-center mx-10 my-16 4xl:my-20'>
+                <div className='mb-4 4xl:text-xl'>Petra Žagar</div>
+                <div className='text-sm 4xl:text-lg text-gray-500'>
+                  {person2Title}
+                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -171,10 +184,10 @@ export default function Testimonials({
           </SwiperSlide>
 
           <div className='swiper-pagination'></div>
-          <div className='swiper-button-next'></div>
-          <div className='swiper-button-prev'></div>
         </Swiper>
+        </div>
+        </Reveal>
       </div>
-    </div>
+    </section>
   );
 }

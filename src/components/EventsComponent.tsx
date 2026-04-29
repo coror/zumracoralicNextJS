@@ -39,10 +39,10 @@ export default function EventsComponent({
 
   return (
     <div className='bg-white relative pb-10 pt-36 px-6'>
-      <h1 className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-[2000ms] animate-delay-[500ms]'>
+      <h1 className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-700 animate-delay-[500ms]'>
         {title}
       </h1>
-      <div className='flex flex-col space-y-10 max-w-[1800px] animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms] mx-auto'>
+      <div className='flex flex-col space-y-10 max-w-[1800px] animate-fade-right animate-duration-700 animate-delay-[1200ms] mx-auto'>
         {currentEvents.map((event) => (
           <div key={event.id}>
             <EventCard event={event} readMore={readMore} />

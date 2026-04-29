@@ -43,18 +43,18 @@ export default function Page({
         {t('section')}
       </h1>
       <div className=' flex flex-col lg:flex-row items-start justify-evenly py-20 '>
-        <div className='relative px-10 text-center items-left w-full text-black flex flex-col lg:flex-col-reverse  animate-fade-right animate-duration-[1000ms] animate-delay-[1500ms]'>
+        <div className='relative px-10 text-center items-left w-full text-black flex flex-col lg:flex-col-reverse  animate-fade-right animate-duration-500 animate-delay-[1500ms]'>
           <div>
             <div className='mt-0 lg:mt-12 mb-12 lg:mb-0 space-y-4 text-xs sm:text-base'>
               <a
                 href='mailto:ustvari.svojo.pot@gmail.com'
-                className=' flex items-center m-2 hover:text-identifier md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
+                className=' flex items-center m-2 hover:text-identifier md:transition-transform duration-500 ease-in-out'
               >
                 <MdEmail className='text-identifier mx-3' /> {t('email')}
               </a>
               <a
                 href='tel: 00386 41 429 437'
-                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
+                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out'
               >
                 <FaPhoneAlt className='text-identifier mx-3' />
                 (+386) 41 429 437
@@ -63,7 +63,7 @@ export default function Page({
                 href={t('facebookLink')}
                 target='_blank'
                 rel='noreferrer'
-                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
+                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out'
               >
                 <FaFacebookF className='text-identifier mx-3' />
                 {t('facebook')}
@@ -72,7 +72,7 @@ export default function Page({
                 href={t('instagramLink')}
                 target='_blank'
                 rel='noreferrer'
-                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
+                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out'
               >
                 <FaInstagram className='text-identifier mx-3' />
                 {t('instagram')}
@@ -81,7 +81,7 @@ export default function Page({
                 href='https://si.linkedin.com/in/zumra-%C4%87orali%C4%87-bb084497'
                 target='_blank'
                 rel='noreferrer'
-                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out lg:hover:scale-105'
+                className='flex items-center m-2 hover:text-identifier  md:transition-transform duration-500 ease-in-out'
               >
                 <FaLinkedin className='text-identifier mx-3' />
                 Zumra Ćoralić
@@ -97,7 +97,7 @@ export default function Page({
             send={t('send')}
           />
         </div>
-        <div className=' mt-14 lg:mt-0  animate-fade-right animate-duration-[2000ms] animate-delay-[1200ms] px-10 '>
+        <div className=' mt-14 lg:mt-0  animate-fade-right animate-duration-700 animate-delay-[1200ms] px-10 '>
           <Image
             src='https://res.cloudinary.com/dbssbnuph/image/upload/v1729455293/71_vbmzbv.jpg'
             alt='zumra-profilna'
