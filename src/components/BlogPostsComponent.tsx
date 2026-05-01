@@ -105,7 +105,7 @@ export default function BlogPostsComponent({
                   pathname: '/blogs/[slug]',
                   params: { slug: blog.slug },
                 }}
-                className='group relative block w-full h-[22rem] md:h-[34rem] xl:h-[40rem] 3xl:h-[50rem] overflow-hidden'
+                className='group relative block w-full h-[22rem] md:h-[28rem] xl:h-[32rem] 3xl:h-[38rem] overflow-hidden'
               >
                 <Image
                   src={blog.featuredImage.url}
