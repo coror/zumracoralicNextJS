@@ -65,7 +65,7 @@ export default function Page({
       <MeshGradient variant='cream' fixed />
 
       {/* Cinematic banner image — pure visual, no text overlay */}
-      <div className='relative w-full h-[22rem] md:h-[30rem] lg:h-[36rem] 3xl:h-[44rem] overflow-hidden'>
+      <div className='relative w-full h-[20rem] md:h-[24rem] lg:h-[28rem] 3xl:h-[34rem] overflow-hidden'>
         <Image
           src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726085545/zumracoralic/394_p2ucyw.jpg'
           alt=''

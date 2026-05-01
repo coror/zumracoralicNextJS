@@ -46,8 +46,10 @@ const Navbar = ({
   const isWorkshop = pathname.startsWith('/services/workshop');
   const isServicesIndex = pathname === '/services';
 
-  // Navbar overlays a dark hero on home/blogs/services — render in light text mode there.
-  const onDarkHero = isHome || isBlogs || isServicesRoute;
+  // Navbar overlays a dark hero on home, all blog/services routes, and
+  // event *detail* pages. Event listing has a cream bg, so it stays dark-text.
+  const isEventDetail = pathname.startsWith('/events/');
+  const onDarkHero = isHome || isBlogs || isServicesRoute || isEventDetail;
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -77,11 +79,9 @@ const Navbar = ({
       className={`${
         isMobileMenuOpen
           ? 'bg-[#fdf6e8] fixed text-[#222428] border-[#222428]/10'
-          : `bg-transparent absolute ${
-              onDarkHero
-                ? 'text-white border-white/15'
-                : 'text-[#222428] border-[#222428]/10'
-            }`
+          : onDarkHero
+          ? 'bg-transparent absolute text-white border-white/15'
+          : 'absolute text-[#222428] border-[#df650e]/15 bg-[linear-gradient(to_bottom,#ffffff_0%,#fbf3e2_100%)] shadow-[0_4px_20px_-12px_rgba(223,101,14,0.15)]'
       } border-b z-50 w-full h-16 lg:h-20 4xl:h-32`}
     >
       <div className='mx-auto max-w-7xl 2xl:max-w-[1500px] 3xl:max-w-[1700px] 4xl:max-w-[2000px] px-4 lg:px-4 xl:px-6 4xl:px-16 h-full'>
