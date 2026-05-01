@@ -11,13 +11,11 @@ export default function EventsComponent({
   locale,
   readMore,
   title,
-  description,
 }: {
   initialEvents: Event[];
   locale: string;
   readMore: string;
   title: string;
-  description: string;
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
@@ -47,11 +45,8 @@ export default function EventsComponent({
         </h1>
         <span
           aria-hidden='true'
-          className='block w-12 h-px bg-[#df650e] mx-auto mb-8'
+          className='block w-12 h-px bg-[#df650e] mx-auto'
         />
-        <p className='text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/65'>
-          {description}
-        </p>
       </header>
 
       {/* Zigzag magazine-spread cards */}

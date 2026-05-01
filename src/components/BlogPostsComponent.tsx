@@ -18,12 +18,10 @@ export default function BlogPostsComponent({
   initialBlogs,
   locale,
   readMore,
-  description,
 }: {
   initialBlogs: BlogPost[];
   locale: string;
   readMore: string;
-  description: string;
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
@@ -156,11 +154,8 @@ export default function BlogPostsComponent({
           </h1>
           <span
             aria-hidden='true'
-            className='block w-12 h-px bg-[#df650e] mx-auto mb-8'
+            className='block w-12 h-px bg-[#df650e] mx-auto'
           />
-          <p className='text-sm md:text-base lg:text-lg leading-relaxed text-[#222428]/65'>
-            {description}
-          </p>
         </div>
       </div>
 
