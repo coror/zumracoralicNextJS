@@ -7,6 +7,7 @@ import ServicesComponent from '@/components/ServicesComponent';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
+import MeshGradient from '@/components/MeshGradient';
 
 export const revalidate = 3600;
 
@@ -50,8 +51,12 @@ export default async function Page({
   ]);
   const url = getAlternates('/services/workshop', locale).canonical;
 
+  const programsLabel = locale === 'bs' ? 'Programi' : 'Programi';
+
   return (
-    <div className='bg-white pb-16 md:pb-40 pt-20 lg:pt-[8rem] overflow-hidden'>
+    <div className='relative pb-20 md:pb-32 overflow-hidden'>
+      <MeshGradient variant='cream' fixed />
+
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -73,100 +78,164 @@ export default async function Page({
             'https://res.cloudinary.com/dbssbnuph/image/upload/v1725115974/zumracoralic/workshopsLecturesHeader_oraf6m.png',
         }}
       />
-      <div className='relative w-full  md:h-[27rem] 3xl:h-[50rem] overflow-hidden '>
+
+      {/* Cinematic banner */}
+      <div className='relative w-full h-[22rem] md:h-[30rem] lg:h-[36rem] 3xl:h-[44rem] overflow-hidden'>
         <Image
           src='https://res.cloudinary.com/dbssbnuph/image/upload/v1724839774/zumracoralic/close-up-man-women-chairs_vkdzin.jpg'
-          alt='naslovna'
+          alt=''
+          aria-hidden='true'
           sizes='100vw'
           width={0}
           height={0}
-          className='object-cover w-full h-full'
+          className='object-cover w-full h-full hero-ken-burns'
+          priority
         />
-        <div className='absolute inset-0 bg-gradient-to-b from-[#222428] to-transparent'></div>
-
-        <h1 className='absolute inset-0 flex flex-col justify-center items-center text-white m-8 pb-10 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center animate-fade-right animate-duration-700 animate-delay-[500ms]'>
-          {x('section')}
-        </h1>
+        <div className='absolute inset-x-0 top-0 h-32 md:h-40 bg-gradient-to-b from-[#222428]/65 to-transparent' />
+        <div className='absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-b from-transparent to-[#fdf6e8]' />
       </div>
-      <nav className='my-4' aria-label='Breadcrumb'>
-        <ol
-          role='list'
-          className='flex items-center px-4 justify-center text-xs md:text-base'
-        >
-          <li>
-            <Link
-              href='/services'
-              className='text-gray-400 hover:text-gray-600 transition flex items-center flex-row mx-1 text-center'
-            >
-              {i('allServices')}
-            </Link>
-          </li>
-          <li className='text-gray-400 mx-1'>&gt;</li>
-          <li className=''>
-            <Link
-              href='/services/workshop'
-              className='text-gray-600  transition flex items-center flex-row mx-1 text-center '
-            >
-              {i('workshop')}
-            </Link>
-          </li>
-        </ol>
-      </nav>
-      <div className='relative flex flex-col justify-center items-stretch mt-10 px-6  lg:max-w-[74rem] mx-auto text-left animate-fade-right animate-duration-500 animate-delay-[1500ms]'>
-        <div className='font-bold text-lg md:text-xl italic text-left'>
-          {x('sectionTitle1')}
-        </div>
-        <div className='mt-10 md:text-lg'>{x('sectionContent1')}</div>
-        <div className='mt-10 md:text-lg'>{x('sectionContent2')}</div>
 
-        <div className='md:min-w-[26rem] xl:flex xl:justify-center mt-10 md:mb-0 animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
+      {/* Editorial header */}
+      <header className='py-16 md:py-20'>
+        <div className='max-w-3xl mx-auto px-6 text-center'>
+          <nav aria-label='Breadcrumb' className='mb-10 md:mb-12'>
+            <ol
+              role='list'
+              className='flex items-center justify-center gap-3 text-[10px] md:text-xs tracking-[0.25em] uppercase text-[#222428]/55'
+            >
+              <li>
+                <Link
+                  href='/services'
+                  className='hover:text-[#df650e] transition-colors'
+                >
+                  {i('allServices')}
+                </Link>
+              </li>
+              <li aria-hidden='true'>—</li>
+              <li className='text-[#df650e]'>{x('section')}</li>
+            </ol>
+          </nav>
+
+          <p className='text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#df650e] mb-6'>
+            {i('workshop')}
+          </p>
+          <h1 className='text-3xl md:text-[56px] 4xl:text-[88px] tracking-tight leading-[1.1] text-[#222428]'>
+            {x('section')}
+          </h1>
+        </div>
+      </header>
+
+      {/* Open-letter style body */}
+      <article className='max-w-5xl mx-auto px-6 lg:px-12 space-y-14 md:space-y-20'>
+        {/* Letter greeting */}
+        <p className='text-2xl md:text-3xl lg:text-4xl italic leading-[1.3] tracking-tight text-[#222428]'>
+          {x('sectionTitle1')}
+        </p>
+
+        <div className='space-y-6 text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/80'>
+          <p>{x('sectionContent1')}</p>
+          <p>{x('sectionContent2')}</p>
+        </div>
+
+        {/* Workshop photo */}
+        <div className='relative aspect-[16/9] overflow-hidden rounded-2xl bg-neutral-100 shadow-[0_25px_50px_-15px_rgba(34,36,40,0.18)]'>
           <Image
             src='https://res.cloudinary.com/dbssbnuph/image/upload/v1724844782/zumracoralic/eta62_o6fbkf.webp'
             alt='delavnica'
-            width={0}
-            height={0}
-            sizes='100vw'
-            className='w-full h-full md:w-full md:h-auto max-w-[50rem]'
+            fill
+            sizes='(max-width: 768px) 100vw, 60vw'
+            className='object-cover'
           />
         </div>
 
-        <div>
-          <div className='mt-10 text-xl md:text-2xl'>{x('sectionTitle2')}</div>
-          <div className='mt-10 md:text-lg space-y-3'>
-            <p>{x('sectionContentP1')}</p>
-            <ul className='space-y-1'>
-              <li>• {x('sectionContentL1')}</li>
-              <li>• {x('sectionContentL2')}</li>
-              <li>• {x('sectionContentL3')}</li>
-            </ul>
-          </div>
-        </div>
-        <div className='mt-10 md:text-lg'>{x('sectionContent4')}</div>
-        <div className='mt-10  flex flex-col mx-auto '>
-          <hr className='border-black border-t-2' />
+        {/* What I offer */}
+        <section>
+          <h2 className='text-2xl md:text-4xl 4xl:text-6xl tracking-tight leading-[1.2] text-[#222428]'>
+            {x('sectionTitle2')}
+          </h2>
+          <span
+            aria-hidden='true'
+            className='block w-12 h-px bg-[#df650e] mt-6 mb-8'
+          />
+          <p className='text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428] mb-8'>
+            {x('sectionContentP1')}
+          </p>
+          <ul className='space-y-5 text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/80'>
+            {(['L1', 'L2', 'L3'] as const).map((k) => (
+              <li key={k} className='flex gap-4'>
+                <span
+                  aria-hidden='true'
+                  className='mt-3 w-2 h-2 rounded-full bg-[#df650e] shrink-0'
+                />
+                <span>{x(`sectionContent${k}`)}</span>
+              </li>
+            ))}
+          </ul>
+          <p className='mt-10 text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/80'>
+            {x('sectionContent4')}
+          </p>
+        </section>
+      </article>
 
-          <div className='my-4 py-4 text-xl md:text-2xl font-bold text-center'>
+      {/* Simon Sinek pull-quote */}
+      <section className='py-20 md:py-28'>
+        <div className='max-w-3xl mx-auto px-6 text-center'>
+          <span
+            aria-hidden='true'
+            className='block w-12 h-px bg-[#df650e] mx-auto mb-10'
+          />
+          <blockquote className='text-2xl md:text-3xl lg:text-4xl italic leading-[1.3] tracking-tight text-[#222428]'>
             {x('quote1')}
-          </div>
-          <hr className='border-black border-t-2' />
+          </blockquote>
+          <span
+            aria-hidden='true'
+            className='block w-12 h-px bg-[#df650e] mx-auto mt-10'
+          />
         </div>
-        <div className='mt-10 text-xl md:text-2xl'>{x('sectionTitle3')}</div>
-        <div className='mt-10 md:text-lg italic'>{x('sectionContent5')}</div>
-        <div className='mt-3 text-right'>{x('sectionContentP2')}</div>
-        {/* <div className='mt-10 text-xl md:text-2xl'>{x('sectionTitle4')}</div> */}
-        {/* <div className='mt-10 md:text-lg'>{x('sectionContent6')}</div> */}
-        {/* <div className='mt-10 md:text-lg'>{x('sectionContent7')}</div> */}
-        {/* <div className='mt-10 md:text-lg'>{x('sectionContent8')}</div> */}
-        {/* <div className='mt-10 md:text-lg italic'>Zumra Ćoralić</div>
-        <div className='mt-1 italic'>{x('sectionContent9')}</div> */}
+      </section>
 
-        <ServicesComponent
-          initialServices={services}
-          locale={locale}
-          readMore={i('readMore')}
-          price={i('price')}
-        />
-      </div>
+      {/* Testimonial — distinct white card treatment */}
+      <section className='px-6'>
+        <div className='max-w-4xl mx-auto'>
+          <h2 className='text-2xl md:text-4xl lg:text-5xl tracking-tight leading-[1.2] text-[#222428] text-center mb-12 md:mb-16'>
+            {x('sectionTitle3')}
+          </h2>
+          <article className='relative bg-white rounded-2xl shadow-[0_25px_50px_-15px_rgba(34,36,40,0.18)] px-8 md:px-14 py-12 md:py-16'>
+            <span
+              aria-hidden='true'
+              className='select-none absolute -top-2 left-6 md:left-10 text-[6rem] md:text-[10rem] leading-none text-[#df650e]/15 font-serif'
+            >
+              &ldquo;
+            </span>
+            <blockquote className='relative text-sm md:text-lg 4xl:text-2xl italic leading-relaxed text-[#222428]/85'>
+              {x('sectionContent5')}
+            </blockquote>
+            <p className='mt-8 text-sm md:text-base text-[#222428]/65'>
+              <span className='block w-8 h-px bg-[#df650e] mb-3' />
+              {x('sectionContentP2')}
+            </p>
+          </article>
+        </div>
+      </section>
+
+      {/* Programs from Contentful */}
+      <section className='mt-20 md:mt-28 px-6 lg:px-12'>
+        <div className='max-w-5xl mx-auto'>
+          <p className='text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#df650e] mb-4 text-center'>
+            {programsLabel}
+          </p>
+          <span
+            aria-hidden='true'
+            className='block w-12 h-px bg-[#df650e] mx-auto mb-10 md:mb-14'
+          />
+          <ServicesComponent
+            initialServices={services}
+            locale={locale}
+            readMore={i('readMore')}
+            price={i('price')}
+          />
+        </div>
+      </section>
     </div>
   );
 }

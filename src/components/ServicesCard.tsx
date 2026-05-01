@@ -23,7 +23,7 @@ export default function ServicesCard({
   return (
     <div className='animate-fade-right animate-duration-500 animate-delay-[1500ms]'>
       <Link href={link} className='group block my-10'>
-        <article className='relative border border-neutral-200 hover:border-[#222428] flex flex-col items-center justify-center p-5 pt-20 text-center w-full lg:w-80 xl:w-96 h-[32rem] space-y-8 transition-all duration-500 ease-out lg:hover:scale-105 lg:hover:shadow-xl'>
+        <article className='relative bg-white border border-neutral-200 hover:border-[#222428] flex flex-col items-center justify-center p-5 pt-20 text-center w-full lg:w-80 xl:w-96 h-[32rem] space-y-8 shadow-[0_15px_30px_-15px_rgba(34,36,40,0.15)] transition-all duration-500 ease-out lg:hover:scale-105 lg:hover:shadow-[0_25px_50px_-15px_rgba(223,101,14,0.25)]'>
           <div className='border border-[#df650e]/30 rounded-full overflow-hidden p-4 absolute -top-12 bg-white'>
             <Image src={srcImage} alt={title} width={80} height={80} />
           </div>

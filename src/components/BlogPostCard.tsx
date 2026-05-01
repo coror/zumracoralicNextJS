@@ -22,37 +22,42 @@ function BlogPostCard({
   };
 
   return (
-    <div className='xl:max-w-[35rem] rounded overflow-hidden shadow-lg'>
-      <div className='relative w-full h-64 md:h-64 group'>
-        <Link href={href}>
-          <Image
-            src={blogPost.featuredImage.url}
-            alt={blogPost.seoTitle}
-            className='w-full h-full object-cover rounded-t transition ease-in-out group-hover:brightness-90 cursor-pointer'
-            sizes='100vw'
-            width={0}
-            height={0}
-          />
-        </Link>
-      </div>
+    <article className='group flex flex-col bg-white rounded-2xl overflow-hidden shadow-[0_15px_30px_-15px_rgba(34,36,40,0.18)] hover:shadow-[0_25px_50px_-20px_rgba(223,101,14,0.25)] transition-shadow duration-500'>
+      <Link href={href} className='block relative w-full aspect-[4/3] overflow-hidden bg-neutral-100'>
+        <Image
+          src={blogPost.featuredImage.url}
+          alt={blogPost.seoTitle}
+          className='object-cover transition-transform duration-700 ease-out group-hover:scale-105'
+          sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
+          fill
+        />
+      </Link>
 
-      <div className='p-4'>
-        <h3 className='text-xl md:text-2xl font-bold my-2 text-gray-800 line-clamp-2 min-h-[3em] '>
-          {blogPost.headline}
-        </h3>
-        <p className='text-xs md:text-sm text-gray-500 mb-2 min-h-[3em]'>
+      <div className='flex flex-col flex-1 p-6 md:p-7'>
+        <p className='text-[10px] md:text-xs tracking-[0.25em] uppercase text-[#df650e] mb-3'>
           {blogPost.datePosted}
         </p>
-        <p className='text-sm md:text-base text-gray-700 mb-4 line-clamp-3 min-h-[4em]'>
+        <Link href={href}>
+          <h3 className='text-xl md:text-2xl leading-snug text-[#222428] line-clamp-2 min-h-[3em] mb-3 transition-colors group-hover:text-[#df650e]'>
+            {blogPost.headline}
+          </h3>
+        </Link>
+        <p className='text-sm md:text-base leading-relaxed text-[#222428]/65 line-clamp-3 min-h-[4.5em] mb-6'>
           {truncatedContent}
         </p>
-        <Link href={href}>
-          <p className='inline-flex items-center gap-2 text-sm font-medium tracking-wide uppercase text-[#222428] mt-4 hover:text-[#df650e] transition-colors'>
-            {readMore} <span aria-hidden='true'>→</span>
-          </p>
+        <Link href={href} className='mt-auto'>
+          <span className='inline-flex items-center gap-2 text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-[#222428] hover:text-[#df650e] transition-colors'>
+            {readMore}
+            <span
+              aria-hidden='true'
+              className='inline-block transition-transform duration-300 group-hover:translate-x-1'
+            >
+              →
+            </span>
+          </span>
         </Link>
       </div>
-    </div>
+    </article>
   );
 }
 

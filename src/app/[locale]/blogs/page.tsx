@@ -35,13 +35,17 @@ export default async function Page({
   params: { locale: string };
 }) {
   unstable_setRequestLocale(locale);
-  const t = await getTranslations('Index');
+  const [t, b] = await Promise.all([
+    getTranslations('Index'),
+    getTranslations('LatestBlogs'),
+  ]);
   const blogs = await getBlogPosts(locale);
   return (
     <BlogPostsComponent
       initialBlogs={blogs}
       locale={locale}
       readMore={t('readMore')}
+      description={b('sectionTitle2')}
     />
   );
 }

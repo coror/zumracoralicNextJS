@@ -28,7 +28,7 @@ export default function Header({
         <div className='absolute inset-0 bg-gradient-to-b from-[#222428]/80 via-[#222428]/45 to-transparent' />
       </div>
 
-      <div className='relative z-10 w-full max-w-7xl xl:max-w-[1450px] 2xl:max-w-[1600px] 4xl:max-w-[2100px] mx-auto px-6 lg:px-6 xl:px-8 4xl:px-12 text-white'>
+      <div className='relative z-10 w-full max-w-7xl xl:max-w-[1450px] 2xl:max-w-[1600px] 4xl:max-w-[2100px] mx-auto px-6 lg:px-6 xl:px-8 4xl:px-12 mt-16 md:mt-0 text-white'>
         <div className='max-w-2xl 4xl:max-w-4xl text-center'>
           {/* Headline */}
           <h1 className='text-3xl md:text-5xl lg:text-6xl xl:text-7xl 4xl:text-[120px] leading-[1.1] tracking-tight uppercase animate-fade-up animate-duration-700 animate-delay-[500ms]'>

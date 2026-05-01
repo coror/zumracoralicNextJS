@@ -30,6 +30,11 @@ export async function generateMetadata({
   });
 }
 
+const descriptions: Record<string, string> = {
+  sl: 'Vabljeni na delavnice, predavanja in dogodke — prostor, kjer skupaj raziskujemo poti osebne rasti in povezanosti.',
+  bs: 'Pozvani ste na radionice, predavanja i događaje — prostor gde zajedno istražujemo puteve ličnog rasta i povezanosti.',
+};
+
 export default async function Page({
   params: { locale },
 }: {
@@ -47,6 +52,7 @@ export default async function Page({
       locale={locale}
       readMore={t('readMore')}
       title={e('events')}
+      description={descriptions[locale] ?? descriptions.sl}
     />
   );
 }

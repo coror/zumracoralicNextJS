@@ -21,7 +21,7 @@ export default function ServicesComponent({
       {initialServices.map((service) => (
         <div
           key={service.id}
-          className='border border-neutral-200 flex flex-col lg:flex-row items-center text-center mt-5 mx-2 lg:text-left px-3 py-8 lg:px-5 min-h-64 space-y-5 lg:space-y-0 lg:space-x-20 transition-transform duration-500 ease-out lg:hover:scale-[1.02] lg:hover:border-[#222428]'
+          className='bg-white shadow-[0_15px_30px_-15px_rgba(34,36,40,0.15)] hover:shadow-[0_25px_50px_-15px_rgba(223,101,14,0.25)] border border-neutral-200 flex flex-col lg:flex-row items-center text-center mt-5 mx-2 lg:text-left px-3 py-8 lg:px-5 min-h-64 space-y-5 lg:space-y-0 lg:space-x-20 transition-all duration-500 ease-out lg:hover:scale-[1.02] lg:hover:border-[#222428]'
         >
           <div>
             <div className=' text-xl md:text-2xl font-bold lg:min-w-[16rem] text-center'>

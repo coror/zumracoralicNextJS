@@ -1,11 +1,8 @@
 'use client';
 import React, { useMemo, useState } from 'react';
 import Pagination from './Pagination';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import EventCard from './EventCard';
+import MeshGradient from './MeshGradient';
 import { Event } from '@/types/event';
 import { sortByDate } from '@/utils/sortByDate';
 
@@ -14,11 +11,13 @@ export default function EventsComponent({
   locale,
   readMore,
   title,
+  description,
 }: {
   initialEvents: Event[];
   locale: string;
   readMore: string;
   title: string;
+  description: string;
 }) {
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 6;
@@ -38,23 +37,45 @@ export default function EventsComponent({
   const currentEvents = events.slice(indexOfFirstPost, indexOfLastPost);
 
   return (
-    <div className='bg-white relative pb-10 pt-36 px-6'>
-      <h1 className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-700 animate-delay-[500ms]'>
-        {title}
-      </h1>
-      <div className='flex flex-col space-y-10 max-w-[1800px] animate-fade-right animate-duration-700 animate-delay-[1200ms] mx-auto'>
-        {currentEvents.map((event) => (
-          <div key={event.id}>
-            <EventCard event={event} readMore={readMore} />
-          </div>
-        ))}
-      </div>
-      <div className='flex justify-center mt-8'>
-        <Pagination
-          count={Math.ceil(events.length / postsPerPage)}
-          page={currentPage}
-          onChange={handlePageChange}
+    <div className='relative pt-32 md:pt-44 pb-20 md:pb-28'>
+      <MeshGradient variant='cream' fixed />
+
+      {/* Editorial header */}
+      <header className='max-w-3xl mx-auto px-6 text-center mb-20 md:mb-32'>
+        <h1 className='text-3xl md:text-[56px] 4xl:text-[88px] tracking-tight leading-[1.1] mb-7 text-[#222428]'>
+          {title}
+        </h1>
+        <span
+          aria-hidden='true'
+          className='block w-12 h-px bg-[#df650e] mx-auto mb-8'
         />
+        <p className='text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/65'>
+          {description}
+        </p>
+      </header>
+
+      {/* Zigzag magazine-spread cards */}
+      <div className='max-w-7xl mx-auto px-6 lg:px-12'>
+        <div className='space-y-20 md:space-y-32'>
+          {currentEvents.map((event, idx) => (
+            <EventCard
+              key={event.id}
+              event={event}
+              readMore={readMore}
+              reverse={idx % 2 === 1}
+            />
+          ))}
+        </div>
+
+        {events.length > postsPerPage && (
+          <div className='flex justify-center mt-20 md:mt-28'>
+            <Pagination
+              count={Math.ceil(events.length / postsPerPage)}
+              page={currentPage}
+              onChange={handlePageChange}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
