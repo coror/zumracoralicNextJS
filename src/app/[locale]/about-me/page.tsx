@@ -4,6 +4,7 @@ import { unstable_setRequestLocale } from 'next-intl/server';
 import { PageMetadata } from '@/types/metadata';
 import { buildPageMetadata, getAlternates, pickByLocale } from '@/utils/seo';
 import JsonLd from '@/components/JsonLd';
+import MeshGradient from '@/components/MeshGradient';
 
 const titles = {
   sl: 'O meni - Zumra Coralic',
@@ -43,8 +44,16 @@ export default function Page({
   const t = useTranslations('AboutMePage');
   const locale = useLocale();
   const aboutUrl = getAlternates('/about-me', locale).canonical;
+
+  const eyebrows =
+    locale === 'bs'
+      ? ['O meni', 'Moj put', 'Porodica', 'Uvjerenja']
+      : ['O meni', 'Moja pot', 'Družina', 'Prepričanja'];
+
   return (
-    <div className='bg-white pb-16 md:pb-40 pt-36 px-6'>
+    <div className='relative pb-20 md:pb-32'>
+      <MeshGradient variant='cream' fixed />
+
       <JsonLd
         data={{
           '@context': 'https://schema.org',
@@ -60,90 +69,146 @@ export default function Page({
           ],
         }}
       />
-      <div className='m-8 text-3xl md:text-[56px] mb-6 md:mb-16 tracking-wide leading-[1] text-center  animate-fade-right animate-duration-700 animate-delay-[500ms]'>
-        {t('section')}
-      </div>
-      <div className='text-lg leading-8 max-w-[80rem] md:mx-auto space-y-8  animate-fade-right animate-duration-700 animate-delay-[800ms]'>
-        <div className='space-y-5'>
-          <div className='md:flex md:flex-row md:justify-between'>
-            <div className='md:w-96 lg:w-[42rem] space-y-3'>
-              <h1 className='text-2xl md:text-3xl'>{t('sectionTitle1')}</h1>
-              <div>{t('sectionContent1')}</div>
-              <div>{t('sectionContent2')}</div>
+
+      {/* Type-led editorial header */}
+      <header className='pt-28 md:pt-44 pb-16 md:pb-24'>
+        <div className='max-w-3xl mx-auto px-6 text-center'>
+          <p className='text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#df650e] mb-6'>
+            {eyebrows[0]}
+          </p>
+          <h1 className='text-3xl md:text-[56px] 4xl:text-[88px] tracking-tight leading-[1.1] mb-7 text-[#222428]'>
+            Zumra Ćoralić
+          </h1>
+          <span
+            aria-hidden='true'
+            className='block w-12 h-px bg-[#df650e] mx-auto mb-8'
+          />
+          <p className='text-sm md:text-lg 4xl:text-2xl italic leading-relaxed text-[#222428]/75'>
+            {t('description')}
+          </p>
+        </div>
+      </header>
+
+      <div className='max-w-[1500px] xl:max-w-[1600px] 3xl:max-w-[1800px] mx-auto px-6 lg:px-12 2xl:px-16'>
+        {/* Section 1 — text + portrait with warm cream-offset shadow */}
+        <section className='grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 lg:gap-24 items-start py-16 md:py-24'>
+          <div className='md:col-span-7'>
+            <p className='text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#df650e] mb-5'>
+              {eyebrows[1]}
+            </p>
+            <h2 className='text-2xl md:text-4xl 4xl:text-6xl tracking-tight leading-[1.15] mb-8 text-[#222428]'>
+              {t('sectionTitle1')}
+            </h2>
+            <div className='space-y-5 text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/80'>
+              <p>{t('sectionContent1')}</p>
+              <p>{t('sectionContent2')}</p>
             </div>
-            <div className='mt-6 md:mt-0 animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
+          </div>
+          <div className='md:col-span-5 md:pt-6'>
+            <div className='max-w-[24rem] mx-auto md:mx-0'>
               <Image
                 src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG_0704_qh6mdm.jpg'
-                alt='zumra-profilna'
+                alt={
+                  locale === 'bs' ? 'Zumra Ćoralić' : 'Zumra Coralic'
+                }
                 width={0}
                 height={0}
-                sizes='100vw'
-                className='w-full h-full md:w-[26rem] lg:h-auto max-h-[36rem] max-w-[26rem]'
+                sizes='(max-width: 768px) 100vw, 30vw'
+                className='w-full h-auto rounded-2xl shadow-[16px_-16px_0_0_#FFE6BC,0_25px_50px_-15px_rgba(223,101,14,0.3)] md:shadow-[24px_-24px_0_0_#FFE6BC,0_30px_60px_-20px_rgba(223,101,14,0.3)]'
               />
-              <div className='text-sm italic md:w-[26rem]'>
-                <strong>Zumra Ćoralić</strong>, {t('description')}
-              </div>
             </div>
           </div>
+        </section>
 
-          <div className='py-10 max-w-[55rem] md:flex md:flex-col md:mx-auto'>
-            <hr className='border-[#df650e] border-t-2' />
-            <div className='my-4 py-4 text-xl md:text-2xl font-bold text-center text-[#df650e]'>
+        {/* Pull-quote 1 — centered with bookend dividers */}
+        <section className='py-16 md:py-24'>
+          <div className='max-w-3xl mx-auto text-center'>
+            <span
+              aria-hidden='true'
+              className='block w-12 h-px bg-[#df650e] mx-auto mb-10'
+            />
+            <blockquote className='text-2xl md:text-4xl lg:text-5xl italic leading-[1.25] tracking-tight text-[#222428]'>
               {t('quote1')}
-            </div>
-            <hr className='border-[#df650e] border-t-2' />
+            </blockquote>
+            <span
+              aria-hidden='true'
+              className='block w-12 h-px bg-[#df650e] mx-auto mt-10'
+            />
           </div>
-        </div>
+        </section>
 
-        <div className='md:flex md:flex-row md:justify-between md:space-x-10'>
-          <div className=' animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
+        {/* Section 2 — sons photo on left, text on right */}
+        <section className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-24'>
+          <div className='md:order-1'>
             <Image
               src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/IMG-6a7cdd4a36fd6a9a30bf4db5df337a1f-V_t7u3g9.jpg'
               alt='sinova'
               width={0}
               height={0}
-              sizes='100vw'
-              className='w-full h-full md:w-[20rem] md:h-auto lg:w-[38rem] lg:h-auto max-h-[27rem] max-w-[38rem]'
+              sizes='(max-width: 768px) 100vw, 50vw'
+              className='w-full h-auto rounded-2xl shadow-[0_25px_50px_-15px_rgba(223,101,14,0.28)]'
             />
           </div>
-
-          <div className='md:w-96 lg:w-full space-y-5'>
-            <h1 className='text-2xl  md:text-3xl'>{t('sectionTitle2')}</h1>
-            <div>{t('sectionContent3')}</div>
-            <div>{t('sectionContent4')}</div>
-            <div>{t('sectionContent5')}</div>
-            <div>{t('sectionContent6')}</div>
+          <div className='md:order-2'>
+            <p className='text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#df650e] mb-5'>
+              {eyebrows[2]}
+            </p>
+            <h2 className='text-2xl md:text-4xl 4xl:text-6xl tracking-tight leading-[1.15] mb-8 text-[#222428]'>
+              {t('sectionTitle2')}
+            </h2>
+            <div className='space-y-5 text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/80'>
+              <p>{t('sectionContent3')}</p>
+              <p>{t('sectionContent4')}</p>
+              <p>{t('sectionContent5')}</p>
+              <p>{t('sectionContent6')}</p>
+            </div>
           </div>
-        </div>
-        <div className='py-10 max-w-[55rem] md:flex md:flex-col md:mx-auto '>
-          <hr className='border-[#df650e] border-t-2' />
-          <div className='my-4 py-4 text-xl md:text-2xl font-bold text-center text-[#df650e]'>
-            {t('quote2')}
-          </div>
-          <hr className='border-[#df650e] border-t-2' />
-        </div>
-        <div className='  space-y-3 md:space-y-0 flex flex-col-reverse md:flex-row  md:justify-evenly md:space-x-10'>
-          <div className='  space-y-5 mt-10 md:mt-0'>
-            {/* <h1 className='text-2xl  md:text-3xl'>{t('sectionTitle3')}</h1> */}
+        </section>
 
-            <div>{t('sectionContent7')}</div>
-            {/* 
-            <div>{t('sectionContent8')}</div>
-            <div>{t('sectionContent9')}</div>
-            <div>{t('sectionContent10')}</div> */}
-
-            <div>{t('sectionContent11')}</div>
+        {/* Pull-quote 2 — left-bar variant for variety */}
+        <section className='py-16 md:py-24'>
+          <div className='max-w-4xl mx-auto pl-6 md:pl-10 border-l-2 border-[#df650e]'>
+            <blockquote className='text-2xl md:text-4xl lg:text-5xl italic leading-[1.25] tracking-tight text-[#222428]'>
+              {t('quote2')}
+            </blockquote>
           </div>
-          <div className='md:min-w-[26rem] xl:min-w-[30rem] xl:max-w-[44rem]   animate-fade-right animate-duration-700 animate-delay-[1200ms]'>
+        </section>
+
+        {/* Section 3 — text on left, graduation photo on right */}
+        <section className='grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center py-16 md:py-24'>
+          <div className='md:order-2'>
             <Image
               src='https://res.cloudinary.com/dbssbnuph/image/upload/v1726001052/zumracoralic/1_wzq7nm.jpg'
               alt='graduation'
               width={0}
               height={0}
-              sizes='100vw'
-              className='w-full h-full md:w-full md:h-auto '
+              sizes='(max-width: 768px) 100vw, 50vw'
+              className='w-full h-auto rounded-2xl shadow-[0_25px_50px_-15px_rgba(223,101,14,0.28)]'
             />
           </div>
+          <div className='md:order-1'>
+            <p className='text-[10px] md:text-xs tracking-[0.3em] uppercase text-[#df650e] mb-5'>
+              {eyebrows[3]}
+            </p>
+            <h2 className='text-2xl md:text-4xl 4xl:text-6xl tracking-tight leading-[1.15] mb-8 text-[#222428]'>
+              {t('sectionTitle3')}
+            </h2>
+            <div className='space-y-5 text-sm md:text-lg 4xl:text-2xl leading-relaxed text-[#222428]/80'>
+              <p>{t('sectionContent7')}</p>
+              <p>{t('sectionContent11')}</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Closing signature flourish */}
+        <div className='pt-16 md:pt-24 text-center'>
+          <span
+            aria-hidden='true'
+            className='block w-12 h-px bg-[#df650e] mx-auto mb-8'
+          />
+          <p className='text-2xl md:text-3xl italic tracking-tight text-[#222428]'>
+            — Zumra Ćoralić
+          </p>
         </div>
       </div>
     </div>

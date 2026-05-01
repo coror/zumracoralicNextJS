@@ -111,15 +111,12 @@ export default function FormSection({
   };
 
   return (
-    <div className='bg-white p-8 w-full  rounded-md  mb-20  shadow-2xl shadow-[#df650e] text-left'>
-      {/* <h2 className='text-2xl font-bold mb-4 text-center text-black'>
-        Piši mi
-      </h2> */}
-      <form className='space-y-4 text-black' onSubmit={handleSubmit}>
+    <div className='bg-white p-8 md:p-10 w-full rounded-2xl shadow-[0_25px_50px_-15px_rgba(34,36,40,0.18)] text-left'>
+      <form className='space-y-6 text-[#222428]' onSubmit={handleSubmit}>
         <div>
           <label
             htmlFor='name'
-            className='block text-sm font-medium text-gray-700'
+            className='block text-[10px] tracking-[0.25em] uppercase text-[#222428]/65 mb-2'
           >
             IME
           </label>
@@ -127,9 +124,9 @@ export default function FormSection({
             type='text'
             id='name'
             name='name'
-            className={`mt-1 block w-full p-2 border ${
-              nameValid ? 'border-gray-300' : 'border-red-500'
-            } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
+            className={`block w-full px-4 py-3 bg-transparent border ${
+              nameValid ? 'border-[#222428]/15' : 'border-red-500'
+            } rounded-xl focus:outline-none focus:ring-1 focus:ring-[#df650e] focus:border-[#df650e] transition-colors`}
             value={fields.name}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -138,7 +135,7 @@ export default function FormSection({
         <div>
           <label
             htmlFor='email'
-            className='block text-sm font-medium text-gray-700'
+            className='block text-[10px] tracking-[0.25em] uppercase text-[#222428]/65 mb-2'
           >
             E-POŠTA
           </label>
@@ -146,9 +143,9 @@ export default function FormSection({
             type='email'
             id='email'
             name='email'
-            className={`mt-1 block w-full p-2 border ${
-              emailValid ? 'border-gray-300' : 'border-red-500'
-            } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
+            className={`block w-full px-4 py-3 bg-transparent border ${
+              emailValid ? 'border-[#222428]/15' : 'border-red-500'
+            } rounded-xl focus:outline-none focus:ring-1 focus:ring-[#df650e] focus:border-[#df650e] transition-colors`}
             value={fields.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -157,17 +154,17 @@ export default function FormSection({
         <div>
           <label
             htmlFor='message'
-            className='block text-sm font-medium text-gray-700 uppercase'
+            className='block text-[10px] tracking-[0.25em] uppercase text-[#222428]/65 mb-2'
           >
             {message}
           </label>
           <textarea
             id='message'
             name='message'
-            rows={4}
-            className={`mt-1 block w-full p-2 border ${
-              messageValid ? 'border-gray-300' : 'border-red-500'
-            } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500`}
+            rows={5}
+            className={`block w-full px-4 py-3 bg-transparent border ${
+              messageValid ? 'border-[#222428]/15' : 'border-red-500'
+            } rounded-xl focus:outline-none focus:ring-1 focus:ring-[#df650e] focus:border-[#df650e] transition-colors resize-none`}
             value={fields.message}
             onChange={handleChange}
             onBlur={handleBlur}

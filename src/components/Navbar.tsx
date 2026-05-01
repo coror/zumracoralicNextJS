@@ -46,8 +46,8 @@ const Navbar = ({
   const isWorkshop = pathname.startsWith('/services/workshop');
   const isServicesIndex = pathname === '/services';
 
-  // Navbar overlays a dark hero on home/blogs — render in light text mode there.
-  const onDarkHero = isHome || isBlogs;
+  // Navbar overlays a dark hero on home/blogs/services — render in light text mode there.
+  const onDarkHero = isHome || isBlogs || isServicesRoute;
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
