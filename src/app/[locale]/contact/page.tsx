@@ -36,11 +36,6 @@ export async function generateMetadata({
   });
 }
 
-const intros: Record<string, string> = {
-  sl: 'Imate vprašanje, idejo ali želite začeti? Veseli me, ko slišim od vas. Pišite mi spodaj — odgovorim v dveh delovnih dneh.',
-  bs: 'Imate pitanje, ideju ili želite početi? Drago mi je čuti vas. Pišite mi ispod — odgovaram u dva radna dana.',
-};
-
 export default function Page({
   params: { locale },
 }: {
@@ -49,7 +44,6 @@ export default function Page({
   unstable_setRequestLocale(locale);
   const t = useTranslations('Contact');
   const n = useTranslations('Navigation');
-  const intro = intros[locale] ?? intros.sl;
 
   return (
     <div className='relative pt-32 md:pt-44 pb-20 md:pb-32 overflow-hidden'>
@@ -65,11 +59,8 @@ export default function Page({
         </h1>
         <span
           aria-hidden='true'
-          className='block w-12 h-px bg-[#df650e] mx-auto mb-8'
+          className='block w-12 h-px bg-[#df650e] mx-auto'
         />
-        <p className='text-sm md:text-lg 4xl:text-2xl italic leading-relaxed text-[#222428]/75'>
-          {intro}
-        </p>
       </header>
 
       {/* Two-column body */}
